@@ -1,0 +1,212 @@
+<div class="container">
+    <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+       <h1>Form</h1>
+
+      <div class="form-control">
+        <label>Name</label>
+        <input type="text" name="name" placeholder="Name" formControlName="name">
+        <div
+          *ngIf="form.get('name').invalid && form.get('name').touched"
+          class="validation">
+          <small *ngIf="form.get('name').errors.required">
+            Name can not be empty
+          </small>
+        </div>
+      </div>
+      
+      <div class="form-control">
+        <label>Surname</label>
+        <input type="text" name="surname" placeholder="Surname" formControlName="surname">
+        <div
+          *ngIf="form.get('surname').invalid && form.get('surname').touched"
+          class="validation">
+          <small *ngIf="form.get('surname').errors.required">
+            Surname can not be empty
+          </small>
+        </div>
+      </div>
+
+      <div class="form-control">
+        <label>Sex</label>
+        <select name="sex" formControlName="sex">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+
+      <div class="form-control">
+        <label>Birth date</label>
+        <input type="date" name="born" formControlName="born">
+        <div
+          *ngIf="form.get('born').invalid && form.get('born').touched"
+          class="validation">
+          <small *ngIf="form.get('born').errors.required">
+            Birth date can not be empty
+          </small>
+        </div>
+      </div>   
+
+      <div class="form-control">
+        <label>Height(cm)</label>
+        <input type="number"  name="height" min="30" max="300" formControlName="height">
+        <div
+          *ngIf="form.get('expectedSalary').invalid && form.get('expectedSalary').touched"
+          class="validation">
+          <small *ngIf="form.get('expectedSalary').errors.min">
+            Height should be bigger then 0
+          </small>
+        </div>
+      </div>
+
+      <div class="form-control">
+        <label>Phone Number</label>
+        <input type="phoneNumber" name="phoneNumber" formControlName="phoneNumber">
+        <div
+          *ngIf="form.get('surname').invalid && form.get('surname').touched"
+          class="validation">
+          <small *ngIf="form.get('surname').errors.required">
+            Birth date can not be empty
+          </small>
+        </div>
+      </div>
+  
+      <div class="form-control">
+        <label>Email</label>
+        <input type="text" name="email" placeholder="Email" formControlName="email">
+        <div
+          *ngIf="form.get('email').invalid && form.get('email').touched"
+          class="validation">
+          <small *ngIf="form.get('email').errors.required">
+            Email can not be empty
+          </small>
+          <small *ngIf="form.get('email').errors.email">
+            Enter correct email
+          </small>
+          <small *ngIf="form.get('email').errors.restrictedEmail">
+            Email {{form.get('email').value}} запрещен
+          </small>
+          <small *ngIf="form.get('email').errors.uniqEmail">
+            Email {{form.get('email').value}} занят
+          </small>
+        </div>
+      </div>
+
+      <div class="form-control">
+        <label>Education</label>
+        <select name="education" formControlName="education">
+          <option value="primary">Primary</option>
+          <option value="secondary">Secondary</option>
+          <option value="unfinished_higher">Unfinished higher</option>
+          <option value="higher">Higher</option>
+        </select>
+      </div>
+
+      <div class="form-control">
+        <label>Expected salary($)</label>
+        <input type="number" name="expectedSalary" min="1" formControlName="expectedSalary">
+        <div
+          *ngIf="form.get('expectedSalary').invalid && form.get('expectedSalary').touched"
+          class="validation">
+          <small *ngIf="form.get('expectedSalary').errors.min">
+            Expected salary should be bigger then 0
+          </small>
+        </div>
+      </div> 
+
+      <div class="form-control">
+        <label>Preffered region</label>
+        <input type="text" name="prefferedRegion" formControlName="prefferedRegion">
+        <div
+          *ngIf="form.get('prefferedRegion').invalid && form.get('prefferedRegion').touched"
+          class="validation">
+          <small *ngIf="form.get('prefferedRegion').errors.required">
+            Preffered region can not be empty
+          </small>
+        </div>
+      </div>
+
+      <div class="card" formGroupName="workExperience">
+        <label>Work experience</label>
+        <div class="form-control">
+          <label><h5>Years</h5></label>
+          <input type="number" min="0" max="100" name="workExperienceYears" formControlName="workExperienceYears">
+        </div>
+        <div class="form-control">
+          <label><h5>Months</h5></label>
+          <input type="number" min="0" max="11" name="workExperienceMonths" formControlName="workExperienceMonths">
+        </div>
+      </div>
+
+       <div class="card" formGroupName="unemployedFor">
+        <label>Unemployed for</label>
+        <div class="form-control">
+          <label><h5>Years</h5></label>
+          <input type="number" min="0" max="100" name="unemployedForYears" formControlName="unemployedForYears">
+        </div>
+        <div class="form-control">
+          <label><h5>Months</h5></label>
+          <input type="number" min="0" max="11" name="unemployedForMonths" formControlName="unemployedForMonths">
+        </div>
+      </div>
+
+      <div class="card" formGroupName="languageSkills">
+        <label>Language skills</label>
+
+        <div class="form-control">
+          <label><input type="checkbox" name="russian" formControlName="russian">English</label>
+          <select name="englishProficiency" formControlName="englishProficiency">
+            <option value="basic">Basic</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="fluent">Fluent</option>
+            <option value="native">Native</option>
+          </select>
+        </div>
+        <div class="form-control">
+          <label><input type="checkbox" name="english" formControlName="english">Russian</label>
+          <select name="russianProficiency" formControlName="russianProficiency">
+            <option value="basic">Basic</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="fluent">Fluent</option>
+            <option value="native">Native</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="card" formGroupName="professions">
+        <label>Professions</label>
+        <div class="form-control">
+          <label><input type="checkbox" name="trainee" formControlName="trainee">Trainee</label>
+          <label><input type="checkbox" name="dealer" formControlName="dealer">Dealer</label>
+          <label><input type="checkbox" name="inspector" formControlName="inspector">Inspector</label>
+          <label><input type="checkbox" name="manager" formControlName="manager">Manager</label>
+          <label><input type="checkbox" name="pit_boss" formControlName="pit_boss">Pit boss</label>
+          <label><input type="checkbox" name="waiter" formControlName="waiter">Waiter</label>
+          <label><input type="checkbox" name="barman" formControlName="barman">Barman</label>
+        </div>
+      </div>
+
+      <div class="card" formGroupName="messengers">
+        <label>Messengers</label>
+        <div class="form-control">
+          <label><input type="checkbox" name="Telegram" formControlName="russian">English</label>
+          <input type="text" name="Telegram" formControlName="Telegram">
+        </div>
+        <div class="form-control">
+          <label><input type="checkbox" name="msWhatsApp" formControlName="msWhatsApp">Russian</label>
+          <input type="text" name="WhatsApp" formControlName="WhatsApp">
+        </div>
+        <div class="form-control">
+          <label><input type="checkbox" name="msViber" formControlName="msViber">Russian</label>
+          <input type="text" name="Viber" formControlName="Viber">
+        </div>
+      </div>
+
+      <textarea rows="5" name="note" placeholder="Note..." formControlName="note"></textarea>
+
+      <button class="btn" type="submit" [disabled]="form.invalid || form.pending">Отправить</button>
+    </form>
+  </div>
+  
+  
+  
+  
