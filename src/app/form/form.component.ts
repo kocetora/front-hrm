@@ -1,13 +1,19 @@
 import {Component, OnInit} from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { HttpClient } from '@angular/common/http'
+import { FormService } from './form.service';
+import { FormData } from './formData';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styles: ['./form.component.scss']
+  styles: ['./form.component.scss'],
+  providers: [FormService]
 })
 export class FormComponent implements OnInit {
+    constructor(private FormService: FormService, private http: HttpClient) { }
     form: FormGroup
+
     ngOnInit() {
       this.form = new FormGroup({
         name: new FormControl('', [
@@ -81,25 +87,23 @@ export class FormComponent implements OnInit {
   
     submit() {
       if (this.form.valid) {
-        console.log('Form: ', this.form)
         const vals = {...this.form.value}
-
-        const formData = {
-          name: vals.name,
-          surname: vals.surname,
-          sex: vals.sex,
-          born: vals.born,
-          height: vals.height,
-          phoneNumber: vals.phoneNumber,
-          email: vals.email,
-          education: vals.education,
-          prefferedRegion: vals.prefferedRegion,
-          expectedSalary: vals.expectedSalary,
+        const formData: FormData = {
+          name: vals.name as string,
+          surname: vals.surname as string,
+          sex: vals.sex as string,
+          born: vals.born as string,
+          height: Number.parseInt(vals.height),
+          phoneNumber: vals.phoneNumber as string,
+          email: vals.email as string,
+          education: vals.education as string,
+          prefferedRegion: vals.prefferedRegion as string,
+          expectedSalary: Number.parseInt(vals.expectedSalary),
           workExperience: Number.parseInt(vals.workExperience.workExperienceYears)*12 + 
           Number.parseInt(vals.workExperience.workExperienceMonths),
           unemployedFor: Number.parseInt(vals.unemployedFor.unemployedForYears)*12 + 
           Number.parseInt(vals.unemployedFor.unemployedForMonths),
-          note: vals.note,
+          note: vals.note as string,
           languageSkills: [],
           messengers: [],
           professions: []
@@ -140,9 +144,15 @@ export class FormComponent implements OnInit {
         if(vals.messengers.msViber){
           formData.messengers.push({messenger: 'Viber', info: vals.messengers.Viber})
         }
-        console.log('Form Data:', formData)
-        // this.form.reset()
+        console.log('Form Data:', JSON.stringify(formData, null, 2))
+
+        this.FormService.addForm(formData).subscribe(res=>console.log(res))
+        this.form.reset()
       }
     }
 
+    addForm (form) {
+          console.log(form)
+          return this.http.post('api/form', JSON.stringify(form, null, 2))
+        }
   }
