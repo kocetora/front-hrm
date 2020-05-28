@@ -54,10 +54,10 @@ export class FormComponent implements OnInit {
         }),
         note: new FormControl(""),
         languageSkills: new FormGroup({
-          english: new FormControl( ),
-          russian: new FormControl( ),
-          englishProficiency: new FormControl( ),
-          russianProficiency: new FormControl( )
+          english: new FormControl(),
+          russian: new FormControl(),
+          englishProficiency: new FormControl('basic'),
+          russianProficiency: new FormControl('basic')
         }),
         professions: new FormGroup({
           trainee: new FormControl( ),
