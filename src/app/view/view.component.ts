@@ -10,7 +10,7 @@ import { Form } from './form';
   providers: [ViewService]
 })
 export class ViewComponent implements OnInit {
-  form:Form[]
+  forms: Form[] = []
 
   constructor(private ViewService: ViewService, private http: HttpClient) { }
 
@@ -19,7 +19,7 @@ export class ViewComponent implements OnInit {
   }
 
   getForms (): void {
-    this.ViewService.getForms().subscribe(form => console.log(form))
+    this.ViewService.getForms().subscribe(forms => this.forms = forms)
   }
   
   // delete (torm: Torm): void {
