@@ -17,8 +17,8 @@ export class ViewService {
         return this.http.delete(url)
     }
 
-    // updateForm (form: Form): Observable<{}> {
-    //     const url = `api/form/${form.id}`
-    //     return this.http.put<Form>(url, form)
-    // }
+    updateForm (form: Form): Observable<{}> {
+        const url = `api/form/${form.formid}`
+        return this.http.put<Form>(url, form)
+    }
 }

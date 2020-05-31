@@ -13,6 +13,7 @@ import { Form } from './form';
 export class ViewComponent implements OnInit {
   forms: Form[] = []
   form: FormGroup
+  currentFormId: number
 
   constructor(private ViewService: ViewService, private http: HttpClient) { }
 
@@ -96,6 +97,7 @@ export class ViewComponent implements OnInit {
       this.forms = forms;
       if(this.form[1]){
         this.showForm(1);
+        this.currentFormId = 1;
       }
     })
   }
@@ -108,6 +110,7 @@ export class ViewComponent implements OnInit {
   
   showForm(id?: any){
     console.log(this.forms[id])
+    this.currentFormId = this.forms[id].formid
     this.form.patchValue({
       name: this.forms[id].name,
       surname: this.forms[id].surname,
@@ -116,12 +119,9 @@ export class ViewComponent implements OnInit {
       height: this.forms[id].height,
       phoneNumber: this.forms[id].phoneNumber,
       email: this.forms[id].email,
-      // messengers: Object[] //interface
       education: this.forms[id].education,
       prefferedRegion: this.forms[id].prefferedRegion,
-      // languageSkills: Object[] //interface
-      note: this.forms[id].surname,
-      // professions: Object[] //interface    
+      note: this.forms[id].surname,  
       expectedSalary: this.forms[id].expectedSalary,
     });
     this.form.controls.workExperience.patchValue({
@@ -257,8 +257,75 @@ export class ViewComponent implements OnInit {
         })
       }
     });
-
   }
+
+      submit() {
+      if (this.form.valid) {
+        const vals = {...this.form.value}
+        console.log(vals);
+        const formData: Form = {
+          formid: this.currentFormId,
+          name: vals.name as string,
+          surname: vals.surname as string,
+          sex: vals.sex as string,
+          born: vals.born as string,
+          height: Number.parseInt(vals.height),
+          phoneNumber: vals.phoneNumber as string,
+          email: vals.email as string,
+          education: vals.education as string,
+          prefferedRegion: vals.prefferedRegion as string,
+          expectedSalary: Number.parseInt(vals.expectedSalary),
+          workExperience: Number.parseInt(vals.workExperience.workExperienceYears)*12 + 
+          Number.parseInt(vals.workExperience.workExperienceMonths),
+          unemployedFor: Number.parseInt(vals.unemployedFor.unemployedForYears)*12 + 
+          Number.parseInt(vals.unemployedFor.unemployedForMonths),
+          note: vals.note as string,
+          languageSkills: [],
+          messengers: [],
+          professions: []
+        }
+        if(vals.languageSkills.english){
+          formData.languageSkills.push({language: 'english', languageProficiency: vals.languageSkills.englishProficiency})
+        }
+        if(vals.languageSkills.russian){
+          formData.languageSkills.push({language: 'russian', languageProficiency: vals.languageSkills.russianProficiency})
+        }
+        if(vals.professions.trainee){
+          formData.professions.push({profession: 'trainee'})
+        }
+        if(vals.professions.dealer){
+          formData.professions.push({profession: 'dealer'})
+        }
+        if(vals.professions.inspector){
+          formData.professions.push({profession: 'inspector'})
+        }
+        if(vals.professions.manager){
+          formData.professions.push({profession: 'manager'})
+        }
+        if(vals.professions.waiter){
+          formData.professions.push({profession: 'waiter'})
+        }
+        if(vals.professions.pit_boss){
+          formData.professions.push({profession: 'pit_boss'})
+        }
+        if(vals.professions.barman){
+          formData.professions.push({profession: 'barman'})
+        }
+        if(vals.messengers.msTelegram){
+          formData.messengers.push({messenger: 'Telegram', info: vals.messengers.Telegram})
+        }
+        if(vals.messengers.msWhatsApp){
+          formData.messengers.push({messenger: 'WhatsApp', info: vals.messengers.WhatsApp})
+        }
+        if(vals.messengers.msViber){
+          formData.messengers.push({messenger: 'Viber', info: vals.messengers.Viber})
+        }
+        console.log('Form Data:', JSON.stringify(formData, null, 2))
+
+        this.ViewService.updateForm(formData).subscribe(res=>console.log(res))
+        this.form.reset()
+      }
+    }
 
   delete(id: number): void {
     this.ViewService
@@ -272,18 +339,4 @@ export class ViewComponent implements OnInit {
     this.getForms();
     this.showForm(1);
   }
-  
-  // edit (form) {
-  //     this.editForm = form
-  // }
-  
-  // update () {
-  //     if (this.editTorm) {
-  //         this.tormService.updateTorm(this.editTorm).subscribe(() => {
-  //             this.getTorms()
-  //         })
-  //         this.editTorm = undefined
-  //     }
-  // }
-
 }
