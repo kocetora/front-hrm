@@ -1,4 +1,5 @@
 export interface Form{
+    formid?: number,
     name: string
     surname: string 
     sex: string //enum

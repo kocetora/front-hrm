@@ -12,10 +12,10 @@ export class ViewService {
         return this.http.get<Form[]>('api/forms')
     }
 
-    // deleteForm (id: number): Observable<{}> {
-    //     const url = `api/form/${id}`
-    //     return this.http.delete(url)
-    // }
+    deleteForm (id: number): Observable<{}> {
+        const url = `api/form/${id}`
+        return this.http.delete(url)
+    }
 
     // updateForm (form: Form): Observable<{}> {
     //     const url = `api/form/${form.id}`
