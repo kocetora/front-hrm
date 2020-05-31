@@ -21,7 +21,7 @@
     <div class="container list">
         <h2>Forms</h2>
         <hr>
-        <div class="card" *ngFor="let form of forms" #el [attr.id]="form.formid" (click)=selectForm(el.id)>
+        <div class="card" *ngFor="let form of forms; let i = index" #el [attr.id]="form.formid" (click)=selectForm(i)>
           <p>
             <span>{{form.name}}{{form.surname}}</span>
             <span>
@@ -189,7 +189,7 @@
        <label>Language skills</label>
 
        <div class="form-control">
-         <label><input type="checkbox" name="russian" formControlName="russian">English</label>
+         <label><input type="checkbox" name="english" formControlName="english">English</label>
          <select name="englishProficiency" formControlName="englishProficiency">
            <option value="basic">Basic</option>
            <option value="intermediate">Intermediate</option>
@@ -198,7 +198,7 @@
          </select>
        </div>
        <div class="form-control">
-         <label><input type="checkbox" name="english" formControlName="english">Russian</label>
+         <label><input type="checkbox" name="russian" formControlName="russian">Russian</label>
          <select name="russianProficiency" formControlName="russianProficiency">
            <option value="basic">Basic</option>
            <option value="intermediate">Intermediate</option>
