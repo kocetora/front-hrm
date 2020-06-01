@@ -2,21 +2,130 @@
   <div class="container filter">
     <h2>Filter</h2>
     <hr>
-    <!-- <form class="card" [formGroup]="form" (ngSubmit)="submit()">
-      sex
-      age range
-      height range
-      phoneNumber
-      education
-      languageSkills
-      applicationFor
-      workExperience range
-      expectedSalary range
+    <form class="card" [formGroup]="filter" (ngSubmit)="filterSubmit()">
+      <div class="form-control">
+        <label>Sex</label>
+        <select name="sex" formControlName="sex">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
 
-    </form> -->
+      <div class="card" formGroupName="age">
+        <label>Age</label>
+        <div class="form-control">
+          <label><h5>From</h5></label>
+          <input type="number" min="14" max="100" name="ageFrom" formControlName="ageFrom">
+        </div>
+        <div class="form-control">
+          <label><h5>To</h5></label>
+          <input type="number" min="14" max="100" name="ageTo" formControlName="ageTo">
+        </div>
+      </div>
+
+      <div class="card" formGroupName="height">
+        <label>Height</label>
+        <div class="form-control">
+          <label><h5>From</h5></label>
+          <input type="number" min="30" max="300" name="heightFrom" formControlName="heightFrom">
+        </div>
+        <div class="form-control">
+          <label><h5>To</h5></label>
+          <input type="number" min="30" max="300" name="heightTo" formControlName="heightTo">
+        </div>
+      </div>
+
+      <div class="card" formGroupName="expectedSalary">
+        <label>Expected salary</label>
+        <div class="form-control">
+          <label><h5>From</h5></label>
+          <input type="number" min="1" max="100000" name="expectedSalaryFrom" formControlName="expectedSalaryFrom">
+        </div>
+        <div class="form-control">
+          <label><h5>To</h5></label>
+          <input type="number" min="1" max="100000" name="expectedSalaryTo" formControlName="expectedSalaryTo">
+        </div>
+      </div>
+      
+      <div class="form-control">
+       <label>Education</label>
+       <select name="education" formControlName="education">
+         <option value="primary">Primary</option>
+         <option value="secondary">Secondary</option>
+         <option value="unfinished_higher">Unfinished higher</option>
+         <option value="higher">Higher</option>
+       </select>
+     </div>
+
+     <div class="card" formGroupName="professions">
+      <label>Professions</label>
+      <div class="form-control">
+        <label><input type="checkbox" name="trainee" formControlName="trainee">Trainee</label>
+        <label><input type="checkbox" name="dealer" formControlName="dealer">Dealer</label>
+        <label><input type="checkbox" name="inspector" formControlName="inspector">Inspector</label>
+        <label><input type="checkbox" name="manager" formControlName="manager">Manager</label>
+        <label><input type="checkbox" name="pit_boss" formControlName="pit_boss">Pit boss</label>
+        <label><input type="checkbox" name="waiter" formControlName="waiter">Waiter</label>
+        <label><input type="checkbox" name="barman" formControlName="barman">Barman</label>
+      </div>
+    </div>
+
+    <div class="card" formGroupName="messengers">
+      <label>Messengers</label>
+      <div class="form-control">
+        <label><input type="checkbox" name="Telegram" formControlName="Telegram">Telegram</label>
+        <label><input type="checkbox" name="Viber" formControlName="Viber">Viber</label>
+        <label><input type="checkbox" name="WhatsApp" formControlName="WhatsApp">WhatsApp</label>
+      </div>
+    </div>
+
+    <div class="card" formGroupName="languageSkills">
+      <label>Language skills</label>
+      <div class="form-control">
+        <label>Language</label>
+        <select name="language" formControlName="language">
+          <option value="english">English</option>
+          <option value="russian">Russian</option>
+        </select>
+        <label>Language proficiency</label>
+        <select name="languageProficiency" formControlName="languageProficiency">
+          <option value="basic">Basic</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="fluent">Fluent</option>
+          <option value="native">Native</option>
+        </select>
+      </div>
+    </div>
+      
+    <div class="card" formGroupName="workExperienceFrom">
+      <label>Work experience from</label>
+      <div class="form-control">
+        <label><h5>Years</h5></label>
+        <input type="number" min="0" max="100" name="workExperienceYearsFrom" formControlName="workExperienceYearsFrom">
+      </div>
+      <div class="form-control">
+        <label><h5>Months</h5></label>
+        <input type="number" min="0" max="11" name="workExperienceMonthsFrom" formControlName="workExperienceMonthsFrom">
+      </div>
+    </div>
+
+    <div class="card" formGroupName="workExperienceTo">
+      <label>Work experience to</label>
+      <div class="form-control">
+        <label><h5>Years</h5></label>
+        <input type="number" min="0" max="100" name="workExperienceYearsTo" formControlName="workExperienceYearsTo">
+      </div>
+      <div class="form-control">
+        <label><h5>Months</h5></label>
+        <input type="number" min="0" max="11" name="workExperienceMonthsTo" formControlName="workExperienceMonthsTo">
+      </div>
+    </div>
+
+      <button class="btn" type="submit" [disabled]="filter.invalid || filter.pending">Отправить</button>
+    </form>
   </div>    
 
-
+  
 
     <div class="container list">
         <h2>Forms</h2>

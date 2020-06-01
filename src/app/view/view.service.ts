@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { Form } from './form'
+import { Filter } from './filter'
 
 @Injectable()
 export class ViewService {
@@ -20,5 +21,10 @@ export class ViewService {
     updateForm (form: Form): Observable<{}> {
         const url = `api/form/${form.formid}`
         return this.http.put<Form>(url, form)
+    }
+
+    filterForm (filter: Filter): Observable<{}> {
+        const url = `api/form/filter`
+        return this.http.post<Filter>(url, filter)
     }
 }

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { ViewService } from './view.service';
 import { Form } from './form';
+import { Filter } from './filter';
 
 @Component({
   selector: 'app-view',
@@ -13,12 +14,85 @@ import { Form } from './form';
 export class ViewComponent implements OnInit {
   forms: Form[] = []
   form: FormGroup
+  filter: FormGroup
   currentFormId: number
 
   constructor(private ViewService: ViewService, private http: HttpClient) { }
 
   ngOnInit(): void {
-    
+    this.filter = new FormGroup({
+      sex: new FormControl('male', ),
+      height: new FormGroup({
+        heightFrom: new FormControl(30, [
+          Validators.min(30),
+          Validators.max(300) 
+        ]),
+        heightTo: new FormControl(300, [
+          Validators.min(30),
+          Validators.max(300) 
+        ])
+      }),
+      age: new FormGroup({
+        ageFrom: new FormControl(14, [
+          Validators.min(14),
+          Validators.max(100) 
+        ]),
+        ageTo: new FormControl(100, [
+          Validators.min(14),
+          Validators.max(100) 
+        ])
+      }),
+      workExperienceFrom: new FormGroup({
+        workExperienceYearsFrom: new FormControl(0, [
+          Validators.min(0),
+          Validators.max(100),
+        ]),
+        workExperienceMonthsFrom: new FormControl(0, [
+          Validators.min(0),
+          Validators.max(11),
+        ]),
+      }),
+      workExperienceTo: new FormGroup({
+        workExperienceYearsTo: new FormControl(100, [
+          Validators.min(0),
+          Validators.max(100),
+        ]),
+        workExperienceMonthsTo: new FormControl(11, [
+          Validators.min(0),
+          Validators.max(11),
+        ]),
+      }),
+      education: new FormControl('higher'),
+      expectedSalary: new FormGroup({
+        expectedSalaryFrom: new FormControl(1, [
+          Validators.min(1),
+          Validators.max(100000),
+        ]),
+        expectedSalaryTo: new FormControl(100000, [
+          Validators.min(1),
+          Validators.max(100000),
+        ]),
+      }),
+      professions: new FormGroup({
+        trainee: new FormControl( ),
+        dealer: new FormControl( ),
+        inspector: new FormControl( ),
+        manager: new FormControl( ),
+        pit_boss: new FormControl( ),
+        waiter: new FormControl( ),
+        barman: new FormControl( ),
+      }),
+      messengers: new FormGroup({
+        WhatsApp: new FormControl( ),
+        Telegram: new FormControl( ),
+        Viber: new FormControl( ),
+      }),
+      languageSkills: new FormGroup({
+        language: new FormControl('russian'),
+        languageProficiency: new FormControl('basic'),
+      }),
+    })
+
     this.form = new FormGroup({
       name: new FormControl('', [
         Validators.required]),
@@ -89,8 +163,6 @@ export class ViewComponent implements OnInit {
     })
     this.getForms();
   }
-
-  
 
   getForms(): void {
     this.ViewService.getForms().subscribe(forms => {
@@ -259,10 +331,61 @@ export class ViewComponent implements OnInit {
     });
   }
 
+  filterSubmit(){
+    if (this.filter.valid) {
+      const vals = {...this.filter.value}
+      const filterData: Filter = {
+        sex: vals.sex as string,
+        education: vals.education as string,
+        age: [{from: vals.age.ageFrom, to: vals.age.ageFrom }],
+        workExperience: [{from: vals.workExperienceFrom.workExperienceYearsFrom*12+vals.workExperienceFrom.workExperienceMonthsFrom, 
+                          to: vals.workExperienceTo.workExperienceYearsTo*12+vals.workExperienceTo.workExperienceMonthsTo}],
+        height: [{from: vals.height.heightFrom, to: vals.height.heightTo}],
+        expectedSalary: [{from: vals.expectedSalary.expectedSalaryFrom, to: vals.expectedSalary.expectedSalaryTo}],
+        languageSkills: [{language: vals.languageSkills.language, languageProficiency: vals.languageSkills.languageProficiency}],
+        professions: [],
+        messengers: [],
+      }
+      if(vals.professions.trainee){
+        filterData.professions.push({profession: 'trainee'})
+      }
+      if(vals.professions.dealer){
+        filterData.professions.push({profession: 'dealer'})
+      }
+      if(vals.professions.inspector){
+        filterData.professions.push({profession: 'inspector'})
+      }
+      if(vals.professions.manager){
+        filterData.professions.push({profession: 'manager'})
+      }
+      if(vals.professions.waiter){
+        filterData.professions.push({profession: 'waiter'})
+      }
+      if(vals.professions.pit_boss){
+        filterData.professions.push({profession: 'pit_boss'})
+      }
+      if(vals.professions.barman){
+        filterData.professions.push({profession: 'barman'})
+      }
+      if(vals.messengers.Telegram){
+        filterData.messengers.push({messenger: 'Telegram'})
+      }
+      if(vals.messengers.Viber){
+        filterData.messengers.push({messenger: 'Viber'})
+      }
+      if(vals.messengers.WhatsApp){
+        filterData.messengers.push({messenger: 'WhatsApp'})
+      }
+        this.ViewService.filterForm(filterData).subscribe(forms=>{
+          console.log(forms);
+          this.forms = forms;
+        })
+    }
+  }
+
       submit() {
       if (this.form.valid) {
         const vals = {...this.form.value}
-        console.log(vals);
         const formData: Form = {
           formid: this.currentFormId,
           name: vals.name as string,
@@ -320,7 +443,6 @@ export class ViewComponent implements OnInit {
         if(vals.messengers.msViber){
           formData.messengers.push({messenger: 'Viber', info: vals.messengers.Viber})
         }
-        console.log('Form Data:', JSON.stringify(formData, null, 2))
 
         this.ViewService.updateForm(formData).subscribe(res=>console.log(res))
         this.form.reset()
@@ -334,7 +456,6 @@ export class ViewComponent implements OnInit {
   }
   
   deleteItem(id?: any){
-    console.log(id);
     this.delete(id);
     this.getForms();
     this.showForm(1);
