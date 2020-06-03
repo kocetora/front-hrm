@@ -31,7 +31,7 @@ export class FormComponent implements OnInit {
         height: new FormControl(0, [
           Validators.min(30),
           Validators.max(300),
-          CustomValidators.noWhitespace
+          Validators.required
         ]),
         phoneNumber: new FormControl('', [
           Validators.required,
@@ -44,7 +44,7 @@ export class FormComponent implements OnInit {
         prefferedRegion: new FormControl(''),
         expectedSalary: new FormControl(0, [
           Validators.min(1),
-          CustomValidators.noWhitespace
+          Validators.required
         ]),
         unemployedFor: new FormGroup({
           unemployedForYears: new FormControl(0, [
@@ -105,9 +105,4 @@ export class FormComponent implements OnInit {
         this.form.reset();
       }
     }
-
-    addForm(form) {
-          console.log(form);
-          return this.http.post('api/form', JSON.stringify(form, null, 2));
-        }
   }

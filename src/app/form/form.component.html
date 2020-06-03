@@ -55,7 +55,7 @@
           <small *ngIf="form.get('height').errors.min">
             Height should be bigger then 0
           </small>
-          <small *ngIf="form.get('height').errors.whitespace">
+          <small *ngIf="form.get('height').errors.required">
             Height can not be empty
           </small>
         </div>
@@ -113,7 +113,7 @@
           <small *ngIf="form.get('expectedSalary').errors.min">
             Expected salary should be bigger then 0
           </small>
-          <small *ngIf="form.get('expectedSalary').errors.whitespace">
+          <small *ngIf="form.get('expectedSalary').errors.required">
             Expected salary can not be empty
           </small>
         </div>

@@ -1,4 +1,5 @@
 export interface FormData {
+    formid?: number;
     name: string;
     surname: string;
     sex: string;
