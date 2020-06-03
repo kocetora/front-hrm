@@ -4,13 +4,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ViewService } from './view.service';
 import { Form } from './form';
 import { Filter } from './filter';
+import { FormService } from '../form/form.service';
 
 @Component({
   selector: 'app-view',
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  providers: [ViewService]
+  providers: [ViewService, FormService]
 })
 export class ViewComponent implements OnInit {
   forms: Form[] = [];
@@ -18,7 +19,7 @@ export class ViewComponent implements OnInit {
   filter: FormGroup;
   currentFormId: number;
 
-  constructor(private viewService: ViewService, private http: HttpClient) { }
+  constructor(private formService: FormService, private viewService: ViewService, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.filter = new FormGroup({
@@ -166,6 +167,7 @@ export class ViewComponent implements OnInit {
   }
 
   getForms(): void {
+    console.log();
     this.viewService.getForms().subscribe(forms => {
       this.forms = forms;
       if (this.form[1]) {
@@ -337,117 +339,17 @@ export class ViewComponent implements OnInit {
 
   filterSubmit() {
     if (this.filter.valid) {
-      const vals = {...this.filter.value};
-      const filterData: Filter = {
-        sex: vals.sex as string,
-        education: vals.education as string,
-        age: [{from: vals.age.ageFrom, to: vals.age.ageFrom }],
-        workExperience: [{from: vals.workExperienceFrom.workExperienceYearsFrom * 12 + vals.workExperienceFrom.workExperienceMonthsFrom,
-                          to: vals.workExperienceTo.workExperienceYearsTo * 12 + vals.workExperienceTo.workExperienceMonthsTo}],
-        height: [{from: vals.height.heightFrom, to: vals.height.heightTo}],
-        expectedSalary: [{from: vals.expectedSalary.expectedSalaryFrom, to: vals.expectedSalary.expectedSalaryTo}],
-        languageSkills: [{language: vals.languageSkills.language, languageProficiency: vals.languageSkills.languageProficiency}],
-        professions: [],
-        messengers: [],
-      };
-      if (vals.professions.trainee) {
-        filterData.professions.push({profession: 'trainee'});
-      }
-      if (vals.professions.dealer) {
-        filterData.professions.push({profession: 'dealer'});
-      }
-      if (vals.professions.inspector) {
-        filterData.professions.push({profession: 'inspector'});
-      }
-      if (vals.professions.manager) {
-        filterData.professions.push({profession: 'manager'});
-      }
-      if (vals.professions.waiter) {
-        filterData.professions.push({profession: 'waiter'});
-      }
-      if (vals.professions.pit_boss) {
-        filterData.professions.push({profession: 'pit_boss'});
-      }
-      if (vals.professions.barman) {
-        filterData.professions.push({profession: 'barman'});
-      }
-      if (vals.messengers.Telegram) {
-        filterData.messengers.push({messenger: 'Telegram'});
-      }
-      if (vals.messengers.Viber) {
-        filterData.messengers.push({messenger: 'Viber'});
-      }
-      if (vals.messengers.WhatsApp) {
-        filterData.messengers.push({messenger: 'WhatsApp'});
-      }
+      const filterData: Filter = this.viewService.convertFilterData({...this.filter.value});
       this.viewService.filterForm(filterData).subscribe(forms => {
           console.log(forms);
           // this.forms = forms;
-        });
+      });
     }
   }
 
       submit() {
       if (this.form.valid) {
-        const vals = {...this.form.value};
-        const formData: Form = {
-          formid: this.currentFormId,
-          name: vals.name as string,
-          surname: vals.surname as string,
-          sex: vals.sex as string,
-          born: vals.born as string,
-          height: Number.parseInt(vals.height, 10),
-          phoneNumber: vals.phoneNumber as string,
-          email: vals.email as string,
-          education: vals.education as string,
-          prefferedRegion: vals.prefferedRegion as string,
-          expectedSalary: Number.parseInt(vals.expectedSalary, 10),
-          workExperience: Number.parseInt(vals.workExperience.workExperienceYears, 10) * 12 +
-          Number.parseInt(vals.workExperience.workExperienceMonths, 10),
-          unemployedFor: Number.parseInt(vals.unemployedFor.unemployedForYears, 10) * 12 +
-          Number.parseInt(vals.unemployedFor.unemployedForMonths, 10),
-          note: vals.note as string,
-          languageSkills: [],
-          messengers: [],
-          professions: []
-        };
-        if (vals.languageSkills.english) {
-          formData.languageSkills.push({language: 'english', languageProficiency: vals.languageSkills.englishProficiency});
-        }
-        if (vals.languageSkills.russian) {
-          formData.languageSkills.push({language: 'russian', languageProficiency: vals.languageSkills.russianProficiency});
-        }
-        if (vals.professions.trainee) {
-          formData.professions.push({profession: 'trainee'});
-        }
-        if (vals.professions.dealer) {
-          formData.professions.push({profession: 'dealer'});
-        }
-        if (vals.professions.inspector) {
-          formData.professions.push({profession: 'inspector'});
-        }
-        if (vals.professions.manager) {
-          formData.professions.push({profession: 'manager'});
-        }
-        if (vals.professions.waiter) {
-          formData.professions.push({profession: 'waiter'});
-        }
-        if (vals.professions.pit_boss) {
-          formData.professions.push({profession: 'pit_boss'});
-        }
-        if (vals.professions.barman) {
-          formData.professions.push({profession: 'barman'});
-        }
-        if (vals.messengers.msTelegram) {
-          formData.messengers.push({messenger: 'Telegram', info: vals.messengers.Telegram});
-        }
-        if (vals.messengers.msWhatsApp) {
-          formData.messengers.push({messenger: 'WhatsApp', info: vals.messengers.WhatsApp});
-        }
-        if (vals.messengers.msViber) {
-          formData.messengers.push({messenger: 'Viber', info: vals.messengers.Viber});
-        }
-
+        const formData = this.formService.convertFormData({...this.form.value});
         this.viewService.updateForm(formData).subscribe(res => console.log(res));
         this.form.reset();
       }
