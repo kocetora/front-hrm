@@ -8,7 +8,7 @@
         <div
           *ngIf="form.get('name').invalid && form.get('name').touched"
           class="validation">
-          <small *ngIf="form.get('name').errors.required">
+          <small *ngIf="form.get('name').errors">
             Name can not be empty
           </small>
         </div>
@@ -20,7 +20,7 @@
         <div
           *ngIf="form.get('surname').invalid && form.get('surname').touched"
           class="validation">
-          <small *ngIf="form.get('surname').errors.required">
+          <small *ngIf="form.get('surname').errors">
             Surname can not be empty
           </small>
         </div>
@@ -50,22 +50,25 @@
         <label>Height(cm)</label>
         <input type="number"  name="height" min="30" max="300" formControlName="height">
         <div
-          *ngIf="form.get('expectedSalary').invalid && form.get('expectedSalary').touched"
+          *ngIf="form.get('height').invalid && form.get('height').touched"
           class="validation">
-          <small *ngIf="form.get('expectedSalary').errors.min">
+          <small *ngIf="form.get('height').errors.min">
             Height should be bigger then 0
+          </small>
+          <small *ngIf="form.get('height').errors.whitespace">
+            Height can not be empty
           </small>
         </div>
       </div>
 
       <div class="form-control">
         <label>Phone Number</label>
-        <input type="phoneNumber" name="phoneNumber" formControlName="phoneNumber">
+        <input type="text" name="phoneNumber" formControlName="phoneNumber">
         <div
-          *ngIf="form.get('surname').invalid && form.get('surname').touched"
+          *ngIf="form.get('phoneNumber').invalid && form.get('phoneNumber').touched"
           class="validation">
-          <small *ngIf="form.get('surname').errors.required">
-            Birth date can not be empty
+          <small *ngIf="form.get('phoneNumber').errors">
+            Phone number can not be empty
           </small>
         </div>
       </div>
@@ -110,19 +113,15 @@
           <small *ngIf="form.get('expectedSalary').errors.min">
             Expected salary should be bigger then 0
           </small>
+          <small *ngIf="form.get('expectedSalary').errors.whitespace">
+            Expected salary can not be empty
+          </small>
         </div>
       </div> 
 
       <div class="form-control">
         <label>Preffered region</label>
         <input type="text" name="prefferedRegion" formControlName="prefferedRegion">
-        <div
-          *ngIf="form.get('prefferedRegion').invalid && form.get('prefferedRegion').touched"
-          class="validation">
-          <small *ngIf="form.get('prefferedRegion').errors.required">
-            Preffered region can not be empty
-          </small>
-        </div>
       </div>
 
       <div class="card" formGroupName="workExperience">
@@ -130,10 +129,38 @@
         <div class="form-control">
           <label><h5>Years</h5></label>
           <input type="number" min="0" max="100" name="workExperienceYears" formControlName="workExperienceYears">
+          <div
+            *ngIf="form.controls.workExperience.get('workExperienceYears').invalid 
+              && form.controls.workExperience.get('workExperienceYears').touched"
+              class="validation">
+            <small *ngIf="form.controls.workExperience.get('workExperienceYears').errors.max">
+              Should be less then 100
+            </small>
+            <small *ngIf="form.controls.workExperience.get('workExperienceYears').errors.min">
+              Should be bigger then 0
+            </small>
+            <small *ngIf="form.controls.workExperience.get('workExperienceYears').errors.required">
+              Can not be empty
+            </small>
+          </div>
         </div>
         <div class="form-control">
           <label><h5>Months</h5></label>
           <input type="number" min="0" max="11" name="workExperienceMonths" formControlName="workExperienceMonths">
+          <div
+              *ngIf="form.controls.workExperience.get('workExperienceMonths').invalid 
+                && form.controls.workExperience.get('workExperienceMonths').touched"
+              class="validation">
+            <small *ngIf="form.controls.workExperience.get('workExperienceMonths').errors.max">
+              Should be less then 11
+            </small>
+            <small *ngIf="form.controls.workExperience.get('workExperienceMonths').errors.min">
+              Should be bigger then 0
+            </small>
+            <small *ngIf="form.controls.workExperience.get('workExperienceMonths').errors.required">
+              Can not be empty
+            </small>
+          </div>
         </div>
       </div>
 
@@ -142,10 +169,38 @@
         <div class="form-control">
           <label><h5>Years</h5></label>
           <input type="number" min="0" max="100" name="unemployedForYears" formControlName="unemployedForYears">
+            <div
+            *ngIf="form.controls.unemployedFor.get('unemployedForYears').invalid 
+              && form.controls.unemployedFor.get('unemployedForYears').touched"
+              class="validation">
+            <small *ngIf="form.controls.unemployedFor.get('unemployedForYears').errors.max">
+              Should be less then 100
+            </small>
+            <small *ngIf="form.controls.unemployedFor.get('unemployedForYears').errors.min">
+              Should be bigger then 0
+            </small>
+            <small *ngIf="form.controls.unemployedFor.get('unemployedForYears').errors.required">
+              Can not be empty
+            </small>
+          </div>
         </div>
         <div class="form-control">
           <label><h5>Months</h5></label>
           <input type="number" min="0" max="11" name="unemployedForMonths" formControlName="unemployedForMonths">
+          <div
+              *ngIf="form.controls.unemployedFor.get('unemployedForMonths').invalid 
+                && form.controls.unemployedFor.get('unemployedForMonths').touched"
+              class="validation">
+            <small *ngIf="form.controls.unemployedFor.get('unemployedForMonths').errors.max">
+              Should be less then 12
+            </small>
+            <small *ngIf="form.controls.unemployedFor.get('unemployedForMonths').errors.min">
+              Should be bigger then 0
+            </small>
+            <small *ngIf="form.controls.unemployedFor.get('unemployedForMonths').errors.required">
+              Can not be empty
+            </small>
+          </div>
         </div>
       </div>
 
