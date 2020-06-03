@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { CustomValidators } from '../validators/validator';
 
 interface Token {
   username: string;
@@ -30,11 +31,14 @@ export class LoginComponent implements OnInit {
       username: new FormControl('', [
         Validators.required,
         Validators.minLength(2),
-        Validators.maxLength(50)]),
+        Validators.maxLength(50),
+        CustomValidators.noWhitespace
+      ]),
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(6),
-        Validators.maxLength(25)
+        Validators.maxLength(25),
+        CustomValidators.noWhitespace
         ])
       });
   }
