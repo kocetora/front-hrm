@@ -1,19 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { LoginService } from './login.service';
-import { User } from './user';
-import { Token } from './token';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
+interface Token {
+  username: string;
+  token: string;
+}
+
+interface User {
+  username: string;
+  password: string;
+}
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers: [LoginService]
+  providers: [AuthService]
 })
 export class LoginComponent implements OnInit {
-  constructor(private LoginService: LoginService, private http: HttpClient) { }
+  constructor(private authService: AuthService, private http: HttpClient, private router: Router) { }
   form: FormGroup;
   error: string;
 
@@ -34,17 +42,16 @@ export class LoginComponent implements OnInit {
   submit() {
     if (this.form.valid) {
     const user: User = {...this.form.value};
-    this.LoginService.loginUser(user)
+    this.authService.login(user)
     .subscribe(
       (res: Token) => {
       this.error = '';
       localStorage.setItem('jwt', res.token);
-      console.log(localStorage.jwt);
-      localStorage.getItem('jwt');
-      // this.form.reset();
+      // console.log(localStorage.jwt);
+      // localStorage.getItem('jwt');
+      this.router.navigate(['/view']);
       },
       (err) => {
-        console.log(err.error.text);
         this.error = err.error.text;
       });
     }

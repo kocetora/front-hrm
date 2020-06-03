@@ -11,7 +11,7 @@ import { FormData } from './formData';
   providers: [FormService]
 })
 export class FormComponent implements OnInit {
-    constructor(private FormService: FormService, private http: HttpClient) { }
+    constructor(private formService: FormService, private http: HttpClient) { }
     form: FormGroup;
 
     ngOnInit() {
@@ -93,16 +93,16 @@ export class FormComponent implements OnInit {
           surname: vals.surname as string,
           sex: vals.sex as string,
           born: vals.born as string,
-          height: Number.parseInt(vals.height),
+          height: Number.parseInt(vals.height, 10),
           phoneNumber: vals.phoneNumber as string,
           email: vals.email as string,
           education: vals.education as string,
           prefferedRegion: vals.prefferedRegion as string,
-          expectedSalary: Number.parseInt(vals.expectedSalary),
-          workExperience: Number.parseInt(vals.workExperience.workExperienceYears) * 12 +
-          Number.parseInt(vals.workExperience.workExperienceMonths),
-          unemployedFor: Number.parseInt(vals.unemployedFor.unemployedForYears) * 12 +
-          Number.parseInt(vals.unemployedFor.unemployedForMonths),
+          expectedSalary: Number.parseInt(vals.expectedSalary, 10),
+          workExperience: Number.parseInt(vals.workExperience.workExperienceYears, 10) * 12 +
+          Number.parseInt(vals.workExperience.workExperienceMonths, 10),
+          unemployedFor: Number.parseInt(vals.unemployedFor.unemployedForYears, 10) * 12 +
+          Number.parseInt(vals.unemployedFor.unemployedForMonths, 10),
           note: vals.note as string,
           languageSkills: [],
           messengers: [],
@@ -146,7 +146,7 @@ export class FormComponent implements OnInit {
         }
         console.log('Form Data:', JSON.stringify(formData, null, 2));
 
-        this.FormService.addForm(formData).subscribe(res => console.log(res));
+        this.formService.addForm(formData).subscribe(res => console.log(res));
         this.form.reset();
       }
     }

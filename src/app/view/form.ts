@@ -2,32 +2,32 @@ export interface Form {
     formid?: number;
     name: string;
     surname: string;
-    sex: string; // enum
+    sex: string;
     born: string;
     height: number;
     phoneNumber: string;
     email: string;
-    messengers: messenger[]; // interface
+    messengers: Messenger[];
     education: string;
     prefferedRegion: string;
-    languageSkills: languageSkill[]; // interface
+    languageSkills: LanguageSkill[];
     note: string;
-    professions: profession[]; // interface
+    professions: Profession[];
     unemployedFor: number;
     workExperience: number;
     expectedSalary: number;
 }
 
-interface languageSkill {
+interface LanguageSkill {
     language: string;
     languageProficiency: string;
 }
 
-interface profession {
+interface Profession {
     profession: string;
 }
 
-interface messenger {
+interface Messenger {
     messenger: string;
     info: string;
 }

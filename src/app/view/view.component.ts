@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ViewService } from './view.service';
@@ -9,6 +9,7 @@ import { Filter } from './filter';
   selector: 'app-view',
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   providers: [ViewService]
 })
 export class ViewComponent implements OnInit {
@@ -17,7 +18,7 @@ export class ViewComponent implements OnInit {
   filter: FormGroup;
   currentFormId: number;
 
-  constructor(private ViewService: ViewService, private http: HttpClient) { }
+  constructor(private viewService: ViewService, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.filter = new FormGroup({
@@ -165,7 +166,7 @@ export class ViewComponent implements OnInit {
   }
 
   getForms(): void {
-    this.ViewService.getForms().subscribe(forms => {
+    this.viewService.getForms().subscribe(forms => {
       this.forms = forms;
       if (this.form[1]) {
         this.showForm(1);
@@ -379,7 +380,7 @@ export class ViewComponent implements OnInit {
       if (vals.messengers.WhatsApp) {
         filterData.messengers.push({messenger: 'WhatsApp'});
       }
-      this.ViewService.filterForm(filterData).subscribe(forms => {
+      this.viewService.filterForm(filterData).subscribe(forms => {
           console.log(forms);
           // this.forms = forms;
         });
@@ -395,16 +396,16 @@ export class ViewComponent implements OnInit {
           surname: vals.surname as string,
           sex: vals.sex as string,
           born: vals.born as string,
-          height: Number.parseInt(vals.height),
+          height: Number.parseInt(vals.height, 10),
           phoneNumber: vals.phoneNumber as string,
           email: vals.email as string,
           education: vals.education as string,
           prefferedRegion: vals.prefferedRegion as string,
-          expectedSalary: Number.parseInt(vals.expectedSalary),
-          workExperience: Number.parseInt(vals.workExperience.workExperienceYears) * 12 +
-          Number.parseInt(vals.workExperience.workExperienceMonths),
-          unemployedFor: Number.parseInt(vals.unemployedFor.unemployedForYears) * 12 +
-          Number.parseInt(vals.unemployedFor.unemployedForMonths),
+          expectedSalary: Number.parseInt(vals.expectedSalary, 10),
+          workExperience: Number.parseInt(vals.workExperience.workExperienceYears, 10) * 12 +
+          Number.parseInt(vals.workExperience.workExperienceMonths, 10),
+          unemployedFor: Number.parseInt(vals.unemployedFor.unemployedForYears, 10) * 12 +
+          Number.parseInt(vals.unemployedFor.unemployedForMonths, 10),
           note: vals.note as string,
           languageSkills: [],
           messengers: [],
@@ -447,13 +448,13 @@ export class ViewComponent implements OnInit {
           formData.messengers.push({messenger: 'Viber', info: vals.messengers.Viber});
         }
 
-        this.ViewService.updateForm(formData).subscribe(res => console.log(res));
+        this.viewService.updateForm(formData).subscribe(res => console.log(res));
         this.form.reset();
       }
     }
 
   delete(id: number): void {
-    this.ViewService
+    this.viewService
         .deleteForm(id)
         .subscribe(() => console.log('Form Deleted'));
   }

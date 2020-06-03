@@ -1,12 +1,31 @@
-<div class="header">
-<!-- <p>
-    <label for="">
-    <select #langselect (change)="translate.use(langselect.value)">
-        <option *ngFor="let lang of translate.getLangs()" value="lang"></option>
-    </select>
-    </label>
-</p> -->
-</div>
-<app-login></app-login>
-<!-- <app-form></app-form> -->
-<!-- <app-view></app-view> -->
+<nav class="navbar">
+    <h1>
+        <a routerLink="/">HR manager</a>
+    </h1>
+    <ul>
+        <!-- <li>
+                <select #langselect (change)="translate.use(langselect.value)">
+                    <option *ngFor="let lang of translate.getLangs()" value="lang"></option>
+                </select>
+        </li> -->
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <a routerLink="/">Form</a>
+        </li>
+        <li *ngIf="!isAuth()" routerLinkActive="active">
+            <a routerLink="/login">Login</a>
+        </li>
+        <li *ngIf="isAuth()" routerLinkActive="active">
+            <a routerLink="/view">View</a>
+        </li>
+        <li><button *ngIf="isAuth()" class="btn" (click)="logout()" >Logout</button></li>
+    </ul>
+  </nav>
+  
+  <div class="container">
+    <div class="card">
+  
+      <router-outlet></router-outlet>
+  
+    </div>
+  </div>
+  
