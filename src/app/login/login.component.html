@@ -1,0 +1,45 @@
+<div class="container">
+    <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+       <h1>Login</h1>
+
+       <div class="form-control">
+        <label>Username</label>
+        <input type="text" name="username" placeholder="Username" formControlName="username">
+        <div
+          *ngIf="form.get('username').invalid && form.get('username').touched"
+          class="validation">
+          <small *ngIf="form.get('username').errors.required">
+            Username can not be empty
+          </small>
+          <small *ngIf="form.get('username').errors.minlength">
+            Username should be longer than 2
+          </small>
+          <small *ngIf="form.get('username').errors.maxlength">
+            Username should be shorter than 50
+          </small>
+        </div>
+      </div>
+
+      <div class="form-control">
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Password" formControlName="password">
+        <div
+          *ngIf="form.get('password').invalid && form.get('password').touched"
+          class="validation">
+          <small *ngIf="form.get('password').errors.required">
+            Password can not be empty
+          </small>
+          <small *ngIf="form.get('password').errors.minlength">
+            Password should be longer than 6
+          </small>
+          <small *ngIf="form.get('password').errors.maxlength">
+            Password should be shorter than 25
+          </small>
+        </div>
+      </div>
+
+      <p *ngIf="error" class="error">{{error}}</p>
+
+      <button class="btn" type="submit" [disabled]="form.invalid || form.pending">Отправить</button>
+    </form>
+</div>
