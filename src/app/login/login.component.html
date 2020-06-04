@@ -1,45 +1,45 @@
 <div class="container">
     <form class="card" [formGroup]="form" (ngSubmit)="submit()">
-       <h1>Login</h1>
+       <h1>{{ 'LOGIN.TITLE' | translate }}</h1>
 
        <div class="form-control">
-        <label>Username</label>
+        <label>{{ 'LOGIN.USERNAME.TITLE' | translate }}</label>
         <input type="text" name="username" placeholder="Username" formControlName="username">
         <div
           *ngIf="form.get('username').invalid && form.get('username').touched"
           class="validation">
           <small *ngIf="form.get('username').errors.required || form.get('username').errors.whitespace">
-            Username can not be empty
+            {{ 'LOGIN.USERNAME.REQUIRED' | translate }}
           </small>
           <small *ngIf="form.get('username').errors.minlength">
-            Username should be longer than 2
+            {{ 'LOGIN.USERNAME.MIN_LENGTH' | translate }}
           </small>
           <small *ngIf="form.get('username').errors.maxlength">
-            Username should be shorter than 50
+            {{ 'LOGIN.USERNAME.MAX_LENGTH' | translate }}
           </small>
         </div>
       </div>
 
       <div class="form-control">
-        <label>Password</label>
+        <label>{{ 'LOGIN.PASSWORD.TITLE' | translate }}</label>
         <input type="password" name="password" placeholder="Password" formControlName="password">
         <div
           *ngIf="form.get('password').invalid && form.get('password').touched"
           class="validation">
           <small *ngIf="form.get('password').errors.required || form.get('password').errors.whitespace">
-            Password can not be empty
+            {{ 'LOGIN.PASSWORD.REQUIRED' | translate }}
           </small>
           <small *ngIf="form.get('password').errors.minlength">
-            Password should be longer than 6
+            {{ 'LOGIN.PASSWORD.MIN_LENGTH' | translate }}
           </small>
           <small *ngIf="form.get('password').errors.maxlength">
-            Password should be shorter than 25
+            {{ 'LOGIN.PASSWORD.MAX_LENGTH' | translate }}
           </small>
         </div>
       </div>
 
       <p *ngIf="error" class="error">{{error}}</p>
 
-      <button class="btn" type="submit" [disabled]="form.invalid || form.pending">Отправить</button>
+      <button class="btn" type="submit" [disabled]="form.invalid || form.pending">{{ 'LOGIN.SUBMIT' | translate }}</button>
     </form>
 </div>

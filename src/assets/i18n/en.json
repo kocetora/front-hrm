@@ -5,6 +5,22 @@
         "FORM": "Form",
         "LOGOUT": "Log out"
     },
+    "LOGIN": {
+        "TITLE": "Login",
+        "USERNAME": {
+            "TITLE": "Username",
+            "REQUIRED": "Username can not be empty",
+            "MIN_LENGTH": "Username should be longer than 2",
+            "MAX_LENGTH": "Username should be shorter than 50"
+        },
+        "PASSWORD": {
+            "TITLE": "Password",
+            "REQUIRED": "Password can not be empty",
+            "MIN_LENGTH": "Password should be longer than 6",
+            "MAX_LENGTH": "Password should be shorter than 25"
+        },
+        "SUBMIT": "Submit"
+    },
     "FORM": {
         "TITLE": "Form",
         "NAME": "Name",
