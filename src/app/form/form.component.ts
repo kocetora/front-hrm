@@ -14,8 +14,10 @@ import { CustomValidators } from '../validators/validator';
 export class FormComponent implements OnInit {
     constructor(private formService: FormService, private http: HttpClient) { }
     form: FormGroup;
+    date: Date;
 
     ngOnInit() {
+      this.date = new Date;
       this.form = new FormGroup({
         name: new FormControl('', [
           Validators.required,
@@ -96,6 +98,8 @@ export class FormComponent implements OnInit {
         })
       });
     }
+
+    
 
     submit() {
       if (this.form.valid) {

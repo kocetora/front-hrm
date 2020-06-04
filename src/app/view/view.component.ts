@@ -20,10 +20,12 @@ export class ViewComponent implements OnInit {
   form: FormGroup;
   filter: FormGroup;
   currentFormId: number;
+  date: Date;
 
   constructor(private formService: FormService, private viewService: ViewService, private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.date = new Date;
     this.filter = new FormGroup({
       sex: new FormControl('male', ),
       height: new FormGroup({

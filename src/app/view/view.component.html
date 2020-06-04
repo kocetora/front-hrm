@@ -321,7 +321,7 @@
    
     <div class="form-control">
       <label>{{ 'FORM.BORN' | translate }}</label>
-      <input type="date" name="born" formControlName="born">
+      <input type="date" name="born" max="{{date | date:'yyyy-MM-dd'}}" formControlName="born">
       <div
         *ngIf="form.get('born').invalid && form.get('born').touched"
         class="validation">
