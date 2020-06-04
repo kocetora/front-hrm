@@ -1,0 +1,70 @@
+{
+    "HOME": {
+        "LOGIN": "Login",
+        "VIEW": "Base",
+        "FORM": "Form",
+        "LOGOUT": "Log out"
+    },
+    "FORM": {
+        "TITLE": "Form",
+        "NAME": "Name",
+        "SURNAME": "Surname",
+        "SEX": {
+            "TITLE": "Sex",
+            "MALE": "Male",
+            "FEMALE": "Female"
+        },
+        "BORN": "Birth date",
+        "HEIGHT": "Height(cm)",
+        "PHONE_NUMBER": "Phone Number",
+        "EMAIL": "Email",
+        "EDUCATION": {
+            "TITLE": "Education",
+            "PRIMARY": "Primary",
+            "SECONDARY": "Secondary",
+            "UNFINISHED_HIGHER": "Unfinished higher",
+            "HIGHER": "Higher"
+        },
+        "EXPECTED_SALARY": "Expected salary($)",
+        "PREFFERED_REGION": "Preffered region",
+        "WORK_EXPERIENCE": "Work experience",
+        "UNEMPLOYED_FOR": "Unemployed for",
+        "YEARS": "Years",
+        "MONTHS": "Months",
+        "LANGUAGE_SKILLS": "Language skills",
+        "LANGUAGES": {
+            "ENGLISH": "English",
+            "RUSSIAN": "Russian"
+        },
+        "LANGUAGE_PROFICIENCY": {
+            "BASIC": "Basic",
+            "INTERMIDIATE": "Intermediate",
+            "FLUENT": "Fluent",
+            "NATIVE": "Native"
+        },
+        "PROFESSIONS": {
+            "TITLE": "Professions",
+            "TRAINEE": "Trainee",
+            "DEALER": "Dealer",
+            "INSPECTOR": "Inspector",
+            "MANAGER": "Manager",
+            "PIT_BOSS": "Pit boss",
+            "WAITER": "Waiter",
+            "BARMAN": "Barman"
+        },
+        "MESSENGERS": {
+            "TITLE": "Messengers",
+            "TELEGRAM": "Telegram",
+            "VIBER": "WhatsApp",
+            "WHATS_APP": "Viber"
+        },
+        "SUBMIT": "Submit",
+        "VALIDATORS": {
+            "REQUIRED": "Can not be empty",
+            "EMAIL": "Enter correct email",
+            "POSITIVE": "Should be bigger then 0",
+            "YEARS": "Should be less then 100",
+            "MONTHS": "Should be less then 11"
+        }
+    }
+}

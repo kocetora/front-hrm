@@ -1,0 +1,71 @@
+{
+    "HOME": {
+        "LOGIN": "Войти",
+        "VIEW": "База",
+        "FORM": "Форма",
+        "LOGOUT": "Выйти"        
+    },
+    "FORM": {
+        "TITLE": "Форма",
+        "NAME": "Имя",
+        "SURNAME": "Фамилия",
+        "SEX": {
+            "TITLE": "Пол",
+            "MALE": "Мужчина",
+            "FEMALE": "Женщина"
+        },
+        "BORN": "Дата рождения",
+        "HEIGHT": "Рост(см)",
+        "PHONE_NUMBER": "Номер телефона",
+        "EMAIL": "Email",
+        "EDUCATION": {
+            "TITLE": "Образование",
+            "PRIMARY": "Начальное",
+            "SECONDARY": "Среднее",
+            "UNFINISHED_HIGHER": "Незаконченное высшее",
+            "HIGHER": "Высшее"
+        },
+        "EXPECTED_SALARY": "Ожидаемая зарплата($)",
+        "PREFFERED_REGION": "Желаемый регион",
+        "WORK_EXPERIENCE": "Опыт работы",
+        "UNEMPLOYED_FOR": "Безработен",
+        "YEARS": "Лет",
+        "MONTHS": "Мусяцев",
+        "LANGUAGE_SKILLS": "Языковые навыки",
+        "LANGUAGES": {
+            "ENGLISH": "Английский",
+            "RUSSIAN": "Русский"
+        },
+        "LANGUAGE_PROFICIENCY": {
+            "BASIC": "Начальный",
+            "INTERMIDIATE": "Средний",
+            "FLUENT": "Свободный",
+            "NATIVE": "Родной"
+        },
+        "PROFESSIONS": {
+            "TITLE": "Вакансии",
+            "TRAINEE": "Курсы",
+            "DEALER": "Дилер",
+            "INSPECTOR": "Инспектор",
+            "MANAGER": "Менеджер",
+            "PIT_BOSS": "Пит босс",
+            "WAITER": "Официант",
+            "BARMAN": "Бармен"
+        },
+        "MESSENGERS": {
+            "TITLE": "Мессенджеры",
+            "TELEGRAM": "Telegram",
+            "VIBER": "WhatsApp",
+            "WHATS_APP": "Viber"
+        },
+        "SUBMIT": "Отправить",
+        "VALIDATORS": {
+            "REQUIRED": "Не может быть пустым",
+            "EMAIL": "Введите корректный email",
+            "POSITIVE": "Должно быть больше 0",
+            "YEARS": "Должно быть меньше 100",
+            "MONTHS": "Должно быть меньше 11"
+        }
+    }
+    
+}

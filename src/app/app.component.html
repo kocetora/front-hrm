@@ -3,21 +3,21 @@
         <a routerLink="/">HR manager</a>
     </h1>
     <ul>
-        <!-- <li>
-                <select #langselect (change)="translate.use(langselect.value)">
-                    <option *ngFor="let lang of translate.getLangs()" value="lang"></option>
+        <li>
+                <select class="lang" #langselect (change)="translate.use(langselect.value)">
+                    <option *ngFor="let lang of translate.getLangs()" [value]="lang">{{ lang }}</option>
                 </select>
-        </li> -->
+        </li>
         <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-            <a routerLink="/">Form</a>
+            <a routerLink="/">{{ 'HOME.FORM' | translate }}</a>
         </li>
         <li *ngIf="!isAuth()" routerLinkActive="active">
-            <a routerLink="/login">Login</a>
+            <a routerLink="/login">{{ 'HOME.LOGIN' | translate }}</a>
         </li>
         <li *ngIf="isAuth()" routerLinkActive="active">
-            <a routerLink="/view">View</a>
+            <a routerLink="/view">{{ 'HOME.VIEW' | translate }}</a>
         </li>
-        <li><button *ngIf="isAuth()" class="btn" (click)="logout()" >Logout</button></li>
+        <li><button *ngIf="isAuth()" class="btn" (click)="logout()" >{{ 'HOME.LOGOUT' | translate }}</button></li>
     </ul>
   </nav>
   
