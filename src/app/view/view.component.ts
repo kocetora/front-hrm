@@ -272,7 +272,6 @@ export class ViewComponent implements OnInit {
   getComments() {
     this.fetchService.getComments(this.currentFormId)
     .subscribe(res => {
-      console.log(res);
       this.comments = res;
     });
   }
@@ -289,6 +288,4 @@ export class ViewComponent implements OnInit {
       });
     }
   }
-
-
 }

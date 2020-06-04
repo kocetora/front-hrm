@@ -17,7 +17,6 @@ export class FetchService {
     constructor(private http: HttpClient) { }
 
     addForm(form: Form): Observable<Form> {
-        console.log(form);
         return this.http.post<Form>('api/form', form);
     }
 
