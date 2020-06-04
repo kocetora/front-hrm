@@ -47,13 +47,16 @@
       </div>   
 
       <div class="form-control">
-        <label>{{ 'FORM.HEIGHT' | translate }}</label>
+        <label>{{ 'FORM.HEIGHT.TITLE' | translate }}</label>
         <input type="number"  name="height" min="30" max="300" formControlName="height">
         <div
           *ngIf="form.get('height').invalid && form.get('height').touched"
           class="validation">
           <small *ngIf="form.get('height').errors.min">
-            {{ 'FORM.VALIDATORS.POSITIVE' | translate }}
+            {{ 'FORM.HEIGHT.MIN' | translate }}
+          </small>
+          <small *ngIf="form.get('height').errors.max">
+            {{ 'FORM.HEIGHT.MAX' | translate }}
           </small>
           <small *ngIf="form.get('height').errors.required">
             {{ 'FORM.VALIDATORS.REQUIRED' | translate }}

@@ -19,7 +19,7 @@
             "MIN_LENGTH": "Пароль должен быть больше 6",
             "MAX_LENGTH": "Пароль должен быть меньше 25"
         },
-        "SUBMIT": "Submit"
+        "SUBMIT": "Отправить"
     },
     "FORM": {
         "TITLE": "Форма",
@@ -31,7 +31,11 @@
             "FEMALE": "Женщина"
         },
         "BORN": "Дата рождения",
-        "HEIGHT": "Рост(см)",
+        "HEIGHT": {
+            "TITLE": "Рост(см)",
+            "MIN": "Дожен быть больше чем 30",
+            "MAX": "Дожен быть меньше чем 300"
+        },
         "PHONE_NUMBER": "Номер телефона",
         "EMAIL": "Email",
         "EDUCATION": {
@@ -82,6 +86,79 @@
             "YEARS": "Должно быть меньше 100",
             "MONTHS": "Должно быть меньше 11"
         }
-    }
-    
+    },
+    "FILTER": {
+        "TITLE":"Фильтр",
+        "SEX": {
+            "TITLE": "Пол",
+            "MALE": "Мужчина",
+            "FEMALE": "Женщина"
+        },
+        "EDUCATION": {
+            "TITLE": "Образование",
+            "PRIMARY": "Начальное",
+            "SECONDARY": "Среднее",
+            "UNFINISHED_HIGHER": "Незаконченное высшее",
+            "HIGHER": "Высшее"
+        },
+        "HEIGHT": {
+            "TITLE": "Рост(см)",
+            "MIN": "Дожен быть больше чем 30",
+            "MAX": "Дожен быть меньше чем 300"
+        },
+        "EXPECTED_SALARY": {
+            "TITLE": "Ожидаемая зарплата($)",
+            "MIN": "Дожна быть больше чем 1",
+            "MAX":"Дожна быть меньше чем 100000"
+        },
+        "AGE": {
+            "TITLE": "Возраст",
+            "MIN": "Дожен быть больше чем 30",
+            "MAX": "Дожен быть меньше чем 300"
+        },
+        "FROM": "От",
+        "TO": "До",
+        "PROFESSIONS": {
+            "TITLE": "Вакансии",
+            "TRAINEE": "Курсы",
+            "DEALER": "Дилер",
+            "INSPECTOR": "Инспектор",
+            "MANAGER": "Менеджер",
+            "PIT_BOSS": "Пит босс",
+            "WAITER": "Официант",
+            "BARMAN": "Бармен"
+        },
+        "MESSENGERS": {
+            "TITLE": "Мессенджеры",
+            "TELEGRAM": "Telegram",
+            "VIBER": "WhatsApp",
+            "WHATS_APP": "Viber"
+        },
+        "LANGUAGE_SKILLS": "Языковые навыки",
+        "LANGUAGES": {
+            "TITLE": "Язык",
+            "ENGLISH": "Английский",
+            "RUSSIAN": "Русский"
+        },
+        "LANGUAGE_PROFICIENCY": {
+            "TITLE": "Language proficiency",
+            "BASIC": "Начальный",
+            "INTERMIDIATE": "Средний",
+            "FLUENT": "Свободный",
+            "NATIVE": "Родной"
+        },
+        "WORK_EXPERIENCE_FROM": "Опыт работы от",
+        "WORK_EXPERIENCE_TO": "Опыт работы до",
+        "YEARS": "Лет",
+        "MONTHS": "Месяцев",
+        "VALIDATORS": {
+            "REQUIRED": "Не может быть пустым",
+            "EMAIL": "Введите корректный email",
+            "POSITIVE": "Должно быть больше 0",
+            "YEARS": "Должно быть меньше 100",
+            "MONTHS": "Должно быть меньше 11"
+        },
+        "SUBMIT":"Отправить"
+    },
+    "LIST": "Список"
 }
