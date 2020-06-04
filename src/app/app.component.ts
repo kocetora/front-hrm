@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { AuthService } from './auth.service';
+import { AuthService } from './core/auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({

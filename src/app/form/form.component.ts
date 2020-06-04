@@ -1,23 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { FormService } from './form.service';
-import { CustomValidators } from '../validators/validator';
-
+import { CustomValidators } from '../core/validators/validator';
+import { BodyService } from '../core/services/body.service';
+import { FetchService } from '../core/services/fetch.service';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styles: ['./form.component.scss'],
-  providers: [FormService]
+  providers: [BodyService, FetchService]
 })
 export class FormComponent implements OnInit {
-    constructor(private formService: FormService, private http: HttpClient) { }
+    constructor(
+      private bodyService: BodyService,
+      private fetchService: FetchService) { }
     form: FormGroup;
     date: Date;
 
     ngOnInit() {
-      this.date = new Date;
+      this.date = new Date();
       this.form = new FormGroup({
         name: new FormControl('', [
           Validators.required,
@@ -99,13 +100,10 @@ export class FormComponent implements OnInit {
       });
     }
 
-    
-
     submit() {
       if (this.form.valid) {
-        console.log(this.formService);
-        const formData = this.formService.convertFormData({...this.form.value});
-        this.formService.addForm(formData).subscribe(res => console.log(res));
+        const formData = this.bodyService.convertFormData({...this.form.value});
+        this.fetchService.addForm(formData).subscribe(res => console.log(res));
         this.form.reset();
       }
     }
