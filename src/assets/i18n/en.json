@@ -160,5 +160,10 @@
         },
         "SUBMIT":"Submit"
     },
-    "LIST": "List"
+    "LIST": "List",
+    "COMMENT": {
+        "TITLE": "Comments",
+        "REQUIRED": "Can not be empty",
+        "SUBMIT": "Submit"
+    }
 }

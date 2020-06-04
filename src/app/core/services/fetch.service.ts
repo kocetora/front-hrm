@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Form } from '../interfaces/form';
 import { Filter } from '../interfaces/filter';
+import { Comment } from '../interfaces/comment';
 
 @Injectable()
 export class FetchService {
@@ -37,5 +38,15 @@ export class FetchService {
     filterForms(filter: Filter): Observable<Form[]> {
         const url = `api/forms/filter`;
         return this.http.post<Form[]>(url, filter, this.httpOptions);
+    }
+
+    getComments(formid: number): Observable<Comment[]> {
+        const url = `api/form/${formid}/comment/`;
+        return this.http.get<Comment[]>(url, this.httpOptions);
+    }
+
+    addComment(formid: number, comment: Comment): Observable<Comment[]> {
+        const url = `api/form/${formid}/comment/`;
+        return this.http.post<Comment[]>(url, comment, this.httpOptions);
     }
 }

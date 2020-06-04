@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Form } from '../core/interfaces/form';
 import { Filter } from '../core/interfaces/filter';
+import { Comment } from '../core/interfaces/comment';
 import { CustomValidators } from '../core/validators/validator';
 import { BodyService } from '../core/services/body.service';
 import { FetchService } from '../core/services/fetch.service';
@@ -17,19 +17,24 @@ import { PatchService } from '../core/services/patch.service';
 })
 export class ViewComponent implements OnInit {
   forms: Form[] = [];
+  comments: Comment[] = [];
   formsId: number;
   form: FormGroup;
   filter: FormGroup;
   currentFormId: number;
   date: Date;
+  comment: FormGroup;
+  username: string;
+  userid: number;
 
   constructor(
     private bodyService: BodyService,
     private fetchService: FetchService,
-    private patchService: PatchService,
-    private http: HttpClient) { }
+    private patchService: PatchService) { }
 
   ngOnInit(): void {
+    this.userid = localStorage.userid;
+    this.username = localStorage.username;
     this.date = new Date();
     this.filter = new FormGroup({
       sex: new FormControl('male', ),
@@ -192,29 +197,14 @@ export class ViewComponent implements OnInit {
         msViber: new FormControl(),
       })
     });
-    this.getForms();
-  }
-
-  getForms(): void {
-    this.fetchService.getForms().subscribe(forms => {
-      this.forms = forms;
-      if (this.form[1]) {
-        this.showForm(1);
-        this.currentFormId = 1;
-      }
+    this.comment = new FormGroup({
+      text: new FormControl('', [
+        Validators.required,
+        CustomValidators.noWhitespace,
+        Validators.maxLength(255)
+      ])
     });
-  }
-
-  selectForm(i?: any) {
-    if (this.forms[i]) {
-      this.showForm(i);
-    }
-  }
-
-  showForm(id: number) {
-    this.formsId = id;
-    this.currentFormId = this.forms[id].formid;
-    this.patchService.patchData(id, this.form, this.forms);
+    this.getForms();
   }
 
   filterSubmit() {
@@ -226,16 +216,16 @@ export class ViewComponent implements OnInit {
     }
   }
 
-    submit() {
-    if (this.form.valid) {
-      const formData = this.bodyService.convertFormData({...this.form.value});
-      formData.formid = this.currentFormId;
-      this.fetchService.updateForm(formData).subscribe((res) => {
-        this.forms[this.formsId] = res[0];
-        this.showForm(this.formsId);
-      });
-      this.form.reset();
-    }
+//
+
+  getForms(): void {
+    this.fetchService.getForms().subscribe(forms => {
+      this.forms = forms;
+      if (this.form[1]) {
+        this.showForm(1);
+        this.currentFormId = 1;
+      }
+    });
   }
 
   delete(id: number): void {
@@ -249,4 +239,53 @@ export class ViewComponent implements OnInit {
     this.getForms();
     this.showForm(1);
   }
+
+//
+
+  selectForm(i?: any) {
+    if (this.forms[i]) {
+      this.showForm(i);
+      this.getComments();
+    }
+  }
+
+  showForm(id: number) {
+    this.formsId = id;
+    this.currentFormId = this.forms[id].formid;
+    this.patchService.patchData(id, this.form, this.forms);
+  }
+
+  submit() {
+    if (this.form.valid) {
+      const formData = this.bodyService.convertFormData({...this.form.value});
+      formData.formid = this.currentFormId;
+      this.fetchService.updateForm(formData).subscribe((res) => {
+        this.forms[this.formsId] = res[0];
+        this.showForm(this.formsId);
+      });
+      this.form.reset();
+    }
+  }
+
+//
+
+  getComments() {
+    this.fetchService.getComments(this.currentFormId)
+    .subscribe(res => {
+      console.log(res);
+      this.comments = res;
+    });
+  }
+
+  addComment() {
+    if (this.comment.valid && this.form.valid) {
+      const comment: Comment = {
+        comment: this.comment.value.text,
+        userid: this.userid
+      };
+      this.fetchService.addComment(this.currentFormId, comment);
+    }
+  }
+
+
 }

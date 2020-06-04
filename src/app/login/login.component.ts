@@ -42,6 +42,8 @@ export class LoginComponent implements OnInit {
       (res: Token) => {
       this.error = '';
       localStorage.setItem('jwt', res.token);
+      localStorage.setItem('username', res.username);
+      localStorage.setItem('userid', res.userid.toString());
       this.router.navigate(['/view']);
       },
       (err) => {

@@ -27,6 +27,8 @@ export class AppComponent {
     .subscribe(
       () => {
       localStorage.removeItem('jwt');
+      localStorage.removeItem('username');
+      localStorage.removeItem('userid');
       this.router.navigate(['/']);
       });
   }
