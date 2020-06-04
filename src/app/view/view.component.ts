@@ -283,7 +283,10 @@ export class ViewComponent implements OnInit {
         comment: this.comment.value.text,
         userid: this.userid
       };
-      this.fetchService.addComment(this.currentFormId, comment);
+      this.fetchService.addComment(this.currentFormId, comment)
+      .subscribe(() => {
+        this.getComments();
+      });
     }
   }
 

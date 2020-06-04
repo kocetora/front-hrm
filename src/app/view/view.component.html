@@ -547,7 +547,7 @@
   <div class="container">
     <h2>{{ 'COMMENT.TITLE' | translate }}</h2>
     <hr>
-    <div class="card" *ngFor="let comment of comments; let i = index">
+    <div class="card" *ngFor="let comment of comments; let i = index" >
         <h3 class="name">{{comment.user.username}}</h3>
         <div class="comment">{{comment.comment}}</div>
     </div>
