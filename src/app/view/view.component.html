@@ -174,7 +174,7 @@
         <label>{{ 'FILTER.LANGUAGE_PROFICIENCY.TITLE' | translate }}</label>
         <select name="languageProficiency" formControlName="languageProficiency">
           <option value="basic">{{ 'FILTER.LANGUAGE_PROFICIENCY.BASIC' | translate }}</option>
-          <option value="intermediate">{{ 'FILTER.LANGUAGE_PROFICIENCY.INTERMADIATE' | translate }}</option>
+          <option value="intermediate">{{ 'FILTER.LANGUAGE_PROFICIENCY.INTERMEDIATE' | translate }}</option>
           <option value="fluent">{{ 'FILTER.LANGUAGE_PROFICIENCY.FLUENT' | translate }}</option>
           <option value="native">{{ 'FILTER.LANGUAGE_PROFICIENCY.NATIVE' | translate }}</option>
         </select>
@@ -272,7 +272,7 @@
         <hr>
         <div class="card" *ngFor="let form of forms; let i = index" #el [attr.id]="form.formid" (click)=selectForm(i)>
           <p>
-            <span class="name">{{form.name}}{{form.surname}}</span>
+            <span class="name">{{form.name}} {{form.surname}}</span>
             <span>
               <button class="btn btn-danger" (click)=deleteItem(el.id)>✖</button>
             </span>
@@ -493,7 +493,7 @@
         <label><input type="checkbox" name="english" formControlName="english">{{ 'FORM.LANGUAGES.ENGLISH' | translate }}</label>
         <select name="englishProficiency" formControlName="englishProficiency">
           <option value="basic">{{ 'FORM.LANGUAGE_PROFICIENCY.BASIC' | translate }}</option>
-          <option value="intermediate">{{ 'FORM.LANGUAGE_PROFICIENCY.INTERMADIATE' | translate }}</option>
+          <option value="intermediate">{{ 'FORM.LANGUAGE_PROFICIENCY.INTERMEDIATE' | translate }}</option>
           <option value="fluent">{{ 'FORM.LANGUAGE_PROFICIENCY.FLUENT' | translate }}</option>
           <option value="native">{{ 'FORM.LANGUAGE_PROFICIENCY.NATIVE' | translate }}</option>
         </select>
@@ -502,7 +502,7 @@
         <label><input type="checkbox" name="russian" formControlName="russian">{{ 'FORM.LANGUAGES.RUSSIAN' | translate }}</label>
         <select name="russianProficiency" formControlName="russianProficiency">
           <option value="basic">{{ 'FORM.LANGUAGE_PROFICIENCY.BASIC' | translate }}</option>
-          <option value="intermediate">{{ 'FORM.LANGUAGE_PROFICIENCY.INTERMADIATE' | translate }}</option>
+          <option value="intermediate">{{ 'FORM.LANGUAGE_PROFICIENCY.INTERMEDIATE' | translate }}</option>
           <option value="fluent">{{ 'FORM.LANGUAGE_PROFICIENCY.FLUENT' | translate }}</option>
           <option value="native">{{ 'FORM.LANGUAGE_PROFICIENCY.NATIVE' | translate }}</option>
         </select>

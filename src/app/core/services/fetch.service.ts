@@ -17,35 +17,35 @@ export class FetchService {
     constructor(private http: HttpClient) { }
 
     addForm(form: Form): Observable<Form> {
-        return this.http.post<Form>('api/form', form);
+        return this.http.post<Form>('form', form);
     }
 
     getForms(): Observable<Form[]> {
-        return this.http.get<Form[]>('api/forms', this.httpOptions);
+        return this.http.get<Form[]>('forms', this.httpOptions);
     }
 
     deleteForm(id: number): Observable<{}> {
-        const url = `api/form/${id}`;
+        const url = `form/${id}`;
         return this.http.delete(url, this.httpOptions);
     }
 
     updateForm(form: Form): Observable<Form[]> {
-        const url = `api/form/${form.formid}`;
+        const url = `form/${form.formid}`;
         return this.http.put<Form[]>(url, form, this.httpOptions);
     }
 
     filterForms(filter: Filter): Observable<Form[]> {
-        const url = `api/forms/filter`;
+        const url = `forms`;
         return this.http.post<Form[]>(url, filter, this.httpOptions);
     }
 
     getComments(formid: number): Observable<Comment[]> {
-        const url = `api/form/${formid}/comment/`;
+        const url = `form/${formid}/comment/`;
         return this.http.get<Comment[]>(url, this.httpOptions);
     }
 
     addComment(formid: number, comment: Comment): Observable<Comment[]> {
-        const url = `api/form/${formid}/comment/`;
+        const url = `form/${formid}/comment/`;
         return this.http.post<Comment[]>(url, comment, this.httpOptions);
     }
 }

@@ -58,7 +58,7 @@
         },
         "LANGUAGE_PROFICIENCY": {
             "BASIC": "Начальный",
-            "INTERMIDIATE": "Средний",
+            "INTERMEDIATE": "Средний",
             "FLUENT": "Свободный",
             "NATIVE": "Родной"
         },
@@ -143,7 +143,7 @@
         "LANGUAGE_PROFICIENCY": {
             "TITLE": "Language proficiency",
             "BASIC": "Начальный",
-            "INTERMIDIATE": "Средний",
+            "INTERMEDIATE": "Средний",
             "FLUENT": "Свободный",
             "NATIVE": "Родной"
         },

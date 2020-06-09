@@ -11,12 +11,12 @@ export class AuthService {
     constructor(private http: HttpClient) { }
 
     login(user: User): Observable<{}> {
-        const url = `api/login`;
+        const url = `login`;
         return this.http.post<Token>(url, user);
     }
 
     logout(): Observable<{}> {
-        const url = `api/logout`;
+        const url = `logout`;
         return this.http.get(url);
     }
 
