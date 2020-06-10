@@ -4,6 +4,8 @@ import { CustomValidators } from '../core/validators/validator';
 import { BodyService } from '../core/services/body.service';
 import { FetchService } from '../core/services/fetch.service';
 import { PatchService } from '../core/services/patch.service';
+import { FormService } from '../core/services/form.service';
+import { Form } from '../core/interfaces/form';
 
 @Component({
   selector: 'app-form-update',
@@ -12,17 +14,19 @@ import { PatchService } from '../core/services/patch.service';
   providers: [BodyService, FetchService, PatchService]
 })
 export class FormUpdateComponent implements OnInit {
+  forms: Form[];
   form: FormGroup;
   date: Date;
+  id: number | undefined;
 
   constructor(
     private bodyService: BodyService,
     private fetchService: FetchService,
-    private patchService: PatchService) { }
+    private patchService: PatchService,
+    private formService: FormService) { }
 
     ngOnInit(): void {
       this.date = new Date();
-      
       this.form = new FormGroup({
         name: new FormControl('', [
           Validators.required,
@@ -101,28 +105,25 @@ export class FormUpdateComponent implements OnInit {
           msViber: new FormControl(),
         })
       });
+      this.formService.getForms().subscribe((forms)=>{
+        this.forms = forms;
+      })
+      this.formService.getId().subscribe((id)=>{
+        this.id = id;
+        if(id !== undefined){
+          this.patchService.patchData(id, this.form, this.forms)
+        }
+      })
     }
-
-    // selectForm(i?: any) {
-    //   if (this.forms[i]) {
-    //     this.showForm(i);
-    //     this.getComments();
-    //   }
-    // }
-  
-    // showForm(id: number) {
-    //   this.formsId = id;
-    //   this.currentFormId = this.forms[id].formid;
-    //   this.patchService.patchData(id, this.form, this.forms);
-    // }
-  
+    
     submit() {
       if (this.form.valid) {
         const formData = this.bodyService.convertFormData({...this.form.value});
-        // formData.formid = this.currentFormId;
+        formData.formid = this.forms[this.id].formid;
         this.fetchService.updateForm(formData).subscribe((res) => {
-          // this.forms[this.formsId] = res[0];
-          // this.showForm(this.formsId);
+          this.forms[this.id] = res[0];
+          this.formService.setForms(this.forms);
+          this.formService.setId(this.id);
         });
         this.form.reset();
       }

@@ -19,28 +19,31 @@ export class ListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getForms();
-    this.setForms();
+    this.getFormsFromServer();
+    this.setThisForms();
   }
 
-  getForms(): void {
+  getFormsFromServer(): void {
     this.fetchService.getForms().subscribe(forms => {
       this.formService.setForms(forms);
       });
-      // if (this.form[1]) {
-      //   this.showForm(1);
-      //   this.currentFormId = 1;
-      // }
+      this.selectForm(1);
     };
   
-  setForms(): void {
+  setThisForms(): void {
     this.formService.getForms().subscribe((forms) => {
       this.forms = forms;
     })
   };
 
-  selectForm(i){
-    console.log(i)
+  selectForm(id){
+    if(this.forms[id]){
+      this.formService.setId(id)
+    }
+    // if (this.forms[i]) {
+    //   this.showForm(i);
+    //   this.getComments();
+    // }
   }
 
   delete(id: number): void {
@@ -51,8 +54,8 @@ export class ListComponent implements OnInit {
 
   deleteItem(id: number) {
     this.delete(id);
-    this.getForms();
-    // this.showForm(1);
+    this.getFormsFromServer();
+    this.selectForm(1);
   }
 
 }
