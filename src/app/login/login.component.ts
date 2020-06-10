@@ -1,19 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../core/auth/auth.service';
 import { Router } from '@angular/router';
-import { CustomValidators } from '../validators/validator';
-
-interface Token {
-  username: string;
-  token: string;
-}
-
-interface User {
-  username: string;
-  password: string;
-}
+import { CustomValidators } from '../core/validators/validator';
+import { Token } from '../core/auth/interfaces/token';
+import { User } from '../core/auth/interfaces/user';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +13,7 @@ interface User {
   providers: [AuthService]
 })
 export class LoginComponent implements OnInit {
-  constructor(private authService: AuthService, private http: HttpClient, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
   form: FormGroup;
   error: string;
 
@@ -51,17 +42,13 @@ export class LoginComponent implements OnInit {
       (res: Token) => {
       this.error = '';
       localStorage.setItem('jwt', res.token);
-      // console.log(localStorage.jwt);
-      // localStorage.getItem('jwt');
+      localStorage.setItem('username', res.username);
+      localStorage.setItem('userid', res.userid.toString());
       this.router.navigate(['/view']);
       },
       (err) => {
         this.error = err.error.text;
       });
     }
-  }
-
-  loginUser(user) {
-    return this.http.post('api/login', JSON.stringify(user, null, 2));
   }
 }

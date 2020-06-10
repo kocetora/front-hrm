@@ -1,4 +1,8 @@
-export interface FormData {
+import { LanguageSkill } from './languageSkill';
+import { Profession } from './profession';
+import { Messenger } from './messenger';
+
+export interface Form {
     formid?: number;
     name: string;
     surname: string;
@@ -10,24 +14,10 @@ export interface FormData {
     messengers: Messenger[];
     education: string;
     prefferedRegion: string;
-    note: string;
     languageSkills: LanguageSkill[];
+    note: string;
     professions: Profession[];
     unemployedFor: number;
     workExperience: number;
     expectedSalary: number;
-}
-
-interface LanguageSkill {
-    language: string;
-    languageProficiency: string;
-}
-
-interface Profession {
-    profession: string;
-}
-
-interface Messenger {
-    messenger: string;
-    info: string;
 }

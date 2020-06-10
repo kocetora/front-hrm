@@ -321,7 +321,7 @@
    
     <div class="form-control">
       <label>{{ 'FORM.BORN' | translate }}</label>
-      <input type="date" name="born" formControlName="born">
+      <input type="date" name="born" max="{{date | date:'yyyy-MM-dd'}}" formControlName="born">
       <div
         *ngIf="form.get('born').invalid && form.get('born').touched"
         class="validation">
@@ -542,4 +542,28 @@
    
     <button class="btn" type="submit" [disabled]="form.invalid || form.pending">{{ 'FORM.SUBMIT' | translate }}</button>
   </form>
+
+
+  <div class="container">
+    <h2>{{ 'COMMENT.TITLE' | translate }}</h2>
+    <hr>
+    <div class="card" *ngFor="let comment of comments; let i = index" >
+        <h3 class="name">{{comment.user.username}}</h3>
+        <div class="comment">{{comment.comment}}</div>
+    </div>
+    <form class="card" [formGroup]="comment" (ngSubmit)="addComment()">
+      <label><h3 class="name">{{ username }}</h3></label>
+      <div class="form-control">
+      <textarea rows="7" name="text" placeholder="Note..." formControlName="text"></textarea>
+      <div
+      *ngIf="comment.get('text').invalid && comment.get('text').touched"
+      class="validation">
+      <small *ngIf="comment.get('text').errors">
+        {{ 'COMMENT.REQUIRED' | translate }}
+      </small>
+    </div>
+    </div>
+      <button class="btn" type="submit" [disabled]="comment.invalid || comment.pending">{{ 'COMMENT.SUBMIT' | translate }}</button>
+    </form>
+</div>
 </div>

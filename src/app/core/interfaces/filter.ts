@@ -1,3 +1,7 @@
+import { LanguageSkill } from './languageSkill';
+import { Profession } from './profession';
+import { Messenger } from './messenger';
+
 export interface Filter {
     sex: string;
     education: string;
@@ -13,17 +17,4 @@ export interface Filter {
 interface Range {
     from: number;
     to: number;
-}
-
-interface LanguageSkill {
-    language: string;
-    languageProficiency: string;
-}
-
-interface Profession {
-    profession: string;
-}
-
-interface Messenger {
-    messenger: string;
 }

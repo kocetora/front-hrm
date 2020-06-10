@@ -1,29 +1,41 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ViewService } from './view.service';
-import { Form } from './form';
-import { Filter } from './filter';
-import { FormService } from '../form/form.service';
-import { CustomValidators } from '../validators/validator';
+import { Form } from '../core/interfaces/form';
+import { Filter } from '../core/interfaces/filter';
+import { Comment } from '../core/interfaces/comment';
+import { CustomValidators } from '../core/validators/validator';
+import { BodyService } from '../core/services/body.service';
+import { FetchService } from '../core/services/fetch.service';
+import { PatchService } from '../core/services/patch.service';
 
 @Component({
   selector: 'app-view',
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  providers: [ViewService, FormService]
+  providers: [BodyService, FetchService, PatchService]
 })
 export class ViewComponent implements OnInit {
   forms: Form[] = [];
+  comments: Comment[] = [];
   formsId: number;
   form: FormGroup;
   filter: FormGroup;
   currentFormId: number;
+  date: Date;
+  comment: FormGroup;
+  username: string;
+  userid: number;
 
-  constructor(private formService: FormService, private viewService: ViewService, private http: HttpClient) { }
+  constructor(
+    private bodyService: BodyService,
+    private fetchService: FetchService,
+    private patchService: PatchService) { }
 
   ngOnInit(): void {
+    this.userid = localStorage.userid;
+    this.username = localStorage.username;
+    this.date = new Date();
     this.filter = new FormGroup({
       sex: new FormControl('male', ),
       height: new FormGroup({
@@ -185,11 +197,29 @@ export class ViewComponent implements OnInit {
         msViber: new FormControl(),
       })
     });
+    this.comment = new FormGroup({
+      text: new FormControl('', [
+        Validators.required,
+        CustomValidators.noWhitespace,
+        Validators.maxLength(255)
+      ])
+    });
     this.getForms();
   }
 
+  filterSubmit() {
+    if (this.filter.valid) {
+      const filterData: Filter = this.bodyService.convertFilterData({...this.filter.value});
+      this.fetchService.filterForms(filterData).subscribe(res => {
+          this.forms = res;
+      });
+    }
+  }
+
+//
+
   getForms(): void {
-    this.viewService.getForms().subscribe(forms => {
+    this.fetchService.getForms().subscribe(forms => {
       this.forms = forms;
       if (this.form[1]) {
         this.showForm(1);
@@ -198,41 +228,8 @@ export class ViewComponent implements OnInit {
     });
   }
 
-  selectForm(i?: any) {
-    if (this.forms[i]) {
-      this.showForm(i);
-    }
-  }
-
-  showForm(id: number) {
-    this.formsId = id;
-    this.currentFormId = this.forms[id].formid;
-    this.viewService.patchData(id, this.form, this.forms);
-  }
-
-  filterSubmit() {
-    if (this.filter.valid) {
-      const filterData: Filter = this.viewService.convertFilterData({...this.filter.value});
-      this.viewService.filterForm(filterData).subscribe(res => {
-          this.forms = res;
-      });
-    }
-  }
-
-    submit() {
-    if (this.form.valid) {
-      const formData = this.formService.convertFormData({...this.form.value});
-      formData.formid = this.currentFormId;
-      this.viewService.updateForm(formData).subscribe((res) => {
-        this.forms[this.formsId] = res[0];
-        this.showForm(this.formsId);
-      });
-      this.form.reset();
-    }
-  }
-
   delete(id: number): void {
-    this.viewService
+    this.fetchService
         .deleteForm(id)
         .subscribe(() => console.log('Form Deleted'));
   }
@@ -241,5 +238,54 @@ export class ViewComponent implements OnInit {
     this.delete(id);
     this.getForms();
     this.showForm(1);
+  }
+
+//
+
+  selectForm(i?: any) {
+    if (this.forms[i]) {
+      this.showForm(i);
+      this.getComments();
+    }
+  }
+
+  showForm(id: number) {
+    this.formsId = id;
+    this.currentFormId = this.forms[id].formid;
+    this.patchService.patchData(id, this.form, this.forms);
+  }
+
+  submit() {
+    if (this.form.valid) {
+      const formData = this.bodyService.convertFormData({...this.form.value});
+      formData.formid = this.currentFormId;
+      this.fetchService.updateForm(formData).subscribe((res) => {
+        this.forms[this.formsId] = res[0];
+        this.showForm(this.formsId);
+      });
+      this.form.reset();
+    }
+  }
+
+//
+
+  getComments() {
+    this.fetchService.getComments(this.currentFormId)
+    .subscribe(res => {
+      this.comments = res;
+    });
+  }
+
+  addComment() {
+    if (this.comment.valid && this.form.valid) {
+      const comment: Comment = {
+        comment: this.comment.value.text,
+        userid: this.userid
+      };
+      this.fetchService.addComment(this.currentFormId, comment)
+      .subscribe(() => {
+        this.getComments();
+      });
+    }
   }
 }

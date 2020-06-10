@@ -1,16 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-interface Token {
-    username: string;
-    token: string;
-}
-
-interface User {
-    username: string;
-    password: string;
-}
+import { Token } from './interfaces/token';
+import { User } from './interfaces/user';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
