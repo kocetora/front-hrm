@@ -5,8 +5,12 @@
   grid-template-rows: 1fr;
 }
 
+.list{
+  max-width: 500px;
+}
+
 .container {
-  max-width: 1000px;
+  max-width: initial;
   margin: 0;
   padding: 0.5rem;
 }
@@ -34,9 +38,16 @@
   }
 }
 
-.btn.btn-danger {
+.btn-danger {
   background: #dc3545;
   color: #fff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+    align-items: center;
+    width: 1em;
+    height: 1em;
 }
 
 .card {
@@ -46,10 +57,15 @@
 
   p {
     display: flex;
+    font-size: 17px;
+    font-weight: 600;
     justify-content: space-between;
-
-    span.completed {
-      text-decoration: line-through;
+    align-items: center;
+    span.name{
+      white-space: nowrap; /* Запрещаем перенос строк */
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 250px;
     }
   }
 }

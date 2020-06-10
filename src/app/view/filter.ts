@@ -5,9 +5,9 @@ export interface Filter {
     workExperience: Range[];
     height: Range[];
     expectedSalary: Range[];
-    languageSkills: languageSkill[];
-    professions: profession[];
-    messengers: messenger[];
+    languageSkills: LanguageSkill[];
+    professions: Profession[];
+    messengers: Messenger[];
 }
 
 interface Range {
@@ -15,15 +15,15 @@ interface Range {
     to: number;
 }
 
-interface languageSkill {
+interface LanguageSkill {
     language: string;
     languageProficiency: string;
 }
 
-interface profession {
+interface Profession {
     profession: string;
 }
 
-interface messenger {
+interface Messenger {
     messenger: string;
 }

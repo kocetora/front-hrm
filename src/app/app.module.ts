@@ -10,6 +10,7 @@ import { ViewComponent } from './view/view.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LoginComponent } from './login/login.component';
+import { ErrorComponent } from './error/error.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -21,6 +22,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormComponent,
     ViewComponent,
     LoginComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
