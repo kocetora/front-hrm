@@ -1,0 +1,13 @@
+{
+    "name": "HRM",
+    "description": "Example contact list app using",
+    "keywords": [
+      "Angular",
+      "Node"
+    ],
+    "repository": "https://github.com/kocetora/front-hrm",
+    "success_url": "/",
+    "addons": [
+      "postgresql"
+    ]
+  }

@@ -17,6 +17,8 @@ require('./config/jwtStrategy')(passport);
 app.use(router.routes());
 app.use(router.allowedMethods());
 
+app.use(serve(__dirname + '/dist/'));
+
 app.listen(PORT, () => {
   console.log('Server has been stared on port: ' + PORT);
 });
