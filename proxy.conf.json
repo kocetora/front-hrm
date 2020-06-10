@@ -7,23 +7,5 @@
         "pathRewrite": {
             "^/": ""
         }
-    },
-    "/form/*": {
-        "target": "http://localhost:3000/form",
-        "secure": false,
-        "logLevel": "debug",
-        "changeOrigin": true,
-        "pathRewrite": {
-            "^/form": ""
-        }
-    },
-    "/forms/*": {
-        "target": "http://localhost:3000/forms",
-        "secure": false,
-        "logLevel": "debug",
-        "changeOrigin": true,
-        "pathRewrite": {
-            "^/forms": ""
-        }
-    } 
+    }
 }
