@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Token } from './interfaces/token';
+import { UserInfo } from './interfaces/userInfo';
 import { User } from './interfaces/user';
 
 @Injectable({ providedIn: 'root' })
@@ -10,13 +10,13 @@ export class AuthService {
 
     constructor(private http: HttpClient) { }
 
-    login(user: User): Observable<{}> {
-        const url = `api/login`;
-        return this.http.post<Token>(url, user);
+    login(user: User): Observable<UserInfo> {
+        const url = `login`;
+        return this.http.post<UserInfo>(url, user);
     }
 
     logout(): Observable<{}> {
-        const url = `api/logout`;
+        const url = `logout`;
         return this.http.get(url);
     }
 

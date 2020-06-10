@@ -1,37 +1,12 @@
 .grid-container {
   display: grid;
-  grid-template-areas: "filter list form-data";
+  grid-template-areas: "app-filter app-list app-form-update";
   grid-template-columns: 1fr 1fr 2fr;  
   grid-template-rows: 1fr;
-}
-
-.list{
-  max-width: 500px;
 }
 
 .container {
   max-width: initial;
   margin: 0;
   padding: 0.5rem;
-}
-
-.card p {
-  display: flex;
-  font-size: 17px;
-  font-weight: 600;
-  justify-content: space-between;
-  align-items: center;
-}
-
-h3.name, span.name {
-  white-space: nowrap; 
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 250px;
-}
-
-.comment {
-  max-width: 300px;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }

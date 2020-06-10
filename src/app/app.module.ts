@@ -11,6 +11,10 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LoginComponent } from './login/login.component';
 import { ErrorComponent } from './error/error.component';
+import { CommentComponent } from './comment/comment.component';
+import { FormUpdateComponent } from './form-update/form-update.component';
+import { ListComponent } from './list/list.component';
+import { FilterComponent } from './filter/filter.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -23,6 +27,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     ViewComponent,
     LoginComponent,
     ErrorComponent,
+    CommentComponent,
+    FormUpdateComponent,
+    ListComponent,
+    FilterComponent,
   ],
   imports: [
     BrowserModule,

@@ -58,7 +58,7 @@
         },
         "LANGUAGE_PROFICIENCY": {
             "BASIC": "Basic",
-            "INTERMIDIATE": "Intermediate",
+            "INTERMEDIATE": "Intermediate",
             "FLUENT": "Fluent",
             "NATIVE": "Native"
         },
@@ -143,7 +143,7 @@
         "LANGUAGE_PROFICIENCY": {
             "TITLE": "Language proficiency",
             "BASIC": "Basic",
-            "INTERMIDIATE": "Intermediate",
+            "INTERMEDIATE": "Intermediate",
             "FLUENT": "Fluent",
             "NATIVE": "Native"
         },

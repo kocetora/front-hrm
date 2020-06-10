@@ -3,8 +3,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../core/auth/auth.service';
 import { Router } from '@angular/router';
 import { CustomValidators } from '../core/validators/validator';
-import { Token } from '../core/auth/interfaces/token';
+import { UserInfo } from '../core/auth/interfaces/userInfo';
 import { User } from '../core/auth/interfaces/user';
+import { UserService } from '../core/auth/user.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,11 @@ import { User } from '../core/auth/interfaces/user';
   providers: [AuthService]
 })
 export class LoginComponent implements OnInit {
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(
+    private authService: AuthService, 
+    private userService: UserService,
+    private router: Router
+    ) { }
   form: FormGroup;
   error: string;
 
@@ -39,7 +44,7 @@ export class LoginComponent implements OnInit {
     const user: User = {...this.form.value};
     this.authService.login(user)
     .subscribe(
-      (res: Token) => {
+      (res: UserInfo) => {
       this.error = '';
       localStorage.setItem('jwt', res.token);
       localStorage.setItem('username', res.username);
