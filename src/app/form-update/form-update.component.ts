@@ -112,6 +112,8 @@ export class FormUpdateComponent implements OnInit {
         this.id = id;
         if (id !== undefined) {
           this.patchService.patchData(id, this.form, this.forms);
+        } else {
+          this.form.reset();
         }
       });
     }

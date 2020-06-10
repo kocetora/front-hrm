@@ -4,20 +4,24 @@ import { BodyService } from '../core/services/body.service';
 import { FetchService } from '../core/services/fetch.service';
 import { FormService } from '../core/services/form.service';
 import { Filter } from '../core/interfaces/filter';
+import { Form } from '../core/interfaces/form';
+import { PatchService } from '../core/services/patch.service';
 
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.scss'],
-  providers: [BodyService, FetchService]
+  providers: [BodyService, FetchService, PatchService]
 })
 export class FilterComponent implements OnInit {
   filter: FormGroup;
+  forms: Form[] = [];
 
   constructor(
     private bodyService: BodyService,
     private fetchService: FetchService,
-    private formService: FormService) { }
+    private formService: FormService,
+    private patchService: PatchService) { }
 
   ngOnInit(): void {
     this.filter = new FormGroup({
@@ -99,7 +103,7 @@ export class FilterComponent implements OnInit {
       }),
       languageSkills: new FormGroup({
         language: new FormControl('russian'),
-        languageProficiency: new FormControl('basic'),
+        languageProficiency: new FormControl('native'),
       }),
     });
   }
@@ -109,7 +113,16 @@ export class FilterComponent implements OnInit {
       const filterData: Filter = this.bodyService.convertFilterData({...this.filter.value});
       this.fetchService.filterForms(filterData).subscribe(forms => {
           this.formService.setForms(forms);
+          this.formService.setId(undefined);
       });
     }
+  }
+
+  filterReset(): void {
+    this.patchService.resetFilter(this.filter);
+    this.fetchService.getForms().subscribe(forms => {
+      this.formService.setForms(forms);
+    });
+    this.formService.setId(undefined);
   }
 }

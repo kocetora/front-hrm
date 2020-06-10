@@ -158,7 +158,8 @@
             "YEARS": "Should be less then 100",
             "MONTHS": "Should be less then 11"
         },
-        "SUBMIT":"Submit"
+        "SUBMIT":"Submit",
+        "RESET": "Reset"
     },
     "LIST": "List",
     "COMMENT": {

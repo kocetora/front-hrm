@@ -1,6 +1,10 @@
 <div class="container filter">
+  <div class="filter-header">
     <h2>{{ 'FILTER.TITLE' | translate }}</h2>
+    <button class="btn" [disabled]="!filter.dirty" (click)="filterReset()">{{ 'FILTER.RESET' | translate }}</button>
+  </div>
     <hr>
+    
     <form class="card" [formGroup]="filter" (ngSubmit)="filterSubmit()">
       <div class="form-control">
         <label>{{ 'FILTER.SEX.TITLE' | translate }}</label>
