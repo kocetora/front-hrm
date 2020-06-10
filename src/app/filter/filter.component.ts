@@ -103,7 +103,7 @@ export class FilterComponent implements OnInit {
       }),
     });
   }
-  
+
   filterSubmit() {
     if (this.filter.valid) {
       const filterData: Filter = this.bodyService.convertFilterData({...this.filter.value});

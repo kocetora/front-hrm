@@ -27,18 +27,18 @@ export class ListComponent implements OnInit {
     this.fetchService.getForms().subscribe(forms => {
       this.formService.setForms(forms);
       });
-      this.selectForm(1);
-    };
-  
+    this.selectForm(1);
+    }
+
   setThisForms(): void {
     this.formService.getForms().subscribe((forms) => {
       this.forms = forms;
-    })
-  };
+    });
+  }
 
-  selectForm(id){
-    if(this.forms[id]){
-      this.formService.setId(id)
+  selectForm(id) {
+    if (this.forms[id]) {
+      this.formService.setId(id);
     }
   }
 

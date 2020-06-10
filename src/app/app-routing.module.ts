@@ -9,7 +9,7 @@ import { AuthGuard } from './core/auth/auth.guard';
 const routes: Routes = [
   {path: '', component: FormComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'view', component: ViewComponent, 
+  {path: 'view', component: ViewComponent,
     canActivate: [AuthGuard]},
   {path: 'error', component: ErrorComponent},
   {path: '**', redirectTo: '/error'}

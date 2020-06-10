@@ -28,13 +28,13 @@ export class CommentComponent implements OnInit {
     private userService: UserService) { }
 
   ngOnInit(): void {
-    this.formService.getId().subscribe((id)=>{
+    this.formService.getId().subscribe((id) => {
       this.id = id;
       this.getComments();
-    })
-    this.formService.getForms().subscribe((forms)=>{
+    });
+    this.formService.getForms().subscribe((forms) => {
       this.forms = forms;
-    })
+    });
     this.username = localStorage.username;
     this.userid = localStorage.userid;
     this.comment = new FormGroup({
@@ -47,7 +47,7 @@ export class CommentComponent implements OnInit {
   }
 
   getComments() {
-    if(this.id !== undefined){
+    if (this.id !== undefined) {
       this.fetchService.getComments(this.forms[this.id].formid)
       .subscribe(comments => {
         this.comments = comments;

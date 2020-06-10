@@ -105,17 +105,17 @@ export class FormUpdateComponent implements OnInit {
           msViber: new FormControl(),
         })
       });
-      this.formService.getForms().subscribe((forms)=>{
+      this.formService.getForms().subscribe((forms) => {
         this.forms = forms;
-      })
-      this.formService.getId().subscribe((id)=>{
+      });
+      this.formService.getId().subscribe((id) => {
         this.id = id;
-        if(id !== undefined){
-          this.patchService.patchData(id, this.form, this.forms)
+        if (id !== undefined) {
+          this.patchService.patchData(id, this.form, this.forms);
         }
-      })
+      });
     }
-    
+
     submit() {
       if (this.form.valid) {
         const formData = this.bodyService.convertFormData({...this.form.value});
