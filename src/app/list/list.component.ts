@@ -40,10 +40,6 @@ export class ListComponent implements OnInit {
     if(this.forms[id]){
       this.formService.setId(id)
     }
-    // if (this.forms[i]) {
-    //   this.showForm(i);
-    //   this.getComments();
-    // }
   }
 
   delete(id: number): void {
