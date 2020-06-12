@@ -22,7 +22,7 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 
 app.listen(process.env.PORT || PORT, () => {
-  console.log('Server has been stared on port: ' + server.address().port);
+  console.log('Server has been stared');
 });
 
 module.exports = app;
