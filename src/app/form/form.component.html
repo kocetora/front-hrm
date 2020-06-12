@@ -110,6 +110,9 @@
           <small *ngIf="form.get('expectedSalary').errors.min">
             {{ 'FORM.VALIDATORS.POSITIVE' | translate }}
           </small>
+          <!-- <small *ngIf="form.get('expectedSalary').errors.max">
+            {{ 'FORM.VALIDATORS.POSITIVE' | translate }}
+          </small> -->
           <small *ngIf="form.get('expectedSalary').errors.required">
             {{ 'FORM.VALIDATORS.REQUIRED' | translate }}
           </small>
