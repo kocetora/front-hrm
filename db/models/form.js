@@ -99,9 +99,9 @@ const Form = sequelize.define('form', {
   },
 }, { timestamps: false });
 
-// sequelize.sync({ force: true }).then(() => {
-//   console.log('Tables have been created');
-// }).catch(err => console.log(err));
+sequelize.sync({ force: true }).then(() => {
+  console.log('Tables have been created');
+}).catch(err => console.log(err));
 
 module.exports = Form;
 
