@@ -12,16 +12,17 @@ app.use(cors());
 const router = require('./router/router');
 
 app.use(bodyParser());
+
+app.use(serve(__dirname + '/dist/'));
+
 app.use(passport.initialize());
 app.use(passport.session());
 require('./config/jwtStrategy')(passport);
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-app.use(serve(__dirname + '/dist/'));
-
-app.listen(PORT, () => {
-  console.log('Server has been stared on port: ' + PORT);
+app.listen(process.env.PORT || PORT, () => {
+  console.log('Server has been stared on port: ' + server.address().port);
 });
 
 module.exports = app;
