@@ -15,6 +15,7 @@ import { CommentComponent } from './comment/comment.component';
 import { FormUpdateComponent } from './form-update/form-update.component';
 import { ListComponent } from './list/list.component';
 import { FilterComponent } from './filter/filter.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -31,6 +32,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormUpdateComponent,
     ListComponent,
     FilterComponent,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,

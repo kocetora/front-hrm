@@ -3,10 +3,12 @@
         "LOGIN": "Login",
         "VIEW": "Base",
         "FORM": "Form",
-        "LOGOUT": "Log out"
+        "LOGOUT": "Log out",
+        "SIGN_UP":"Sign up"
     },
     "LOGIN": {
         "TITLE": "Login",
+        "SIGN_UP": "Sign up",
         "USERNAME": {
             "TITLE": "Username",
             "REQUIRED": "Username can not be empty",

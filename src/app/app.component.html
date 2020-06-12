@@ -12,6 +12,9 @@
             <a routerLink="/">{{ 'HOME.FORM' | translate }}</a>
         </li>
         <li *ngIf="!isAuth()" routerLinkActive="active">
+            <a routerLink="/sign-up">{{ 'HOME.SIGN_UP' | translate }}</a>
+        </li>
+        <li *ngIf="!isAuth()" routerLinkActive="active">
             <a routerLink="/login">{{ 'HOME.LOGIN' | translate }}</a>
         </li>
         <li *ngIf="isAuth()" routerLinkActive="active">
