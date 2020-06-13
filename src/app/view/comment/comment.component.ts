@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Comment } from '../core/interfaces/comment';
-import { CustomValidators } from '../core/validators/validator';
-import { FetchService } from '../core/services/fetch.service';
-import { FormService } from '../core/services/form.service';
-import { UserService } from '../core/auth/user.service';
-import { Form } from '../core/interfaces/form';
+import { Comment } from '../../core/interfaces/comment';
+import { CustomValidators } from '../../core/validators/validator';
+import { FetchService } from '../../core/services/fetch.service';
+import { FormService } from '../../core/services/form.service';
+import { UserService } from '../../core/auth/user.service';
+import { Form } from '../../core/interfaces/form';
 
 @Component({
   selector: 'app-comment',

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { BodyService } from '../core/services/body.service';
-import { FetchService } from '../core/services/fetch.service';
-import { FormService } from '../core/services/form.service';
-import { Filter } from '../core/interfaces/filter';
-import { Form } from '../core/interfaces/form';
-import { PatchService } from '../core/services/patch.service';
+import { BodyService } from '../../core/services/body.service';
+import { FetchService } from '../../core/services/fetch.service';
+import { FormService } from '../../core/services/form.service';
+import { Filter } from '../../core/interfaces/filter';
+import { Form } from '../../core/interfaces/form';
+import { PatchService } from '../../core/services/patch.service';
 
 @Component({
   selector: 'app-filter',

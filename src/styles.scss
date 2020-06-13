@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 * {
   box-sizing: border-box;
@@ -144,16 +146,6 @@ p {
       }
   }
   
-  input {
-    &.ng-invalid.ng-touched {
-      border: 1px solid red;
-    }
-  
-    &.ng-valid.ng-touched {
-      border: 1px solid green;
-    }
-  }
-
   .navbar {
     display: flex;
     justify-content: space-between;

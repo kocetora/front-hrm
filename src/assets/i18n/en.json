@@ -31,11 +31,7 @@
             "FEMALE": "Female"
         },
         "BORN": "Birth date",
-        "HEIGHT": {
-            "TITLE": "Height(cm)",
-            "MIN": "Should be bigger then 30",
-            "MAX": "Should be less then 300"
-        },
+        "HEIGHT": "Height(cm)",
         "PHONE_NUMBER": "Phone Number",
         "EMAIL": "Email",
         "EDUCATION": {
@@ -78,6 +74,7 @@
             "VIBER": "WhatsApp",
             "WHATS_APP": "Viber"
         },
+        "NOTE": "Note",
         "SUBMIT": "Submit",
         "VALIDATORS": {
             "REQUIRED": "Can not be empty",

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Form } from '../core/interfaces/form';
-import { FetchService } from '../core/services/fetch.service';
-import { FormService } from '../core/services/form.service';
+import { Form } from '../../core/interfaces/form';
+import { FetchService } from '../../core/services/fetch.service';
+import { FormService } from '../../core/services/form.service';
 
 @Component({
   selector: 'app-list',

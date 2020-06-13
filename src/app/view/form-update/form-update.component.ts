@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CustomValidators } from '../core/validators/validator';
-import { BodyService } from '../core/services/body.service';
-import { FetchService } from '../core/services/fetch.service';
-import { PatchService } from '../core/services/patch.service';
-import { FormService } from '../core/services/form.service';
-import { Form } from '../core/interfaces/form';
+import { CustomValidators } from '../../core/validators/validator';
+import { BodyService } from '../../core/services/body.service';
+import { FetchService } from '../../core/services/fetch.service';
+import { PatchService } from '../../core/services/patch.service';
+import { FormService } from '../../core/services/form.service';
+import { Form } from '../../core/interfaces/form';
 
 @Component({
   selector: 'app-form-update',
