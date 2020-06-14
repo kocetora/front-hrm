@@ -40,11 +40,11 @@ export class SignUpComponent implements OnInit {
     const user: User = {...this.form.value};
     this.authService.signUp(user)
     .subscribe(
-      (res) => {
+      () => {
       this.error = '';
       this.router.navigate(['/login']);
       },
-      (err) => {
+      () => {
         this.error = 'This username is already taken. Please choose another one.';
       });
     }

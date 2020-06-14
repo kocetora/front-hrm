@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from '../core/auth/auth.service';
 import { Router } from '@angular/router';
 import { CustomValidators } from '../core/validators/validator';
@@ -17,26 +17,25 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private formBuilder: FormBuilder
     ) { }
-  form: FormGroup;
+  form: any;
   error: string;
 
   ngOnInit(): void {
-    this.form = new FormGroup({
-      username: new FormControl('', [
+    this.form = this.formBuilder.group({
+      username: ['', [
         Validators.required,
         Validators.minLength(2),
         Validators.maxLength(50),
-        CustomValidators.noWhitespace
-      ]),
-      password: new FormControl('', [
+        CustomValidators.noWhitespace]],
+      password: ['', [
         Validators.required,
         Validators.minLength(6),
         Validators.maxLength(25),
-        CustomValidators.noWhitespace
-        ])
-      });
+        CustomValidators.noWhitespace]]
+    });
   }
 
   submit() {
