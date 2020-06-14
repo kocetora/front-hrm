@@ -1,3 +1,7 @@
-<h1>Error 404</h1>
-<h3>Page not found</h3>
-<button class="btn" style="padding: 0,5rem; "><a style="color: white;" routerLink="/">Home page</a></button>
+<div class="container">
+    <h1>{{ 'HOME.ERROR_404' | translate}}</h1>
+    <h3>{{ 'HOME.NOT_FOUND' | translate}}</h3>
+    <button color="primary" routerLink="/" mat-raised-button style="margin-top: 0.7rem;">
+    {{ 'HOME.TITLE' | translate}}
+    </button>
+</div>

@@ -1,10 +1,13 @@
 {
     "HOME": {
+        "TITLE": "Home page",
         "LOGIN": "Login",
         "VIEW": "Base",
         "FORM": "Form",
         "LOGOUT": "Log out",
-        "SIGN_UP": "Sign up"
+        "SIGN_UP": "Sign up",
+        "ERROR_404": "Error 404",
+        "NOT_FOUND": "Page not found"
     },
     "AUTH": {
         "LOGIN": "Login",
@@ -78,7 +81,7 @@
         "SUBMIT": "Submit",
         "RESET": "Reset"
     },
-    "VIEW":{
+    "VIEW": {
         "FILTER": "Filter",
         "LIST": "List",
         "COMMENT": "Comments"

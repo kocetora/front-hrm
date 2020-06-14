@@ -1,10 +1,13 @@
 {
     "HOME": {
+        "TITLE": "Домашняя страница",
         "LOGIN": "Войти",
         "VIEW": "База",
         "FORM": "Форма",
         "LOGOUT": "Выйти",
-        "SIGN_UP": "Зарегистрироваться"        
+        "SIGN_UP": "Зарегистрироваться",
+        "ERROR_404": "Ошибка 404",
+        "NOT_FOUND": "Страница не найдена"
     },
     "AUTH": {
         "LOGIN": "Вход",
@@ -40,7 +43,7 @@
         "UNEMPLOYED_FOR": "Безработен",
         "AGE": "Возраст",
         "FROM": "От",
-        "TO": "До",        
+        "TO": "До",
         "WORK_EXPERIENCE_FROM": "Опыт работы от",
         "WORK_EXPERIENCE_TO": "Опыт работы до",
         "YEARS": "Лет",
@@ -52,7 +55,7 @@
             "RUSSIAN": "Русский"
         },
         "LANGUAGE_PROFICIENCY": {
-            "TITLE": "Language proficiency",
+            "TITLE": "Уровень владения",
             "BASIC": "Начальный",
             "INTERMEDIATE": "Средний",
             "FLUENT": "Свободный",
@@ -78,7 +81,7 @@
         "SUBMIT": "Отправить",
         "RESET": "Сбросить"
     },
-    "VIEW":{
+    "VIEW": {
         "FILTER": "Фильтр",
         "LIST": "Список",
         "COMMENT": "Комментарии"

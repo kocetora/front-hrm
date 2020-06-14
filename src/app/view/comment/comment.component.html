@@ -1,22 +1,20 @@
 <div class="container">
-    <h2>{{ 'COMMENT.TITLE' | translate }}</h2>
+    <h2>{{ 'VIEW.COMMENT' | translate }}</h2>
     <hr>
-    <div class="card" *ngFor="let comment of comments; let i = index" >
+    <div class="card" *ngFor="let comment of comments; let i = index">
         <h3 class="name">{{comment.user.username}}</h3>
         <div class="comment">{{comment.comment}}</div>
     </div>
     <form class="card" [formGroup]="comment" (ngSubmit)="addComment()">
-      <label><h3 class="name">{{ username }}</h3></label>
-      <div class="form-control">
-      <textarea rows="7" name="text" placeholder="Note..." formControlName="text"></textarea>
-      <div
-      *ngIf="comment.get('text').invalid && comment.get('text').touched"
-      class="validation">
-      <small *ngIf="comment.get('text').errors">
-        {{ 'COMMENT.REQUIRED' | translate }}
-      </small>
-    </div>
-    </div>
-      <button class="btn" type="submit" [disabled]="comment.invalid || comment.pending">{{ 'COMMENT.SUBMIT' | translate }}</button>
+        <h3 class="name">{{ username }}</h3>
+        <mat-form-field class="full-width">
+            <textarea matInput placeholder="{{ 'FORM.NOTE' | translate  }}" formControlName="text" matTextareaAutosize matAutosizeMinRows="5" matAutosizeMaxRows="7">
+            </textarea>
+            <mat-hint>{{comment.get('text').value.length}} / 255</mat-hint>
+            <mat-error>
+                <!-- <app-control-error [control]="comment.get('text')"></app-control-error> -->
+            </mat-error>
+        </mat-form-field>
+        <button color="primary" mat-raised-button type="submit" [disabled]="comment.invalid || comment.pending">{{ 'FORM.SUBMIT' | translate }}</button>
     </form>
 </div>

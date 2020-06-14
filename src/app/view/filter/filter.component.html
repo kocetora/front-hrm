@@ -1,269 +1,145 @@
 <div class="container filter">
-  <div class="filter-header">
-    <h2>{{ 'FILTER.TITLE' | translate }}</h2>
-    <button class="btn" [disabled]="!filter.dirty" (click)="filterReset()">{{ 'FILTER.RESET' | translate }}</button>
-  </div>
+    <div class="filter-header">
+        <h2>{{ 'VIEW.FILTER' | translate }}</h2>
+        <button mat-raised-button [disabled]="!filter.dirty" (click)="filterReset()" color="warn">{{ 'FORM.RESET' | translate }}</button>
+    </div>
     <hr>
-    
+
     <form class="card" [formGroup]="filter" (ngSubmit)="filterSubmit()">
-      <div class="form-control">
-        <label>{{ 'FILTER.SEX.TITLE' | translate }}</label>
-        <select name="sex" formControlName="sex">
-          <option value="male">{{ 'FILTER.SEX.MALE' | translate }}</option>
-          <option value="female">{{ 'FILTER.SEX.FEMALE' | translate }}</option>
-        </select>
-      </div>
 
-      <div class="card" formGroupName="age">
-        <label>{{ 'FILTER.AGE.TITLE' | translate }}</label>
-        <div class="form-control">
-          <label><h5>{{ 'FILTER.FROM' | translate }}</h5></label>
-          <input type="number" min="14" max="100" name="ageFrom" formControlName="ageFrom">
-          <div
-          *ngIf="filter.controls.age.get('ageFrom').invalid 
-            && filter.controls.age.get('ageFrom').touched"
-            class="validation">
-          <small *ngIf="filter.controls.age.get('ageFrom').errors.max">
-            {{ 'FILTER.AGE.MAX' | translate }}
-          </small>
-          <small *ngIf="filter.controls.age.get('ageFrom').errors.min">
-            {{ 'FILTER.AGE.MIN' | translate }}
-          </small>
-          <small *ngIf="filter.controls.age.get('ageFrom').errors.required">
-            {{ 'FILTER.VALIDATORS.REQUIRED' | translate }}
-          </small>
-        </div>
-        </div>
-        <div class="form-control">
-          <label><h5>{{ 'FILTER.TO' | translate }}</h5></label>
-          <input type="number" min="14" max="100" name="ageTo" formControlName="ageTo">
-          <div
-          *ngIf="filter.controls.age.get('ageTo').invalid 
-            && filter.controls.age.get('ageTo').touched"
-            class="validation">
-          <small *ngIf="filter.controls.age.get('ageTo').errors.max">
-            {{ 'FILTER.AGE.MAX' | translate }}
-          </small>
-          <small *ngIf="filter.controls.age.get('ageTo').errors.min">
-            {{ 'FILTER.AGE.MIN' | translate }}
-          </small>
-          <small *ngIf="filter.controls.age.get('ageTo').errors.required">
-            {{ 'FILTER.VALIDATORS.REQUIRED' | translate }}
-          </small>
-        </div>
-        </div>
-      </div>
+        <mat-form-field class="full-width">
+            <mat-select placeholder="{{ 'FORM.SEX.TITLE' | translate }}" formControlName="sex">
+                <mat-option *ngFor="let gender of genders" [value]="gender">
+                    {{ 'FORM.SEX.' + gender | uppercase | translate }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
 
-      <div class="card" formGroupName="height">
-        <label>{{ 'FILTER.HEIGHT.TITLE' | translate }}</label>
-        <div class="form-control">
-          <label><h5>{{ 'FILTER.FROM' | translate }}</h5></label>
-          <input type="number" min="30" max="300" name="heightFrom" formControlName="heightFrom">
-          <div
-          *ngIf="filter.controls.height.get('heightFrom').invalid 
-            && filter.controls.height.get('heightFrom').touched"
-            class="validation">
-          <small *ngIf="filter.controls.height.get('heightFrom').errors.max">
-            {{ 'FILTER.HEIGHT.MAX' | translate }}
-          </small>
-          <small *ngIf="filter.controls.height.get('heightFrom').errors.min">
-            {{ 'FILTER.HEIGHT.MIN' | translate }}
-          </small>
-          <small *ngIf="filter.controls.height.get('heightFrom').errors.required">
-            {{ 'FILTER.VALIDATORS.REQUIRED' | translate }}
-          </small>
-        </div>
-        </div>
-        <div class="form-control">
-          <label><h5>{{ 'FILTER.TO' | translate }}</h5></label>
-          <input type="number" min="30" max="300" name="heightTo" formControlName="heightTo">
-          <div
-          *ngIf="filter.controls.height.get('heightTo').invalid 
-            && filter.controls.height.get('heightTo').touched"
-            class="validation">
-          <small *ngIf="filter.controls.height.get('heightTo').errors.max">
-            {{ 'FILTER.HEIGHT.MAX' | translate }}
-          </small>
-          <small *ngIf="filter.controls.height.get('heightTo').errors.min">
-            {{ 'FILTER.HEIGHT.MIN' | translate }}
-          </small>
-          <small *ngIf="filter.controls.height.get('heightTo').errors.required">
-            {{ 'FILTER.VALIDATORS.REQUIRED' | translate }}
-          </small>
-        </div>
-        </div>
-      </div>
+        <mat-form-field class="full-width">
+            <mat-select placeholder="{{ 'FORM.EDUCATION.TITLE' | translate }}" formControlName="education">
+                <mat-option *ngFor="let grade of grades" [value]="grade">
+                    {{ 'FORM.EDUCATION.' + grade | uppercase | translate }}
+                </mat-option>
+            </mat-select>
+            <mat-error>
+                <!-- <app-control-error [control]="filter.get('education')"></app-control-error> -->
+            </mat-error>
+        </mat-form-field>
 
-      <div class="card" formGroupName="expectedSalary">
-        <label>{{ 'FILTER.EXPECTED_SALARY.TITLE' | translate }}</label>
-        <div class="form-control">
-          <label><h5>{{ 'FILTER.FROM' | translate }}</h5></label>
-          <input type="number" min="1" max="100000" name="expectedSalaryFrom" formControlName="expectedSalaryFrom">
-          <div
-          *ngIf="filter.controls.expectedSalary.get('expectedSalaryFrom').invalid 
-            && filter.controls.expectedSalary.get('expectedSalaryFrom').touched"
-            class="validation">
-          <small *ngIf="filter.controls.expectedSalary.get('expectedSalaryFrom').errors.max">
-            {{ 'FILTER.EXPECTED_SALARY.MAX' | translate }}
-          </small>
-          <small *ngIf="filter.controls.expectedSalary.get('expectedSalaryFrom').errors.min">
-            {{ 'FILTER.EXPECTED_SALARY.MIN' | translate }}
-          </small>
-          <small *ngIf="filter.controls.expectedSalary.get('expectedSalaryFrom').errors.required">
-            {{ 'FILTER.VALIDATORS.REQUIRED' | translate }}
-          </small>
+        <div formGroupName="workExperienceFrom" class="mincard">
+            <p>{{ 'FORM.WORK_EXPERIENCE' | translate }} {{ 'FORM.FROM' | translate | lowercase}}</p>
+            <mat-form-field class="full-width">
+                <input matInput type="number" placeholder="{{ 'FORM.YEARS' | translate  }}" formControlName="workExperienceYearsFrom">
+                <mat-error>
+                    <!-- <app-control-error [control]="form.get('workExperienceYearsFrom')"></app-control-error> -->
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input matInput type="number" placeholder="{{ 'FORM.MONTHS' | translate  }}" formControlName="workExperienceMonthsFrom">
+                <mat-error>
+                    <!-- <app-control-error [control]="form.get('workExperienceMonthsFrom')"></app-control-error> -->
+                </mat-error>
+            </mat-form-field>
         </div>
+
+        <div formGroupName="workExperienceTo" class="mincard">
+            <p>{{ 'FORM.WORK_EXPERIENCE' | translate }} {{ 'FORM.TO' | translate | lowercase}}</p>
+            <mat-form-field class="full-width">
+                <input matInput type="number" placeholder="{{ 'FORM.YEARS' | translate  }}" formControlName="workExperienceYearsTo">
+                <mat-error>
+                    <!-- <app-control-error [control]="form.get('workExperienceYearsFrom')"></app-control-error> -->
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input matInput type="number" placeholder="{{ 'FORM.MONTHS' | translate  }}" formControlName="workExperienceMonthsTo">
+                <mat-error>
+                    <!-- <app-control-error [control]="form.get('workExperienceMonthsFrom')"></app-control-error> -->
+                </mat-error>
+            </mat-form-field>
         </div>
-        <div class="form-control">
-          <label><h5>{{ 'FILTER.TO' | translate }}</h5></label>
-          <input type="number" min="1" max="100000" name="expectedSalaryTo" formControlName="expectedSalaryTo">
-          <div
-          *ngIf="filter.controls.expectedSalary.get('expectedSalaryTo').invalid 
-            && filter.controls.expectedSalary.get('expectedSalaryTo').touched"
-            class="validation">
-          <small *ngIf="filter.controls.expectedSalary.get('expectedSalaryTo').errors.max">
-            {{ 'FILTER.EXPECTED_SALARY.MAX' | translate }}
-          </small>
-          <small *ngIf="filter.controls.expectedSalary.get('expectedSalaryTo').errors.min">
-            {{ 'FILTER.EXPECTED_SALARY.MIN' | translate }}
-          </small>
-          <small *ngIf="filter.controls.expectedSalary.get('expectedSalaryTo').errors.required">
-            {{ 'FILTER.VALIDATORS.REQUIRED' | translate }}
-          </small>
+
+        <div formGroupName="height" class="mincard">
+            <p>{{ 'FORM.HEIGHT' | translate }}</p>
+            <mat-form-field class="full-width">
+                <input matInput type="number" placeholder="{{ 'FORM.FROM' | translate  }}" formControlName="heightFrom">
+                <mat-error>
+                    <!-- <app-control-error [control]="form.get('heightFrom')"></app-control-error> -->
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input matInput type="number" placeholder="{{ 'FORM.TO' | translate  }}" formControlName="heightTo">
+                <mat-error>
+                    <!-- <app-control-error [control]="form.get('heightTo')"></app-control-error> -->
+                </mat-error>
+            </mat-form-field>
         </div>
+
+        <div formGroupName="age" class="mincard">
+            <p>{{ 'FORM.AGE' | translate }}</p>
+            <mat-form-field class="full-width">
+                <input matInput type="number" placeholder="{{ 'FORM.FROM' | translate  }}" formControlName="ageFrom">
+                <mat-error>
+                    <!-- <app-control-error [control]="form.get('ageFrom')"></app-control-error> -->
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input matInput type="number" placeholder="{{ 'FORM.TO' | translate  }}" formControlName="ageTo">
+                <mat-error>
+                    <!-- <app-control-error [control]="form.get('ageTo')"></app-control-error> -->
+                </mat-error>
+            </mat-form-field>
         </div>
-      </div>
-      
-      <div class="form-control">
-        <label>{{ 'FILTER.EDUCATION.TITLE' | translate }}</label>
-        <select name="education" formControlName="education">
-          <option value="primary">{{ 'FILTER.EDUCATION.PRIMARY' | translate }}</option>
-          <option value="secondary">{{ 'FILTER.EDUCATION.SECONDARY' | translate }}</option>
-          <option value="unfinished_higher">{{ 'FILTER.EDUCATION.UNFINISHED_HIGHER' | translate }}</option>
-          <option value="higher">{{ 'FILTER.EDUCATION.HIGHER' | translate }}</option>
-        </select>
-      </div>
 
-     <div class="card" formGroupName="professions">
-      <label>{{ 'FILTER.PROFESSIONS.TITLE' | translate }}</label>
-      <div class="form-control">
-        <label><input type="checkbox" name="trainee" formControlName="trainee">{{ 'FILTER.PROFESSIONS.TRAINEE' | translate }}</label>
-        <label><input type="checkbox" name="dealer" formControlName="dealer">{{ 'FILTER.PROFESSIONS.DEALER' | translate }}</label>
-        <label><input type="checkbox" name="inspector" formControlName="inspector">{{ 'FILTER.PROFESSIONS.INSPECTOR' | translate }}</label>
-        <label><input type="checkbox" name="manager" formControlName="manager">{{ 'FILTER.PROFESSIONS.MANAGER' | translate }}</label>
-        <label><input type="checkbox" name="pit_boss" formControlName="pit_boss">{{ 'FILTER.PROFESSIONS.PIT_BOSS' | translate }}</label>
-        <label><input type="checkbox" name="waiter" formControlName="waiter">{{ 'FILTER.PROFESSIONS.WAITER' | translate }}</label>
-        <label><input type="checkbox" name="barman" formControlName="barman">{{ 'FILTER.PROFESSIONS.BARMAN' | translate }}</label>
-      </div>
-    </div>
+        <div formGroupName="expectedSalary" class="mincard">
+            <p>{{ 'FORM.EXPECTED_SALARY' | translate }}</p>
+            <mat-form-field class="full-width">
+                <input matInput type="number" placeholder="{{ 'FORM.FROM' | translate  }}" formControlName="expectedSalaryFrom">
+                <mat-error>
+                    <!-- <app-control-error [control]="form.get('expectedSalaryFrom')"></app-control-error> -->
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input matInput type="number" placeholder="{{ 'FORM.TO' | translate  }}" formControlName="expectedSalaryTo">
+                <mat-error>
+                    <!-- <app-control-error [control]="form.get('expectedSalaryTo')"></app-control-error> -->
+                </mat-error>
+            </mat-form-field>
+        </div>
 
-    <div class="card" formGroupName="messengers">
-      <label>{{ 'FILTER.MESSENGERS.TITLE' | translate }}</label>
-      <div class="form-control">
-        <label><input type="checkbox" name="Telegram" formControlName="Telegram">{{ 'FILTER.MESSENGERS.TELEGRAM' | translate }}</label>
-        <label><input type="checkbox" name="Viber" formControlName="Viber">{{ 'FILTER.MESSENGERS.VIBER' | translate }}</label>
-        <label><input type="checkbox" name="WhatsApp" formControlName="WhatsApp">{{ 'FILTER.MESSENGERS.WHATS_APP' | translate }}</label>
-      </div>
-    </div>
+        <div formGroupName="languageSkills" class="mincard">
+            <p>{{ 'FORM.LANGUAGE_SKILLS' | translate }}</p>
+            <mat-form-field class="full-width">
+                <mat-select placeholder="{{ 'FORM.LANGUAGES.TITLE' | translate }}" formControlName="language">
+                    <mat-option *ngFor="let l of languages" [value]="l">
+                        {{ 'FORM.LANGUAGES.' + l | uppercase | translate }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-select placeholder="{{ 'FORM.LANGUAGE_PROFICIENCY.TITLE' | translate }}" formControlName="languageProficiency">
+                    <mat-option *ngFor="let lp of languageProficiency" [value]="lp">
+                        {{ 'FORM.LANGUAGE_PROFICIENCY.' + lp | uppercase | translate }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
 
-    <div class="card" formGroupName="languageSkills">
-      <label>{{ 'FILTER.LANGUAGE_SKILLS' | translate }}</label>
-      <div class="form-control">
-        <label>{{ 'FILTER.LANGUAGES.TITLE' | translate }}</label>
-        <select name="language" formControlName="language">
-          <option value="english">{{ 'FILTER.LANGUAGES.ENGLISH' | translate }}</option>
-          <option value="russian">{{ 'FILTER.LANGUAGES.RUSSIAN' | translate }}</option>
-        </select>
-        <label>{{ 'FILTER.LANGUAGE_PROFICIENCY.TITLE' | translate }}</label>
-        <select name="languageProficiency" formControlName="languageProficiency">
-          <option value="basic">{{ 'FILTER.LANGUAGE_PROFICIENCY.BASIC' | translate }}</option>
-          <option value="intermediate">{{ 'FILTER.LANGUAGE_PROFICIENCY.INTERMEDIATE' | translate }}</option>
-          <option value="fluent">{{ 'FILTER.LANGUAGE_PROFICIENCY.FLUENT' | translate }}</option>
-          <option value="native">{{ 'FILTER.LANGUAGE_PROFICIENCY.NATIVE' | translate }}</option>
-        </select>
-      </div>
-    </div>
-      
-    <div class="card" formGroupName="workExperienceFrom">
-      <label>{{ 'FILTER.WORK_EXPERIENCE_FROM' | translate }}</label>
-      <div class="form-control">
-        <label><h5>{{ 'FILTER.YEARS' | translate }}</h5></label>
-        <input type="number" min="0" max="100" name="workExperienceYearsFrom" formControlName="workExperienceYearsFrom">
-        <div
-        *ngIf="filter.controls.workExperienceFrom.get('workExperienceYearsFrom').invalid 
-          && filter.controls.workExperienceFrom.get('workExperienceYearsFrom').touched"
-          class="validation">
-        <small *ngIf="filter.controls.workExperienceFrom.get('workExperienceYearsFrom').errors.max">
-          {{ 'FILTER.VALIDATORS.YEARS' | translate }}
-        </small>
-        <small *ngIf="filter.controls.workExperienceFrom.get('workExperienceYearsFrom').errors.min">
-          {{ 'FILTER.VALIDATORS.POSITIVE' | translate }}
-        </small>
-        <small *ngIf="filter.controls.workExperienceFrom.get('workExperienceYearsFrom').errors.required">
-          {{ 'FILTER.VALIDATORS.REQUIRED' | translate }}
-        </small>
-      </div>
-      </div>
-      <div class="form-control">
-        <label><h5>{{ 'FILTER.MONTHS' | translate }}</h5></label>
-        <input type="number" min="0" max="11" name="workExperienceMonthsFrom" formControlName="workExperienceMonthsFrom">
-        <div
-        *ngIf="filter.controls.workExperienceFrom.get('workExperienceMonthsFrom').invalid 
-          && filter.controls.workExperienceFrom.get('workExperienceMonthsFrom').touched"
-        class="validation">
-      <small *ngIf="filter.controls.workExperienceFrom.get('workExperienceMonthsFrom').errors.max">
-        {{ 'FILTER.VALIDATORS.MONTHS' | translate }}
-      </small>
-      <small *ngIf="filter.controls.workExperienceFrom.get('workExperienceMonthsFrom').errors.min">
-        {{ 'FILTER.VALIDATORS.POSITIVE' | translate }}
-      </small>
-      <small *ngIf="filter.controls.workExperienceFrom.get('workExperienceMonthsFrom').errors.required">
-        {{ 'FILTER.VALIDATORS.REQUIRED' | translate }}
-      </small>
-    </div>
-      </div>
-    </div>
+        <div formGroupName="professions" class="mincard">
+            <p>{{ 'FORM.PROFESSIONS.TITLE' | translate }}</p>
+            <mat-hint>{{ 'FORM.HINT' | translate }}</mat-hint>
+            <div class="col">
+                <mat-checkbox *ngFor="let p of professions" [formControlName]="p">{{ 'FORM.PROFESSIONS.' + p | uppercase | translate }}</mat-checkbox>
+            </div>
+        </div>
 
-    <div class="card" formGroupName="workExperienceTo">
-      <label>{{ 'FILTER.WORK_EXPERIENCE_TO' | translate }}</label>
-      <div class="form-control">
-        <label><h5>{{ 'FILTER.YEARS' | translate }}</h5></label>
-        <input type="number" min="0" max="100" name="workExperienceYearsTo" formControlName="workExperienceYearsTo">
-        <div
-        *ngIf="filter.controls.workExperienceTo.get('workExperienceYearsTo').invalid 
-          && filter.controls.workExperienceTo.get('workExperienceYearsTo').touched"
-          class="validation">
-        <small *ngIf="filter.controls.workExperienceTo.get('workExperienceYearsTo').errors.max">
-          {{ 'FILTER.VALIDATORS.YEARS' | translate }}
-        </small>
-        <small *ngIf="filter.controls.workExperienceTo.get('workExperienceYearsTo').errors.min">
-          {{ 'FILTER.VALIDATORS.POSITIVE' | translate }}
-        </small>
-        <small *ngIf="filter.controls.workExperienceTo.get('workExperienceYearsTo').errors.required">
-          {{ 'FILTER.VALIDATORS.REQUIRED' | translate }}
-        </small>
-      </div>
-      </div>
-      <div class="form-control">
-        <label><h5>{{ 'FILTER.MONTHS' | translate }}</h5></label>
-        <input type="number" min="0" max="11" name="workExperienceMonthsTo" formControlName="workExperienceMonthsTo">
-        <div
-        *ngIf="filter.controls.workExperienceTo.get('workExperienceMonthsTo').invalid 
-          && filter.controls.workExperienceTo.get('workExperienceMonthsTo').touched"
-        class="validation">
-      <small *ngIf="filter.controls.workExperienceTo.get('workExperienceMonthsTo').errors.max">
-        {{ 'FILTER.VALIDATORS.MONTHS' | translate }}
-      </small>
-      <small *ngIf="filter.controls.workExperienceTo.get('workExperienceMonthsTo').errors.min">
-        {{ 'FILTER.VALIDATORS.POSITIVE' | translate }}
-      </small>
-      <small *ngIf="filter.controls.workExperienceTo.get('workExperienceMonthsTo').errors.required">
-        {{ 'FILTER.VALIDATORS.REQUIRED' | translate }}
-      </small>
-    </div>
-      </div>
-    </div>
+        <div formGroupName="messengers" class="mincard">
+            <p>{{ 'FORM.MESSENGERS.TITLE' | translate }}</p>
+            <mat-hint>{{ 'FORM.HINT' | translate }}</mat-hint>
+            <div class="col">
+                <mat-checkbox *ngFor="let m of messengers" [formControlName]="m">{{ 'FORM.MESSENGERS.' + m | uppercase | translate }}</mat-checkbox>
+            </div>
+        </div>
 
-      <button class="btn" type="submit" [disabled]="filter.invalid || filter.pending">{{ 'FILTER.SUBMIT' | translate }}</button>
+        <button class="submit-btn" color="primary" mat-raised-button type="submit" [disabled]="filter.invalid || filter.pending">{{ 'FORM.SUBMIT' | translate}}</button>
     </form>
-  </div>  
+</div>

@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { BodyService } from '../../core/services/body.service';
 import { FetchService } from '../../core/services/fetch.service';
 import { FormService } from '../../core/services/form.service';
 import { Filter } from '../../core/interfaces/filter';
 import { Form } from '../../core/interfaces/form';
 import { PatchService } from '../../core/services/patch.service';
+import { atLeastOne } from '../../core/validators/atLeastOne';
 
 @Component({
   selector: 'app-filter',
@@ -14,97 +15,90 @@ import { PatchService } from '../../core/services/patch.service';
   providers: [BodyService, FetchService, PatchService]
 })
 export class FilterComponent implements OnInit {
-  filter: FormGroup;
+  filter: any;
   forms: Form[] = [];
+
+  genders = [
+    'male',
+    'female'
+  ];
+  grades = [
+    'primary',
+    'secondary',
+    'unfinished_higher',
+    'higher'
+  ];
+  professions = [
+    'trainee',
+    'dealer',
+    'inspector',
+    'manager',
+    'pit_boss',
+    'waiter',
+    'barman'
+  ];
+  messengers = [
+    'Telegram',
+    'Viber',
+    'WhatsApp'
+  ];
+  languages = ['russian', 'english'];
+  languageProficiency = [
+    'basic',
+    'intermediate',
+    'fluent',
+    'native'
+  ];
 
   constructor(
     private bodyService: BodyService,
     private fetchService: FetchService,
     private formService: FormService,
-    private patchService: PatchService) { }
+    private patchService: PatchService,
+    private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    this.filter = new FormGroup({
-      sex: new FormControl('male', ),
-      height: new FormGroup({
-        heightFrom: new FormControl(30, [
-          Validators.min(30),
-          Validators.max(300),
-          Validators.required
-        ]),
-        heightTo: new FormControl(300, [
-          Validators.min(30),
-          Validators.max(300),
-          Validators.required
-        ])
+    this.filter = this.formBuilder.group({
+      sex: [this.genders[0], Validators.required],
+      height: this.formBuilder.group({
+        heightFrom: ['', [Validators.required, Validators.min(30), Validators.max(300)]],
+        heightTo: ['', [Validators.required, Validators.min(30), Validators.max(300)]]
       }),
-      age: new FormGroup({
-        ageFrom: new FormControl(14, [
-          Validators.min(14),
-          Validators.max(100),
-          Validators.required
-        ]),
-        ageTo: new FormControl(100, [
-          Validators.min(14),
-          Validators.max(100),
-          Validators.required
-        ])
+      age: this.formBuilder.group({
+        ageFrom: ['', [Validators.required, Validators.min(14), Validators.max(100)]],
+        ageTo: ['', [Validators.required, Validators.min(14), Validators.max(100)]]
       }),
-      workExperienceFrom: new FormGroup({
-        workExperienceYearsFrom: new FormControl(0, [
-          Validators.min(0),
-          Validators.max(100),
-          Validators.required
-        ]),
-        workExperienceMonthsFrom: new FormControl(0, [
-          Validators.min(0),
-          Validators.max(11),
-          Validators.required
-        ]),
+      workExperienceFrom: this.formBuilder.group({
+        workExperienceYearsFrom: ['', [Validators.required, Validators.min(0), Validators.max(100)]],
+        workExperienceMonthsFrom: ['', [Validators.required, Validators.min(0), Validators.max(11)]]
       }),
-      workExperienceTo: new FormGroup({
-        workExperienceYearsTo: new FormControl(100, [
-          Validators.min(0),
-          Validators.max(100),
-          Validators.required
-        ]),
-        workExperienceMonthsTo: new FormControl(11, [
-          Validators.min(0),
-          Validators.max(11),
-          Validators.required
-        ]),
+      workExperienceTo: this.formBuilder.group({
+        workExperienceYearsTo: ['', [Validators.required, Validators.min(0), Validators.max(100)]],
+        workExperienceMonthsTo: ['', [Validators.required, Validators.min(0), Validators.max(11)]]
       }),
-      education: new FormControl('higher'),
-      expectedSalary: new FormGroup({
-        expectedSalaryFrom: new FormControl(1, [
-          Validators.min(1),
-          Validators.max(100000),
-          Validators.required
-        ]),
-        expectedSalaryTo: new FormControl(100000, [
-          Validators.min(1),
-          Validators.max(100000),
-          Validators.required
-        ]),
+      education: [this.grades[0], Validators.required],
+      expectedSalary: this.formBuilder.group({
+        expectedSalaryFrom: ['', [Validators.required, Validators.min(1), Validators.max(100000)]],
+        expectedSalaryTo: ['', [Validators.required, Validators.min(1), Validators.max(100000)]]
       }),
-      professions: new FormGroup({
-        trainee: new FormControl(),
-        dealer: new FormControl(),
-        inspector: new FormControl(),
-        manager: new FormControl(),
-        pit_boss: new FormControl(),
-        waiter: new FormControl(),
-        barman: new FormControl(),
-      }),
-      messengers: new FormGroup({
-        WhatsApp: new FormControl(),
-        Telegram: new FormControl(),
-        Viber: new FormControl(),
-      }),
-      languageSkills: new FormGroup({
-        language: new FormControl('russian'),
-        languageProficiency: new FormControl('native'),
-      }),
+      professions: this.formBuilder.group({
+        trainee: [],
+        dealer: [],
+        inspector: [],
+        manager: [],
+        pit_boss: [],
+        waiter: [],
+        barman: [],
+      }, { validator: atLeastOne(Validators.required) }),
+      messengers: this.formBuilder.group({
+        Viber: [],
+        Telegram: [],
+        WhatsApp: [],
+      }, { validator: atLeastOne(Validators.required) }),
+      languageSkills: this.formBuilder.group({
+        language: [this.languages[0], Validators.required],
+        languageProficiency: [this.languageProficiency[0], Validators.required]
+      })
     });
   }
 
@@ -112,8 +106,9 @@ export class FilterComponent implements OnInit {
     if (this.filter.valid) {
       const filterData: Filter = this.bodyService.convertFilterData({...this.filter.value});
       this.fetchService.filterForms(filterData).subscribe(forms => {
-          this.formService.setForms(forms);
-          this.formService.setId(undefined);
+        console.log(forms);
+        this.formService.setForms(forms);
+        this.formService.setId(undefined);
       });
     }
   }

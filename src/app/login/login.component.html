@@ -1,27 +1,24 @@
 <div class="container">
     <form class="card" [formGroup]="form" (ngSubmit)="submit()">
-       <h1>{{ 'LOGIN.TITLE' | translate }}</h1>
+        <h1>{{ 'AUTH.LOGIN' | translate }}</h1>
 
-       <mat-form-field class="full-width">
-        <input 
-          matInput 
-          placeholder="{{ 'LOGIN.USERNAME.TITLE' | translate }}" 
-          formControlName="username">
-        <mat-error><app-control-error [control]="form.get('username')"></app-control-error></mat-error>
-      </mat-form-field>
+        <mat-form-field class="full-width">
+            <input matInput placeholder="{{ 'AUTH.USERNAME' | translate }}" formControlName="username">
+            <mat-error>
+                <app-control-error [control]="form.get('username')"></app-control-error>
+            </mat-error>
+        </mat-form-field>
 
-      <mat-form-field class="full-width">
-        <input 
-          matInput 
-          type="password"
-          placeholder="{{ 'LOGIN.PASSWORD.TITLE' | translate }}" 
-          formControlName="password">
-        <mat-error><app-control-error [control]="form.get('password')"></app-control-error></mat-error>
-      </mat-form-field>
+        <mat-form-field class="full-width">
+            <input matInput type="password" placeholder="{{ 'AUTH.PASSWORD' | translate }}" formControlName="password">
+            <mat-error>
+                <app-control-error [control]="form.get('password')"></app-control-error>
+            </mat-error>
+        </mat-form-field>
 
-      <p *ngIf="error" class="error">{{error}}</p>
+        <p *ngIf="error" class="error">{{error}}</p>
 
-      <button class="submit-btn" color="primary" mat-raised-button type="submit" [disabled]="form.invalid || form.pending">{{ 'LOGIN.SUBMIT' | translate }}</button>
+        <button class="submit-btn" color="primary" mat-raised-button type="submit" [disabled]="form.invalid || form.pending">{{ 'AUTH.SUBMIT' | translate }}</button>
 
     </form>
 </div>

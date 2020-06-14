@@ -1,262 +1,240 @@
 <div class="container form-data">
     <h2>{{ 'FORM.TITLE' | translate }}</h2>
-        <hr>
-   <form class="card" [formGroup]="form" (ngSubmit)="submit()">
-   
-    <div class="form-control">
-      <label>{{ 'FORM.NAME' | translate }}</label>
-      <input type="text" name="name" placeholder="Name" formControlName="name">
-      <div
-        *ngIf="form.get('name').invalid && form.get('name').touched"
-        class="validation">
-        <small *ngIf="form.get('name').errors">
+    <hr>
+    <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+
+        <div class="form-control">
+            <label>{{ 'FORM.NAME' | translate }}</label>
+            <input type="text" name="name" placeholder="Name" formControlName="name">
+            <div *ngIf="form.get('name').invalid && form.get('name').touched" class="validation">
+                <small *ngIf="form.get('name').errors">
           {{ 'FORM.VALIDATORS.REQUIRED' | translate }}
         </small>
-      </div>
-    </div>
-   
-    <div class="form-control">
-      <label>{{ 'FORM.SURNAME' | translate }}</label>
-      <input type="text" name="surname" placeholder="Surname" formControlName="surname">
-      <div
-        *ngIf="form.get('surname').invalid && form.get('surname').touched"
-        class="validation">
-        <small *ngIf="form.get('surname').errors">
+            </div>
+        </div>
+
+        <div class="form-control">
+            <label>{{ 'FORM.SURNAME' | translate }}</label>
+            <input type="text" name="surname" placeholder="Surname" formControlName="surname">
+            <div *ngIf="form.get('surname').invalid && form.get('surname').touched" class="validation">
+                <small *ngIf="form.get('surname').errors">
           {{ 'FORM.VALIDATORS.REQUIRED' | translate }}
         </small>
-      </div>
-    </div>
-   
-    <div class="form-control">
-      <label>{{ 'FORM.SEX.TITLE' | translate }}</label>
-      <select name="sex" formControlName="sex">
+            </div>
+        </div>
+
+        <div class="form-control">
+            <label>{{ 'FORM.SEX.TITLE' | translate }}</label>
+            <select name="sex" formControlName="sex">
         <option value="male">{{ 'FORM.SEX.MALE' | translate }}</option>
         <option value="female">{{ 'FORM.SEX.FEMALE' | translate }}</option>
       </select>
-    </div>
-   
-    <div class="form-control">
-      <label>{{ 'FORM.BORN' | translate }}</label>
-      <input type="date" name="born" max="{{date}}" formControlName="born">
-      <div
-        *ngIf="form.get('born').invalid && form.get('born').touched"
-        class="validation">
-        <small *ngIf="form.get('born').errors.required">
+        </div>
+
+        <div class="form-control">
+            <label>{{ 'FORM.BORN' | translate }}</label>
+            <input type="date" name="born" max="{{date}}" formControlName="born">
+            <div *ngIf="form.get('born').invalid && form.get('born').touched" class="validation">
+                <small *ngIf="form.get('born').errors.required">
           {{ 'FORM.VALIDATORS.REQUIRED' | translate }}
         </small>
-      </div>
-    </div>   
-   
-    <div class="form-control">
-      <label>{{ 'FORM.HEIGHT.TITLE' | translate }}</label>
-      <input type="number"  name="height" min="30" max="300" formControlName="height">
-      <div
-        *ngIf="form.get('height').invalid && form.get('height').touched"
-        class="validation">
-        <small *ngIf="form.get('height').errors.min">
+            </div>
+        </div>
+
+        <div class="form-control">
+            <label>{{ 'FORM.HEIGHT.TITLE' | translate }}</label>
+            <input type="number" name="height" min="30" max="300" formControlName="height">
+            <div *ngIf="form.get('height').invalid && form.get('height').touched" class="validation">
+                <small *ngIf="form.get('height').errors.min">
           {{ 'FORM.HEIGHT.MIN' | translate }}
         </small>
-        <small *ngIf="form.get('height').errors.max">
+                <small *ngIf="form.get('height').errors.max">
           {{ 'FORM.HEIGHT.MAX' | translate }}
         </small>
-        <small *ngIf="form.get('height').errors.required">
+                <small *ngIf="form.get('height').errors.required">
           {{ 'FORM.VALIDATORS.REQUIRED' | translate }}
         </small>
-      </div>
-    </div>
-   
-    <div class="form-control">
-      <label>{{ 'FORM.PHONE_NUMBER' | translate }}</label>
-      <input type="text" name="phoneNumber" formControlName="phoneNumber">
-      <div
-        *ngIf="form.get('phoneNumber').invalid && form.get('phoneNumber').touched"
-        class="validation">
-        <small *ngIf="form.get('phoneNumber').errors">
+            </div>
+        </div>
+
+        <div class="form-control">
+            <label>{{ 'FORM.PHONE_NUMBER' | translate }}</label>
+            <input type="text" name="phoneNumber" formControlName="phoneNumber">
+            <div *ngIf="form.get('phoneNumber').invalid && form.get('phoneNumber').touched" class="validation">
+                <small *ngIf="form.get('phoneNumber').errors">
           {{ 'FORM.VALIDATORS.REQUIRED' | translate }}
         </small>
-      </div>
-    </div>
-     
-    <div class="form-control">
-      <label>{{ 'FORM.EMAIL' | translate }}</label>
-      <input type="text" name="email" placeholder="Email" formControlName="email">
-      <div
-        *ngIf="form.get('email').invalid && form.get('email').touched"
-        class="validation">
-        <small *ngIf="form.get('email').errors.required">
+            </div>
+        </div>
+
+        <div class="form-control">
+            <label>{{ 'FORM.EMAIL' | translate }}</label>
+            <input type="text" name="email" placeholder="Email" formControlName="email">
+            <div *ngIf="form.get('email').invalid && form.get('email').touched" class="validation">
+                <small *ngIf="form.get('email').errors.required">
           {{ 'FORM.VALIDATORS.REQUIRED' | translate }}
         </small>
-        <small *ngIf="form.get('email').errors.email">
+                <small *ngIf="form.get('email').errors.email">
           {{ 'FORM.VALIDATORS.EMAIL' | translate }}
         </small>
-      </div>
-    </div>
-   
-    <div class="form-control">
-      <label>{{ 'FORM.EDUCATION.TITLE' | translate }}</label>
-      <select name="education" formControlName="education">
+            </div>
+        </div>
+
+        <div class="form-control">
+            <label>{{ 'FORM.EDUCATION.TITLE' | translate }}</label>
+            <select name="education" formControlName="education">
         <option value="primary">{{ 'FORM.EDUCATION.PRIMARY' | translate }}</option>
         <option value="secondary">{{ 'FORM.EDUCATION.SECONDARY' | translate }}</option>
         <option value="unfinished_higher">{{ 'FORM.EDUCATION.UNFINISHED_HIGHER' | translate }}</option>
         <option value="higher">{{ 'FORM.EDUCATION.HIGHER' | translate }}</option>
       </select>
-    </div>
-   
-    <div class="form-control">
-      <label>{{ 'FORM.EXPECTED_SALARY' | translate }}</label>
-      <input type="number" name="expectedSalary" min="1" formControlName="expectedSalary">
-      <div
-        *ngIf="form.get('expectedSalary').invalid && form.get('expectedSalary').touched"
-        class="validation">
-        <small *ngIf="form.get('expectedSalary').errors.min">
+        </div>
+
+        <div class="form-control">
+            <label>{{ 'FORM.EXPECTED_SALARY' | translate }}</label>
+            <input type="number" name="expectedSalary" min="1" formControlName="expectedSalary">
+            <div *ngIf="form.get('expectedSalary').invalid && form.get('expectedSalary').touched" class="validation">
+                <small *ngIf="form.get('expectedSalary').errors.min">
           {{ 'FORM.VALIDATORS.POSITIVE' | translate }}
         </small>
-        <small *ngIf="form.get('expectedSalary').errors.required">
+                <small *ngIf="form.get('expectedSalary').errors.required">
           {{ 'FORM.VALIDATORS.REQUIRED' | translate }}
         </small>
-      </div>
-    </div> 
-   
-    <div class="form-control">
-      <label>{{ 'FORM.PREFFERED_REGION' | translate }}</label>
-      <input type="text" name="prefferedRegion" formControlName="prefferedRegion">
-    </div>
-   
-    <div class="card" formGroupName="workExperience">
-      <label>{{ 'FORM.WORK_EXPERIENCE' | translate }}</label>
-      <div class="form-control">
-        <label><h5>{{ 'FORM.YEARS' | translate }}</h5></label>
-        <input type="number" min="0" max="100" name="workExperienceYears" formControlName="workExperienceYears">
-        <div
-          *ngIf="form.controls.workExperience.get('workExperienceYears').invalid 
-            && form.controls.workExperience.get('workExperienceYears').touched"
-            class="validation">
-          <small *ngIf="form.controls.workExperience.get('workExperienceYears').errors.max">
+            </div>
+        </div>
+
+        <div class="form-control">
+            <label>{{ 'FORM.PREFFERED_REGION' | translate }}</label>
+            <input type="text" name="prefferedRegion" formControlName="prefferedRegion">
+        </div>
+
+        <div class="card" formGroupName="workExperience">
+            <label>{{ 'FORM.WORK_EXPERIENCE' | translate }}</label>
+            <div class="form-control">
+                <label><h5>{{ 'FORM.YEARS' | translate }}</h5></label>
+                <input type="number" min="0" max="100" name="workExperienceYears" formControlName="workExperienceYears">
+                <div *ngIf="form.controls.workExperience.get('workExperienceYears').invalid 
+            && form.controls.workExperience.get('workExperienceYears').touched" class="validation">
+                    <small *ngIf="form.controls.workExperience.get('workExperienceYears').errors.max">
             {{ 'FORM.VALIDATORS.YEARS' | translate }}
           </small>
-          <small *ngIf="form.controls.workExperience.get('workExperienceYears').errors.min">
+                    <small *ngIf="form.controls.workExperience.get('workExperienceYears').errors.min">
             {{ 'FORM.VALIDATORS.POSITIVE' | translate }}
           </small>
-          <small *ngIf="form.controls.workExperience.get('workExperienceYears').errors.required">
+                    <small *ngIf="form.controls.workExperience.get('workExperienceYears').errors.required">
             {{ 'FORM.VALIDATORS.REQUIRED' | translate }}
           </small>
-        </div>
-      </div>
-      <div class="form-control">
-        <label><h5>{{ 'FORM.MONTHS' | translate }}</h5></label>
-        <input type="number" min="0" max="11" name="workExperienceMonths" formControlName="workExperienceMonths">
-        <div
-            *ngIf="form.controls.workExperience.get('workExperienceMonths').invalid 
-              && form.controls.workExperience.get('workExperienceMonths').touched"
-            class="validation">
-          <small *ngIf="form.controls.workExperience.get('workExperienceMonths').errors.max">
+                </div>
+            </div>
+            <div class="form-control">
+                <label><h5>{{ 'FORM.MONTHS' | translate }}</h5></label>
+                <input type="number" min="0" max="11" name="workExperienceMonths" formControlName="workExperienceMonths">
+                <div *ngIf="form.controls.workExperience.get('workExperienceMonths').invalid 
+              && form.controls.workExperience.get('workExperienceMonths').touched" class="validation">
+                    <small *ngIf="form.controls.workExperience.get('workExperienceMonths').errors.max">
             {{ 'FORM.VALIDATORS.MONTHS' | translate }}
           </small>
-          <small *ngIf="form.controls.workExperience.get('workExperienceMonths').errors.min">
+                    <small *ngIf="form.controls.workExperience.get('workExperienceMonths').errors.min">
             {{ 'FORM.VALIDATORS.POSITIVE' | translate }}
           </small>
-          <small *ngIf="form.controls.workExperience.get('workExperienceMonths').errors.required">
+                    <small *ngIf="form.controls.workExperience.get('workExperienceMonths').errors.required">
             {{ 'FORM.VALIDATORS.REQUIRED' | translate }}
           </small>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-   
-     <div class="card" formGroupName="unemployedFor">
-      <label>{{ 'FORM.UNEMPLOYED_FOR' | translate }}</label>
-      <div class="form-control">
-        <label><h5>{{ 'FORM.YEARS' | translate }}</h5></label>
-        <input type="number" min="0" max="100" name="unemployedForYears" formControlName="unemployedForYears">
-          <div
-          *ngIf="form.controls.unemployedFor.get('unemployedForYears').invalid 
-            && form.controls.unemployedFor.get('unemployedForYears').touched"
-            class="validation">
-          <small *ngIf="form.controls.unemployedFor.get('unemployedForYears').errors.max">
+
+        <div class="card" formGroupName="unemployedFor">
+            <label>{{ 'FORM.UNEMPLOYED_FOR' | translate }}</label>
+            <div class="form-control">
+                <label><h5>{{ 'FORM.YEARS' | translate }}</h5></label>
+                <input type="number" min="0" max="100" name="unemployedForYears" formControlName="unemployedForYears">
+                <div *ngIf="form.controls.unemployedFor.get('unemployedForYears').invalid 
+            && form.controls.unemployedFor.get('unemployedForYears').touched" class="validation">
+                    <small *ngIf="form.controls.unemployedFor.get('unemployedForYears').errors.max">
             {{ 'FORM.VALIDATORS.YEARS' | translate }}
           </small>
-          <small *ngIf="form.controls.unemployedFor.get('unemployedForYears').errors.min">
+                    <small *ngIf="form.controls.unemployedFor.get('unemployedForYears').errors.min">
             {{ 'FORM.VALIDATORS.POSITIVE' | translate }}
           </small>
-          <small *ngIf="form.controls.unemployedFor.get('unemployedForYears').errors.required">
+                    <small *ngIf="form.controls.unemployedFor.get('unemployedForYears').errors.required">
             {{ 'FORM.VALIDATORS.REQUIRED' | translate }}
           </small>
-        </div>
-      </div>
-      <div class="form-control">
-        <label><h5>{{ 'FORM.MONTHS' | translate }}</h5></label>
-        <input type="number" min="0" max="11" name="unemployedForMonths" formControlName="unemployedForMonths">
-        <div
-            *ngIf="form.controls.unemployedFor.get('unemployedForMonths').invalid 
-              && form.controls.unemployedFor.get('unemployedForMonths').touched"
-            class="validation">
-          <small *ngIf="form.controls.unemployedFor.get('unemployedForMonths').errors.max">
+                </div>
+            </div>
+            <div class="form-control">
+                <label><h5>{{ 'FORM.MONTHS' | translate }}</h5></label>
+                <input type="number" min="0" max="11" name="unemployedForMonths" formControlName="unemployedForMonths">
+                <div *ngIf="form.controls.unemployedFor.get('unemployedForMonths').invalid 
+              && form.controls.unemployedFor.get('unemployedForMonths').touched" class="validation">
+                    <small *ngIf="form.controls.unemployedFor.get('unemployedForMonths').errors.max">
             {{ 'FORM.VALIDATORS.MONTHS' | translate }}
           </small>
-          <small *ngIf="form.controls.unemployedFor.get('unemployedForMonths').errors.min">
+                    <small *ngIf="form.controls.unemployedFor.get('unemployedForMonths').errors.min">
             {{ 'FORM.VALIDATORS.POSITIVE' | translate }}
           </small>
-          <small *ngIf="form.controls.unemployedFor.get('unemployedForMonths').errors.required">
+                    <small *ngIf="form.controls.unemployedFor.get('unemployedForMonths').errors.required">
             {{ 'FORM.VALIDATORS.REQUIRED' | translate }}
           </small>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-   
-    <div class="card" formGroupName="languageSkills">
-      <label>{{ 'FORM.LANGUAGE_SKILLS' | translate }}</label>
-   
-      <div class="form-control">
-        <label><input type="checkbox" name="english" formControlName="english">{{ 'FORM.LANGUAGES.ENGLISH' | translate }}</label>
-        <select name="englishProficiency" formControlName="englishProficiency">
+
+        <div class="card" formGroupName="languageSkills">
+            <label>{{ 'FORM.LANGUAGE_SKILLS' | translate }}</label>
+
+            <div class="form-control">
+                <label><input type="checkbox" name="english" formControlName="english">{{ 'FORM.LANGUAGES.ENGLISH' | translate }}</label>
+                <select name="englishProficiency" formControlName="englishProficiency">
           <option value="basic">{{ 'FORM.LANGUAGE_PROFICIENCY.BASIC' | translate }}</option>
           <option value="intermediate">{{ 'FORM.LANGUAGE_PROFICIENCY.INTERMEDIATE' | translate }}</option>
           <option value="fluent">{{ 'FORM.LANGUAGE_PROFICIENCY.FLUENT' | translate }}</option>
           <option value="native">{{ 'FORM.LANGUAGE_PROFICIENCY.NATIVE' | translate }}</option>
         </select>
-      </div>
-      <div class="form-control">
-        <label><input type="checkbox" name="russian" formControlName="russian">{{ 'FORM.LANGUAGES.RUSSIAN' | translate }}</label>
-        <select name="russianProficiency" formControlName="russianProficiency">
+            </div>
+            <div class="form-control">
+                <label><input type="checkbox" name="russian" formControlName="russian">{{ 'FORM.LANGUAGES.RUSSIAN' | translate }}</label>
+                <select name="russianProficiency" formControlName="russianProficiency">
           <option value="basic">{{ 'FORM.LANGUAGE_PROFICIENCY.BASIC' | translate }}</option>
           <option value="intermediate">{{ 'FORM.LANGUAGE_PROFICIENCY.INTERMEDIATE' | translate }}</option>
           <option value="fluent">{{ 'FORM.LANGUAGE_PROFICIENCY.FLUENT' | translate }}</option>
           <option value="native">{{ 'FORM.LANGUAGE_PROFICIENCY.NATIVE' | translate }}</option>
         </select>
-      </div>
-    </div>
-   
-    <div class="card" formGroupName="professions">
-      <label>{{ 'FORM.PROFESSIONS.TITLE' | translate }}</label>
-      <div class="form-control">
-        <label><input type="checkbox" name="trainee" formControlName="trainee">{{ 'FORM.PROFESSIONS.TRAINEE' | translate }}</label>
-        <label><input type="checkbox" name="dealer" formControlName="dealer">{{ 'FORM.PROFESSIONS.DEALER' | translate }}</label>
-        <label><input type="checkbox" name="inspector" formControlName="inspector">{{ 'FORM.PROFESSIONS.INSPECTOR' | translate }}</label>
-        <label><input type="checkbox" name="manager" formControlName="manager">{{ 'FORM.PROFESSIONS.MANAGER' | translate }}</label>
-        <label><input type="checkbox" name="pit_boss" formControlName="pit_boss">{{ 'FORM.PROFESSIONS.PIT_BOSS' | translate }}</label>
-        <label><input type="checkbox" name="waiter" formControlName="waiter">{{ 'FORM.PROFESSIONS.WAITER' | translate }}</label>
-        <label><input type="checkbox" name="barman" formControlName="barman">{{ 'FORM.PROFESSIONS.BARMAN' | translate }}</label>
-      </div>
-    </div>
-   
-    <div class="card" formGroupName="messengers">
-      <label>{{ 'FORM.MESSENGERS.TITLE' | translate }}</label>
-      <div class="form-control">
-        <label><input type="checkbox" name="Telegram" formControlName="msTelegram">{{ 'FORM.MESSENGERS.TELEGRAM' | translate }}</label>
-        <input type="text" name="Telegram" formControlName="Telegram">
-      </div>
-      <div class="form-control">
-        <label><input type="checkbox" name="msWhatsApp" formControlName="msWhatsApp">{{ 'FORM.MESSENGERS.WHATS_APP' | translate }}</label>
-        <input type="text" name="WhatsApp" formControlName="WhatsApp">
-      </div>
-      <div class="form-control">
-        <label><input type="checkbox" name="msViber" formControlName="msViber">{{ 'FORM.MESSENGERS.VIBER' | translate }}</label>
-        <input type="text" name="Viber" formControlName="Viber">
-      </div>
-    </div>
-   
-    <textarea rows="5" name="note" placeholder="Note..." formControlName="note"></textarea>
-   
-    <button class="btn" type="submit" [disabled]="form.invalid || form.pending">{{ 'FORM.SUBMIT' | translate }}</button>
-  </form>
-  <app-comment></app-comment>
+            </div>
+        </div>
+
+        <div class="card" formGroupName="professions">
+            <label>{{ 'FORM.PROFESSIONS.TITLE' | translate }}</label>
+            <div class="form-control">
+                <label><input type="checkbox" name="trainee" formControlName="trainee">{{ 'FORM.PROFESSIONS.TRAINEE' | translate }}</label>
+                <label><input type="checkbox" name="dealer" formControlName="dealer">{{ 'FORM.PROFESSIONS.DEALER' | translate }}</label>
+                <label><input type="checkbox" name="inspector" formControlName="inspector">{{ 'FORM.PROFESSIONS.INSPECTOR' | translate }}</label>
+                <label><input type="checkbox" name="manager" formControlName="manager">{{ 'FORM.PROFESSIONS.MANAGER' | translate }}</label>
+                <label><input type="checkbox" name="pit_boss" formControlName="pit_boss">{{ 'FORM.PROFESSIONS.PIT_BOSS' | translate }}</label>
+                <label><input type="checkbox" name="waiter" formControlName="waiter">{{ 'FORM.PROFESSIONS.WAITER' | translate }}</label>
+                <label><input type="checkbox" name="barman" formControlName="barman">{{ 'FORM.PROFESSIONS.BARMAN' | translate }}</label>
+            </div>
+        </div>
+
+        <div class="card" formGroupName="messengers">
+            <label>{{ 'FORM.MESSENGERS.TITLE' | translate }}</label>
+            <div class="form-control">
+                <label><input type="checkbox" name="Telegram" formControlName="msTelegram">{{ 'FORM.MESSENGERS.TELEGRAM' | translate }}</label>
+                <input type="text" name="Telegram" formControlName="Telegram">
+            </div>
+            <div class="form-control">
+                <label><input type="checkbox" name="msWhatsApp" formControlName="msWhatsApp">{{ 'FORM.MESSENGERS.WHATS_APP' | translate }}</label>
+                <input type="text" name="WhatsApp" formControlName="WhatsApp">
+            </div>
+            <div class="form-control">
+                <label><input type="checkbox" name="msViber" formControlName="msViber">{{ 'FORM.MESSENGERS.VIBER' | translate }}</label>
+                <input type="text" name="Viber" formControlName="Viber">
+            </div>
+        </div>
+
+        <textarea rows="5" name="note" placeholder="Note..." formControlName="note"></textarea>
+
+        <button class="btn" type="submit" [disabled]="form.invalid || form.pending">{{ 'FORM.SUBMIT' | translate }}</button>
+    </form>
+    <app-comment></app-comment>
 </div>

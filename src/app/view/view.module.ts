@@ -6,6 +6,11 @@ import { FilterComponent } from './filter/filter.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -19,6 +24,11 @@ import { CommonModule } from '@angular/common';
       FormsModule,
       ReactiveFormsModule,
       CommonModule,
+      BrowserAnimationsModule,
+      MatButtonModule,
+      MatInputModule,
+      MatSelectModule,
+      MatCheckboxModule,
   ],
   exports: [
     CommentComponent,
