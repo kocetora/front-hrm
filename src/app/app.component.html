@@ -1,31 +1,39 @@
-<nav class="navbar">
-    <h1>
-        <a routerLink="/">HR manager</a>
-    </h1>
-    <ul>
-        <li>
-                <select class="lang" #langselect (change)="translate.use(langselect.value)">
-                    <option *ngFor="let lang of translate.getLangs()" [value]="lang">{{ lang }}</option>
-                </select>
-        </li>
-        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-            <a routerLink="/">{{ 'HOME.FORM' | translate }}</a>
-        </li>
-        <li *ngIf="!isAuth()" routerLinkActive="active">
-            <a routerLink="/login">{{ 'HOME.LOGIN' | translate }}</a>
-        </li>
-        <li *ngIf="isAuth()" routerLinkActive="active">
-            <a routerLink="/view">{{ 'HOME.VIEW' | translate }}</a>
-        </li>
-        <li><button *ngIf="isAuth()" class="btn" (click)="logout()" >{{ 'HOME.LOGOUT' | translate }}</button></li>
-    </ul>
+  <nav mat-tab-nav-bar>
+    <a mat-tab-link
+        routerLink="/"
+        routerLinkActive #rla="routerLinkActive"
+        [routerLinkActiveOptions]="{exact:true}"
+        [active]="rla.isActive">
+       {{ 'HOME.FORM' | translate }}
+    </a>
+    <a mat-tab-link
+    *ngIf="!isAuth()"
+        routerLink="/login"
+        routerLinkActive #rla="routerLinkActive"
+        [active]="rla.isActive">
+       {{ 'HOME.LOGIN' | translate }}
+    </a>
+    <a mat-tab-link
+    *ngIf="!isAuth()"
+        routerLink="/sign-up"
+        routerLinkActive #rla="routerLinkActive"
+        [active]="rla.isActive">
+       {{ 'HOME.SIGN_UP' | translate }}
+    </a>
+    <a mat-tab-link
+        routerLink="/view"
+        *ngIf="isAuth()"
+       routerLinkActive #rla="routerLinkActive"
+       [active]="rla.isActive">
+       {{ 'HOME.VIEW' | translate }}
+    </a>
+    <a mat-tab-link
+    *ngIf="isAuth()" class="btn" (click)="logout()">
+       {{ 'HOME.LOGOUT' | translate }}
+    </a>      
+    <select class="lang" #langselect (change)="translate.use(langselect.value)">
+        <option *ngFor="let lang of translate.getLangs()" [value]="lang">{{ lang }}</option>
+    </select>
   </nav>
   
-  <div class="container">
-    <div class="card">
-  
-      <router-outlet></router-outlet>
-  
-    </div>
-  </div>
-  
+  <router-outlet></router-outlet>

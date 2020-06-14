@@ -15,6 +15,11 @@ export class AuthService {
         return this.http.post<UserInfo>(url, user);
     }
 
+    signUp(user: User): Observable<{}> {
+        const url = `register`;
+        return this.http.post(url, user);
+    }
+
     logout(): Observable<{}> {
         const url = `logout`;
         return this.http.get(url);

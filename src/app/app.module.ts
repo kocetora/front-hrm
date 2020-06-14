@@ -17,6 +17,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { ControlErrorComponent } from './control-error/control-error.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -29,7 +31,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ViewComponent,
     LoginComponent,
     ErrorComponent,
-    ControlErrorComponent
+    ControlErrorComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatInputModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTabsModule
     ],
   providers: [],
   bootstrap: [AppComponent]
