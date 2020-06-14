@@ -20,6 +20,13 @@
       </mat-form-field>
 
       <mat-form-field class="full-width">
+        <input matInput [matDatepicker]="picker" placeholder="{{ 'FORM.BORN' | translate  }}"  formControlName="born">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        <mat-error><app-control-error [control]="form.get('born')"></app-control-error></mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
         <mat-select placeholder="{{ 'FORM.SEX.TITLE' | translate }}" formControlName="sex">
           <mat-option *ngFor="let gender of genders" [value]="gender">
             {{ 'FORM.SEX.' + gender | uppercase | translate }}

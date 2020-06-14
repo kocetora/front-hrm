@@ -57,7 +57,7 @@ export class FormComponent implements OnInit {
         surname: ['', [Validators.required, CustomValidators.noWhitespace]],
         sex: [this.genders[0], Validators.required],
         education: [this.grades[0], Validators.required],
-        // born: ['',  [Validators.required]],
+        born: ['',  [Validators.required]],
         height: ['',  [Validators.required, Validators.min(30), Validators.max(300)]],
         phoneNumber: ['', [Validators.required, CustomValidators.noWhitespace]],
         email: ['', [Validators.required, Validators.email]],
