@@ -1,18 +1,17 @@
-.list{
-  max-width: 500px;
-}
-
+// .list{
+//   max-width: 500px;
+// }
 .card p {
-  display: flex;
-  font-size: 17px;
-  font-weight: 600;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    font-size: 17px;
+    font-weight: 600;
+    justify-content: space-between;
+    align-items: center;
 }
 
 span.name {
-  white-space: nowrap; 
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 250px;
 }
