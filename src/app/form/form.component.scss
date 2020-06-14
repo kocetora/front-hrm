@@ -1,11 +1,49 @@
-div.col1 {
+.grid-container {
+    display: grid;
+    grid-template-areas: 'col1 col2';
+    grid-template-columns: 1fr 1fr;  
+    grid-template-rows: 1fr;
+    margin-bottom: 10px;
+}  
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.col1, .col2, .card {
     display: flex;
     flex-direction: column;
 }
 
-.full-width {
+.col1 {
+    margin-right: 15px;
+}
+
+.col2 {
+    margin-left: 15px;
+}
+
+.mincard, .full-width {
+    min-width: 300px;
     width: 100%;
+    max-width: 700px;
+}
+
+.mincard {
+    padding: 1rem;
+    border: #ccc 1px dotted;
+    margin: 0.7rem 0;
+}
+
+.full-width {
     margin-bottom: 10px;
+}
+
+.part-width {
+    margin: 10px;
 }
 
 .error-message {
@@ -15,4 +53,27 @@ div.col1 {
 p {
     font-size: 20px;
 }
-  
+
+@media only screen and (max-width : 480px) {
+    .grid-container {
+        display: flex;
+        flex-direction: column;
+    }  
+
+    .col1, .col2 {
+        margin: 0;
+    }
+    
+    .full-width, .mincard {
+        min-width: 250px;
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .part-width {
+        min-width: 230px;
+        width: 100%;
+        max-width: 330px;
+        margin: 0;
+    }
+}
