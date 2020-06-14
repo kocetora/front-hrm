@@ -99,6 +99,7 @@ export class FormComponent implements OnInit {
     }
 
     submit() {
+
         console.log(this.form);
         // const formData = this.bodyService.convertFormData({...this.form.value});
         // this.fetchService.addForm(formData).subscribe();

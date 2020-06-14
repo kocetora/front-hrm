@@ -1,15 +1,15 @@
 export class FormEnums {
-    static genders = [
+    public genders = [
         'male',
         'female'
       ];
-    static grades = [
+    public grades = [
         'primary',
         'secondary',
         'unfinished_higher',
         'higher'
       ];
-    static professions = [
+    public professions = [
         'trainee',
         'dealer',
         'inspector',
@@ -18,13 +18,13 @@ export class FormEnums {
         'waiter',
         'barman'
       ];
-      static messengers = [
+    public messengers = [
         'Telegram',
         'Viber',
         'WhatsApp'
       ];
-      static languages = ['russian', 'english'];
-      static languageProficiency = [
+    public languages = ['russian', 'english'];
+    public languageProficiency = [
         'basic',
         'intermediate',
         'fluent',
