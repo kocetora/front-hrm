@@ -1,22 +1,22 @@
 <nav mat-tab-nav-bar>
-    <a mat-tab-link routerLink="/" routerLinkActive #rla="routerLinkActive" [routerLinkActiveOptions]="{exact:true}" [active]="rla.isActive">
-       {{ 'HOME.FORM' | translate }}
-    </a>
-    <a mat-tab-link *ngIf="!isAuth()" routerLink="/login" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
-       {{ 'HOME.LOGIN' | translate }}
-    </a>
-    <a mat-tab-link *ngIf="!isAuth()" routerLink="/sign-up" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
-       {{ 'HOME.SIGN_UP' | translate }}
-    </a>
-    <a mat-tab-link routerLink="/view" *ngIf="isAuth()" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
-       {{ 'HOME.VIEW' | translate }}
-    </a>
-    <a mat-tab-link *ngIf="isAuth()" class="btn" (click)="logout()">
-       {{ 'HOME.LOGOUT' | translate }}
-    </a>
     <select class="lang" #langselect (change)="translate.use(langselect.value)">
-        <option *ngFor="let lang of translate.getLangs()" [value]="lang">{{ lang }}</option>
-    </select>
+     <option *ngFor="let lang of translate.getLangs()" [value]="lang">{{ lang }}</option>
+   </select>
+    <a mat-tab-link routerLink="/" routerLinkActive #rla="routerLinkActive" [routerLinkActiveOptions]="{exact:true}" [active]="rla.isActive">
+      {{ 'HOME.FORM' | translate }}
+   </a>
+    <a mat-tab-link *ngIf="!isAuth()" routerLink="/login" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
+      {{ 'HOME.LOGIN' | translate }}
+   </a>
+    <a mat-tab-link *ngIf="!isAuth()" routerLink="/sign-up" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
+      {{ 'HOME.SIGN_UP' | translate }}
+   </a>
+    <a mat-tab-link routerLink="/view" *ngIf="isAuth()" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
+      {{ 'HOME.VIEW' | translate }}
+   </a>
+    <a mat-tab-link *ngIf="isAuth()" class="btn" (click)="logout()">
+      {{ 'HOME.LOGOUT' | translate }}
+   </a>
 </nav>
 
 <router-outlet></router-outlet>
