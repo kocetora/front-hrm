@@ -6,21 +6,11 @@
         "LOGOUT": "Log out",
         "SIGN_UP": "Sign up"
     },
-    "LOGIN": {
-        "TITLE": "Login",
+    "AUTH": {
+        "LOGIN": "Login",
         "SIGN_UP": "Sign up",
-        "USERNAME": {
-            "TITLE": "Username",
-            "REQUIRED": "Username can not be empty",
-            "MIN_LENGTH": "Username should be longer than 2",
-            "MAX_LENGTH": "Username should be shorter than 50"
-        },
-        "PASSWORD": {
-            "TITLE": "Password",
-            "REQUIRED": "Password can not be empty",
-            "MIN_LENGTH": "Password should be longer than 6",
-            "MAX_LENGTH": "Password should be shorter than 25"
-        },
+        "USERNAME": "Username",
+        "PASSWORD": "Password",
         "SUBMIT": "Submit"
     },
     "FORM": {
@@ -48,14 +38,21 @@
         "PREFFERED_REGION": "Preffered region",
         "WORK_EXPERIENCE": "Work experience",
         "UNEMPLOYED_FOR": "Unemployed for",
+        "AGE": "Age",
+        "FROM": "From",
+        "TO": "To",
+        "WORK_EXPERIENCE_FROM": "Work experience from",
+        "WORK_EXPERIENCE_TO": "Work experience to",
         "YEARS": "Years",
         "MONTHS": "Months",
         "LANGUAGE_SKILLS": "Language skills",
         "LANGUAGES": {
+            "TITLE": "Language",
             "ENGLISH": "English",
             "RUSSIAN": "Russian"
         },
         "LANGUAGE_PROFICIENCY": {
+            "TITLE": "Language proficiency",
             "BASIC": "Basic",
             "INTERMEDIATE": "Intermediate",
             "FLUENT": "Fluent",
@@ -79,92 +76,11 @@
         },
         "NOTE": "Note",
         "SUBMIT": "Submit",
-        "VALIDATORS": {
-            "REQUIRED": "Can not be empty",
-            "EMAIL": "Enter correct email",
-            "POSITIVE": "Should be bigger then 0",
-            "YEARS": "Should be less then 100",
-            "MONTHS": "Should be less then 11"
-        }
-    },
-    "FILTER": {
-        "TITLE":"Filter",
-        "SEX": {
-            "TITLE": "Sex",
-            "MALE": "Male",
-            "FEMALE": "Female"
-        },
-        "EDUCATION": {
-            "TITLE": "Education",
-            "PRIMARY": "Primary",
-            "SECONDARY": "Secondary",
-            "UNFINISHED_HIGHER": "Unfinished higher",
-            "HIGHER": "Higher"
-        },
-        "HEIGHT": {
-            "TITLE": "Height(cm)",
-            "MIN": "Should be bigger then 30",
-            "MAX": "Should be less then 300"
-        },
-        "EXPECTED_SALARY": {
-            "TITLE": "Expected salary($)",
-            "MIN": "Should be bigger then 1",
-            "MAX":"Should be less then 100000"
-        },
-        "AGE": {
-            "TITLE": "Age",
-            "MIN": "Should be bigger then 30",
-            "MAX": "Should be less then 300"
-        },
-        "FROM": "From",
-        "TO": "To",
-        "PROFESSIONS": {
-            "TITLE": "Professions",
-            "TRAINEE": "Trainee",
-            "DEALER": "Dealer",
-            "INSPECTOR": "Inspector",
-            "MANAGER": "Manager",
-            "PIT_BOSS": "Pit boss",
-            "WAITER": "Waiter",
-            "BARMAN": "Barman"
-        },
-        "MESSENGERS": {
-            "TITLE": "Messengers",
-            "TELEGRAM": "Telegram",
-            "VIBER": "WhatsApp",
-            "WHATS_APP": "Viber"
-        },
-        "LANGUAGE_SKILLS": "Language skills",
-        "LANGUAGES": {
-            "TITLE": "Language",
-            "ENGLISH": "English",
-            "RUSSIAN": "Russian"
-        },
-        "LANGUAGE_PROFICIENCY": {
-            "TITLE": "Language proficiency",
-            "BASIC": "Basic",
-            "INTERMEDIATE": "Intermediate",
-            "FLUENT": "Fluent",
-            "NATIVE": "Native"
-        },
-        "WORK_EXPERIENCE_FROM": "Work experience from",
-        "WORK_EXPERIENCE_TO": "Work experience to",
-        "YEARS": "Years",
-        "MONTHS": "Months",
-        "VALIDATORS": {
-            "REQUIRED": "Can not be empty",
-            "EMAIL": "Enter correct email",
-            "POSITIVE": "Should be bigger then 0",
-            "YEARS": "Should be less then 100",
-            "MONTHS": "Should be less then 11"
-        },
-        "SUBMIT":"Submit",
         "RESET": "Reset"
     },
-    "LIST": "List",
-    "COMMENT": {
-        "TITLE": "Comments",
-        "REQUIRED": "Can not be empty",
-        "SUBMIT": "Submit"
+    "VIEW":{
+        "FILTER": "Filter",
+        "LIST": "List",
+        "COMMENT": "Comments"
     }
 }

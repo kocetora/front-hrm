@@ -6,21 +6,11 @@
         "LOGOUT": "Выйти",
         "SIGN_UP": "Зарегистрироваться"        
     },
-    "LOGIN": {
-        "TITLE": "Вход",
+    "AUTH": {
+        "LOGIN": "Вход",
         "SIGN_UP": "Регистрация",
-        "USERNAME": {
-            "TITLE": "Имя пользователя",
-            "REQUIRED": "Имя пользователя не может быть пустым",
-            "MIN_LENGTH": "Имя пользователя должен быть больше 2",
-            "MAX_LENGTH": "Имя пользователя должен быть меньше 50"
-        },
-        "PASSWORD": {
-            "TITLE": "Пароль",
-            "REQUIRED": "Пароль не может быть пустым",
-            "MIN_LENGTH": "Пароль должен быть больше 6",
-            "MAX_LENGTH": "Пароль должен быть меньше 25"
-        },
+        "USERNAME": "Имя пользователя",
+        "PASSWORD": "Пароль",
         "SUBMIT": "Отправить"
     },
     "FORM": {
@@ -44,96 +34,17 @@
             "HIGHER": "Высшее"
         },
         "EXPECTED_SALARY": "Ожидаемая зарплата($)",
+        "HINT": "Требуется как минимум одно поле",
         "PREFFERED_REGION": "Желаемый регион",
         "WORK_EXPERIENCE": "Опыт работы",
         "UNEMPLOYED_FOR": "Безработен",
-        "HINT": "Требуется как минимум одно поле",
+        "AGE": "Возраст",
+        "FROM": "От",
+        "TO": "До",        
+        "WORK_EXPERIENCE_FROM": "Опыт работы от",
+        "WORK_EXPERIENCE_TO": "Опыт работы до",
         "YEARS": "Лет",
         "MONTHS": "Мeсяцев",
-        "LANGUAGE_SKILLS": "Языковые навыки",
-        "LANGUAGES": {
-            "ENGLISH": "Английский",
-            "RUSSIAN": "Русский"
-        },
-        "LANGUAGE_PROFICIENCY": {
-            "BASIC": "Начальный",
-            "INTERMEDIATE": "Средний",
-            "FLUENT": "Свободный",
-            "NATIVE": "Родной"
-        },
-        "PROFESSIONS": {
-            "TITLE": "Вакансии",
-            "TRAINEE": "Курсы",
-            "DEALER": "Дилер",
-            "INSPECTOR": "Инспектор",
-            "MANAGER": "Менеджер",
-            "PIT_BOSS": "Пит босс",
-            "WAITER": "Официант",
-            "BARMAN": "Бармен"
-        },
-        "MESSENGERS": {
-            "TITLE": "Мессенджеры",
-            "TELEGRAM": "Telegram",
-            "VIBER": "WhatsApp",
-            "WHATS_APP": "Viber"
-        },
-        "NOTE": "Примечания",
-        "SUBMIT": "Отправить",
-        "VALIDATORS": {
-            "REQUIRED": "Не может быть пустым",
-            "EMAIL": "Введите корректный email",
-            "POSITIVE": "Должно быть больше 0",
-            "YEARS": "Должно быть меньше 100",
-            "MONTHS": "Должно быть меньше 11"
-        }
-    },
-    "FILTER": {
-        "TITLE":"Фильтр",
-        "SEX": {
-            "TITLE": "Пол",
-            "MALE": "Мужчина",
-            "FEMALE": "Женщина"
-        },
-        "EDUCATION": {
-            "TITLE": "Образование",
-            "PRIMARY": "Начальное",
-            "SECONDARY": "Среднее",
-            "UNFINISHED_HIGHER": "Незаконченное высшее",
-            "HIGHER": "Высшее"
-        },
-        "HEIGHT": {
-            "TITLE": "Рост(см)",
-            "MIN": "Дожен быть больше чем 30",
-            "MAX": "Дожен быть меньше чем 300"
-        },
-        "EXPECTED_SALARY": {
-            "TITLE": "Ожидаемая зарплата($)",
-            "MIN": "Дожна быть больше чем 1",
-            "MAX":"Дожна быть меньше чем 100000"
-        },
-        "AGE": {
-            "TITLE": "Возраст",
-            "MIN": "Дожен быть больше чем 30",
-            "MAX": "Дожен быть меньше чем 300"
-        },
-        "FROM": "От",
-        "TO": "До",
-        "PROFESSIONS": {
-            "TITLE": "Вакансии",
-            "TRAINEE": "Курсы",
-            "DEALER": "Дилер",
-            "INSPECTOR": "Инспектор",
-            "MANAGER": "Менеджер",
-            "PIT_BOSS": "Пит босс",
-            "WAITER": "Официант",
-            "BARMAN": "Бармен"
-        },
-        "MESSENGERS": {
-            "TITLE": "Мессенджеры",
-            "TELEGRAM": "Telegram",
-            "VIBER": "WhatsApp",
-            "WHATS_APP": "Viber"
-        },
         "LANGUAGE_SKILLS": "Языковые навыки",
         "LANGUAGES": {
             "TITLE": "Язык",
@@ -147,24 +58,29 @@
             "FLUENT": "Свободный",
             "NATIVE": "Родной"
         },
-        "WORK_EXPERIENCE_FROM": "Опыт работы от",
-        "WORK_EXPERIENCE_TO": "Опыт работы до",
-        "YEARS": "Лет",
-        "MONTHS": "Месяцев",
-        "VALIDATORS": {
-            "REQUIRED": "Не может быть пустым",
-            "EMAIL": "Введите корректный email",
-            "POSITIVE": "Должно быть больше 0",
-            "YEARS": "Должно быть меньше 100",
-            "MONTHS": "Должно быть меньше 11"
+        "PROFESSIONS": {
+            "TITLE": "Вакансии",
+            "TRAINEE": "Курсы",
+            "DEALER": "Дилер",
+            "INSPECTOR": "Инспектор",
+            "MANAGER": "Менеджер",
+            "PIT_BOSS": "Пит босс",
+            "WAITER": "Официант",
+            "BARMAN": "Бармен"
         },
-        "SUBMIT":"Отправить",
+        "MESSENGERS": {
+            "TITLE": "Мессенджеры",
+            "TELEGRAM": "Telegram",
+            "VIBER": "WhatsApp",
+            "WHATSAPP": "Viber"
+        },
+        "NOTE": "Примечания",
+        "SUBMIT": "Отправить",
         "RESET": "Сбросить"
     },
-    "LIST": "Список",
-    "COMMENT": {
-        "TITLE": "Комментарии",
-        "REQUIRED": "Не может быть пустым",
-        "SUBMIT": "Отправить"
+    "VIEW":{
+        "FILTER": "Фильтр",
+        "LIST": "Список",
+        "COMMENT": "Комментарии"
     }
 }
