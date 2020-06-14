@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/view']);
       },
       (err) => {
-        console.log(err)
+        console.log(err);
         this.error = err.error.message;
       });
     }

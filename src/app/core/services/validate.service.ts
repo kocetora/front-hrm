@@ -3,13 +3,16 @@ export class ValidateService {
     constructor() { }
 
     static getValidatorErrorMessage(validatorName: string, validatorValue?: any) {
-      let config = {
-        'required': 'Required',
-        'email': 'Invalid email address',
-        // 'invalidPassword': 'Invalid password. Password must be at least 6 characters long, and contain a number.',
-        'minlength': `Minimum length ${validatorValue.requiredLength}`
+      const config = {
+        required: 'Required',
+        whitespace: 'Can not be empty',
+        email: 'Invalid email address',
+        min: `Minimum ${validatorValue.min}`,
+        max: `Maximum ${validatorValue.max}`,
+        minlength: `Minimum length ${validatorValue.requiredLength}`,
+        maxlength: `Maximum length ${validatorValue.requiredLength}`,
       };
-    
+
       return config[validatorName];
-    }      
+    }
 }

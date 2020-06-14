@@ -12,15 +12,15 @@ import { FetchService } from '../core/services/fetch.service';
   providers: [BodyService, FetchService],
 })
 export class FormComponent implements OnInit {
-  form: any;  
+  form: any;
   genders = [
-    "male",
-    "female"
+    'male',
+    'female'
   ];
   grades = [
-    'primary', 
-    'secondary', 
-    'unfinished_higher', 
+    'primary',
+    'secondary',
+    'unfinished_higher',
     'higher'
   ];
   professions = [
@@ -33,15 +33,15 @@ export class FormComponent implements OnInit {
     'barman'
   ];
   messengers = [
-    'Telegram', 
-    'Viber', 
+    'Telegram',
+    'Viber',
     'WhatsApp'
   ];
   languages = ['russian', 'english'];
   languageProficiency = [
-    'native', 
-    'fluent', 
-    'intermediate', 
+    'native',
+    'fluent',
+    'intermediate',
     'basic'
   ];
 
@@ -49,7 +49,7 @@ export class FormComponent implements OnInit {
       private bodyService: BodyService,
       private fetchService: FetchService,
       private formBuilder: FormBuilder) { }
-    
+
 
     ngOnInit() {
       this.form = this.formBuilder.group({
@@ -87,7 +87,7 @@ export class FormComponent implements OnInit {
           waiter: [''],
           barman: [''],
         })
-      })
+      });
     }
 
         // messengers: new FormGroup({
@@ -100,11 +100,11 @@ export class FormComponent implements OnInit {
         // })
 
     submit() {
-     
-        console.log(this.form)
+
+        console.log(this.form);
         // const formData = this.bodyService.convertFormData({...this.form.value});
         // this.fetchService.addForm(formData).subscribe();
         // this.form.reset();
-      
+
     }
   }

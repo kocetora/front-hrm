@@ -8,7 +8,7 @@
           matInput 
           placeholder="{{ 'FORM.NAME' | translate  }}" 
           formControlName="name">
-        <mat-error><control-error [control]="form.get('name')"></control-error></mat-error>
+        <mat-error><app-control-error [control]="form.get('name')"></app-control-error></mat-error>
       </mat-form-field>
 
       <mat-form-field class="full-width">
@@ -16,7 +16,7 @@
           matInput 
           placeholder="{{ 'FORM.SURNAME' | translate  }}" 
           formControlName="surname">
-        <mat-error><control-error [control]="form.get('surname')"></control-error></mat-error>
+        <mat-error><app-control-error [control]="form.get('surname')"></app-control-error></mat-error>
       </mat-form-field>
 
       <mat-form-field class="full-width">
@@ -25,7 +25,7 @@
             {{ 'FORM.SEX.' + gender | uppercase | translate }}
           </mat-option>
         </mat-select>
-        <mat-error><control-error [control]="form.get('sex')"></control-error></mat-error>
+        <mat-error><app-control-error [control]="form.get('sex')"></app-control-error></mat-error>
       </mat-form-field>
 
       <mat-form-field class="full-width">
@@ -34,7 +34,7 @@
             {{ 'FORM.EDUCATION.' + grade | uppercase | translate }}
           </mat-option>
         </mat-select>
-        <mat-error><control-error [control]="form.get('education')"></control-error></mat-error>
+        <mat-error><app-control-error [control]="form.get('education')"></app-control-error></mat-error>
       </mat-form-field>
 
       <mat-form-field class="full-width">
@@ -43,7 +43,8 @@
           type="number"
           placeholder="{{ 'FORM.HEIGHT' | translate  }}" 
           formControlName="height">
-        <mat-error><control-error [control]="form.get('height')"></control-error></mat-error>
+          {{form.get('height').error | json}}
+        <mat-error><app-control-error [control]="form.get('height')"></app-control-error></mat-error>
       </mat-form-field>
 
       <mat-form-field class="full-width">
@@ -51,7 +52,7 @@
           matInput 
           placeholder="{{ 'FORM.PHONE_NUMBER' | translate  }}" 
           formControlName="phoneNumber">
-        <mat-error><control-error [control]="form.get('phoneNumber')"></control-error></mat-error>
+        <mat-error><app-control-error [control]="form.get('phoneNumber')"></app-control-error></mat-error>
       </mat-form-field>
 
       <mat-form-field class="full-width">
@@ -59,7 +60,7 @@
           matInput 
           placeholder="{{ 'FORM.EMAIL' | translate  }}" 
           formControlName="email">
-        <mat-error><control-error [control]="form.get('email')"></control-error></mat-error>
+        <mat-error><app-control-error [control]="form.get('email')"></app-control-error></mat-error>
       </mat-form-field>
 
       <mat-form-field class="full-width">
@@ -72,7 +73,7 @@
           matAutosizeMaxRows="5">
         </textarea>
         <mat-hint>{{form.get('note').value.length}} / 255</mat-hint>
-        <mat-error><control-error [control]="form.get('note')"></control-error></mat-error>
+        <mat-error><app-control-error [control]="form.get('note')"></app-control-error></mat-error>
       </mat-form-field>
     </div>
 
@@ -90,7 +91,7 @@
           type="number"
           placeholder="{{ 'FORM.EXPECTED_SALARY' | translate  }}" 
           formControlName="expectedSalary">
-        <mat-error><control-error [control]="form.get('expectedSalary')"></control-error></mat-error>
+        <mat-error><app-control-error [control]="form.get('expectedSalary')"></app-control-error></mat-error>
       </mat-form-field>
 
       <div formGroupName="workExperience" class="mincard">
@@ -101,7 +102,7 @@
             type="number"
             placeholder="{{ 'FORM.YEARS' | translate  }}" 
             formControlName="workExperienceYears">
-          <mat-error><control-error [control]="form.controls.workExperience.get('workExperienceYears')"></control-error></mat-error>
+          <mat-error><app-control-error [control]="form.controls.workExperience.get('workExperienceYears')"></app-control-error></mat-error>
         </mat-form-field>
         <mat-form-field class="part-width">
           <input 
@@ -109,7 +110,7 @@
             type="number"
             placeholder="{{ 'FORM.MONTHS' | translate  }}" 
             formControlName="workExperienceMonths">
-          <mat-error><control-error [control]="form.controls.workExperience.get('workExperienceMonths')"></control-error></mat-error>
+          <mat-error><app-control-error [control]="form.controls.workExperience.get('workExperienceMonths')"></app-control-error></mat-error>
         </mat-form-field>
       </div>
 
@@ -124,7 +125,7 @@
                 {{ 'FORM.LANGUAGE_PROFICIENCY.' + LP | uppercase | translate }}
               </mat-option>
             </mat-select>
-            <mat-error><control-error [control]="form.controls.languageSkills.get(L + 'Proficiency')"></control-error></mat-error>         
+            <mat-error><app-control-error [control]="form.controls.languageSkills.get(L + 'Proficiency')"></app-control-error></mat-error>         
         </mat-form-field>
       </div>     
       
@@ -136,7 +137,7 @@
             type="number"
             placeholder="{{ 'FORM.YEARS' | translate }}" 
             formControlName="unemployedForYears">
-          <mat-error><control-error [control]="form.controls.unemployedFor.get('unemployedForYears')"></control-error></mat-error>
+          <mat-error><app-control-error [control]="form.controls.unemployedFor.get('unemployedForYears')"></app-control-error></mat-error>
         </mat-form-field>
         <mat-form-field class="part-width">
           <input 
@@ -144,7 +145,7 @@
             type="number"
             placeholder="{{ 'FORM.MONTHS' | translate }}" 
             formControlName="unemployedForMonths">
-          <mat-error><control-error [control]="form.controls.unemployedFor.get('unemployedForMonths')"></control-error></mat-error>
+          <mat-error><app-control-error [control]="form.controls.unemployedFor.get('unemployedForMonths')"></app-control-error></mat-error>
         </mat-form-field>
       </div>
       
