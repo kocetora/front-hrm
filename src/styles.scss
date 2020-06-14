@@ -22,6 +22,11 @@ body {
   padding: 1rem;
 }
 
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
 a {
   text-decoration: none;
 }

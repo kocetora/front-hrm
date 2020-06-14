@@ -42,6 +42,7 @@
             "HIGHER": "Higher"
         },
         "EXPECTED_SALARY": "Expected salary($)",
+        "HINT": "Required at least one",
         "PREFFERED_REGION": "Preffered region",
         "WORK_EXPERIENCE": "Work experience",
         "UNEMPLOYED_FOR": "Unemployed for",
@@ -72,7 +73,7 @@
             "TITLE": "Messengers",
             "TELEGRAM": "Telegram",
             "VIBER": "WhatsApp",
-            "WHATS_APP": "Viber"
+            "WHATSAPP": "Viber"
         },
         "NOTE": "Note",
         "SUBMIT": "Submit",
