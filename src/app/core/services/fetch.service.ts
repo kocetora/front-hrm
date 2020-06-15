@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Form } from '../../shared/interfaces/form';
 import { Filter } from '../../shared/interfaces/filter';
 import { Comment } from '../../shared/interfaces/comment';
+import { ApiRoutes } from '../../shared/consts/api-routes.enum';
 
 @Injectable()
 export class FetchService {
@@ -17,35 +18,38 @@ export class FetchService {
     constructor(private http: HttpClient) { }
 
     addForm(form: Form): Observable<Form> {
-        return this.http.post<Form>('api/form', form);
+        const url = ApiRoutes.form;
+        return this.http.post<Form>(url, form);
     }
 
     getForms(): Observable<Form[]> {
-        return this.http.get<Form[]>('api/forms', this.httpOptions);
+        const url = ApiRoutes.forms;
+        return this.http.get<Form[]>(url, this.httpOptions);
     }
 
     deleteForm(id: number): Observable<{}> {
-        const url = `api/form/${id}`;
+        const url = `${ApiRoutes.form}/${id}`;
         return this.http.delete(url, this.httpOptions);
     }
 
     updateForm(form: Form): Observable<Form[]> {
-        const url = `api/form/${form.formid}`;
+        const url = `${ApiRoutes.form}/${form.formid}`;
         return this.http.put<Form[]>(url, form, this.httpOptions);
     }
 
     filterForms(filter: Filter): Observable<Form[]> {
-        const url = `api/forms`;
+        const url = ApiRoutes.forms;
         return this.http.post<Form[]>(url, filter, this.httpOptions);
     }
 
     getComments(formid: number): Observable<Comment[]> {
-        const url = `api/form/${formid}/comment/`;
+        const url = `${ApiRoutes.form}/${formid}/${ApiRoutes.comment}`;
         return this.http.get<Comment[]>(url, this.httpOptions);
     }
 
     addComment(formid: number, comment: Comment): Observable<Comment[]> {
-        const url = `api/form/${formid}/comment/`;
+        const url = `${ApiRoutes.form}/${formid}/${ApiRoutes.comment}`;
         return this.http.post<Comment[]>(url, comment, this.httpOptions);
     }
 }
+ 
