@@ -13,12 +13,11 @@ export class AppComponent {
   constructor(
     private authService: AuthService,
     public translate: TranslateService,
-    private router: Router
-    ) {
-    translate.addLangs(['en', 'ru']);
-    translate.setDefaultLang('en');
+    private router: Router ) {
+    translate.addLangs(['ru', 'en']);
+    translate.setDefaultLang('ru');
     const browserLang = translate.getBrowserLang();
-    translate.use(browserLang.match(/en|ru/) ? browserLang : 'ru');
+    translate.use(browserLang.match(/ru|en/) ? browserLang : 'en');
   }
 
   logout() {
