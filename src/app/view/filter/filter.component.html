@@ -13,6 +13,9 @@
                     {{ 'FORM.SEX.' + gender | uppercase | translate }}
                 </mat-option>
             </mat-select>
+            <mat-error>
+                <app-control-error [control]="filter.get('sex')"></app-control-error>
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field class="full-width">
@@ -22,7 +25,7 @@
                 </mat-option>
             </mat-select>
             <mat-error>
-                <!-- <app-control-error [control]="filter.get('education')"></app-control-error> -->
+                <app-control-error [control]="filter.get('education')"></app-control-error>
             </mat-error>
         </mat-form-field>
 
@@ -31,13 +34,13 @@
             <mat-form-field class="full-width">
                 <input matInput type="number" placeholder="{{ 'FORM.YEARS' | translate  }}" formControlName="workExperienceYearsFrom">
                 <mat-error>
-                    <!-- <app-control-error [control]="form.get('workExperienceYearsFrom')"></app-control-error> -->
+                    <app-control-error [control]="filter.controls.workExperienceFrom.get('workExperienceYearsFrom')"></app-control-error>
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="full-width">
                 <input matInput type="number" placeholder="{{ 'FORM.MONTHS' | translate  }}" formControlName="workExperienceMonthsFrom">
                 <mat-error>
-                    <!-- <app-control-error [control]="form.get('workExperienceMonthsFrom')"></app-control-error> -->
+                    <app-control-error [control]="filter.controls.workExperienceFrom.get('workExperienceMonthsFrom')"></app-control-error>
                 </mat-error>
             </mat-form-field>
         </div>
@@ -47,13 +50,13 @@
             <mat-form-field class="full-width">
                 <input matInput type="number" placeholder="{{ 'FORM.YEARS' | translate  }}" formControlName="workExperienceYearsTo">
                 <mat-error>
-                    <!-- <app-control-error [control]="form.get('workExperienceYearsFrom')"></app-control-error> -->
+                    <app-control-error [control]="filter.controls.workExperienceTo.get('workExperienceYearsTo')"></app-control-error>
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="full-width">
                 <input matInput type="number" placeholder="{{ 'FORM.MONTHS' | translate  }}" formControlName="workExperienceMonthsTo">
                 <mat-error>
-                    <!-- <app-control-error [control]="form.get('workExperienceMonthsFrom')"></app-control-error> -->
+                    <app-control-error [control]="filter.controls.workExperienceTo.get('workExperienceMonthsTo')"></app-control-error>
                 </mat-error>
             </mat-form-field>
         </div>
@@ -63,13 +66,13 @@
             <mat-form-field class="full-width">
                 <input matInput type="number" placeholder="{{ 'FORM.FROM' | translate  }}" formControlName="heightFrom">
                 <mat-error>
-                    <!-- <app-control-error [control]="form.get('heightFrom')"></app-control-error> -->
+                    <app-control-error [control]="filter.controls.height.get('heightFrom')"></app-control-error>
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="full-width">
                 <input matInput type="number" placeholder="{{ 'FORM.TO' | translate  }}" formControlName="heightTo">
                 <mat-error>
-                    <!-- <app-control-error [control]="form.get('heightTo')"></app-control-error> -->
+                    <app-control-error [control]="filter.controls.height.get('heightTo')"></app-control-error>
                 </mat-error>
             </mat-form-field>
         </div>
@@ -79,13 +82,13 @@
             <mat-form-field class="full-width">
                 <input matInput type="number" placeholder="{{ 'FORM.FROM' | translate  }}" formControlName="ageFrom">
                 <mat-error>
-                    <!-- <app-control-error [control]="form.get('ageFrom')"></app-control-error> -->
+                    <app-control-error [control]="filter.controls.age.get('ageFrom')"></app-control-error>
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="full-width">
                 <input matInput type="number" placeholder="{{ 'FORM.TO' | translate  }}" formControlName="ageTo">
                 <mat-error>
-                    <!-- <app-control-error [control]="form.get('ageTo')"></app-control-error> -->
+                    <app-control-error [control]="filter.controls.age.get('ageTo')"></app-control-error>
                 </mat-error>
             </mat-form-field>
         </div>
@@ -95,13 +98,13 @@
             <mat-form-field class="full-width">
                 <input matInput type="number" placeholder="{{ 'FORM.FROM' | translate  }}" formControlName="expectedSalaryFrom">
                 <mat-error>
-                    <!-- <app-control-error [control]="form.get('expectedSalaryFrom')"></app-control-error> -->
+                    <app-control-error [control]="filter.controls.expectedSalary.get('expectedSalaryFrom')"></app-control-error>
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="full-width">
                 <input matInput type="number" placeholder="{{ 'FORM.TO' | translate  }}" formControlName="expectedSalaryTo">
                 <mat-error>
-                    <!-- <app-control-error [control]="form.get('expectedSalaryTo')"></app-control-error> -->
+                    <app-control-error [control]="filter.controls.expectedSalary.get('expectedSalaryTo')"></app-control-error>
                 </mat-error>
             </mat-form-field>
         </div>

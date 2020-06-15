@@ -1,18 +1,21 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { CustomValidators } from '../core/validators/validator';
-import { BodyService } from '../core/services/body.service';
-import { FetchService } from '../core/services/fetch.service';
-import { atLeastOne } from '../core/validators/atLeastOne';
+import { CustomValidators } from '../../validators/validator';
+import { BodyService } from '../../services/body.service';
+import { atLeastOne } from '../../validators/atLeastOne';
+import { Form } from '../../interfaces/form';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  providers: [BodyService, FetchService],
+  providers: [BodyService],
 })
 export class FormComponent implements OnInit {
+
+  @Output() onSubmit: EventEmitter<Form> = new EventEmitter<Form>();
+
   form: any;
   genders = [
     'male',
@@ -48,7 +51,6 @@ export class FormComponent implements OnInit {
 
   constructor(
       private bodyService: BodyService,
-      private fetchService: FetchService,
       private formBuilder: FormBuilder) { }
 
 
@@ -99,11 +101,11 @@ export class FormComponent implements OnInit {
     }
 
     submit() {
-
-        console.log(this.form);
-        // const formData = this.bodyService.convertFormData({...this.form.value});
-        // this.fetchService.addForm(formData).subscribe();
-        // this.form.reset();
-
+      if (this.form.valid) {
+        console.dir({...this.form.value});
+        const formData: Form = this.bodyService.convertFormData({...this.form.value});
+        this.onSubmit.emit(formData);
+        this.form.reset();
+      }
     }
   }

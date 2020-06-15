@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { ValidateService } from '../core/services/validate.service';
+import { ValidateService } from '../../services/validate.service';
 
 @Component({
   selector: 'app-control-error',

@@ -29,8 +29,8 @@ export class BodyService {
 
         const languages: string[] = ['english', 'russian'];
         languages.forEach(element => {
-            if (vals.languageSkills[element]) {
-                formData.languageSkills.push({language: element, languageProficiency: vals.languageSkills[element + 'Proficiency']});
+            if (vals.languages[element]) {
+                formData.languageSkills.push({language: element, languageProficiency: vals.languageProficiency[ element + 'Proficiency' ]});
             }
         });
 
@@ -55,7 +55,7 @@ export class BodyService {
             'WhatsApp'
         ];
         messengers.forEach(element => {
-            if (vals.messengers['ms' + element]) {
+            if (vals.messengers[element]) {
                 formData.messengers.push({messenger: element, info: vals.messengers[element]});
               }
         });
