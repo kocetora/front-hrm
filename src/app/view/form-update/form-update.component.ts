@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CustomValidators } from '../../core/validators/validator';
 import { FetchService } from '../../core/services/fetch.service';
-import { PatchService } from '../../core/services/patch.service';
 import { FormService } from '../../core/services/form.service';
 import { Form } from '../../core/interfaces/form';
 
@@ -10,30 +7,27 @@ import { Form } from '../../core/interfaces/form';
   selector: 'app-form-update',
   templateUrl: './form-update.component.html',
   styleUrls: ['./form-update.component.scss'],
-  providers: [ FetchService, PatchService]
+  providers: [ FetchService]
 })
 export class FormUpdateComponent implements OnInit {
   forms: Form[];
-  // form: FormGroup;
   id: number | undefined;
+  output: {id: number | undefined, formData?: Form};
 
   constructor(
     private fetchService: FetchService,
-    private patchService: PatchService,
     private formService: FormService) { }
 
     ngOnInit(): void {
-      // this.formService.getForms().subscribe((forms) => {
-      //   this.forms = forms;
-      // });
-      // this.formService.getId().subscribe((id) => {
-      //   this.id = id;
-      //   if (id !== undefined) {
-      //     this.patchService.patchData(id, this.form, this.forms);
-      //   } else {
-      //     this.form.reset();
-      //   }
-      // });
+      this.formService.getForms().subscribe((forms) => {
+        this.forms = forms;
+      });
+      this.formService.getId().subscribe((id) => {
+        this.id = id;
+        id !== undefined ?
+          this.output = { id, formData: this.forms[id] } :
+          this.output = { id: undefined };
+      });
     }
 
   submit(formData) {

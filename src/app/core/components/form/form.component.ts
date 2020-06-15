@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { CustomValidators } from '../../validators/validator';
 import { BodyService } from '../../services/body.service';
+import { PatchService } from '../../services/patch.service';
 import { atLeastOne } from '../../validators/atLeastOne';
 import { Form } from '../../interfaces/form';
 
@@ -10,11 +11,12 @@ import { Form } from '../../interfaces/form';
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  providers: [BodyService],
+  providers: [BodyService, PatchService],
 })
 export class FormComponent implements OnInit {
 
   @Output() onSubmit: EventEmitter<Form> = new EventEmitter<Form>();
+  @Input() input: {id: number|undefined; formdata?: Form};
 
   form: any;
   genders = [
@@ -51,6 +53,7 @@ export class FormComponent implements OnInit {
 
   constructor(
       private bodyService: BodyService,
+      private patchService: PatchService,
       private formBuilder: FormBuilder) { }
 
 
@@ -100,12 +103,16 @@ export class FormComponent implements OnInit {
       });
     }
 
+    ngOnChanges(input) {
+      if (input.input.previousValue) {
+        this.patchService.patchData(input.input.currentValue.id, this.form, input.input.currentValue.formData);
+      }
+    }
+
     submit() {
-      if (this.form.valid) {
-        console.dir({...this.form.value});
+      if (this.form.valid !== undefined) {
         const formData: Form = this.bodyService.convertFormData({...this.form.value});
         this.onSubmit.emit(formData);
-        this.form.reset();
       }
     }
   }
