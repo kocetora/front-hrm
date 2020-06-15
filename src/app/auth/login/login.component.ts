@@ -6,7 +6,6 @@ import { UserInfo } from '../../shared/interfaces/userInfo';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
   providers: [AuthService]
 })
 export class LoginComponent {

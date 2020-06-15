@@ -22,11 +22,11 @@ export const appRoutes: Routes = [
     children: authRoutes
   },
   {
-    path: '**', 
+    path: '**',
     redirectTo: ''
   },
   {
-    path: '**', 
+    path: '**',
     component: ErrorComponent
   }
 ];

@@ -6,7 +6,6 @@ import { Form } from '../../shared/interfaces/form';
 @Component({
   selector: 'app-form-update',
   templateUrl: './form-update.component.html',
-  styleUrls: ['./form-update.component.scss'],
   providers: [ FetchService]
 })
 export class FormUpdateComponent implements OnInit {
