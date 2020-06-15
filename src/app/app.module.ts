@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app.routes';
 import { AppComponent } from './app.component';
 import { CreateFormComponent } from './create-form/create-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -14,6 +13,8 @@ import { AppControlErrorModule } from './core/components/control-error/control-e
 import { MaterialModule } from './shared/modules/material.module';
 import { AppFormModule } from './core/components/form/form.module';
 import { AppAuthModule } from './auth/auth.module';
+import { RouterModule } from '@angular/router';
+import { appRoutes } from './app.routes';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -28,7 +29,6 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -43,7 +43,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppControlErrorModule,
     MaterialModule,
     AppFormModule,
-    AppAuthModule
+    AppAuthModule,
+    RouterModule.forRoot(appRoutes)
     ],
   providers: [],
   bootstrap: [AppComponent]

@@ -11,17 +11,17 @@ export class AuthService {
     constructor(private http: HttpClient) { }
 
     login(user: User): Observable<UserInfo> {
-        const url = `login`;
+        const url = `api/login`;
         return this.http.post<UserInfo>(url, user);
     }
 
     signUp(user: User): Observable<{}> {
-        const url = `register`;
+        const url = `api/register`;
         return this.http.post(url, user);
     }
 
     logout(): Observable<{}> {
-        const url = `logout`;
+        const url = `api/logout`;
         return this.http.get(url);
     }
 

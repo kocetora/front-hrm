@@ -7,7 +7,7 @@ import { AppControlErrorModule } from '../core/components/control-error/control-
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { AuthFormComponent } from './auth-form/auth-form.component';
-
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -22,6 +22,7 @@ import { AuthFormComponent } from './auth-form/auth-form.component';
       CommonModule,
       MaterialModule,
       AppControlErrorModule,
+      RouterModule
   ],
   exports: [
     LoginComponent,
