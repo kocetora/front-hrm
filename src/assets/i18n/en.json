@@ -85,5 +85,14 @@
         "FILTER": "Filter",
         "LIST": "List",
         "COMMENT": "Comments"
+    },
+    "ERROR": {
+        "REQUIRED": "Required",
+        "WHITESPACE": "Can not be empty",
+        "EMAIL": "Email is invalid",
+        "MIN": "Should be bigger then {{VALUE}}",
+        "MAX": "Should be less then {{VALUE}}",
+        "MINLENGTH": "Should be longer then {{VALUE}}",
+        "MAXLENGTH": "Should be shorter then {{VALUE}}"
     }
 }
