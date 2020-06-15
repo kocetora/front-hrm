@@ -1,7 +1,7 @@
 <div class="container">
     <form [formGroup]="form" (ngSubmit)="submit()">
         <h1>{{'FORM.TITLE' | translate}}</h1>
-        <div class="grid-form">
+        <div class="grid-container">
             <div class="col1">
                 <mat-form-field class="full-width">
                     <input matInput placeholder="{{ 'FORM.NAME' | translate  }}" formControlName="name">
