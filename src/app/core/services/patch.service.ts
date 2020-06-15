@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Form } from '../../shared/interfaces/form';
 import { FormGroup } from '@angular/forms';
-import { FormEnums } from '../../shared/consts/form.enum';
-
+import { Professions, Messengers, Languages, LanguageProficiency } from '../../shared/consts/form.enum';
 @Injectable()
 export class PatchService {
 
@@ -36,7 +35,7 @@ export class PatchService {
         });
 
       formData.messengers.forEach(element => {
-        for (const el in FormEnums.Messengers) {
+        for (const el in Messengers) {
           if (element.messenger === el) {
             form.controls.messengers.patchValue({
               [el]: element.info
@@ -45,7 +44,7 @@ export class PatchService {
         }
       });
       formData.languageSkills.forEach(element => {
-        for (const el in FormEnums.Languages) {
+        for (const el in Languages) {
           if (element.language === el) {
             form.controls.languages.patchValue({
               [el]: true
@@ -54,7 +53,7 @@ export class PatchService {
         }
       });
       formData.languageSkills.forEach(element => {
-        for (const el in FormEnums.Languages) {
+        for (const el in Languages) {
           if (element.language === el) {
             form.controls.languageProficiency.patchValue({
               [el + 'Proficiency']: element.languageProficiency
@@ -63,7 +62,7 @@ export class PatchService {
         }
       });
       formData.professions.forEach(element => {
-        for (const el in FormEnums.Professions) {
+        for (const el in Professions) {
           if (element.profession === el) {
             form.controls.professions.patchValue({
               [el]: true,

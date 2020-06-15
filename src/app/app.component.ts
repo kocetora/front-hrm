@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from './auth/auth.service';
 import { Router } from '@angular/router';
+import { MediaMatcher } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +10,14 @@ import { Router } from '@angular/router';
   providers: [AuthService]
 })
 export class AppComponent {
+  media: MediaQueryList;
 
   constructor(
+    mediaMatcher: MediaMatcher,
     private authService: AuthService,
     public translate: TranslateService,
     private router: Router ) {
+    this.media = mediaMatcher.matchMedia('(min-width: 740px)');
     translate.addLangs(['ru', 'en']);
     translate.setDefaultLang('ru');
     const browserLang = translate.getBrowserLang();

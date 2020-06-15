@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Form } from '../../shared/interfaces/form';
 import { Filter } from '../../shared/interfaces/filter';
-import { FormEnums } from '../../shared/consts/form.enum';
-
+import { Professions, Messengers, Languages, LanguageProficiency } from '../../shared/consts/form.enum';
 @Injectable()
 export class BodyService {
 
@@ -28,19 +27,19 @@ export class BodyService {
           professions: []
         };
 
-        for (const el in FormEnums.Languages) {
+        for (const el in Languages) {
             if (vals.languages[el]) {
                 formData.languageSkills.push({language: el, languageProficiency: vals.languageProficiency[ el + 'Proficiency' ]});
             }
         }
 
-        for (const el in FormEnums.Professions) {
+        for (const el in Professions) {
             if (vals.professions[el]) {
                 formData.professions.push({profession: el});
             }
         }
 
-        for (const el in FormEnums.Messengers) {
+        for (const el in Messengers) {
             if (vals.messengers[el]) {
                 formData.messengers.push({messenger: el, info: vals.messengers[el]});
             }
@@ -64,13 +63,13 @@ export class BodyService {
             messengers: [],
         };
 
-        for (const el in FormEnums.Professions) {
+        for (const el in Professions) {
             if (vals.professions[el]) {
                 filterData.professions.push({profession: el});
               }
         }
 
-        for (const el in FormEnums.Messengers) {
+        for (const el in Messengers) {
             if (vals.messengers[el]) {
                 filterData.messengers.push({messenger: el});
             }

@@ -7,8 +7,7 @@ import { Filter } from '../../shared/interfaces/filter';
 import { Form } from '../../shared/interfaces/form';
 import { PatchService } from '../../core/services/patch.service';
 import { atLeastOne } from '../../shared/validators/atLeastOne';
-import { FormEnums } from '../../shared/consts/form.enum';
-
+import { Genders, Grades, Professions, Messengers, Languages, LanguageProficiency } from '../../shared/consts/form.enum';
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
@@ -17,12 +16,12 @@ import { FormEnums } from '../../shared/consts/form.enum';
 })
 export class FilterComponent implements OnInit {
 
-  readonly genders = FormEnums.Genders;
-  readonly grades = FormEnums.Grades;
-  readonly professions = FormEnums.Professions;
-  readonly messengers = FormEnums.Messengers;
-  readonly languages = FormEnums.Languages;
-  readonly languageProficiency = FormEnums.LanguageProficiency;
+  readonly genders = Genders;
+  readonly grades = Grades;
+  readonly professions = Professions;
+  readonly messengers = Messengers;
+  readonly languages = Languages;
+  readonly languageProficiency = LanguageProficiency;
   filter: any;
   forms: Form[] = [];
 

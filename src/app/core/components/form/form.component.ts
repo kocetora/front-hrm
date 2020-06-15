@@ -1,11 +1,11 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { noWhitespace } from '../../../shared/validators/noWhitespace';
 import { atLeastOne } from '../../../shared/validators/atLeastOne';
 import { BodyService } from '../../services/body.service';
 import { PatchService } from '../../services/patch.service';
 import { Form } from '../../../shared/interfaces/form';
-import { FormEnums } from '../../../shared/consts/form.enum';
+import { Genders, Grades, Professions, Messengers, Languages, LanguageProficiency } from '../../../shared/consts/form.enum';
 
 @Component({
   selector: 'app-form',
@@ -13,17 +13,17 @@ import { FormEnums } from '../../../shared/consts/form.enum';
   styleUrls: ['./form.component.scss'],
   providers: [BodyService, PatchService],
 })
-export class FormComponent implements OnInit {
+export class FormComponent implements OnInit, OnChanges {
 
-  @Output() onSubmit: EventEmitter<Form> = new EventEmitter<Form>();
+  @Output() onsubmit: EventEmitter<Form> = new EventEmitter<Form>();
   @Input() input: {id: number|undefined; formdata?: Form};
 
-  readonly genders = FormEnums.Genders;
-  readonly grades = FormEnums.Grades;
-  readonly professions = FormEnums.Professions;
-  readonly messengers = FormEnums.Messengers;
-  readonly languages = FormEnums.Languages;
-  readonly languageProficiency = FormEnums.LanguageProficiency;
+  readonly genders = Genders;
+  readonly grades = Grades;
+  readonly professions = Professions;
+  readonly messengers = Messengers;
+  readonly languages = Languages;
+  readonly languageProficiency = LanguageProficiency;
   form: any;
 
   constructor(
@@ -86,7 +86,7 @@ export class FormComponent implements OnInit {
     submit() {
       if (this.form.valid !== undefined) {
         const formData: Form = this.bodyService.convertFormData({...this.form.value});
-        this.onSubmit.emit(formData);
+        this.onsubmit.emit(formData);
       }
     }
   }

@@ -10,7 +10,7 @@ import { User } from '../../shared/interfaces/user';
 export class AuthFormComponent implements OnInit {
   form: any;
 
-  @Output() onSubmit: EventEmitter<User> = new EventEmitter<User>();
+  @Output() onsubmit: EventEmitter<User> = new EventEmitter<User>();
   @Input() error: string;
 
   constructor(private formBuilder: FormBuilder) { }
@@ -33,7 +33,7 @@ export class AuthFormComponent implements OnInit {
   submit() {
     if (this.form.valid) {
       const user: User = {...this.form.value};
-      this.onSubmit.emit(user);
+      this.onsubmit.emit(user);
     }
   }
 }
