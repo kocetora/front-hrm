@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Form } from '../interfaces/form';
+import { Form } from '../../shared/interfaces/form';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({

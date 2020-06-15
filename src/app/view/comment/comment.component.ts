@@ -1,11 +1,10 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Comment } from '../../core/interfaces/comment';
+import { Comment } from '../../shared/interfaces/comment';
 import { CustomValidators } from '../../core/validators/validator';
 import { FetchService } from '../../core/services/fetch.service';
-import { FormService } from '../../core/services/form.service';
-import { UserService } from '../../core/auth/user.service';
-import { Form } from '../../core/interfaces/form';
+import { FormService } from '../../shared/services/form.service';
+import { Form } from '../../shared/interfaces/form';
 
 @Component({
   selector: 'app-comment',
@@ -24,8 +23,7 @@ export class CommentComponent implements OnInit {
 
   constructor(
     private fetchService: FetchService,
-    private formService: FormService,
-    private userService: UserService) { }
+    private formService: FormService) { }
 
   ngOnInit(): void {
     this.formService.getId().subscribe((id) => {

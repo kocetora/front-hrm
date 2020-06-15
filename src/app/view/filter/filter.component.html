@@ -9,8 +9,8 @@
 
         <mat-form-field class="full-width">
             <mat-select placeholder="{{ 'FORM.SEX.TITLE' | translate }}" formControlName="sex">
-                <mat-option *ngFor="let gender of genders" [value]="gender">
-                    {{ 'FORM.SEX.' + gender | uppercase | translate }}
+                <mat-option *ngFor="let g of genders | keyvalue" [value]="g.key">
+                    {{ 'FORM.SEX.' + g.value | translate }}
                 </mat-option>
             </mat-select>
             <mat-error>
@@ -20,8 +20,8 @@
 
         <mat-form-field class="full-width">
             <mat-select placeholder="{{ 'FORM.EDUCATION.TITLE' | translate }}" formControlName="education">
-                <mat-option *ngFor="let grade of grades" [value]="grade">
-                    {{ 'FORM.EDUCATION.' + grade | uppercase | translate }}
+                <mat-option *ngFor="let g of grades | keyvalue" [value]="g.key">
+                    {{ 'FORM.EDUCATION.' + g.value | translate }}
                 </mat-option>
             </mat-select>
             <mat-error>
@@ -113,15 +113,15 @@
             <p>{{ 'FORM.LANGUAGE_SKILLS' | translate }}</p>
             <mat-form-field class="full-width">
                 <mat-select placeholder="{{ 'FORM.LANGUAGES.TITLE' | translate }}" formControlName="language">
-                    <mat-option *ngFor="let l of languages" [value]="l">
-                        {{ 'FORM.LANGUAGES.' + l | uppercase | translate }}
+                    <mat-option *ngFor="let l of languages | keyvalue" [value]="l.key">
+                        {{ 'FORM.LANGUAGES.' + l.value | translate }}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field class="full-width">
                 <mat-select placeholder="{{ 'FORM.LANGUAGE_PROFICIENCY.TITLE' | translate }}" formControlName="languageProficiency">
-                    <mat-option *ngFor="let lp of languageProficiency" [value]="lp">
-                        {{ 'FORM.LANGUAGE_PROFICIENCY.' + lp | uppercase | translate }}
+                    <mat-option *ngFor="let lp of languageProficiency | keyvalue" [value]="lp.key">
+                        {{ 'FORM.LANGUAGE_PROFICIENCY.' + lp.value | translate }}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
@@ -131,7 +131,7 @@
             <p>{{ 'FORM.PROFESSIONS.TITLE' | translate }}</p>
             <mat-hint>{{ 'FORM.HINT' | translate }}</mat-hint>
             <div class="col">
-                <mat-checkbox *ngFor="let p of professions" [formControlName]="p">{{ 'FORM.PROFESSIONS.' + p | uppercase | translate }}</mat-checkbox>
+                <mat-checkbox *ngFor="let p of professions | keyvalue" [formControlName]="p.key">{{ 'FORM.PROFESSIONS.' + p.value | translate }}</mat-checkbox>
             </div>
         </div>
 
@@ -139,10 +139,10 @@
             <p>{{ 'FORM.MESSENGERS.TITLE' | translate }}</p>
             <mat-hint>{{ 'FORM.HINT' | translate }}</mat-hint>
             <div class="col">
-                <mat-checkbox *ngFor="let m of messengers" [formControlName]="m">{{ 'FORM.MESSENGERS.' + m | uppercase | translate }}</mat-checkbox>
+                <mat-checkbox *ngFor="let m of messengers | keyvalue" [formControlName]="m.key">{{ 'FORM.MESSENGERS.' + m.value | translate }}</mat-checkbox>
             </div>
         </div>
 
-        <button class="submit-btn" color="primary" mat-raised-button type="submit" [disabled]="filter.invalid || filter.pending">{{ 'FORM.SUBMIT' | translate}}</button>
+        <button color="primary" mat-raised-button type="submit" [disabled]="filter.invalid || filter.pending">{{ 'FORM.SUBMIT' | translate}}</button>
     </form>
 </div>

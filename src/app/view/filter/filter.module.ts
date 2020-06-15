@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {FilterComponent} from './filter.component';
 import {TranslateModule} from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from '../../material.module';
+import { MaterialModule } from '../../shared/modules/material.module';
 import { AppControlErrorModule } from 'src/app/core/components/control-error/control-error.module';
 
 @NgModule({

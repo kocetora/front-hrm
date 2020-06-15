@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchService } from '../../core/services/fetch.service';
-import { FormService } from '../../core/services/form.service';
-import { Form } from '../../core/interfaces/form';
+import { FormService } from '../../shared/services/form.service';
+import { Form } from '../../shared/interfaces/form';
 
 @Component({
   selector: 'app-form-update',

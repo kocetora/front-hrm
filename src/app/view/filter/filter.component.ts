@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { BodyService } from '../../core/services/body.service';
 import { FetchService } from '../../core/services/fetch.service';
-import { FormService } from '../../core/services/form.service';
-import { Filter } from '../../core/interfaces/filter';
-import { Form } from '../../core/interfaces/form';
+import { FormService } from '../../shared/services/form.service';
+import { Filter } from '../../shared/interfaces/filter';
+import { Form } from '../../shared/interfaces/form';
 import { PatchService } from '../../core/services/patch.service';
 import { atLeastOne } from '../../core/validators/atLeastOne';
+import { FormEnums } from '../../shared/consts/form.enum';
 
 @Component({
   selector: 'app-filter',
@@ -15,40 +16,15 @@ import { atLeastOne } from '../../core/validators/atLeastOne';
   providers: [BodyService, FetchService, PatchService]
 })
 export class FilterComponent implements OnInit {
+
+  readonly genders = FormEnums.Genders;
+  readonly grades = FormEnums.Grades;
+  readonly professions = FormEnums.Professions;
+  readonly messengers = FormEnums.Messengers;
+  readonly languages = FormEnums.Languages;
+  readonly languageProficiency = FormEnums.LanguageProficiency;
   filter: any;
   forms: Form[] = [];
-
-  genders = [
-    'male',
-    'female'
-  ];
-  grades = [
-    'primary',
-    'secondary',
-    'unfinished_higher',
-    'higher'
-  ];
-  professions = [
-    'trainee',
-    'dealer',
-    'inspector',
-    'manager',
-    'pit_boss',
-    'waiter',
-    'barman'
-  ];
-  messengers = [
-    'Telegram',
-    'Viber',
-    'WhatsApp'
-  ];
-  languages = ['russian', 'english'];
-  languageProficiency = [
-    'basic',
-    'intermediate',
-    'fluent',
-    'native'
-  ];
 
   constructor(
     private bodyService: BodyService,
@@ -59,7 +35,7 @@ export class FilterComponent implements OnInit {
 
   ngOnInit(): void {
     this.filter = this.formBuilder.group({
-      sex: [this.genders[0], Validators.required],
+      sex: ['male', Validators.required],
       height: this.formBuilder.group({
         heightFrom: ['', [Validators.required, Validators.min(30), Validators.max(300)]],
         heightTo: ['', [Validators.required, Validators.min(30), Validators.max(300)]]
@@ -76,7 +52,7 @@ export class FilterComponent implements OnInit {
         workExperienceYearsTo: ['', [Validators.required, Validators.min(0), Validators.max(100)]],
         workExperienceMonthsTo: ['', [Validators.required, Validators.min(0), Validators.max(11)]]
       }),
-      education: [this.grades[0], Validators.required],
+      education: ['higher', Validators.required],
       expectedSalary: this.formBuilder.group({
         expectedSalaryFrom: ['', [Validators.required, Validators.min(1), Validators.max(100000)]],
         expectedSalaryTo: ['', [Validators.required, Validators.min(1), Validators.max(100000)]]
@@ -96,8 +72,8 @@ export class FilterComponent implements OnInit {
         WhatsApp: [],
       }, { validator: atLeastOne(Validators.required) }),
       languageSkills: this.formBuilder.group({
-        language: [this.languages[0], Validators.required],
-        languageProficiency: [this.languageProficiency[0], Validators.required]
+        language: ['english', Validators.required],
+        languageProficiency: ['fluent', Validators.required]
       })
     });
   }

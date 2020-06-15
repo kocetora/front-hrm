@@ -4,7 +4,8 @@ import { CustomValidators } from '../../validators/validator';
 import { BodyService } from '../../services/body.service';
 import { PatchService } from '../../services/patch.service';
 import { atLeastOne } from '../../validators/atLeastOne';
-import { Form } from '../../interfaces/form';
+import { Form } from '../../../shared/interfaces/form';
+import { FormEnums } from '../../../shared/consts/form.enum';
 
 @Component({
   selector: 'app-form',
@@ -18,51 +19,25 @@ export class FormComponent implements OnInit {
   @Output() onSubmit: EventEmitter<Form> = new EventEmitter<Form>();
   @Input() input: {id: number|undefined; formdata?: Form};
 
+  readonly genders = FormEnums.Genders;
+  readonly grades = FormEnums.Grades;
+  readonly professions = FormEnums.Professions;
+  readonly messengers = FormEnums.Messengers;
+  readonly languages = FormEnums.Languages;
+  readonly languageProficiency = FormEnums.LanguageProficiency;
   form: any;
-  genders = [
-    'male',
-    'female'
-  ];
-  grades = [
-    'primary',
-    'secondary',
-    'unfinished_higher',
-    'higher'
-  ];
-  professions = [
-    'trainee',
-    'dealer',
-    'inspector',
-    'manager',
-    'pit_boss',
-    'waiter',
-    'barman'
-  ];
-  messengers = [
-    'Telegram',
-    'Viber',
-    'WhatsApp'
-  ];
-  languages = ['russian', 'english'];
-  languageProficiency = [
-    'basic',
-    'intermediate',
-    'fluent',
-    'native'
-  ];
 
   constructor(
       private bodyService: BodyService,
       private patchService: PatchService,
       private formBuilder: FormBuilder) { }
 
-
     ngOnInit() {
       this.form = this.formBuilder.group({
         name: ['', [Validators.required, CustomValidators.noWhitespace, Validators.maxLength(255)]],
         surname: ['', [Validators.required, CustomValidators.noWhitespace, Validators.maxLength(255)]],
-        sex: [this.genders[0], Validators.required],
-        education: [this.grades[0], Validators.required],
+        sex: ['male', Validators.required],
+        education: ['higher', Validators.required],
         born: ['',  [Validators.required]],
         height: ['',  [Validators.required, Validators.min(30), Validators.max(300)]],
         phoneNumber: ['', [Validators.required, CustomValidators.noWhitespace, Validators.maxLength(255)]],
@@ -83,8 +58,8 @@ export class FormComponent implements OnInit {
           russian: [],
         }, { validator: atLeastOne(Validators.required) }),
         languageProficiency: this.formBuilder.group({
-          englishProficiency: [this.languageProficiency[0], Validators.required],
-          russianProficiency: [this.languageProficiency[0], Validators.required]
+          englishProficiency: ['basic', Validators.required],
+          russianProficiency: ['basic', Validators.required]
         }),
         professions: this.formBuilder.group({
           trainee: [],

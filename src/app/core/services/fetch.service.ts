@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Form } from '../interfaces/form';
-import { Filter } from '../interfaces/filter';
-import { Comment } from '../interfaces/comment';
+import { Form } from '../../shared/interfaces/form';
+import { Filter } from '../../shared/interfaces/filter';
+import { Comment } from '../../shared/interfaces/comment';
 
 @Injectable()
 export class FetchService {

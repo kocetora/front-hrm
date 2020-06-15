@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {FormComponent} from './form.component';
 import {TranslateModule} from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from '../../../material.module';
+import { MaterialModule } from '../../../shared/modules/material.module';
 import { AppControlErrorModule } from '../control-error/control-error.module';
 
 @NgModule({

@@ -26,8 +26,8 @@
 
                 <mat-form-field class="full-width">
                     <mat-select placeholder="{{ 'FORM.SEX.TITLE' | translate }}" formControlName="sex">
-                        <mat-option *ngFor="let gender of genders" [value]="gender">
-                            {{ 'FORM.SEX.' + gender | uppercase | translate }}
+                        <mat-option *ngFor="let g of genders | keyvalue" [value]="g.key">
+                            {{ 'FORM.SEX.' + g.value | translate }}
                         </mat-option>
                     </mat-select>
                     <mat-error>
@@ -38,8 +38,8 @@
                 <div formGroupName="messengers" class="mincard">
                     <p>{{ 'FORM.MESSENGERS.TITLE' | translate }}</p>
                     <div class="col">
-                        <mat-form-field *ngFor="let M of messengers">
-                            <input matInput placeholder="{{ 'FORM.MESSENGERS.' + M | uppercase | translate }}" [formControlName]="M">
+                        <mat-form-field *ngFor="let m of messengers | keyvalue">
+                            <input matInput placeholder="{{ 'FORM.MESSENGERS.' + m.value | translate }}" [formControlName]="m.key">
                         </mat-form-field>
                         <mat-hint>{{ 'FORM.HINT' | translate }}</mat-hint>
                     </div>
@@ -49,7 +49,7 @@
                     <p>{{ 'FORM.PROFESSIONS.TITLE' | translate }}</p>
                     <mat-hint>{{ 'FORM.HINT' | translate }}</mat-hint>
                     <div class="col">
-                        <mat-checkbox *ngFor="let P of professions" [formControlName]="P">{{ 'FORM.PROFESSIONS.' + P | uppercase | translate }}</mat-checkbox>
+                        <mat-checkbox *ngFor="let p of professions | keyvalue" [formControlName]="p.key">{{ 'FORM.PROFESSIONS.' + p.value | translate }}</mat-checkbox>
                     </div>
                 </div>
 
@@ -75,8 +75,8 @@
 
                 <mat-form-field class="full-width">
                     <mat-select placeholder="{{ 'FORM.EDUCATION.TITLE' | translate }}" formControlName="education">
-                        <mat-option *ngFor="let grade of grades" [value]="grade">
-                            {{ 'FORM.EDUCATION.' + grade | uppercase | translate }}
+                        <mat-option *ngFor="let g of grades | keyvalue" [value]="g.key">
+                            {{ 'FORM.EDUCATION.' + g.value | translate }}
                         </mat-option>
                     </mat-select>
                     <mat-error>
@@ -148,13 +148,13 @@
                         <div class="col1">
                             <div formGroupName="languages">
                                 <mat-checkbox formControlName="russian">
-                                    {{ 'FORM.LANGUAGES.RUSSIAN'| uppercase | translate }}
+                                    {{ 'FORM.LANGUAGES.RUSSIAN' | translate }}
                                 </mat-checkbox>
                             </div>
                             <mat-form-field formGroupName="languageProficiency">
                                 <mat-select formControlName="russianProficiency">
-                                    <mat-option *ngFor="let LP of languageProficiency" [value]="LP">
-                                        {{ 'FORM.LANGUAGE_PROFICIENCY.' + LP | uppercase | translate }}
+                                    <mat-option *ngFor="let lp of languageProficiency | keyvalue" [value]="lp.key">
+                                        {{ 'FORM.LANGUAGE_PROFICIENCY.' + lp.value | translate }}
                                     </mat-option>
                                 </mat-select>
                                 <mat-error>
@@ -165,13 +165,13 @@
                         <div class="col2">
                             <div formGroupName="languages">
                                 <mat-checkbox formControlName="english">
-                                    {{ 'FORM.LANGUAGES.ENGLISH'| uppercase | translate }}
+                                    {{ 'FORM.LANGUAGES.ENGLISH' | translate }}
                                 </mat-checkbox>
                             </div>
                             <mat-form-field formGroupName="languageProficiency">
                                 <mat-select formControlName="englishProficiency">
-                                    <mat-option *ngFor="let LP of languageProficiency" [value]="LP">
-                                        {{ 'FORM.LANGUAGE_PROFICIENCY.' + LP | uppercase | translate }}
+                                    <mat-option *ngFor="let lp of languageProficiency | keyvalue" [value]="lp.key">
+                                        {{ 'FORM.LANGUAGE_PROFICIENCY.' + lp.value | translate }}
                                     </mat-option>
                                 </mat-select>
                                 <mat-error>
@@ -186,4 +186,5 @@
         </div>
         <button color="primary" mat-raised-button type="submit" [disabled]="form.invalid || form.pending">{{ 'FORM.SUBMIT' | translate}}</button>
     </form>
+    <ng-content></ng-content>
 </div>
