@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Comment } from '../../shared/interfaces/comment';
-import { CustomValidators } from '../../core/validators/validator';
+import { noWhitespace } from '../../shared/validators/noWhitespace';
 import { FetchService } from '../../core/services/fetch.service';
 import { FormService } from '../../shared/services/form.service';
 import { Form } from '../../shared/interfaces/form';
@@ -38,8 +38,8 @@ export class CommentComponent implements OnInit {
     this.comment = new FormGroup({
       text: new FormControl('', [
         Validators.required,
-        CustomValidators.noWhitespace,
-        Validators.maxLength(255)
+        Validators.maxLength(255),
+        noWhitespace
       ])
     });
   }

@@ -6,7 +6,7 @@ import { FormService } from '../../shared/services/form.service';
 import { Filter } from '../../shared/interfaces/filter';
 import { Form } from '../../shared/interfaces/form';
 import { PatchService } from '../../core/services/patch.service';
-import { atLeastOne } from '../../core/validators/atLeastOne';
+import { atLeastOne } from '../../shared/validators/atLeastOne';
 import { FormEnums } from '../../shared/consts/form.enum';
 
 @Component({

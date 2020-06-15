@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
-import { CustomValidators } from '../../core/validators/validator';
+import { noWhitespace } from '../../shared/validators/noWhitespace';
 import { User } from '../../shared/interfaces/user';
 
 @Component({
@@ -21,12 +21,12 @@ export class AuthFormComponent implements OnInit {
         Validators.required,
         Validators.minLength(2),
         Validators.maxLength(50),
-        CustomValidators.noWhitespace]],
+        noWhitespace]],
       password: ['', [
         Validators.required,
         Validators.minLength(6),
         Validators.maxLength(25),
-        CustomValidators.noWhitespace]]
+        noWhitespace]]
     });
   }
 

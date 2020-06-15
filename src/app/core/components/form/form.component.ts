@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewEncapsulation, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { CustomValidators } from '../../validators/validator';
+import { noWhitespace } from '../../../shared/validators/noWhitespace';
+import { atLeastOne } from '../../../shared/validators/atLeastOne';
 import { BodyService } from '../../services/body.service';
 import { PatchService } from '../../services/patch.service';
-import { atLeastOne } from '../../validators/atLeastOne';
 import { Form } from '../../../shared/interfaces/form';
 import { FormEnums } from '../../../shared/consts/form.enum';
 
@@ -34,13 +34,13 @@ export class FormComponent implements OnInit {
 
     ngOnInit() {
       this.form = this.formBuilder.group({
-        name: ['', [Validators.required, CustomValidators.noWhitespace, Validators.maxLength(255)]],
-        surname: ['', [Validators.required, CustomValidators.noWhitespace, Validators.maxLength(255)]],
+        name: ['', [Validators.required, Validators.maxLength(255), noWhitespace]],
+        surname: ['', [Validators.required, Validators.maxLength(255), noWhitespace]],
         sex: ['male', Validators.required],
         education: ['higher', Validators.required],
         born: ['',  [Validators.required]],
         height: ['',  [Validators.required, Validators.min(30), Validators.max(300)]],
-        phoneNumber: ['', [Validators.required, CustomValidators.noWhitespace, Validators.maxLength(255)]],
+        phoneNumber: ['', [Validators.required, Validators.maxLength(255), noWhitespace]],
         email: ['', [Validators.required, Validators.email, Validators.maxLength(255)]],
         prefferedRegion: ['', Validators.maxLength(255)],
         expectedSalary: ['', [Validators.required, Validators.min(1), Validators.max(100000)]],
