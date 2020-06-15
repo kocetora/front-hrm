@@ -1,7 +1,7 @@
 <div class="container filter">
     <div class="filter-header">
         <h2>{{ 'VIEW.FILTER' | translate }}</h2>
-        <button mat-raised-button [disabled]="!filter.dirty" (click)="filterReset()" color="warn">{{ 'FORM.RESET' | translate }}</button>
+        <button mat-stroked-button [disabled]="!filter.dirty" (click)="filterReset()" color="warn">{{ 'FORM.RESET' | translate }}</button>
     </div>
     <hr>
 
