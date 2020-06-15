@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Form } from '../interfaces/form';
-import { Filter } from '../interfaces/filter';
-
+import { Form } from '../../shared/interfaces/form';
+import { Filter } from '../../shared/interfaces/filter';
+import { Professions, Messengers, Languages, LanguageProficiency } from '../../shared/consts/form.enum';
 @Injectable()
 export class BodyService {
 
@@ -27,38 +27,23 @@ export class BodyService {
           professions: []
         };
 
-        const languages: string[] = ['english', 'russian'];
-        languages.forEach(element => {
-            if (vals.languageSkills[element]) {
-                formData.languageSkills.push({language: element, languageProficiency: vals.languageSkills[element + 'Proficiency']});
+        for (const el in Languages) {
+            if (vals.languages[el]) {
+                formData.languageSkills.push({language: el, languageProficiency: vals.languageProficiency[ el + 'Proficiency' ]});
             }
-        });
+        }
 
-        const professions: string[] = [
-            'trainee',
-            'dealer',
-            'inspector',
-            'manager',
-            'pit_boss',
-            'waiter',
-            'barman'
-        ];
-        professions.forEach(element => {
-            if (vals.professions[element]) {
-                formData.professions.push({profession: element});
+        for (const el in Professions) {
+            if (vals.professions[el]) {
+                formData.professions.push({profession: el});
             }
-        });
+        }
 
-        const messengers: string[] = [
-            'Telegram',
-            'Viber',
-            'WhatsApp'
-        ];
-        messengers.forEach(element => {
-            if (vals.messengers['ms' + element]) {
-                formData.messengers.push({messenger: element, info: vals.messengers[element]});
-              }
-        });
+        for (const el in Messengers) {
+            if (vals.messengers[el]) {
+                formData.messengers.push({messenger: el, info: vals.messengers[el]});
+            }
+        }
 
         return formData;
     }
@@ -78,33 +63,17 @@ export class BodyService {
             messengers: [],
         };
 
-        const professions: string[] = [
-            'trainee',
-            'dealer',
-            'inspector',
-            'manager',
-            'pit_boss',
-            'waiter',
-            'barman'
-        ];
-
-        professions.forEach(element => {
-            if (vals.professions[element]) {
-                filterData.professions.push({profession: element});
+        for (const el in Professions) {
+            if (vals.professions[el]) {
+                filterData.professions.push({profession: el});
               }
-        });
+        }
 
-        const messengers: string[] = [
-            'Telegram',
-            'Viber',
-            'WhatsApp'
-        ];
-
-        messengers.forEach(element => {
-            if (vals.messengers[element]) {
-                filterData.messengers.push({messenger: element});
-              }
-        });
+        for (const el in Messengers) {
+            if (vals.messengers[el]) {
+                filterData.messengers.push({messenger: el});
+            }
+        }
 
         return filterData;
     }
