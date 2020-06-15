@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   BreakpointObserver,
   Breakpoints,
@@ -11,7 +11,6 @@ import { map } from 'rxjs/operators';
   selector: 'app-view',
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.scss'],
-  encapsulation: ViewEncapsulation.None,
 })
 export class ViewComponent implements OnInit {
   public isHandset$: Observable<boolean> = this.breakpointObserver

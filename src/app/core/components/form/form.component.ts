@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { noWhitespace } from '../../../shared/validators/noWhitespace';
 import { atLeastOne } from '../../../shared/validators/atLeastOne';
@@ -11,7 +11,6 @@ import { FormEnums } from '../../../shared/consts/form.enum';
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss'],
-  encapsulation: ViewEncapsulation.None,
   providers: [BodyService, PatchService],
 })
 export class FormComponent implements OnInit {

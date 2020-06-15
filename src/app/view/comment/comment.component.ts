@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Comment } from '../../shared/interfaces/comment';
 import { noWhitespace } from '../../shared/validators/noWhitespace';
@@ -10,7 +10,6 @@ import { Form } from '../../shared/interfaces/form';
   selector: 'app-comment',
   templateUrl: './comment.component.html',
   styleUrls: ['./comment.component.scss'],
-  encapsulation: ViewEncapsulation.None,
   providers: [FetchService]
 })
 export class CommentComponent implements OnInit {
