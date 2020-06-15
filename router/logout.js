@@ -1,6 +1,6 @@
 'use strict';
 
-const logout = () => async (ctx, next) => {
+const logout = () => async(ctx, next) => {
   try {
     ctx.logout();
     ctx.body = {

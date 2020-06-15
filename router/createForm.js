@@ -6,14 +6,14 @@ const Messenger = require('../db/models/messenger');
 const LanguageSkill = require('../db/models/languageSkill');
 
 const createForm = () =>
-  async (ctx, next) => {
-    const body = { ...ctx.request.body };
+  async(ctx, next) => {
+    const body = {...ctx.request.body };
     await Promise.all([
-      Form.create(body),
-      Profession.bulkCreate(body['professions']),
-      LanguageSkill.bulkCreate(body['languageSkills']),
-      Messenger.bulkCreate(body['messengers'])
-    ])
+        Form.create(body),
+        Profession.bulkCreate(body['professions']),
+        LanguageSkill.bulkCreate(body['languageSkills']),
+        Messenger.bulkCreate(body['messengers'])
+      ])
       .then(([form, professions, languageSkills, messengers]) => {
         form.addProfessions(professions);
         form.addMessengers(messengers);

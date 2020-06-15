@@ -61,6 +61,6 @@ User.prototype.validPassword = function(password) {
 // sequelize.sync({ force: true }).then(() => {
 //   console.log('Tables have been created');
 // }).catch(err => console.log(err));
-User.create({username: 'login', password: 'password'})
+User.create({ username: 'login', password: 'password' });
 
 module.exports = User;

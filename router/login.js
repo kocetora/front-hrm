@@ -4,7 +4,7 @@ const jwtSecret = require('../config/jwtConfig');
 const jwt = require('jsonwebtoken');
 const passport = require('koa-passport');
 
-const login = () => async (ctx, next) => {
+const login = () => async(ctx, next) => {
   await passport.authenticate('local', (err, user, info) => {
     if (user === false) {
       ctx.status = 401;

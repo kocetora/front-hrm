@@ -1,0 +1,20 @@
+<div class="container">
+  <h2>{{ 'VIEW.COMMENT' | translate }}</h2>
+  <hr>
+  <div class="card" *ngFor="let comment of comments; let i = index">
+    <h3 class="name">{{comment.user.username}}</h3>
+    <div class="comment">{{comment.comment}}</div>
+  </div>
+  <form class="card" [formGroup]="comment" (ngSubmit)="addComment()">
+    <h3 class="name">{{ username }}</h3>
+    <mat-form-field class="full-width">
+      <textarea matInput placeholder="{{ 'FORM.NOTE' | translate  }}" formControlName="text" matTextareaAutosize matAutosizeMinRows="5" matAutosizeMaxRows="7">
+            </textarea>
+      <mat-hint>{{comment.get('text').value ? comment.get('text').value.length : 0}} / 255</mat-hint>
+      <mat-error>
+        <app-control-error [control]="comment.get('text')"></app-control-error>
+      </mat-error>
+    </mat-form-field>
+    <button color="primary" mat-raised-button type="submit" [disabled]="comment.invalid || comment.pending">{{ 'FORM.SUBMIT' | translate }}</button>
+  </form>
+</div>

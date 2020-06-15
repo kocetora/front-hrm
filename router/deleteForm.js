@@ -3,12 +3,12 @@
 const Form = require('../db/models/form');
 
 const deleteForm = () =>
-  async (ctx, next) => {
+  async(ctx, next) => {
     await Form.destroy({
-      where: {
-        formid: ctx.params.formid
-      }
-    })
+        where: {
+          formid: ctx.params.formid
+        }
+      })
       .then(() => {
         ctx.status = 200;
         ctx.body = {

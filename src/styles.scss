@@ -1,4 +1,13 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 * {
   box-sizing: border-box;
@@ -14,90 +23,40 @@ body {
   color: #333;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+span {
+  font-weight: 500;
+}
+
+p {
+  font-size: 20px;
+  margin: 0.5rem 0;
+}
+
+hr {
+  margin: .5rem 0;
+}
+
 .container {
   max-width: 1000px;
   margin: 0 auto;
   padding: 1rem;
 }
 
-a {
-  text-decoration: none;
-}
-
-a:hover {
-  color: #666;
-}
-
-ul {
-  list-style: none;
-}
-
-img {
-  width: 100%;
-}
-
-.btn {
-  display: inline-block;
-  background: #333333;
-  color: #fff;
-  padding: 0.4rem 1.3rem;
-  font-size: 1rem;
-  border: none;
-  cursor: pointer;
-  margin-right: 0.5rem;
-  transition: opacity 0.2s ease-in;
-  outline: none;
-  
-  &:disabled {
-    background: #ccc;
-    color: #000;
-    cursor: not-allowed;
-  }
-}
-
-.btn:hover {
-  opacity: 0.8;
-}
-
-.btn-danger {
-  background: #dc3545;
-  color: #fff;
-  margin: 0;
-  padding: 0;
+.col {
   display: flex;
-  justify-content: center;
-    align-items: center;
-    width: 1em;
-    height: 1em;
+  flex-direction: column;
 }
 
-label {
-  display: block;
-  font-weight: bold;
-  font-size: 1rem;
-  margin-bottom: .5rem;
-}
-
-.form-control {
-  display: block;
-  margin-top: 0.3rem;
-  margin-bottom: .5rem;
-
-  label {
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-    font-size: 1rem;
-    margin-bottom: .5rem;
-  }
-
-  input {
-    margin-bottom: 0;
-  }
-
-  .validation {
-    color: red;
-  }
+.row {
+  display: flex;
+  flex-direction: row;
 }
 
 .card {
@@ -106,84 +65,64 @@ label {
   margin: 0.7rem 0;
 }
 
-input,
-select,
-textarea {
-  display: block;
+.mincard,
+.full-width {
+  min-width: 300px;
   width: 100%;
-  padding: 0.4rem;
-  font-size: 1.2rem;
-  border: 1px solid #ccc;
-  margin-bottom: 1rem;
+  max-width: 700px;
+}
+
+.mincard {
+  padding: 1rem;
+  border: #ccc 1px dotted;
+  margin: 0.7rem 0;
+}
+
+.full-width {
+  margin-bottom: 10px;
+}
+
+.part-width {
+  margin: 10px;
 }
 
 select.lang {
   padding: 0;
   margin: 0;
+  max-width: 72px;
   color: inherit;
   background-color: initial;
+  border: none;
+  font-weight: 500;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, .87);
+  height: 48px;
+  margin-left: 24px;
+  padding-right: 24px;
+  line-height: 1.6;
+  border-right: #ccc 1px dotted;
 }
 
-select.lang > option {
-  background-color: #df515f;
+select.lang>option {
+  background-color: inherit;
 }
 
-input[type="checkbox"]{
-  width: initial;
-  margin-bottom: 0;
-}
-
-hr {
-  margin: .5rem 0;
-}
-
-p {
-    font-size: 1.5rem;
-      &.error {
-        color: red;
-      }
+@media only screen and (max-width: 480px) {
+  .row {
+    flex-direction: column;
   }
-  
-  input {
-    &.ng-invalid.ng-touched {
-      border: 1px solid red;
-    }
-  
-    &.ng-valid.ng-touched {
-      border: 1px solid green;
-    }
-  }
-
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.7rem 2rem;
-    z-index: 1;
+  .full-width,
+  .mincard {
+    min-width: 250px;
     width: 100%;
-    opacity: 0.9;
-    margin-bottom: 1rem;
-    background: #dc3545;
-    color: #fff;
-  
-    ul {
-      display: flex;
-
-      li{
-        display: flex;
-        align-items: center;
-      }
-      
-      li.active a {
-        font-weight: bold;
-        color: #333333;
-        cursor: default;
-      }
-    }
-  
-    a {
-      color: #fff;
-      padding: 0.45rem;
-      margin: 0 0.25rem;
-    }
+    max-width: 350px;
   }
+  .part-width {
+    min-width: 230px;
+    width: 100%;
+    max-width: 330px;
+    margin: 0;
+  }
+}

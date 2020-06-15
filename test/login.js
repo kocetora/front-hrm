@@ -41,7 +41,8 @@ describe('LOGIN', () => {
         expect(res.body).to.matchPattern({
           userid: 898430,
           username: '898430',
-          token: _.isString });
+          token: _.isString
+        });
         done();
       });
   });
@@ -59,7 +60,8 @@ describe('LOGIN', () => {
         expect(res.statusCode).to.equal(401);
         expect(res.body).to.matchPattern({
           success: false,
-          message: 'User does not exist or password is incorrect' });
+          message: 'User does not exist or password is incorrect'
+        });
         done();
       });
   });
@@ -77,7 +79,8 @@ describe('LOGIN', () => {
         expect(res.statusCode).to.equal(401);
         expect(res.body).to.matchPattern({
           success: false,
-          message: 'User does not exist or password is incorrect' });
+          message: 'User does not exist or password is incorrect'
+        });
         done();
       });
   });

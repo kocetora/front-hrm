@@ -15,7 +15,7 @@ chai.use(chaiMatchPattern);
 describe('UPDATE FORM', () => {
   let testToken = '';
 
-  beforeEach(async () => {
+  beforeEach(async() => {
     const testUser = await User.create({
       username: '94385',
       password: '94385',
@@ -45,7 +45,8 @@ describe('UPDATE FORM', () => {
       professions: [{ profession: 'pit_boss' }, { profession: 'trainee' }],
       messengers: [{ messenger: 'Telegram', info: 'pit_boss' }, { messenger: 'Viber', info: 'dealer' }],
       languageSkills: [{ language: 'english', languageProficiency: 'basic' },
-        { language: 'russian', languageProficiency: 'native' }]
+        { language: 'russian', languageProficiency: 'native' }
+      ]
     });
   });
 
@@ -87,7 +88,8 @@ describe('UPDATE FORM', () => {
         professions: [{ profession: 'pit_boss' }, { profession: 'trainee' }],
         messengers: [{ messenger: 'Telegram', info: 'pit_boss' }, { messenger: 'Viber', info: 'dealer' }],
         languageSkills: [{ language: 'english', languageProficiency: 'basic' },
-          { language: 'russian', languageProficiency: 'native' }]
+          { language: 'russian', languageProficiency: 'native' }
+        ]
       })
       .end((error, res) => {
         expect(res).to.have.status(200);
@@ -118,7 +120,8 @@ describe('UPDATE FORM', () => {
         professions: [{ profession: 'pit_boss' }, { profession: 'trainee' }],
         messengers: [{ messenger: 'Telegram', info: 'pit_boss' }, { messenger: 'Viber', info: 'dealer' }],
         languageSkills: [{ language: 'english', languageProficiency: 'basic' },
-          { language: 'russian', languageProficiency: 'native' }]
+          { language: 'russian', languageProficiency: 'native' }
+        ]
       })
       .end((error, res) => {
         expect(res).to.have.status(400);

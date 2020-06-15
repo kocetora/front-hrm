@@ -6,32 +6,31 @@ const Messenger = require('../db/models/messenger');
 const LanguageSkill = require('../db/models/languageSkill');
 
 const findOneForm = () =>
-  async (ctx, next) => {
+  async(ctx, next) => {
     await Form.findOne({
-      where: {
-        formid: ctx.params.formid
-      },
-      include: [
-        {
-          model: Profession,
-          through: {
-            attributes: []
-          }
+        where: {
+          formid: ctx.params.formid
         },
-        {
-          model: Messenger,
-          through: {
-            attributes: []
-          }
-        },
-        {
-          model: LanguageSkill,
-          through: {
-            attributes: []
-          }
-        },
-      ]
-    })
+        include: [{
+            model: Profession,
+            through: {
+              attributes: []
+            }
+          },
+          {
+            model: Messenger,
+            through: {
+              attributes: []
+            }
+          },
+          {
+            model: LanguageSkill,
+            through: {
+              attributes: []
+            }
+          },
+        ]
+      })
       .then(forms => {
         ctx.status = 200;
         ctx.body = forms;

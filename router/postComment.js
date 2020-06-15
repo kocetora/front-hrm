@@ -3,15 +3,15 @@
 const Comment = require('../db/models/comment');
 
 const postComment = () =>
-  async (ctx, next) => {
-    const body = { ...ctx.request.body };
+  async(ctx, next) => {
+    const body = {...ctx.request.body };
     await Promise.all([
-      Comment.create({
-        formid: ctx.params.formid,
-        comment: body.comment,
-        userid: body.userid
-      })
-    ])
+        Comment.create({
+          formid: ctx.params.formid,
+          comment: body.comment,
+          userid: body.userid
+        })
+      ])
       .then(comment => {
         ctx.status = 200;
         ctx.body = {

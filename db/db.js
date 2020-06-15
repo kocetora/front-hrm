@@ -1,13 +1,13 @@
 'use strict';
 
 const Sequelize = require('sequelize');
-// const sequelize = new Sequelize('d1gculb3nsnnh0', 'nhwwgfzgrpfwbr', 
+// const sequelize = new Sequelize('d1gculb3nsnnh0', 'nhwwgfzgrpfwbr',
 // '931280f03ad840a567c239ff56aa26a43b71f56d0af255befa6046d8df53c5d6', {
 //   host: 'ec2-46-137-84-140.eu-west-1.compute.amazonaws.com',
 //   dialect: 'postgres',
 //   port: '5432',
 // });
-const sequelize = new Sequelize(process.env.DATABASE_URL) 
+const sequelize = new Sequelize(process.env.DATABASE_URL);
 
 sequelize
   .authenticate()

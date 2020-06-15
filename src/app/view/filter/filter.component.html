@@ -1,0 +1,148 @@
+<div class="container filter">
+  <div class="filter-header">
+    <h2>{{ 'VIEW.FILTER' | translate }}</h2>
+    <button mat-stroked-button [disabled]="!filter.dirty" (click)="filterReset()" color="warn">{{ 'FORM.RESET' | translate }}</button>
+  </div>
+  <hr>
+
+  <form class="card" [formGroup]="filter" (ngSubmit)="filterSubmit()">
+
+    <mat-form-field class="full-width">
+      <mat-select placeholder="{{ 'FORM.SEX.TITLE' | translate }}" formControlName="sex">
+        <mat-option *ngFor="let g of genders | keyvalue" [value]="g.key">
+          {{ 'FORM.SEX.' + g.value | translate }}
+        </mat-option>
+      </mat-select>
+      <mat-error>
+        <app-control-error [control]="filter.get('sex')"></app-control-error>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-select placeholder="{{ 'FORM.EDUCATION.TITLE' | translate }}" formControlName="education">
+        <mat-option *ngFor="let g of grades | keyvalue" [value]="g.key">
+          {{ 'FORM.EDUCATION.' + g.value | translate }}
+        </mat-option>
+      </mat-select>
+      <mat-error>
+        <app-control-error [control]="filter.get('education')"></app-control-error>
+      </mat-error>
+    </mat-form-field>
+
+    <div formGroupName="workExperienceFrom" class="mincard">
+      <p>{{ 'FORM.WORK_EXPERIENCE' | translate }} {{ 'FORM.FROM' | translate | lowercase}}</p>
+      <mat-form-field class="full-width">
+        <input matInput type="number" placeholder="{{ 'FORM.YEARS' | translate  }}" formControlName="workExperienceYearsFrom">
+        <mat-error>
+          <app-control-error [control]="filter.controls.workExperienceFrom.get('workExperienceYearsFrom')"></app-control-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput type="number" placeholder="{{ 'FORM.MONTHS' | translate  }}" formControlName="workExperienceMonthsFrom">
+        <mat-error>
+          <app-control-error [control]="filter.controls.workExperienceFrom.get('workExperienceMonthsFrom')"></app-control-error>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div formGroupName="workExperienceTo" class="mincard">
+      <p>{{ 'FORM.WORK_EXPERIENCE' | translate }} {{ 'FORM.TO' | translate | lowercase}}</p>
+      <mat-form-field class="full-width">
+        <input matInput type="number" placeholder="{{ 'FORM.YEARS' | translate  }}" formControlName="workExperienceYearsTo">
+        <mat-error>
+          <app-control-error [control]="filter.controls.workExperienceTo.get('workExperienceYearsTo')"></app-control-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput type="number" placeholder="{{ 'FORM.MONTHS' | translate  }}" formControlName="workExperienceMonthsTo">
+        <mat-error>
+          <app-control-error [control]="filter.controls.workExperienceTo.get('workExperienceMonthsTo')"></app-control-error>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div formGroupName="height" class="mincard">
+      <p>{{ 'FORM.HEIGHT' | translate }}</p>
+      <mat-form-field class="full-width">
+        <input matInput type="number" placeholder="{{ 'FORM.FROM' | translate  }}" formControlName="heightFrom">
+        <mat-error>
+          <app-control-error [control]="filter.controls.height.get('heightFrom')"></app-control-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput type="number" placeholder="{{ 'FORM.TO' | translate  }}" formControlName="heightTo">
+        <mat-error>
+          <app-control-error [control]="filter.controls.height.get('heightTo')"></app-control-error>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div formGroupName="age" class="mincard">
+      <p>{{ 'FORM.AGE' | translate }}</p>
+      <mat-form-field class="full-width">
+        <input matInput type="number" placeholder="{{ 'FORM.FROM' | translate  }}" formControlName="ageFrom">
+        <mat-error>
+          <app-control-error [control]="filter.controls.age.get('ageFrom')"></app-control-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput type="number" placeholder="{{ 'FORM.TO' | translate  }}" formControlName="ageTo">
+        <mat-error>
+          <app-control-error [control]="filter.controls.age.get('ageTo')"></app-control-error>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div formGroupName="expectedSalary" class="mincard">
+      <p>{{ 'FORM.EXPECTED_SALARY' | translate }}</p>
+      <mat-form-field class="full-width">
+        <input matInput type="number" placeholder="{{ 'FORM.FROM' | translate  }}" formControlName="expectedSalaryFrom">
+        <mat-error>
+          <app-control-error [control]="filter.controls.expectedSalary.get('expectedSalaryFrom')"></app-control-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput type="number" placeholder="{{ 'FORM.TO' | translate  }}" formControlName="expectedSalaryTo">
+        <mat-error>
+          <app-control-error [control]="filter.controls.expectedSalary.get('expectedSalaryTo')"></app-control-error>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div formGroupName="languageSkills" class="mincard">
+      <p>{{ 'FORM.LANGUAGE_SKILLS' | translate }}</p>
+      <mat-form-field class="full-width">
+        <mat-select placeholder="{{ 'FORM.LANGUAGES.TITLE' | translate }}" formControlName="language">
+          <mat-option *ngFor="let l of languages | keyvalue" [value]="l.key">
+            {{ 'FORM.LANGUAGES.' + l.value | translate }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-select placeholder="{{ 'FORM.LANGUAGE_PROFICIENCY.TITLE' | translate }}" formControlName="languageProficiency">
+          <mat-option *ngFor="let lp of languageProficiency | keyvalue" [value]="lp.key">
+            {{ 'FORM.LANGUAGE_PROFICIENCY.' + lp.value | translate }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div formGroupName="professions" class="mincard">
+      <p>{{ 'FORM.PROFESSIONS.TITLE' | translate }}</p>
+      <mat-hint>{{ 'FORM.HINT' | translate }}</mat-hint>
+      <div class="col">
+        <mat-checkbox *ngFor="let p of professions | keyvalue" [formControlName]="p.key">{{ 'FORM.PROFESSIONS.' + p.value | translate }}</mat-checkbox>
+      </div>
+    </div>
+
+    <div formGroupName="messengers" class="mincard">
+      <p>{{ 'FORM.MESSENGERS.TITLE' | translate }}</p>
+      <mat-hint>{{ 'FORM.HINT' | translate }}</mat-hint>
+      <div class="col">
+        <mat-checkbox *ngFor="let m of messengers | keyvalue" [formControlName]="m.key">{{ 'FORM.MESSENGERS.' + m.value | translate }}</mat-checkbox>
+      </div>
+    </div>
+
+    <button color="primary" mat-raised-button type="submit" [disabled]="filter.invalid || filter.pending">{{ 'FORM.SUBMIT' | translate}}</button>
+  </form>
+</div>

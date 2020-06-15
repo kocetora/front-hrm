@@ -6,29 +6,28 @@ const Messenger = require('../db/models/messenger');
 const LanguageSkill = require('../db/models/languageSkill');
 
 const findAllForms = () =>
-  async (ctx, next) => {
+  async(ctx, next) => {
     await Form.findAll({
-      include: [
-        {
-          model: Profession,
-          through: {
-            attributes: []
-          }
-        },
-        {
-          model: Messenger,
-          through: {
-            attributes: []
-          }
-        },
-        {
-          model: LanguageSkill,
-          through: {
-            attributes: []
-          }
-        },
-      ]
-    })
+        include: [{
+            model: Profession,
+            through: {
+              attributes: []
+            }
+          },
+          {
+            model: Messenger,
+            through: {
+              attributes: []
+            }
+          },
+          {
+            model: LanguageSkill,
+            through: {
+              attributes: []
+            }
+          },
+        ]
+      })
       .then(forms => {
         ctx.body = forms;
         return next();

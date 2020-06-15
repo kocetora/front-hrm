@@ -15,7 +15,7 @@ chai.use(chaiMatchPattern);
 describe('GET COMMENT', () => {
   let testToken = '';
 
-  before(async () => {
+  before(async() => {
     const testUser = await User.create({
       username: '3202383',
       password: '3202383',
@@ -45,7 +45,8 @@ describe('GET COMMENT', () => {
       professions: [{ profession: 'pit_boss' }, { profession: 'trainee' }],
       messengers: [{ messenger: 'Telegram', info: 'pit_boss' }, { messenger: 'Viber', info: 'dealer' }],
       languageSkills: [{ language: 'english', languageProficiency: 'basic' },
-        { language: 'russian', languageProficiency: 'native' }]
+        { language: 'russian', languageProficiency: 'native' }
+      ]
     });
   });
 

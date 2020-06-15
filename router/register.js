@@ -1,11 +1,11 @@
 'use strict';
 const User = require('../db/models/user');
 
-const register = () => async (ctx, next) => {
+const register = () => async(ctx, next) => {
   const body = ctx.request.body;
   await Promise.all([
-    User.create(body)
-  ])
+      User.create(body)
+    ])
     .then(() => {
       ctx.status = 200;
       ctx.body = {

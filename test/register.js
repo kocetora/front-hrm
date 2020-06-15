@@ -30,7 +30,8 @@ describe('REGISTER', () => {
         expect(res.statusCode).to.equal(200);
         expect(res.body).to.matchPattern({
           success: true,
-          message: 'User created!' });
+          message: 'User created!'
+        });
         done();
       });
   });
@@ -68,9 +69,9 @@ describe('REGISTER', () => {
         expect(res.statusCode).to.equal(400);
         expect(res.body).to.matchPattern({
           success: false,
-          message: 'Ключ "(username)=(1238732)" уже существует.' });
+          message: 'Ключ "(username)=(1238732)" уже существует.'
+        });
         done();
       });
   });
 });
-

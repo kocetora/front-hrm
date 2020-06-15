@@ -15,34 +15,31 @@ const getComment = require('./getComment');
 const passport = require('koa-passport');
 
 module.exports = new Router()
-  .post('/login', login())
-  .post('/register', register())
-  .get('/logout', logout())
+  .post('/api/login', login())
+  .post('/api/register', register())
+  .get('/api/logout', logout())
 
-  .post('/form', createForm())
-  .put('/form/:formid',
+.post('/api/form', createForm())
+  .put('/api/form/:formid',
     passport.authenticate('jwt', { session: false }),
     updateForm())
-  .get('/form/:formid',
+  .get('/api/form/:formid',
     passport.authenticate('jwt', { session: false }),
     findOneForm())
-  .delete('/form/:formid',
+  .delete('/api/form/:formid',
     passport.authenticate('jwt', { session: false }),
     deleteForm())
 
-  .get('/forms',
+.get('/api/forms',
     passport.authenticate('jwt', { session: false }),
     findAllForms())
-  .post('/forms',
+  .post('/api/forms',
     passport.authenticate('jwt', { session: false }),
     filterForms())
 
-  .post('/form/:formid/comment',
+.post('/api/form/:formid/comment',
     passport.authenticate('jwt', { session: false }),
     postComment())
-  .get('/form/:formid/comment',
+  .get('/api/form/:formid/comment',
     passport.authenticate('jwt', { session: false }),
     getComment());
-
-
-

@@ -1,27 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Form } from '../interfaces/form';
+import { Form } from '../../shared/interfaces/form';
 import { FormGroup } from '@angular/forms';
-
-const professions = [
-  'trainee',
-  'dealer',
-  'inspector',
-  'manager',
-  'pit_boss',
-  'waiter',
-  'barman'
-];
-
-const messengers = [
-  'Telegram',
-  'Viber',
-  'WhatsApp'
-];
-
+import { Professions, Messengers, Languages, LanguageProficiency } from '../../shared/consts/form.enum';
 @Injectable()
 export class PatchService {
 
-  patchData(id: number, form: FormGroup, forms: Form[]) {
+  patchData(id: number | undefined, form: FormGroup, formData?: Form) {
+    if (id !== undefined) {
       const fields: string[] = [
           'name',
           'surname',
@@ -36,7 +21,7 @@ export class PatchService {
           'expectedSalary'
         ];
       fields.forEach(element => {
-          form.patchValue({[element]: forms[id][element]});
+          form.patchValue({[element]: formData[element]});
         });
       const monthsToYears: string[] = [
           'workExperience',
@@ -44,79 +29,65 @@ export class PatchService {
         ];
       monthsToYears.forEach(element => {
             form.controls[element].patchValue({
-                [element + 'Years']: (forms[id][element] - (forms[id][element] % 12)) / 12,
-                [element + 'Months']: forms[id][element] % 12,
+                [element + 'Years']: (formData[element] - (formData[element] % 12)) / 12,
+                [element + 'Months']: formData[element] % 12,
               });
         });
-      forms[id].messengers.forEach(element => {
-          messengers.forEach(el => {
-            if (element.messenger === el) {
-              form.controls.messengers.patchValue({
-                ['ms' + el]: true,
-                [el]: element.info
-              });
-            }
-          });
-        });
-      forms[id].languageSkills.forEach(element => {
-          ['enlish', 'russian'].forEach(el => {
-            if (element.language === el) {
-              form.controls.languageSkills.patchValue({
-                [el]: true,
-                [el + 'Proficiency']: element.languageProficiency
-              });
-            }
-          });
-        });
-      forms[id].professions.forEach(element => {
-          professions.forEach(el => {
-            if (element.profession === el) {
-              form.controls.professions.patchValue({
-                [el]: true,
-              });
-            }
-          });
-        });
+
+      formData.messengers.forEach(element => {
+        for (const el in Messengers) {
+          if (element.messenger === el) {
+            form.controls.messengers.patchValue({
+              [el]: element.info
+            });
+          }
+        }
+      });
+      formData.languageSkills.forEach(element => {
+        for (const el in Languages) {
+          if (element.language === el) {
+            form.controls.languages.patchValue({
+              [el]: true
+            });
+          }
+        }
+      });
+      formData.languageSkills.forEach(element => {
+        for (const el in Languages) {
+          if (element.language === el) {
+            form.controls.languageProficiency.patchValue({
+              [el + 'Proficiency']: element.languageProficiency
+            });
+          }
+        }
+      });
+      formData.professions.forEach(element => {
+        for (const el in Professions) {
+          if (element.profession === el) {
+            form.controls.professions.patchValue({
+              [el]: true,
+            });
+          }
+        }
+      });
+    } else {
+      form.reset();
+      form.patchValue({
+        sex: 'male',
+        education: 'primary'
+      });
+      form.controls.languageProficiency.patchValue({
+        englishProficiency: 'basic',
+        russianProficiency: 'basic'
+      });
+    }
   }
 
   resetFilter(filter: FormGroup) {
+    filter.reset();
     filter.patchValue({
       sex: 'male',
-      education: 'higher'
-    });
-    professions.forEach(el => {
-        filter.controls.professions.patchValue({
-        [el]: false
-      });
-    });
-    messengers.forEach(el => {
-        filter.controls.messengers.patchValue({
-        [el]: false
-      });
-    });
-    filter.controls.languageSkills.patchValue({
-      language: 'russian',
-      languageProficiency: 'native'
-    });
-    filter.controls.expectedSalary.patchValue({
-      expectedSalaryFrom: 1,
-      expectedSalaryTo: 100000
-    });
-    filter.controls.age.patchValue({
-      ageFrom: 14,
-      ageTo: 100
-    });
-    filter.controls.height.patchValue({
-      heightFrom: 30,
-      heightTo: 300
-    });
-    filter.controls.workExperienceFrom.patchValue({
-      workExperienceYearsFrom: 0,
-      workExperienceMonthsFrom: 0
-    });
-    filter.controls.workExperienceTo.patchValue({
-      workExperienceYearsTo: 100,
-      workExperienceMonthsTo: 11
+      education: 'primary'
     });
   }
 }

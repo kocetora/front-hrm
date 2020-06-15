@@ -43,7 +43,8 @@ describe('CREATE FORM', () => {
         professions: [{ profession: 'pit_boss' }, { profession: 'trainee' }],
         messengers: [{ messenger: 'Telegram', info: 'pit_boss' }, { messenger: 'Viber', info: 'dealer' }],
         languageSkills: [{ language: 'english', languageProficiency: 'basic' },
-          { language: 'russian', languageProficiency: 'native' }]
+          { language: 'russian', languageProficiency: 'native' }
+        ]
       })
       .end((error, res) => {
         expect(res.body).to.matchPattern({ success: true, message: 'Form added!' });
@@ -69,12 +70,14 @@ describe('CREATE FORM', () => {
         professions: [{ profession: 'pit_boss' }, { profession: 'trainee' }],
         messengers: [{ messenger: 'Telegram', info: 'pit_boss' }, { messenger: 'Viber', info: 'dealer' }],
         languageSkills: [{ language: 'english', languageProficiency: 'basic' },
-          { language: 'russian', languageProficiency: 'native' }]
+          { language: 'russian', languageProficiency: 'native' }
+        ]
       })
       .end((error, res) => {
         expect(res.body).to.matchPattern({
           success: false,
-          message: _.isArray });
+          message: _.isArray
+        });
         expect(res).to.have.status(400);
         done();
       });

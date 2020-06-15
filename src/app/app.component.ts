@@ -1,25 +1,27 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { AuthService } from './core/auth/auth.service';
+import { AuthService } from './auth/auth.service';
 import { Router } from '@angular/router';
+import { MediaMatcher } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
   providers: [AuthService]
 })
 export class AppComponent {
+  media: MediaQueryList;
 
   constructor(
+    mediaMatcher: MediaMatcher,
     private authService: AuthService,
     public translate: TranslateService,
-    private router: Router
-    ) {
-    translate.addLangs(['en', 'ru']);
-    translate.setDefaultLang('en');
+    private router: Router ) {
+    this.media = mediaMatcher.matchMedia('(min-width: 740px)');
+    translate.addLangs(['ru', 'en']);
+    translate.setDefaultLang('ru');
     const browserLang = translate.getBrowserLang();
-    translate.use(browserLang.match(/en|ru/) ? browserLang : 'ru');
+    translate.use(browserLang.match(/ru|en/) ? browserLang : 'en');
   }
 
   logout() {
@@ -40,5 +42,4 @@ export class AppComponent {
       return false;
     }
   }
-
 }

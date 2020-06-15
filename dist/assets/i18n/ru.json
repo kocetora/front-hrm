@@ -1,0 +1,96 @@
+{
+    "HOME": {
+        "TITLE": "Домашняя страница",
+        "LOGIN": "Войти",
+        "VIEW": "База",
+        "FORM": "Форма",
+        "LOGOUT": "Выйти",
+        "SIGN_UP": "Зарегистрироваться",
+        "ERROR_404": "Ошибка 404",
+        "NOT_FOUND": "Страница не найдена"
+    },
+    "AUTH": {
+        "LOGIN": "Вход",
+        "SIGN_UP": "Регистрация",
+        "USERNAME": "Имя пользователя",
+        "PASSWORD": "Пароль",
+        "SUBMIT": "Отправить"
+    },
+    "FORM": {
+        "TITLE": "Форма",
+        "NAME": "Имя",
+        "SURNAME": "Фамилия",
+        "SEX": {
+            "TITLE": "Пол",
+            "MALE": "Мужчина",
+            "FEMALE": "Женщина"
+        },
+        "BORN": "Дата рождения",
+        "HEIGHT": "Рост(см)",
+        "PHONE_NUMBER": "Номер телефона",
+        "EMAIL": "Email",
+        "EDUCATION": {
+            "TITLE": "Образование",
+            "PRIMARY": "Начальное",
+            "SECONDARY": "Среднее",
+            "UNFINISHED_HIGHER": "Незаконченное высшее",
+            "HIGHER": "Высшее"
+        },
+        "EXPECTED_SALARY": "Ожидаемая зарплата($)",
+        "HINT": "Требуется как минимум одно поле",
+        "PREFFERED_REGION": "Желаемый регион",
+        "WORK_EXPERIENCE": "Опыт работы",
+        "UNEMPLOYED_FOR": "Безработен",
+        "AGE": "Возраст",
+        "FROM": "От",
+        "TO": "До",
+        "YEARS": "Лет",
+        "MONTHS": "Мeсяцев",
+        "LANGUAGE_SKILLS": "Языковые навыки",
+        "LANGUAGES": {
+            "TITLE": "Язык",
+            "ENGLISH": "Английский",
+            "RUSSIAN": "Русский"
+        },
+        "LANGUAGE_PROFICIENCY": {
+            "TITLE": "Уровень владения",
+            "BASIC": "Начальный",
+            "INTERMEDIATE": "Средний",
+            "FLUENT": "Свободный",
+            "NATIVE": "Родной"
+        },
+        "PROFESSIONS": {
+            "TITLE": "Вакансии",
+            "TRAINEE": "Курсы",
+            "DEALER": "Дилер",
+            "INSPECTOR": "Инспектор",
+            "MANAGER": "Менеджер",
+            "PIT_BOSS": "Пит босс",
+            "WAITER": "Официант",
+            "BARMAN": "Бармен"
+        },
+        "MESSENGERS": {
+            "TITLE": "Мессенджеры",
+            "TELEGRAM": "Telegram",
+            "VIBER": "WhatsApp",
+            "WHATSAPP": "Viber"
+        },
+        "NOTE": "Примечания",
+        "SUBMIT": "Отправить",
+        "RESET": "Сбросить"
+    },
+    "VIEW": {
+        "FILTER": "Фильтр",
+        "LIST": "Список",
+        "COMMENT": "Комментарии"
+    },
+    "ERROR": {
+        "REQUIRED": "Поле обьязательно",
+        "WHITESPACE": "Не может быть пустым",
+        "EMAIL": "Введите корректный емейл",
+        "MIN": "Дожно быть больше чем {{VALUE}}",
+        "MAX": "Должно быть меньше чем {{VALUE}}",
+        "MINLENGTH": "Дожно быть длиннее {{VALUE}}",
+        "MAXLENGTH": "Должно быть короче {{VALUE}}"
+    }
+}

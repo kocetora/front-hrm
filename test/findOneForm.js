@@ -14,7 +14,7 @@ chai.use(chaiMatchPattern);
 describe('GET FORM', () => {
   let testToken = '';
 
-  beforeEach(async () => {
+  beforeEach(async() => {
     const testUser = await User.create({
       username: '723874',
       password: '723874',
@@ -44,7 +44,8 @@ describe('GET FORM', () => {
       professions: [{ profession: 'pit_boss' }, { profession: 'trainee' }],
       messengers: [{ messenger: 'Telegram', info: 'pit_boss' }, { messenger: 'Viber', info: 'dealer' }],
       languageSkills: [{ language: 'english', languageProficiency: 'basic' },
-        { language: 'russian', languageProficiency: 'native' }]
+        { language: 'russian', languageProficiency: 'native' }
+      ]
     });
   });
 

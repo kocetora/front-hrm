@@ -1,15 +1,15 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
+import { MediaMatcher } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-view',
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.scss'],
-  encapsulation: ViewEncapsulation.None,
 })
-export class ViewComponent implements OnInit {
+export class ViewComponent {
 
-  constructor() { }
-
-  ngOnInit(): void { }
-
+  media: MediaQueryList;
+  constructor(mediaMatcher: MediaMatcher) {
+    this.media = mediaMatcher.matchMedia('(min-width: 1030px)');
+  }
 }

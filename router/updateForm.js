@@ -6,38 +6,36 @@ const Messenger = require('../db/models/messenger');
 const LanguageSkill = require('../db/models/languageSkill');
 
 const updateForm = () =>
-  async (ctx, next) => {
-    const body = { ...ctx.request.body };
+  async(ctx, next) => {
+    const body = {...ctx.request.body };
     await Promise.all([
-      Form.update(body,
-        { where: { formid: ctx.params.formid } })
-    ])
-      .then(async () => {
+        Form.update(body, { where: { formid: ctx.params.formid } })
+      ])
+      .then(async() => {
         await Form.findAll({
-          where: {
-            formid: ctx.params.formid
-          },
-          include: [
-            {
-              model: Profession,
-              through: {
-                attributes: []
-              }
+            where: {
+              formid: ctx.params.formid
             },
-            {
-              model: Messenger,
-              through: {
-                attributes: []
-              }
-            },
-            {
-              model: LanguageSkill,
-              through: {
-                attributes: []
-              }
-            },
-          ]
-        })
+            include: [{
+                model: Profession,
+                through: {
+                  attributes: []
+                }
+              },
+              {
+                model: Messenger,
+                through: {
+                  attributes: []
+                }
+              },
+              {
+                model: LanguageSkill,
+                through: {
+                  attributes: []
+                }
+              },
+            ]
+          })
           .then(form => {
             ctx.status = 200;
             ctx.body = form;
@@ -45,7 +43,7 @@ const updateForm = () =>
           });
       }).catch(err => {
         ctx.status = 400;
-        ctx.body =  {
+        ctx.body = {
           success: false,
           message: err.message
         };

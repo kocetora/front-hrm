@@ -14,7 +14,7 @@ chai.use(chaiMatchPattern);
 describe('FILTER FORMS', () => {
   let testToken = '';
 
-  beforeEach(async () => {
+  beforeEach(async() => {
     const testUser = await User.create({
       username: '83930',
       password: '83930',
@@ -44,7 +44,8 @@ describe('FILTER FORMS', () => {
       professions: [{ profession: 'pit_boss' }, { profession: 'trainee' }],
       messengers: [{ messenger: 'Telegram', info: 'pit_boss' }, { messenger: 'Viber', info: 'dealer' }],
       languageSkills: [{ language: 'english', languageProficiency: 'basic' },
-        { language: 'russian', languageProficiency: 'native' }]
+        { language: 'russian', languageProficiency: 'native' }
+      ]
     });
   });
 
@@ -84,11 +85,13 @@ describe('FILTER FORMS', () => {
           { profession: 'manager' },
           { profession: 'pit_boss' },
           { profession: 'waiter' },
-          { profession: 'barman' }],
+          { profession: 'barman' }
+        ],
         messengers: [
           { messenger: 'Telegram' },
           { messenger: 'Viber' },
-          { messenger: 'WhatsApp' }]
+          { messenger: 'WhatsApp' }
+        ]
       })
       .end((error, res) => {
         expect(res.body).to.matchPattern(_.isArray);
@@ -118,17 +121,20 @@ describe('FILTER FORMS', () => {
           { profession: 'manager' },
           { profession: 'pit_boss' },
           { profession: 'waiter' },
-          { profession: 'barman' }],
+          { profession: 'barman' }
+        ],
         messengers: [
           { messenger: 'Telegram' },
           { messenger: 'Viber' },
-          { messenger: 'WhatsApp' }]
+          { messenger: 'WhatsApp' }
+        ]
       })
       .end((error, res) => {
         expect(res).to.have.status(400);
         expect(res.body).to.matchPattern({
           success: false,
-          message: 'неверный синтаксис для типа date: "Invalid date"' });
+          message: 'неверный синтаксис для типа date: "Invalid date"'
+        });
         done();
       });
   });
