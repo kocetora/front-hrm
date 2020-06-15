@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormComponent } from './form.component';
+import { CommentComponent } from './comment.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from '../../../shared/modules/material.module';
-import { ControlErrorModule } from '../control-error/control-error.module';
+import { MaterialModule } from '../../shared/modules/material.module';
+import { ControlErrorModule } from 'src/app/core/components/control-error/control-error.module';
 
 @NgModule({
-  declarations: [FormComponent],
+  declarations: [CommentComponent],
   imports: [
     CommonModule,
     TranslateModule,
@@ -15,7 +15,7 @@ import { ControlErrorModule } from '../control-error/control-error.module';
     ReactiveFormsModule,
     ControlErrorModule
   ],
-  exports: [FormComponent],
+  exports: [CommentComponent],
 })
-export class FormModule {
+export class CommentModule {
 }

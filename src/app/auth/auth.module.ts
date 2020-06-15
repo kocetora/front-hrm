@@ -22,4 +22,4 @@ import { RouterModule } from '@angular/router';
   ],
   providers: [],
 })
-export class AppAuthModule { }
+export class AuthModule { }

@@ -1,7 +1,7 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {ControlErrorComponent} from './control-error.component';
-import {TranslateModule} from '@ngx-translate/core';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ControlErrorComponent } from './control-error.component';
+import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../../../shared/modules/material.module';
 
@@ -16,5 +16,5 @@ import { MaterialModule } from '../../../shared/modules/material.module';
   declarations: [ControlErrorComponent],
   exports: [ControlErrorComponent],
 })
-export class AppControlErrorModule {
+export class ControlErrorModule {
 }

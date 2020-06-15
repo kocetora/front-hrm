@@ -1,40 +1,39 @@
 import { NgModule } from '@angular/core';
-import { CommentComponent } from './comment/comment.component';
 import { FormUpdateComponent } from './form-update/form-update.component';
 import { ListComponent } from './list/list.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MaterialModule } from '../shared/modules/material.module';
-import { AppControlErrorModule } from '../core/components/control-error/control-error.module';
-import { AppFilterModule } from './filter/filter.module';
-import { AppFormModule } from '../core/components/form/form.module';
+import { FilterModule } from './filter/filter.module';
+import { FormModule } from '../core/components/form/form.module';
+import { CommentModule } from './comment/comment.module';
+import { ViewComponent } from './view.component';
 
 
 @NgModule({
   declarations: [
-    CommentComponent,
     FormUpdateComponent,
     ListComponent,
+    ViewComponent
   ],
   imports: [
       TranslateModule,
-      FormsModule,
-      ReactiveFormsModule,
       CommonModule,
       LayoutModule,
       MaterialModule,
-      AppControlErrorModule,
-      AppFormModule
+      FormModule,
+      CommentModule,
+      FilterModule
   ],
   exports: [
-    CommentComponent,
     FormUpdateComponent,
     ListComponent,
-    AppFilterModule,
+    FilterModule,
+    ViewComponent,
+    CommentModule,
     CommonModule
   ],
   providers: [],
 })
-export class AppViewModule { }
+export class ViewModule { }
