@@ -4,7 +4,7 @@
   <app-form-update></app-form-update>
 </div>
 
-<mat-tab-group *ngIf="!media.matches" mat-align-tabs="center">
+<mat-tab-group animationDuration="250ms" *ngIf="!media.matches" mat-align-tabs="center">
   <mat-tab label="{{ 'VIEW.FILTER' | translate }}">
     <app-filter></app-filter>
   </mat-tab>
