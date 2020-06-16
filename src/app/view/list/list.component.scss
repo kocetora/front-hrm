@@ -1,7 +1,7 @@
 .card p {
   display: flex;
-  font-size: 17px;
-  font-weight: 600;
+  font-size: var(--FONT_SIZE_TEXT);
+  font-weight: var(--FONT_WEIGHT_TITLE);
   justify-content: space-between;
   align-items: center;
 }
@@ -14,5 +14,5 @@ span.name {
 }
 
 app-list {
-  min-width: 300px;
+  min-width: 200px;
 }

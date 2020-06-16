@@ -14,20 +14,20 @@
 }
 
 .col1 {
-  margin-right: 15px;
+  margin-right: 25px;
 }
 
 .col2 {
-  margin-left: 15px;
+  margin-left: 25px;
 }
 
-@media only screen and (max-width: 480px) {
-  .grid-container {
-    display: flex;
-    flex-direction: column;
-  }
+@media only screen and (max-width: 740px) {
   .col1,
   .col2 {
     margin: 0;
+  }
+  .grid-container {
+    display: flex;
+    flex-direction: column;
   }
 }

@@ -1,0 +1,12 @@
+@import 'variables';
+%sizes {
+  min-width: 200px;
+  width: 100%;
+  max-width: 600px;
+}
+
+%frames {
+  padding: 1rem;
+  border: var(--COLOR_LINE) 1px dotted;
+  margin: 0.7rem 0;
+}

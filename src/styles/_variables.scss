@@ -1,0 +1,13 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+:root {
+  /// MAIN COLORS
+  #{--COLOR_LINE}: #ccc;
+  /// FONT SIZES
+  #{--FONT_SIZE_PARAGRAPH}: 20px;
+  #{--FONT_SIZE_TEXT}: 16px;
+  /// FONT WEIGHTS
+  #{--FONT_WEIGHT_TITLE}: 600;
+  #{--FONT_WEIGHT_PRIMARY}: 500;
+  //FONTS
+  #{--MAIN_FONT}: Roboto, "Helvetica Neue", sans-serif;
+}
