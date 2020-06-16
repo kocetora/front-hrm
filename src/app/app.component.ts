@@ -1,8 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from './auth/auth.service';
 import { Router } from '@angular/router';
-import { MediaMatcher } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-root',
@@ -11,20 +9,8 @@ import { MediaMatcher } from '@angular/cdk/layout';
 })
 export class AppComponent {
   @ViewChild('drawer') drawer: any;
-  public selectedItem = '';
-  media: MediaQueryList;
 
-  constructor(
-    mediaMatcher: MediaMatcher,
-    private authService: AuthService,
-    public translate: TranslateService,
-    private router: Router ) {
-    this.media = mediaMatcher.matchMedia('(min-width: 740px)');
-    translate.addLangs(['ru', 'en']);
-    translate.setDefaultLang('ru');
-    const browserLang = translate.getBrowserLang();
-    translate.use(browserLang.match(/ru|en/) ? browserLang : 'en');
-  }
+  constructor(private authService: AuthService, private router: Router ) { }
 
   closeSideNav() {
     if (this.drawer._mode === 'over') {
