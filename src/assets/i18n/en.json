@@ -1,6 +1,8 @@
 {
+  "TITLE": "HR manager",
   "HOME": {
     "TITLE": "Home page",
+    "MENU": "Menu",
     "LOGIN": "Login",
     "VIEW": "Base",
     "FORM": "Form",

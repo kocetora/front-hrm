@@ -5,8 +5,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
-
-
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule( {
     imports: [
@@ -16,7 +19,11 @@ import { MatTabsModule } from '@angular/material/tabs';
         MatCheckboxModule,
         MatSelectModule,
         MatTabsModule,
-
+        MatIconModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        MatListModule,
+        MatMenuModule
     ],
     exports: [
       MatInputModule,
@@ -24,6 +31,11 @@ import { MatTabsModule } from '@angular/material/tabs';
       MatCheckboxModule,
       MatSelectModule,
       MatTabsModule,
+      MatIconModule,
+      MatSidenavModule,
+      MatToolbarModule,
+      MatListModule,
+      MatMenuModule
     ],
     providers: []
 } )

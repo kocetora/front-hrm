@@ -1,4 +1,10 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 html,
 body {
   height: 100%;
@@ -7,20 +13,7 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1rem;
   line-height: 1.6;
-  background-color: #fff;
-  color: #333;
 }
 
 form {
@@ -107,6 +100,29 @@ select.lang {
 
 select.lang>option {
   background-color: inherit;
+}
+
+.sidenav-container {
+  height: 100vh;
+}
+
+.sidenav {
+  width: 220px;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+}
+
+.mat-menu-panel,
+.mat-nav-list {
+  width: 300px;
+}
+
+.mat-toolbar {
+  height: 50px;
+  font-size: 16px;
 }
 
 @media only screen and (max-width: 480px) {
