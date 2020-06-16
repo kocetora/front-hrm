@@ -19,7 +19,7 @@ export const appRoutes: Routes = [
   },
   {
     path: RouteNames.AUTH,
-    children: authRoutes
+    loadChildren: './auth/auth.module#AuthModule'
   },
   {
     path: '**',
