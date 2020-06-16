@@ -12,7 +12,6 @@ import { FormModule } from './core/components/form/form.module';
 import { AuthModule } from './auth/auth.module';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
-import { LayoutModule } from '@angular/cdk/layout';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -31,8 +30,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ViewModule,
     FormModule,
     AuthModule,
-    LayoutModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, { useHash: true }),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

@@ -38,7 +38,8 @@ export class ListComponent implements OnInit {
 
   selectForm(id) {
     if (this.forms[id]) {
-      this.formService.setId(id);
+      this.formService.setId(undefined);
+      setTimeout(() => this.formService.setId(id), 250);
     } else {
       this.formService.setId(undefined);
     }

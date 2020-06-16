@@ -79,29 +79,6 @@ hr {
   margin: 10px;
 }
 
-select.lang {
-  padding: 0;
-  margin: 0;
-  max-width: 72px;
-  color: inherit;
-  background-color: initial;
-  border: none;
-  font-weight: 500;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(0, 0, 0, .87);
-  height: 48px;
-  margin-left: 24px;
-  padding-right: 24px;
-  line-height: 1.6;
-  border-right: #ccc 1px dotted;
-}
-
-select.lang>option {
-  background-color: inherit;
-}
-
 .sidenav-container {
   height: 100vh;
 }
