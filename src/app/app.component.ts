@@ -1,5 +1,4 @@
 import { Component, ViewChild } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from './auth/auth.service';
 import { Router } from '@angular/router';
 
@@ -11,15 +10,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
   @ViewChild('drawer') drawer: any;
 
-  constructor(
-    private authService: AuthService,
-    public translate: TranslateService,
-    private router: Router ) {
-    translate.addLangs(['ru', 'en']);
-    translate.setDefaultLang('ru');
-    const browserLang = translate.getBrowserLang();
-    translate.use(browserLang.match(/ru|en/) ? browserLang : 'en');
-  }
+  constructor(private authService: AuthService, private router: Router ) { }
 
   closeSideNav() {
     if (this.drawer._mode === 'over') {
