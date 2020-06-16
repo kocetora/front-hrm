@@ -1,98 +1,28 @@
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import './styles/variables';
+@import './styles/mixins';
+@import './styles/divs';
+@import './styles/forms';
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html,
 body {
   height: 100%;
-}
-
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: var(--MAIN_FONT);
   line-height: 1.6;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 span {
-  font-weight: 500;
+  font-weight: var(--FONT_WEIGHT_PRIMARY);
 }
 
 p {
-  font-size: 20px;
+  font-size: var(--FONT_SIZE_PARAGRAPH);
+}
+
+hr,
+p {
   margin: 0.5rem 0;
-}
-
-hr {
-  margin: .5rem 0;
-}
-
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 1rem;
-}
-
-.col {
-  display: flex;
-  flex-direction: column;
-}
-
-.row {
-  display: flex;
-  flex-direction: row;
-}
-
-.card {
-  padding: 1rem;
-  border: #ccc 1px dotted;
-  margin: 0.7rem 0;
-}
-
-.mincard,
-.full-width {
-  min-width: 300px;
-  width: 100%;
-  max-width: 700px;
-}
-
-.mincard {
-  padding: 1rem;
-  border: #ccc 1px dotted;
-  margin: 0.7rem 0;
-}
-
-.full-width {
-  margin-bottom: 10px;
-}
-
-.part-width {
-  margin: 10px;
-}
-
-@media only screen and (max-width: 480px) {
-  .row {
-    flex-direction: column;
-  }
-  .full-width,
-  .mincard {
-    min-width: 250px;
-    width: 100%;
-    max-width: 350px;
-  }
-  .part-width {
-    min-width: 230px;
-    width: 100%;
-    max-width: 330px;
-    margin: 0;
-  }
 }
