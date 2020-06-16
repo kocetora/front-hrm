@@ -18,7 +18,8 @@ const Messenger = sequelize.define('messenger', {
     values: [
       'Telegram',
       'Viber',
-      'WhatsApp'],
+      'WhatsApp'
+    ],
     allowNull: false,
     validate: {
       notNull: { messenger: 'messenger is required' },
@@ -29,15 +30,13 @@ const Messenger = sequelize.define('messenger', {
   }
 }, { timestamps: false });
 
-const FormMessenger = sequelize.define('form_messenger', {},
-  { timestamps: false });
+const FormMessenger = sequelize.define('form_messenger', {}, { timestamps: false });
 Form.belongsToMany(Messenger, { through: FormMessenger });
 Messenger.belongsToMany(Form, { through: FormMessenger });
 
-// sequelize.sync({ force: true }).then(() => {
-//   console.log('Tables have been created');
-// }).catch(err => console.log(err));
+sequelize.sync({ force: true }).then(() => {
+  console.log('Tables have been created');
+}).catch(err => console.log(err));
 
 
 module.exports = Messenger;
-

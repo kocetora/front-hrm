@@ -29,8 +29,7 @@ const User = sequelize.define('users', {
       notNull: { password: 'password is required' },
     },
   }
-}
-);
+});
 
 User.beforeCreate(user => cryptPassword(user.password)
   .then(success => {
@@ -58,9 +57,9 @@ User.prototype.validPassword = function(password) {
   return bcrypt.compareSync(password, this.dataValues.password);
 };
 
-// sequelize.sync({ force: true }).then(() => {
-//   console.log('Tables have been created');
-// }).catch(err => console.log(err));
+sequelize.sync({ force: true }).then(() => {
+  console.log('Tables have been created');
+}).catch(err => console.log(err));
 User.create({ username: 'login', password: 'password' });
 
 module.exports = User;

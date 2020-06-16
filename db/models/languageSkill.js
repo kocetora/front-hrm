@@ -17,7 +17,8 @@ const LanguageSkill = sequelize.define('languageSkill', {
     type: Sequelize.ENUM,
     values: [
       'english',
-      'russian'],
+      'russian'
+    ],
     allowNull: false,
     validate: {
       notNull: { language: 'language is required' },
@@ -29,7 +30,8 @@ const LanguageSkill = sequelize.define('languageSkill', {
       'native',
       'fluent',
       'intermediate',
-      'basic'],
+      'basic'
+    ],
     allowNull: false,
     validate: {
       notNull: { languageid: 'languageid is required' },
@@ -37,13 +39,12 @@ const LanguageSkill = sequelize.define('languageSkill', {
   }
 }, { timestamps: false });
 
-const FormLanguageSkill = sequelize.define('form_languageSkill', {},
-  { timestamps: false });
+const FormLanguageSkill = sequelize.define('form_languageSkill', {}, { timestamps: false });
 Form.belongsToMany(LanguageSkill, { through: FormLanguageSkill });
 LanguageSkill.belongsToMany(Form, { through: FormLanguageSkill });
 
-// sequelize.sync({ force: true }).then(() => {
-//   console.log('Tables have been created');
-// }).catch(err => console.log(err));
+sequelize.sync({ force: true }).then(() => {
+  console.log('Tables have been created');
+}).catch(err => console.log(err));
 
 module.exports = LanguageSkill;
