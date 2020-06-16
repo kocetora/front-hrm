@@ -1,0 +1,8 @@
+<mat-list-item [matMenuTriggerFor]="appMenu">
+  <mat-icon matListIcon>g_translate</mat-icon>
+  <a matLine>Translate</a>
+  <mat-menu #appMenu="matMenu">
+    <button class="menu" mat-menu-item (click)="translate.use('en')">English</button>
+    <button class="menu" mat-menu-item (click)="translate.use('ru')">Russian</button>
+  </mat-menu>
+</mat-list-item>

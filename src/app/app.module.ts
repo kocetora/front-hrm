@@ -12,6 +12,7 @@ import { FormModule } from './core/components/form/form.module';
 import { AuthModule } from './auth/auth.module';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
+import { LangSwitcherModule } from './core/components/lang-switcher/lang-switcher.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -38,6 +39,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
+    LangSwitcherModule
   ],
   providers: [],
   bootstrap: [AppComponent]

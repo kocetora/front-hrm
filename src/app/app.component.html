@@ -28,15 +28,7 @@
         <a matLine>{{ 'HOME.LOGOUT' | translate }}</a>
       </mat-list-item>
 
-      <mat-list-item [matMenuTriggerFor]="appMenu">
-        <mat-icon matListIcon>g_translate</mat-icon>
-        <a matLine>Translate</a>
-        <mat-menu #appMenu="matMenu">
-          <button class="menu" mat-menu-item (click)="translate.use('en')" (click)="closeSideNav()">English</button>
-          <button class="menu" mat-menu-item (click)="translate.use('ru')" (click)="closeSideNav()">Russian</button>
-        </mat-menu>
-      </mat-list-item>
-
+      <app-lang-switcher></app-lang-switcher>
 
     </mat-nav-list>
   </mat-sidenav>
