@@ -43,8 +43,8 @@ const FormLanguageSkill = sequelize.define('form_languageSkill', {}, { timestamp
 Form.belongsToMany(LanguageSkill, { through: FormLanguageSkill });
 LanguageSkill.belongsToMany(Form, { through: FormLanguageSkill });
 
-sequelize.sync({ force: true }).then(() => {
-  console.log('Tables have been created');
-}).catch(err => console.log(err));
+// sequelize.sync({ force: true }).then(() => {
+//   console.log('Tables have been created');
+// }).catch(err => console.log(err));
 
 module.exports = LanguageSkill;
