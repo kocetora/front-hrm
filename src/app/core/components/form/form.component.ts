@@ -87,6 +87,7 @@ export class FormComponent implements OnInit, OnChanges {
       if (this.form.valid !== undefined) {
         const formData: Form = this.bodyService.convertFormData({...this.form.value});
         this.onsubmit.emit(formData);
+        this.form.reset();
       }
     }
   }
