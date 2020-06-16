@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from './auth/auth.service';
 import { Router } from '@angular/router';
@@ -10,6 +10,8 @@ import { MediaMatcher } from '@angular/cdk/layout';
   providers: [AuthService]
 })
 export class AppComponent {
+  @ViewChild('drawer') drawer: any;
+  public selectedItem = '';
   media: MediaQueryList;
 
   constructor(
@@ -22,6 +24,12 @@ export class AppComponent {
     translate.setDefaultLang('ru');
     const browserLang = translate.getBrowserLang();
     translate.use(browserLang.match(/ru|en/) ? browserLang : 'en');
+  }
+
+  closeSideNav() {
+    if (this.drawer._mode === 'over') {
+      this.drawer.close();
+    }
   }
 
   logout() {
