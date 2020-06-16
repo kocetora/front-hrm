@@ -1,12 +1,12 @@
 <div class="container list">
-    <h2>{{ 'VIEW.LIST' | translate }}</h2>
-    <hr>
-    <div class="card" *ngFor="let form of forms; let i = index" #el [attr.id]="form.formid" (click)=selectForm(i)>
-        <p>
-            <span class="name">{{form.name}} {{form.surname}}</span>
-            <span>
+  <h2>{{ 'VIEW.LIST' | translate }}</h2>
+  <hr>
+  <div class="card" *ngFor="let form of forms; let i = index" #el [attr.id]="form.formid" (click)=selectForm(i)>
+    <p>
+      <span class="name">{{form.name}} {{form.surname}}</span>
+      <span>
           <button color="warn" mat-button  (click)=deleteItem(el.id)>✖</button>
         </span>
-        </p>
-    </div>
+    </p>
+  </div>
 </div>
