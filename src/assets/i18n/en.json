@@ -5,7 +5,7 @@
     "MENU": "Menu",
     "LOGIN": "Login",
     "VIEW": "Base",
-    "FORM": "Form",
+    "FORM": "Create Profile",
     "LOGOUT": "Log out",
     "SIGN_UP": "Sign up",
     "ERROR_404": "Error 404",
@@ -22,12 +22,13 @@
     "TITLE": "Form",
     "NAME": "Name",
     "SURNAME": "Surname",
+    "MIDDLENAME": "Middle Name",
     "SEX": {
       "TITLE": "Sex",
       "MALE": "Male",
       "FEMALE": "Female"
     },
-    "BORN": "Birth date",
+    "BORN": "Date of birth",
     "HEIGHT": "Height(cm)",
     "PHONE_NUMBER": "Phone Number",
     "EMAIL": "Email",
@@ -77,7 +78,8 @@
       "VIBER": "WhatsApp",
       "WHATSAPP": "Viber"
     },
-    "NOTE": "Note",
+    "NOTE": "Additional information",
+    "NOTE_PLACEHOLDER": "Please state additional information about you: your skills, games you are proficient with, etc.",
     "SUBMIT": "Submit",
     "RESET": "Reset"
   },

@@ -15,6 +15,14 @@ import { Genders, Grades, Professions, Messengers, Languages, LanguageProficienc
 })
 export class FormComponent implements OnInit, OnChanges {
 
+  readonly text_inputs = [
+    'name',
+    'surname',
+    'middlename',
+    'email',
+    'preffered_region'
+  ]
+
   @Output() onsubmit: EventEmitter<Form> = new EventEmitter<Form>();
   @Input() input: {id: number|undefined; formdata?: Form};
 
@@ -35,13 +43,15 @@ export class FormComponent implements OnInit, OnChanges {
       this.form = this.formBuilder.group({
         name: ['', [Validators.required, Validators.maxLength(255), noWhitespace]],
         surname: ['', [Validators.required, Validators.maxLength(255), noWhitespace]],
+        middlename: ['', [Validators.required, Validators.maxLength(255), noWhitespace]],
+        email: ['', [Validators.required, Validators.email, Validators.maxLength(255)]],
+        preffered_region: ['', [Validators.required, Validators.maxLength(255), noWhitespace]],
+
         sex: ['male', Validators.required],
         education: ['higher', Validators.required],
         born: ['',  [Validators.required]],
         height: ['',  [Validators.required, Validators.min(30), Validators.max(300)]],
         phoneNumber: ['', [Validators.required, Validators.maxLength(255), noWhitespace]],
-        email: ['', [Validators.required, Validators.email, Validators.maxLength(255)]],
-        prefferedRegion: ['', Validators.maxLength(255)],
         expectedSalary: ['', [Validators.required, Validators.min(1), Validators.max(100000)]],
         note: ['', Validators.maxLength(255)],
         unemployedFor: this.formBuilder.group({

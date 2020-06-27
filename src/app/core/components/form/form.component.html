@@ -4,29 +4,12 @@
       <h1>{{'FORM.TITLE' | translate}}</h1>
       <div class="grid-container">
         <div class="col1">
-          <mat-form-field class="full-width">
-            <input matInput placeholder="{{ 'FORM.NAME' | translate  }}" formControlName="name">
-            <mat-error>
-              <app-control-error [control]="form.get('name')"></app-control-error>
-            </mat-error>
-          </mat-form-field>
 
-          <mat-form-field class="full-width">
-            <input matInput placeholder="{{ 'FORM.SURNAME' | translate  }}" formControlName="surname">
+          <mat-form-field *ngFor="let input of text_inputs" class="full-width">
+            <input matInput placeholder="{{ 'FORM.' + input | uppercase | translate }}" [formControlName]="input" required>
             <mat-error>
-              <app-control-error [control]="form.get('surname')"></app-control-error>
+              <app-control-error [control]="form.get(input)"></app-control-error>
             </mat-error>
-          </mat-form-field>
-
-          <mat-form-field class="full-width">
-            <input matInput placeholder="{{ 'FORM.EMAIL' | translate  }}" formControlName="email">
-            <mat-error>
-              <app-control-error [control]="form.get('email')"></app-control-error>
-            </mat-error>
-          </mat-form-field>
-
-          <mat-form-field class="full-width">
-            <input matInput placeholder="{{ 'FORM.PREFFERED_REGION' | translate  }}" formControlName="prefferedRegion">
           </mat-form-field>
 
           <mat-form-field class="full-width">
@@ -64,14 +47,12 @@
               <mat-checkbox *ngFor="let p of professions | keyvalue" [formControlName]="p.key">{{ 'FORM.PROFESSIONS.' + p.value | translate }}</mat-checkbox>
             </div>
           </div>
-
-
         </div>
 
         <div class="col2">
 
           <mat-form-field class="full-width">
-            <input matInput type="number" placeholder="{{ 'FORM.HEIGHT' | translate  }}" formControlName="height">
+            <input matInput type="number" placeholder="{{ 'FORM.HEIGHT' | translate  }}" formControlName="height" required>
             <mat-error>
               <app-control-error [control]="form.get('height')"></app-control-error>
             </mat-error>
@@ -89,7 +70,7 @@
           </mat-form-field>
 
           <mat-form-field class="full-width">
-            <input matInput placeholder="{{ 'FORM.PHONE_NUMBER' | translate  }}" formControlName="phoneNumber">
+            <input matInput placeholder="{{ 'FORM.PHONE_NUMBER' | translate  }}" formControlName="phoneNumber" required>
             <mat-error>
               <app-control-error [control]="form.get('phoneNumber')"></app-control-error>
             </mat-error>
@@ -176,7 +157,8 @@
           </div>
 
           <mat-form-field class="full-width">
-            <textarea matInput placeholder="{{ 'FORM.NOTE' | translate  }}" formControlName="note" matTextareaAutosize matAutosizeMinRows="5" matAutosizeMaxRows="7">
+            <mat-label>{{ 'FORM.NOTE' | translate }}</mat-label>
+            <textarea matInput placeholder="{{ 'FORM.NOTE_PLACEHOLDER' | translate  }}" formControlName="note" matTextareaAutosize matAutosizeMinRows="5" matAutosizeMaxRows="7">
                     </textarea>
             <mat-hint>{{form.get('note').value ? form.get('note').value.length : 0}} / 255</mat-hint>
             <mat-error>
