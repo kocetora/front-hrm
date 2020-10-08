@@ -5,7 +5,7 @@
       <div class="grid-container">
         <div class="col1">
 
-          <mat-form-field *ngFor="let input of text_inputs" class="full-width">
+          <mat-form-field *ngFor="let input of textInputs" class="full-width">
             <input matInput placeholder="{{ 'FORM.' + input | uppercase | translate }}" [formControlName]="input" required>
             <mat-error>
               <app-control-error [control]="form.get(input)"></app-control-error>

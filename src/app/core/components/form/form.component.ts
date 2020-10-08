@@ -15,13 +15,13 @@ import { Genders, Grades, Professions, Messengers, Languages, LanguageProficienc
 })
 export class FormComponent implements OnInit, OnChanges {
 
-  readonly text_inputs = [
+  readonly textInputs = [
     'name',
     'surname',
     'middlename',
     'email',
     'preffered_region'
-  ]
+  ];
 
   @Output() onsubmit: EventEmitter<Form> = new EventEmitter<Form>();
   @Input() input: {id: number|undefined; formdata?: Form};
