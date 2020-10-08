@@ -1,8 +1,8 @@
 export enum ApiRoutes {
-  logout = 'api/logout',
-  login = 'api/login',
-  signUp = 'api/register',
-  form = 'api/form',
-  forms = 'api/forms',
-  comment = 'comment'
+  LOGOUT = '/auth/logout',
+  LOGIN = '/auth/login',
+  SIGNUP = '/auth/register',
+  FORM = '/form',
+  BASE = '/base',
+  COMMENT = 'comment'
 }
