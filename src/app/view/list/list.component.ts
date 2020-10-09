@@ -16,7 +16,7 @@ export class ListComponent implements OnInit {
   constructor(
     private fetchService: FetchService,
     private formService: FormService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getFormsFromServer();
@@ -24,11 +24,11 @@ export class ListComponent implements OnInit {
   }
 
   getFormsFromServer(): void {
-    this.fetchService.getForms().subscribe(forms => {
+    this.fetchService.getForms().subscribe((forms) => {
       this.formService.setForms(forms);
-      });
+    });
     this.selectForm(1);
-    }
+  }
 
   setThisForms(): void {
     this.formService.getForms().subscribe((forms) => {
@@ -46,9 +46,7 @@ export class ListComponent implements OnInit {
   }
 
   delete(id: number): void {
-    this.fetchService
-        .deleteForm(id)
-        .subscribe();
+    this.fetchService.deleteForm(id).subscribe();
   }
 
   deleteItem(id: number) {
@@ -56,5 +54,4 @@ export class ListComponent implements OnInit {
     this.getFormsFromServer();
     this.selectForm(1);
   }
-
 }

@@ -10,7 +10,7 @@ import { Form } from '../../shared/interfaces/form';
   selector: 'app-comment',
   templateUrl: './comment.component.html',
   styleUrls: ['./comment.component.scss'],
-  providers: [FetchService]
+  providers: [FetchService],
 })
 export class CommentComponent implements OnInit {
   id: number | undefined;
@@ -22,7 +22,8 @@ export class CommentComponent implements OnInit {
 
   constructor(
     private fetchService: FetchService,
-    private formService: FormService) { }
+    private formService: FormService
+  ) {}
 
   ngOnInit(): void {
     this.formService.getId().subscribe((id) => {
@@ -38,17 +39,18 @@ export class CommentComponent implements OnInit {
       text: new FormControl('', [
         Validators.required,
         Validators.maxLength(255),
-        noWhitespace
-      ])
+        noWhitespace,
+      ]),
     });
   }
 
   getComments() {
     if (this.id !== undefined) {
-      this.fetchService.getComments(this.forms[this.id].formid)
-      .subscribe(comments => {
-        this.comments = comments;
-      });
+      this.fetchService
+        .getComments(this.forms[this.id].formid)
+        .subscribe((comments) => {
+          this.comments = comments;
+        });
     }
   }
 
@@ -57,13 +59,14 @@ export class CommentComponent implements OnInit {
       const comment: Comment = {
         comment: this.comment.value.text,
         username: this.username,
-        userid: this.userid
+        userid: this.userid,
       };
-      this.fetchService.addComment(this.forms[this.id].formid, comment)
-      .subscribe(() => {
-        this.getComments();
-        this.comment.reset();
-      });
+      this.fetchService
+        .addComment(this.forms[this.id].formid, comment)
+        .subscribe(() => {
+          this.getComments();
+          this.comment.reset();
+        });
     }
   }
 }

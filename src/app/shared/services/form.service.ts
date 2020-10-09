@@ -3,10 +3,9 @@ import { Form } from '../../shared/interfaces/form';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FormService {
-
   private forms: BehaviorSubject<Form[]>;
   private id: BehaviorSubject<number | undefined>;
 

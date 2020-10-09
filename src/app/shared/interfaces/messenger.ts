@@ -1,4 +1,4 @@
 export interface Messenger {
-    messenger: string;
-    info?: string;
+  messenger: string;
+  info?: string;
 }

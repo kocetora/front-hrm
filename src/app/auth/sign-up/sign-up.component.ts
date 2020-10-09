@@ -5,26 +5,24 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  providers: [AuthService]
+  providers: [AuthService],
 })
 export class SignUpComponent {
   error: string;
 
-  constructor(
-    private authService: AuthService,
-    private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {}
 
   submit(user) {
-    this.authService.signUp(user)
-    .subscribe(
+    this.authService.signUp(user).subscribe(
       () => {
-      this.error = '';
-      this.router.navigate(['/auth/login']);
+        this.error = '';
+        this.router.navigate(['/auth/login']);
       },
       (err) => {
         console.log(err.error);
         // this.error = 'This username is already taken. Please choose another one.';
         // this.error = err.error;
-      });
+      }
+    );
   }
 }

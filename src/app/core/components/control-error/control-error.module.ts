@@ -11,10 +11,9 @@ import { MaterialModule } from '../../../shared/modules/material.module';
     TranslateModule,
     FormsModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   declarations: [ControlErrorComponent],
   exports: [ControlErrorComponent],
 })
-export class ControlErrorModule {
-}
+export class ControlErrorModule {}

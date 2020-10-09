@@ -13,9 +13,8 @@ import { ControlErrorModule } from '../control-error/control-error.module';
     TranslateModule,
     MaterialModule,
     ReactiveFormsModule,
-    ControlErrorModule
+    ControlErrorModule,
   ],
   exports: [FormComponent],
 })
-export class FormModule {
-}
+export class FormModule {}

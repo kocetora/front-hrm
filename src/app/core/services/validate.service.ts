@@ -1,15 +1,14 @@
 export class ValidateService {
+  constructor() {}
 
-    constructor() { }
+  static getValidatorErrorMessage(validatorName: string, validatorValue?: any) {
+    const config = {
+      min: `${validatorValue.min}`,
+      max: `${validatorValue.max}`,
+      minlength: `${validatorValue.requiredLength}`,
+      maxlength: `${validatorValue.requiredLength}`,
+    };
 
-    static getValidatorErrorMessage(validatorName: string, validatorValue?: any) {
-      const config = {
-        min: `${validatorValue.min}`,
-        max: `${validatorValue.max}`,
-        minlength: `${validatorValue.requiredLength}`,
-        maxlength: `${validatorValue.requiredLength}`,
-      };
-
-      return config[validatorName];
-    }
+    return config[validatorName];
+  }
 }

@@ -6,18 +6,14 @@ import { ControlErrorModule } from '../../core/components/control-error/control-
 import { AuthFormComponent } from './auth-form.component';
 
 @NgModule({
-  declarations: [
-    AuthFormComponent
-  ],
+  declarations: [AuthFormComponent],
   imports: [
-      TranslateModule,
-      ReactiveFormsModule,
-      MaterialModule,
-      ControlErrorModule,
+    TranslateModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    ControlErrorModule,
   ],
-  exports: [
-    AuthFormComponent
-  ],
+  exports: [AuthFormComponent],
   providers: [],
 })
-export class AuthFormModule { }
+export class AuthFormModule {}

@@ -6,12 +6,12 @@ import { Router } from '@angular/router';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [AuthService]
+  providers: [AuthService],
 })
 export class AppComponent {
   @ViewChild('drawer') drawer: any;
 
-  constructor(private authService: AuthService, private router: Router ) { }
+  constructor(private authService: AuthService, private router: Router) {}
 
   closeSideNav() {
     if (this.drawer._mode === 'over') {
@@ -20,14 +20,12 @@ export class AppComponent {
   }
 
   logout() {
-    this.authService.logout()
-    .subscribe(
-      () => {
+    this.authService.logout().subscribe(() => {
       localStorage.removeItem('jwt');
       localStorage.removeItem('username');
       localStorage.removeItem('userid');
       this.router.navigate(['/']);
-      });
+    });
   }
 
   isAuth() {

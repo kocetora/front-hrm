@@ -3,5 +3,5 @@ export enum RouteNames {
   LOGIN = 'login',
   SIGH_UP = 'sign-up',
   VIEW = 'view',
-  ERROR = 'error'
+  ERROR = 'error',
 }

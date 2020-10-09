@@ -1,4 +1,4 @@
 export interface LanguageSkill {
-    language: string;
-    languageProficiency: string;
+  language: string;
+  languageProficiency: string;
 }

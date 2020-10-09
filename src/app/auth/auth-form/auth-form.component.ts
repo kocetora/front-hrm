@@ -13,26 +13,34 @@ export class AuthFormComponent implements OnInit {
   @Output() onsubmit: EventEmitter<User> = new EventEmitter<User>();
   @Input() error: string;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      username: ['', [
-        Validators.required,
-        Validators.minLength(2),
-        Validators.maxLength(50),
-        noWhitespace]],
-      password: ['', [
-        Validators.required,
-        Validators.minLength(6),
-        Validators.maxLength(25),
-        noWhitespace]]
+      username: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(50),
+          noWhitespace,
+        ],
+      ],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.maxLength(25),
+          noWhitespace,
+        ],
+      ],
     });
   }
 
   submit() {
     if (this.form.valid) {
-      const user: User = {...this.form.value};
+      const user: User = { ...this.form.value };
       this.onsubmit.emit(user);
     }
   }

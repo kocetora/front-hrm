@@ -7,7 +7,6 @@ import { MediaMatcher } from '@angular/cdk/layout';
   styleUrls: ['./view.component.scss'],
 })
 export class ViewComponent {
-
   media: MediaQueryList;
   constructor(mediaMatcher: MediaMatcher) {
     this.media = mediaMatcher.matchMedia('(min-width: 1366px)');

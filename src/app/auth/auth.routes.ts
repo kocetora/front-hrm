@@ -7,14 +7,14 @@ export const authRoutes: Routes = [
   {
     path: '',
     redirectTo: RouteNames.LOGIN,
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: RouteNames.LOGIN,
-    component: LoginComponent
+    component: LoginComponent,
   },
   {
     path: RouteNames.SIGH_UP,
-    component: SignUpComponent
-  }
+    component: SignUpComponent,
+  },
 ];

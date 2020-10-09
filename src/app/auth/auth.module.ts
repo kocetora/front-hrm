@@ -6,20 +6,9 @@ import { AuthFormModule } from './auth-form/auth-form.module';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [
-    LoginComponent,
-    SignUpComponent
-  ],
-  imports: [
-    TranslateModule,
-    RouterModule,
-    AuthFormModule
-  ],
-  exports: [
-    LoginComponent,
-    SignUpComponent,
-    AuthFormModule,
-  ],
+  declarations: [LoginComponent, SignUpComponent],
+  imports: [TranslateModule, RouterModule, AuthFormModule],
+  exports: [LoginComponent, SignUpComponent, AuthFormModule],
   providers: [],
 })
-export class AuthModule { }
+export class AuthModule {}
