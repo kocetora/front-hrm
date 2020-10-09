@@ -11,9 +11,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [
-    LangSwitcherComponent,
-  ],
+  declarations: [LangSwitcherComponent],
   imports: [
     CommonModule,
     MaterialModule,
@@ -21,12 +19,10 @@ export function HttpLoaderFactory(http: HttpClient) {
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
+        deps: [HttpClient],
+      },
     }),
   ],
-  exports: [
-    LangSwitcherComponent
-  ]
+  exports: [LangSwitcherComponent],
 })
-export class LangSwitcherModule { }
+export class LangSwitcherModule {}

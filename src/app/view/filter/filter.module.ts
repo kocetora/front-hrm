@@ -13,9 +13,8 @@ import { ControlErrorModule } from 'src/app/core/components/control-error/contro
     TranslateModule,
     MaterialModule,
     ReactiveFormsModule,
-    ControlErrorModule
+    ControlErrorModule,
   ],
   exports: [FilterComponent],
 })
-export class FilterModule {
-}
+export class FilterModule {}

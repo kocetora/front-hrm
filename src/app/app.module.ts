@@ -14,11 +14,7 @@ import { appRoutes } from './app.routes';
 import { LangSwitcherModule } from './core/components/lang-switcher/lang-switcher.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CreateFormComponent,
-    ErrorComponent,
-  ],
+  declarations: [AppComponent, CreateFormComponent, ErrorComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -28,9 +24,9 @@ import { LangSwitcherModule } from './core/components/lang-switcher/lang-switche
     FormModule,
     AuthModule,
     RouterModule.forRoot(appRoutes, { useHash: true }),
-    LangSwitcherModule
+    LangSwitcherModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

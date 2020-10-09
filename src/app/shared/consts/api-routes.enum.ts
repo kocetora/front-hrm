@@ -4,5 +4,5 @@ export enum ApiRoutes {
   SIGNUP = '/auth/register',
   FORM = '/form',
   BASE = '/base',
-  COMMENT = 'comment'
+  COMMENT = 'comment',
 }

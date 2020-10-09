@@ -10,24 +10,23 @@ export const appRoutes: Routes = [
   {
     path: '',
     component: CreateFormComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: RouteNames.VIEW,
     component: ViewComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: RouteNames.AUTH,
-    children: authRoutes
+    children: authRoutes,
   },
   {
     path: '**',
-    redirectTo: ''
+    redirectTo: '',
   },
   {
     path: '**',
-    component: ErrorComponent
-  }
+    component: ErrorComponent,
+  },
 ];
-

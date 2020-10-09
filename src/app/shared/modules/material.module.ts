@@ -11,33 +11,32 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 
-@NgModule( {
-    imports: [
-        BrowserAnimationsModule,
-        MatInputModule,
-        MatButtonModule,
-        MatCheckboxModule,
-        MatSelectModule,
-        MatTabsModule,
-        MatIconModule,
-        MatSidenavModule,
-        MatToolbarModule,
-        MatListModule,
-        MatMenuModule
-    ],
-    exports: [
-      MatInputModule,
-      MatButtonModule,
-      MatCheckboxModule,
-      MatSelectModule,
-      MatTabsModule,
-      MatIconModule,
-      MatSidenavModule,
-      MatToolbarModule,
-      MatListModule,
-      MatMenuModule
-    ],
-    providers: []
-} )
-
-export class MaterialModule { }
+@NgModule({
+  imports: [
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatSelectModule,
+    MatTabsModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
+    MatMenuModule,
+  ],
+  exports: [
+    MatInputModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatSelectModule,
+    MatTabsModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
+    MatMenuModule,
+  ],
+  providers: [],
+})
+export class MaterialModule {}

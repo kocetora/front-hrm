@@ -1,12 +1,12 @@
 export enum Genders {
   male = 'MALE',
-  female = 'FEMALE'
+  female = 'FEMALE',
 }
 export enum Grades {
   primary = 'PRIMARY',
   secondary = 'SECONDARY',
   unfinished_higher = 'UNFINISHED_HIGHER',
-  higher = 'HIGHER'
+  higher = 'HIGHER',
 }
 export enum Professions {
   trainee = 'TRAINEE',
@@ -15,21 +15,20 @@ export enum Professions {
   manager = 'MANAGER',
   pit_boss = 'PIT_BOSS',
   waiter = 'WAITER',
-  barman = 'BARMAN'
+  barman = 'BARMAN',
 }
 export enum Messengers {
   Telegram = 'TELEGRAM',
   Viber = 'VIBER',
-  WhatsApp = 'WHATSAPP'
+  WhatsApp = 'WHATSAPP',
 }
 export enum Languages {
   russian = 'RUSSIAN',
-  english = 'ENGLISH'
+  english = 'ENGLISH',
 }
 export enum LanguageProficiency {
   basic = 'BASIC',
   intermediate = 'INTERMEDIATE',
   fluent = 'FLUENT',
-  native = 'NATIVE'
+  native = 'NATIVE',
 }
-

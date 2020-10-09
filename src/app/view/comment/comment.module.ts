@@ -13,9 +13,8 @@ import { ControlErrorModule } from 'src/app/core/components/control-error/contro
     TranslateModule,
     MaterialModule,
     ReactiveFormsModule,
-    ControlErrorModule
+    ControlErrorModule,
   ],
   exports: [CommentComponent],
 })
-export class CommentModule {
-}
+export class CommentModule {}

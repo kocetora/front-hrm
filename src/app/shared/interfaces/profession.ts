@@ -1,3 +1,3 @@
 export interface Profession {
-    profession: string;
+  profession: string;
 }

@@ -6,28 +6,29 @@ import { Form } from '../../shared/interfaces/form';
 @Component({
   selector: 'app-form-update',
   templateUrl: './form-update.component.html',
-  providers: [ FetchService]
+  providers: [FetchService],
 })
 export class FormUpdateComponent implements OnInit {
   forms: Form[];
   id: number | undefined;
-  output: {id: number | undefined, formData?: Form};
+  output: { id: number | undefined; formData?: Form };
 
   constructor(
     private fetchService: FetchService,
-    private formService: FormService) { }
+    private formService: FormService
+  ) {}
 
-    ngOnInit(): void {
-      this.formService.getForms().subscribe((forms) => {
-        this.forms = forms;
-      });
-      this.formService.getId().subscribe((id) => {
-        this.id = id;
-        id !== undefined ?
-          this.output = { id, formData: this.forms[id] } :
-          this.output = { id: undefined };
-      });
-    }
+  ngOnInit(): void {
+    this.formService.getForms().subscribe((forms) => {
+      this.forms = forms;
+    });
+    this.formService.getId().subscribe((id) => {
+      this.id = id;
+      id !== undefined
+        ? (this.output = { id, formData: this.forms[id] })
+        : (this.output = { id: undefined });
+    });
+  }
 
   submit(formData) {
     formData.formid = this.forms[this.id].formid;

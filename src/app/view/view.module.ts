@@ -10,21 +10,16 @@ import { FormModule } from '../core/components/form/form.module';
 import { CommentModule } from './comment/comment.module';
 import { ViewComponent } from './view.component';
 
-
 @NgModule({
-  declarations: [
-    FormUpdateComponent,
-    ListComponent,
-    ViewComponent
-  ],
+  declarations: [FormUpdateComponent, ListComponent, ViewComponent],
   imports: [
-      TranslateModule,
-      CommonModule,
-      LayoutModule,
-      MaterialModule,
-      FormModule,
-      CommentModule,
-      FilterModule
+    TranslateModule,
+    CommonModule,
+    LayoutModule,
+    MaterialModule,
+    FormModule,
+    CommentModule,
+    FilterModule,
   ],
   exports: [
     FormUpdateComponent,
@@ -32,8 +27,8 @@ import { ViewComponent } from './view.component';
     FilterModule,
     ViewComponent,
     CommentModule,
-    CommonModule
+    CommonModule,
   ],
   providers: [],
 })
-export class ViewModule { }
+export class ViewModule {}
