@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { from, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { UserInfo } from '../shared/interfaces/userInfo';
 import { User } from '../shared/interfaces/user';
 import { ApiRoutes } from '../shared/consts/api-routes.enum';
