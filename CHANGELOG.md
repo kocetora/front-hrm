@@ -1,4 +1,13 @@
-# 0.1.0 (2020-10-16)
+# [0.2.0](https://github.com/kocetora/front-hrm/compare/v0.1.0...v0.2.0) (2020-10-16)
+
+
+### Features
+
+* test-ci added ([9e21ac5](https://github.com/kocetora/front-hrm/commit/9e21ac5fe0dcd9c8a7fc753b2413e3efaf9b4c37))
+
+
+
+# [0.1.0](https://github.com/kocetora/front-hrm/compare/ae6cddd4ce88de6bd70c2e2b5b99a6436a41d4ca...v0.1.0) (2020-10-16)
 
 
 ### Bug Fixes
