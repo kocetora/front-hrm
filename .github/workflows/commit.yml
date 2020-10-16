@@ -2,7 +2,7 @@ name: Conventional commits
 
 on:
   push:
-    branches: [heroku, master]
+    branches: [firebase, master]
   pull_request:
     branches: [master]
     types: [opened, edited]
