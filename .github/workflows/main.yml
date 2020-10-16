@@ -1,4 +1,4 @@
-name: Install, test, build
+name: Install, test, build, lint
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
     types: [opened, edited]
 
 jobs:
-  buildAndTest:
+  buildAndTestAndLint:
     runs-on: ubuntu-latest
 
     strategy:
@@ -27,3 +27,7 @@ jobs:
         run: npm run build
       - name: Test
         run: npm run test
+      - name: Lint
+        run: npm run lint
+      - name: Prettier
+        run: npm run prettier
