@@ -2,7 +2,6 @@ name: Install, test, build, lint
 
 on:
   push:
-    branches: [firebase, master]
   pull_request:
     branches: [master]
     types: [opened, edited]
