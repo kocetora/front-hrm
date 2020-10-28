@@ -23,7 +23,7 @@ export class LoginComponent {
         this.router.navigate(['/view']);
       },
       (err) => {
-        this.error = err.error;
+        this.error = err.error.message;
       }
     );
   }
