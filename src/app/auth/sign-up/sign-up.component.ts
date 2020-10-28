@@ -19,9 +19,7 @@ export class SignUpComponent {
         this.router.navigate(['/auth/login']);
       },
       (err) => {
-        console.log(err.error);
-        // this.error = 'This username is already taken. Please choose another one.';
-        // this.error = err.error;
+        this.error = err.error;
       }
     );
   }
