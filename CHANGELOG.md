@@ -1,18 +1,10 @@
-## [0.1.2](https://github.com/kocetora/front-hrm/compare/v0.1.1...v0.1.2) (2020-10-28)
+## [0.1.3](https://github.com/kocetora/front-hrm/compare/v0.2.1...v0.1.3) (2020-10-28)
 
 
 ### Bug Fixes
 
-* coverage on ci ([0429d45](https://github.com/kocetora/front-hrm/commit/0429d45edc0680bb5edc6214b2cf86d2dce0c792))
-
-
-
-## [0.1.1](https://github.com/kocetora/front-hrm/compare/v0.2.1...v0.1.1) (2020-10-28)
-
-
-### Bug Fixes
-
-* prettierc ([1b5edac](https://github.com/kocetora/front-hrm/commit/1b5edac94e041cf60232f1e765c4a1bcd45722dd))
+* coverage on ci ([92a091c](https://github.com/kocetora/front-hrm/commit/92a091cf078b96c59c3fd5294193e52f92eb829b))
+* prettierc ([f717f0f](https://github.com/kocetora/front-hrm/commit/f717f0f78e9fab686ede0e6ee84d97b11c99c2fd))
 
 
 
