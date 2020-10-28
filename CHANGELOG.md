@@ -1,11 +1,27 @@
-# 0.1.0 (2020-10-16)
+## [0.1.1](https://github.com/kocetora/front-hrm/compare/v0.2.1...v0.1.1) (2020-10-28)
+
 
 ### Bug Fixes
 
-- accidental requirment ([7589350](https://github.com/kocetora/front-hrm/commit/75893504ddf4b14c2351593a3604d4621ea18012))
-- change path to dist in .gitignore ([ae6cddd](https://github.com/kocetora/front-hrm/commit/ae6cddd4ce88de6bd70c2e2b5b99a6436a41d4ca))
-- redirect route ([a98a2df](https://github.com/kocetora/front-hrm/commit/a98a2df3b51cb8e3b0a28642abe2eb8901352126))
+* prettierc ([1b5edac](https://github.com/kocetora/front-hrm/commit/1b5edac94e041cf60232f1e765c4a1bcd45722dd))
+
+
+
+## [0.2.1](https://github.com/kocetora/front-hrm/compare/dc4d7432a3785a1f5b312441ad41e8e6c9364858...v0.2.1) (2020-10-21)
+
+
+### Bug Fixes
+
+* accidental requirment ([d109ad6](https://github.com/kocetora/front-hrm/commit/d109ad649508659dd129a772c8e0f96395336fa4))
+* change path to dist in .gitignore ([dc4d743](https://github.com/kocetora/front-hrm/commit/dc4d7432a3785a1f5b312441ad41e8e6c9364858))
+* redirect route ([5ee6fd8](https://github.com/kocetora/front-hrm/commit/5ee6fd8be79c5e217d36cc7cfcba1b2ae5435aec))
+* wrong word ([ab50659](https://github.com/kocetora/front-hrm/commit/ab5065979c5bf14ec37d69d59b07380a8b77ff32))
+
 
 ### Features
 
-- commitlint and prettier ([843eebb](https://github.com/kocetora/front-hrm/commit/843eebbfa2fca2bd43507dac5155c4c96b169004))
+* commitlint and prettier ([40b39fb](https://github.com/kocetora/front-hrm/commit/40b39fb62287ea282b443e64b36701d1fff1e417))
+* test-ci added ([6298734](https://github.com/kocetora/front-hrm/commit/629873400215aafa0db819ccdf8b259e920b74d0))
+
+
+
