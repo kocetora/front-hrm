@@ -1,3 +1,12 @@
+## [0.1.2](https://github.com/kocetora/front-hrm/compare/v0.1.1...v0.1.2) (2020-10-28)
+
+
+### Bug Fixes
+
+* coverage on ci ([0429d45](https://github.com/kocetora/front-hrm/commit/0429d45edc0680bb5edc6214b2cf86d2dce0c792))
+
+
+
 ## [0.1.1](https://github.com/kocetora/front-hrm/compare/v0.2.1...v0.1.1) (2020-10-28)
 
 
