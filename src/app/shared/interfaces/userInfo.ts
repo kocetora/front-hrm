@@ -1,5 +1,5 @@
 export interface UserInfo {
-  // userid: number;
+  userid: number;
   username: string;
-  // token: string;
+  token: string;
 }

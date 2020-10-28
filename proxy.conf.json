@@ -1,6 +1,6 @@
 {
   "/api/*": {
-    "target": "https://hr-m.herokuapp.com/api",
+    "target": "https://hr-m.herokuapp.com/v1",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true,

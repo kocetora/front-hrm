@@ -16,22 +16,14 @@ export class LoginComponent {
   submit(user) {
     this.authService.login(user).subscribe(
       (res: UserInfo) => {
-        // localStorage.setItem('jwt', res.token);
-        // localStorage.setItem('username', res.username);
-        // localStorage.setItem('userid', res.userid.toString());
+        localStorage.setItem('jwt', res.token);
+        localStorage.setItem('username', res.username);
+        localStorage.setItem('userid', res.userid.toString());
         this.error = '';
-        localStorage.setItem('jwt', 'username');
-        localStorage.setItem('username', 'username');
-        localStorage.setItem('userid', 'username');
         this.router.navigate(['/view']);
       },
       (err) => {
-        // this.error = err.error;
-        console.log(err);
-        localStorage.setItem('jwt', 'username');
-        localStorage.setItem('username', 'username');
-        localStorage.setItem('userid', 'username');
-        this.router.navigate(['/view']);
+        this.error = err.error;
       }
     );
   }
