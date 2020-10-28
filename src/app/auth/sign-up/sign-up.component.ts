@@ -19,7 +19,7 @@ export class SignUpComponent {
         this.router.navigate(['/auth/login']);
       },
       (err) => {
-        this.error = err.error;
+        this.error = err.error.message;
       }
     );
   }
