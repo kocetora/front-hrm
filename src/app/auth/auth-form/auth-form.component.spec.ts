@@ -1,38 +1,43 @@
-// import { TestBed, async } from '@angular/core/testing';
-// import { RouterTestingModule } from '@angular/router/testing';
-// import { AppComponent } from './app.component';
+import { FormBuilder } from '@angular/forms';
+import { AuthFormComponent } from './auth-form.component';
+import { User } from '../../shared/interfaces/user';
 
-describe('AppComponent', () => {
-  // beforeEach(async(() => {
-  //   TestBed.configureTestingModule({
-  //     imports: [
-  //       RouterTestingModule
-  //     ],
-  //     declarations: [
-  //       AppComponent
-  //     ],
-  //   }).compileComponents();
-  // }));
+describe('AuthFormComponent', () => {
+  let component;
+  
+  beforeEach(() => {
+    component = new AuthFormComponent(new FormBuilder)
+  });
 
-  it('should create the app', (done: DoneFn) => {
-    // const fixture = TestBed.createComponent(AppComponent);
-    // const app = fixture.componentInstance;
-    // expect(app).toBeTruthy();
+  //test on input
+
+  it('should create form with 2 controls', (done: DoneFn) => {
+    expect(component.form.contains('username')).toBeTrue;
+    expect(component.form.contains('password')).toBeTrue;
     done();
   });
 
-  it(`should have as title 'front'`, (done: DoneFn) => {
-    // const fixture = TestBed.createComponent(AppComponent);
-    // const app = fixture.componentInstance;
-    // expect(app.title).toEqual('front');
+  it(`should mark username as invalid if less then 2`, (done: DoneFn) => {
+    const username = component.form.get('username')
+    expect(username.setValue('a')).toBeTrue;
     done();
   });
 
-  it('should render title', (done: DoneFn) => {
-    // const fixture = TestBed.createComponent(AppComponent);
-    // fixture.detectChanges();
-    // const compiled = fixture.nativeElement;
-    // expect(compiled.querySelector('.content span').textContent).toContain('front app is running!');
+  it(`should mark password as invalid if less then 1`, (done: DoneFn) => {
+    const password = component.form.get('password')
+    expect(password.setValue('')).toBeTrue;
+    done();
+  });
+
+  it('should submit from by event emmiter', (done: DoneFn) => {
+    let result: User;
+    const username = component.form.get('username')
+    const password = component.form.get('password')
+    component.onsubmit.subscribe(x => result = x)
+    username.setValue('login')
+    password.setValue('password')
+    component.submit()
+    expect(result).toEqual({username: 'login', password: 'password'})
     done();
   });
 });

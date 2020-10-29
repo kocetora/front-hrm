@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { Validators, FormBuilder } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { noWhitespace } from '../../shared/validators/noWhitespace';
 import { User } from '../../shared/interfaces/user';
 
@@ -8,15 +8,13 @@ import { User } from '../../shared/interfaces/user';
   templateUrl: './auth-form.component.html',
   styleUrls: ['./auth-form.component.scss']
 })
-export class AuthFormComponent implements OnInit {
-  form: any;
+export class AuthFormComponent {
+  public form: FormGroup;
 
   @Output() onsubmit: EventEmitter<User> = new EventEmitter<User>();
   @Input() error: string;
 
-  constructor(private formBuilder: FormBuilder) {}
-
-  ngOnInit(): void {
+  constructor(private formBuilder: FormBuilder) {
     this.form = this.formBuilder.group({
       username: [
         '',
