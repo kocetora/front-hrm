@@ -6,7 +6,7 @@ import { User } from '../../shared/interfaces/user';
 @Component({
   selector: 'app-auth-form',
   templateUrl: './auth-form.component.html',
-  styleUrls: ['./auth-form.component.scss']
+  styleUrls: ['./auth-form.component.scss'],
 })
 export class AuthFormComponent {
   public form: FormGroup;

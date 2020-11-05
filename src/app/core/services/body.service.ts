@@ -50,7 +50,10 @@ export class BodyService {
 
     for (const el in Messengers) {
       if (vals.messengers[el]) {
-        formData.messengers.push({ messenger: el, info: vals.messengers[el] });
+        formData.messengers.push({
+          messenger: el,
+          info: vals.messengers[el],
+        });
       }
     }
 
