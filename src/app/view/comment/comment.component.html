@@ -2,7 +2,7 @@
   <h2>{{ 'VIEW.COMMENT' | translate }}</h2>
   <hr />
   <div class="card" *ngFor="let comment of comments; let i = index">
-    <h3 class="name">{{ comment.user.username }}</h3>
+    <h3 class="name">{{ comment.username }}</h3>
     <div class="comment">{{ comment.comment }}</div>
   </div>
   <form class="card" [formGroup]="comment" (ngSubmit)="addComment()">

@@ -1,7 +1,6 @@
 export interface Comment {
   comment: string;
-  createdAt?: Date;
-  user?: object;
-  username?: string;
-  userid?: number;
+  created_at?: Date;
+  username: string;
+  userid: number;
 }

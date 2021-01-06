@@ -8,12 +8,14 @@
     "FORM": "Form",
     "LOGOUT": "Log out",
     "SIGN_UP": "Sign up",
+    "NEW_ADMIN": "Create admin",
     "ERROR_404": "Error 404",
     "NOT_FOUND": "Page not found"
   },
   "AUTH": {
     "LOGIN": "Login",
     "SIGN_UP": "Sign up",
+    "NEW_ADMIN": "Create admin",
     "USERNAME": "Username",
     "PASSWORD": "Password",
     "SUBMIT": "Submit"

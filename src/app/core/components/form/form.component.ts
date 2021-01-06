@@ -150,6 +150,9 @@ export class FormComponent implements OnChanges {
       });
       this.onsubmit.emit(formData);
       this.form.reset();
+      Object.keys(this.form.controls).forEach(key => {
+        this.form.get(key).setErrors(null);
+      });
     }
   }
 }

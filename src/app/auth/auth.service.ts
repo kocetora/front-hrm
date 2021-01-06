@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserInfo } from '../shared/interfaces/userInfo';
 import { User } from '../shared/interfaces/user';
@@ -9,6 +9,12 @@ import { environment } from '../../environments/environment';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private isAuth = false;
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + localStorage.jwt,
+    }),
+  };
 
   constructor(private http: HttpClient) {}
 
@@ -22,9 +28,16 @@ export class AuthService {
     return this.http.post(`${environment.API_URL}${url}`, user);
   }
 
+  newAdmin(user: User): Observable<{}> {
+    const url = `${ApiRoutes.NEW_ADMIN}`;
+    return this.http.post(`${environment.API_URL}${url}`, user, 
+    this.httpOptions);
+  }
+
   logout(): Observable<{}> {
     const url = `${ApiRoutes.LOGOUT}`;
-    return this.http.get(`${environment.API_URL}${url}`);
+    return this.http.get<{}>(`${environment.API_URL}${url}`,
+      this.httpOptions);
   }
 
   isAuthentificated() {
