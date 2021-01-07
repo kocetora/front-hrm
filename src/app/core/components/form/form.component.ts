@@ -1,12 +1,11 @@
 import {
   Component,
-  OnInit,
   Output,
   EventEmitter,
   Input,
   OnChanges,
 } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { noWhitespace } from '../../../shared/validators/noWhitespace';
 import { atLeastOne } from '../../../shared/validators/atLeastOne';
 import { BodyService } from '../../services/body.service';
@@ -27,12 +26,15 @@ import {
   styleUrls: ['./form.component.scss'],
   providers: [BodyService, PatchService],
 })
-export class FormComponent implements OnInit, OnChanges {
-  readonly textInputs = [
+export class FormComponent implements OnChanges {
+  readonly requiredTextInputs = [
+    'email',
     'name',
     'surname',
+  ];
+
+  readonly textInputs = [
     'middlename',
-    'email',
     'preffered_region',
   ];
 
@@ -45,72 +47,48 @@ export class FormComponent implements OnInit, OnChanges {
   readonly messengers = Messengers;
   readonly languages = Languages;
   readonly languageProficiency = LanguageProficiency;
-  form: any;
+  public form: FormGroup;
 
   constructor(
     private bodyService: BodyService,
     private patchService: PatchService,
     private formBuilder: FormBuilder
-  ) {}
-
-  ngOnInit() {
+  ) {
     this.form = this.formBuilder.group({
-      name: [
-        '',
-        [Validators.required, Validators.maxLength(255), noWhitespace],
-      ],
-      surname: [
-        '',
-        [Validators.required, Validators.maxLength(255), noWhitespace],
-      ],
-      middlename: [
-        '',
-        [Validators.required, Validators.maxLength(255), noWhitespace],
-      ],
-      email: [
-        '',
-        [Validators.required, Validators.email, Validators.maxLength(255)],
-      ],
-      preffered_region: [
-        '',
-        [Validators.required, Validators.maxLength(255), noWhitespace],
-      ],
-
+      name:
+        ['', [Validators.required, Validators.maxLength(255), noWhitespace]],
+      surname:
+        ['', [Validators.required, Validators.maxLength(255), noWhitespace]],
+      middlename:
+        ['', [ Validators.maxLength(255)]],
+      email:
+        [
+          '',
+          [Validators.required, Validators.email, Validators.maxLength(255)],
+        ],
+      preffered_region:
+        ['', [ Validators.maxLength(255)]],
       sex: ['male', Validators.required],
       education: ['higher', Validators.required],
       born: ['', [Validators.required]],
-      height: [
-        '',
-        [Validators.required, Validators.min(30), Validators.max(300)],
-      ],
-      phoneNumber: [
-        '',
-        [Validators.required, Validators.maxLength(255), noWhitespace],
-      ],
-      expectedSalary: [
-        '',
-        [Validators.required, Validators.min(1), Validators.max(100000)],
-      ],
+      height:
+        ['', [Validators.required, Validators.min(30), Validators.max(300)]],
+      phoneNumber:
+        ['', [Validators.required, Validators.maxLength(255), noWhitespace]],
+      expectedSalary:
+        ['', [Validators.required, Validators.min(1), Validators.max(100000)]],
       note: ['', Validators.maxLength(255)],
       unemployedFor: this.formBuilder.group({
-        unemployedForYears: [
-          '',
-          [Validators.required, Validators.min(0), Validators.max(100)],
-        ],
-        unemployedForMonths: [
-          '',
-          [Validators.required, Validators.min(0), Validators.max(11)],
-        ],
+        unemployedForYears:
+          ['', [Validators.required, Validators.min(0), Validators.max(100)]],
+        unemployedForMonths:
+          ['', [Validators.required, Validators.min(0), Validators.max(11)]],
       }),
       workExperience: this.formBuilder.group({
-        workExperienceYears: [
-          '',
-          [Validators.required, Validators.min(0), Validators.max(100)],
-        ],
-        workExperienceMonths: [
-          '',
-          [Validators.required, Validators.min(0), Validators.max(11)],
-        ],
+        workExperienceYears:
+          ['', [Validators.required, Validators.min(0), Validators.max(100)]],
+        workExperienceMonths:
+          ['', [Validators.required, Validators.min(0), Validators.max(11)]],
       }),
       languages: this.formBuilder.group(
         {
@@ -163,6 +141,9 @@ export class FormComponent implements OnInit, OnChanges {
       });
       this.onsubmit.emit(formData);
       this.form.reset();
+      Object.keys(this.form.controls).forEach(key => {
+        this.form.get(key).setErrors(null);
+      });
     }
   }
 }

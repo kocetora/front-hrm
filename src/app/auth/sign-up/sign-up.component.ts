@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
@@ -16,10 +16,12 @@ export class SignUpComponent {
     this.authService.signUp(user).subscribe(
       () => {
         this.error = '';
+        // TODO: success message
         this.router.navigate(['/auth/login']);
       },
       (err) => {
-        this.error = err.error.message;
+        console.log(err)
+        this.error = err.error;
       }
     );
   }

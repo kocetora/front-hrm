@@ -4,4 +4,5 @@ export enum RouteNames {
   SIGH_UP = 'sign-up',
   VIEW = 'view',
   ERROR = 'error',
+  NEW_ADMIN = 'new-admin',
 }

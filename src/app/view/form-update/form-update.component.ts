@@ -31,8 +31,8 @@ export class FormUpdateComponent implements OnInit {
   }
 
   submit(formData) {
-    formData.formid = this.forms[this.id].formid;
-    this.fetchService.updateForm(formData).subscribe((res) => {
+    const formid = this.forms[this.id].id;
+    this.fetchService.updateForm(formData, formid).subscribe((res) => {
       this.forms[this.id] = res[0];
       this.formService.setForms(this.forms);
       this.formService.setId(this.id);

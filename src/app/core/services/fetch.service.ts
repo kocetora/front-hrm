@@ -23,21 +23,13 @@ export class FetchService {
     return this.http.post<Form>(`${environment.API_URL}${url}`, form);
   }
 
-  getForms(): Observable<Form[]> {
-    const url = `${ApiRoutes.BASE}`;
-    return this.http.get<Form[]>(
-      `${environment.API_URL}${url}`,
-      this.httpOptions
-    );
-  }
-
   deleteForm(id: number): Observable<{}> {
     const url = `${ApiRoutes.FORM}/${id}`;
     return this.http.delete(`${environment.API_URL}${url}`, this.httpOptions);
   }
 
-  updateForm(form: Form): Observable<Form[]> {
-    const url = `${ApiRoutes.FORM}/${form.formid}`;
+  updateForm(form: Form, formid: number): Observable<Form[]> {
+    const url = `${ApiRoutes.FORM}/${formid}`;
     return this.http.put<Form[]>(
       `${environment.API_URL}${url}`,
       form,
@@ -45,8 +37,17 @@ export class FetchService {
     );
   }
 
-  filterForms(filter: Filter): Observable<Form[]> {
+  findForms(filter: Filter): Observable<Form[]> {
     const url = `${ApiRoutes.BASE}`;
+    return this.http.post<Form[]>(
+      `${environment.API_URL}${url}`,
+      filter,
+      this.httpOptions
+    );
+  }
+
+  findPublicForms(filter: Filter): Observable<Form[]> {
+    const url = `${ApiRoutes.PUBLIC_BASE}`;
     return this.http.post<Form[]>(
       `${environment.API_URL}${url}`,
       filter,

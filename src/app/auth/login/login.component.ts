@@ -18,12 +18,13 @@ export class LoginComponent {
       (res: UserInfo) => {
         localStorage.setItem('jwt', res.token);
         localStorage.setItem('username', res.username);
+        localStorage.setItem('role', res.role);
         localStorage.setItem('userid', res.userid.toString());
         this.error = '';
         this.router.navigate(['/view']);
       },
       (err) => {
-        this.error = err.error.message;
+        this.error = err.error;
       }
     );
   }

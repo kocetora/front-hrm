@@ -20,19 +20,20 @@ export class AppComponent {
   }
 
   logout() {
-    // this.authService.logout().subscribe(() => {
-    localStorage.removeItem('jwt');
-    localStorage.removeItem('username');
-    localStorage.removeItem('userid');
-    this.router.navigate(['/']);
-    // });
+    this.authService.logout().subscribe(() => {
+      localStorage.removeItem('jwt');
+      localStorage.removeItem('role');
+      localStorage.removeItem('username');
+      localStorage.removeItem('userid');
+      this.router.navigate(['/']);
+    });
   }
 
   isAuth() {
-    if (true === this.authService.isAuthentificated()) {
-      return true;
-    } else {
-      return false;
-    }
+    return this.authService.isAuthentificated()
+  }
+
+  isAdmin() {
+    return localStorage.getItem('role') === 'admin'
   }
 }

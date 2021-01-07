@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Form } from '../../shared/interfaces/form';
 import { FetchService } from '../../core/services/fetch.service';
 import { FormService } from '../../shared/services/form.service';
+import { Filter } from '../../shared/interfaces/filter';
 
 @Component({
   selector: 'app-list',
@@ -24,9 +25,16 @@ export class ListComponent implements OnInit {
   }
 
   getFormsFromServer(): void {
-    this.fetchService.getForms().subscribe((forms) => {
-      this.formService.setForms(forms);
-    });
+    const filter: Filter = {};
+    const request = localStorage.getItem('jwt') ? 
+      this.fetchService.findForms(filter) : 
+      this.fetchService.findPublicForms(filter);
+      request.subscribe((forms)=>{
+        this.formService.setForms(forms);
+      })
+    // this.fetchService.getForms().subscribe((forms) => {
+    //   this.formService.setForms(forms);
+    // });
     this.selectForm(1);
   }
 

@@ -47,7 +47,7 @@ export class CommentComponent implements OnInit {
   getComments() {
     if (this.id !== undefined) {
       this.fetchService
-        .getComments(this.forms[this.id].formid)
+        .getComments(this.forms[this.id].id)
         .subscribe((comments) => {
           this.comments = comments;
         });
@@ -62,10 +62,13 @@ export class CommentComponent implements OnInit {
         userid: this.userid,
       };
       this.fetchService
-        .addComment(this.forms[this.id].formid, comment)
+        .addComment(this.forms[this.id].id, comment)
         .subscribe(() => {
-          this.getComments();
           this.comment.reset();
+          this.getComments();
+          Object.keys(this.comment.controls).forEach(key => {
+            this.comment.get(key).setErrors(null) ;
+          });
         });
     }
   }

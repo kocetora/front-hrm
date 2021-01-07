@@ -24,9 +24,9 @@ jobs:
         run: npm i
       - name: Build
         run: npm run build
-      - name: Test
-        run: npm run test:ci
-      - name: Lint
-        run: npm run lint
-      - name: Prettier
-        run: npm run prettier
+      # - name: Test
+      #   run: npm run test:ci
+      # - name: Prettier
+      #   run: npm run prettier
+      # - name: Lint
+      #   run: npm run lint
