@@ -30,18 +30,10 @@ export class AppComponent {
   }
 
   isAuth() {
-    if (true === this.authService.isAuthentificated()) {
-      return true;
-    } else {
-      return false;
-    }
+    this.authService.isAuthentificated()
   }
 
   isAdmin() {
-    if (localStorage.getItem('role') === 'admin') {
-      return true;
-    } else {
-      return false;
-    }
+    localStorage.getItem('role') === 'admin'
   }
 }

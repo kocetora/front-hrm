@@ -10,7 +10,7 @@
 
       <mat-list-item
         routerLink="/auth/login"
-        *ngIf="!isAuth()"
+        *ngIf="!isAuth"
         (click)="closeSideNav()"
       >
         <mat-icon matListIcon>account_box</mat-icon>
@@ -19,7 +19,7 @@
 
       <mat-list-item
         routerLink="/auth/sign-up"
-        *ngIf="!isAuth()"
+        *ngIf="!isAuth"
         (click)="closeSideNav()"
       >
         <mat-icon matListIcon>person</mat-icon>
@@ -45,7 +45,7 @@
 
       <mat-list-item
         (click)="logout()"
-        *ngIf="isAuth()"
+        *ngIf="isAuth"
         (click)="closeSideNav()"
       >
         <mat-icon matListIcon>logout</mat-icon>

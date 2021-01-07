@@ -129,15 +129,9 @@ export class FilterComponent implements OnInit {
       this.fetchService.findForms(filterData) : 
       this.fetchService.findPublicForms(filterData);
       request.subscribe((forms)=>{
-        console.log(forms);
         this.formService.setForms(forms);
         this.formService.setId(undefined);
       });
-      // this.fetchService.filterForms(filterData).subscribe((forms) => {
-      //   console.log(forms);
-      //   this.formService.setForms(forms);
-      //   this.formService.setId(undefined);
-      // });
     }
   }
 
@@ -150,9 +144,6 @@ export class FilterComponent implements OnInit {
       request.subscribe((forms)=>{
         this.formService.setForms(forms);
       })
-    // this.fetchService.getForms().subscribe((forms) => {
-    //   this.formService.setForms(forms);
-    // });
     this.formService.setId(undefined);
   }
 }
