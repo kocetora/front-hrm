@@ -47,7 +47,8 @@ export class FormComponent implements OnChanges {
   readonly messengers = Messengers;
   readonly languages = Languages;
   readonly languageProficiency = LanguageProficiency;
-  public form: FormGroup;
+  form: FormGroup;
+  isPublic: boolean = false;
 
   constructor(
     private bodyService: BodyService,
@@ -71,12 +72,19 @@ export class FormComponent implements OnChanges {
       sex: ['male', Validators.required],
       education: ['higher', Validators.required],
       born: ['', [Validators.required]],
-      height:
-        ['', [Validators.required, Validators.min(30), Validators.max(300)]],
-      phoneNumber:
-        ['', [Validators.required, Validators.maxLength(255), noWhitespace]],
-      expectedSalary:
-        ['', [Validators.required, Validators.min(1), Validators.max(100000)]],
+      isPublic: [false, []],
+      height: [
+        '',
+        [Validators.required, Validators.min(30), Validators.max(300)],
+      ],
+      phoneNumber: [
+        '',
+        [Validators.required, Validators.maxLength(255), noWhitespace],
+      ],
+      expectedSalary: [
+        '',
+        [Validators.required, Validators.min(1), Validators.max(100000)],
+      ],
       note: ['', Validators.maxLength(255)],
       unemployedFor: this.formBuilder.group({
         unemployedForYears:
@@ -139,10 +147,17 @@ export class FormComponent implements OnChanges {
       const formData: Form = this.bodyService.convertFormData({
         ...this.form.value,
       });
+      // TODO: formData.images = ???
+      console.log(formData);
       this.onsubmit.emit(formData);
       this.form.reset();
       Object.keys(this.form.controls).forEach(key => {
         this.form.get(key).setErrors(null);
+        if(this.form.get(key)['controls']){
+            Object.keys(this.form.get(key)['controls']).forEach(innerKey => {
+              this.form.get(key)['controls'][innerKey].setErrors(null);
+          })
+        }
       });
     }
   }

@@ -31,6 +31,7 @@ export class BodyService {
       languageSkills: [],
       messengers: [],
       professions: [],
+      isPublic: vals.isPublic as boolean
     };
 
     for (const el in Languages) {

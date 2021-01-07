@@ -298,6 +298,10 @@
               ></app-control-error>
             </mat-error>
           </mat-form-field>
+
+          <section>
+            <mat-checkbox formControlName="isPublic" [(ngModel)]="isPublic">{{ 'FORM.PUBLIC' | translate }}</mat-checkbox>
+          </section>
         </div>
       </div>
       <button

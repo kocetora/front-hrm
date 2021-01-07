@@ -20,4 +20,5 @@ export interface Form {
   unemployedFor: number;
   workExperience: number;
   expectedSalary: number;
+  isPublic: boolean;
 }
