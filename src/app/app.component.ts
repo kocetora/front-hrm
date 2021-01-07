@@ -30,10 +30,10 @@ export class AppComponent {
   }
 
   isAuth() {
-    this.authService.isAuthentificated()
+    return this.authService.isAuthentificated()
   }
 
   isAdmin() {
-    localStorage.getItem('role') === 'admin'
+    return localStorage.getItem('role') === 'admin'
   }
 }

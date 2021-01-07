@@ -27,11 +27,14 @@ import {
   providers: [BodyService, PatchService],
 })
 export class FormComponent implements OnChanges {
-  readonly textInputs = [
+  readonly requiredTextInputs = [
+    'email',
     'name',
     'surname',
+  ];
+
+  readonly textInputs = [
     'middlename',
-    'email',
     'preffered_region',
   ];
 
@@ -53,50 +56,38 @@ export class FormComponent implements OnChanges {
   ) {
     this.form = this.formBuilder.group({
       name:
-        // prettier-mode matrix
         ['', [Validators.required, Validators.maxLength(255), noWhitespace]],
       surname:
-        // prettier-mode matrix
         ['', [Validators.required, Validators.maxLength(255), noWhitespace]],
       middlename:
-        // prettier-mode matrix
-        ['', [Validators.required, Validators.maxLength(255), noWhitespace]],
+        ['', [ Validators.maxLength(255)]],
       email:
-        // prettier-mode matrix
         [
           '',
           [Validators.required, Validators.email, Validators.maxLength(255)],
         ],
       preffered_region:
-        // prettier-mode matrix
-        ['', [Validators.required, Validators.maxLength(255), noWhitespace]],
+        ['', [ Validators.maxLength(255)]],
       sex: ['male', Validators.required],
       education: ['higher', Validators.required],
       born: ['', [Validators.required]],
       height:
-        // prettier-mode matrix
         ['', [Validators.required, Validators.min(30), Validators.max(300)]],
       phoneNumber:
-        // prettier-mode matrix
         ['', [Validators.required, Validators.maxLength(255), noWhitespace]],
       expectedSalary:
-        // prettier-mode matrix
         ['', [Validators.required, Validators.min(1), Validators.max(100000)]],
       note: ['', Validators.maxLength(255)],
       unemployedFor: this.formBuilder.group({
         unemployedForYears:
-          // prettier-mode matrix
           ['', [Validators.required, Validators.min(0), Validators.max(100)]],
         unemployedForMonths:
-          // prettier-mode matrix
           ['', [Validators.required, Validators.min(0), Validators.max(11)]],
       }),
       workExperience: this.formBuilder.group({
         workExperienceYears:
-          // prettier-mode matrix
           ['', [Validators.required, Validators.min(0), Validators.max(100)]],
         workExperienceMonths:
-          // prettier-mode matrix
           ['', [Validators.required, Validators.min(0), Validators.max(11)]],
       }),
       languages: this.formBuilder.group(
