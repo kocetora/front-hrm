@@ -57,33 +57,33 @@ export class FormComponent implements OnChanges {
   ) {
     this.form = this.formBuilder.group({
       name:
-        ['', [Validators.required, Validators.maxLength(255), noWhitespace]],
+        ['', [Validators.required, Validators.maxLength(128), noWhitespace]],
       surname:
-        ['', [Validators.required, Validators.maxLength(255), noWhitespace]],
+        ['', [Validators.required, Validators.maxLength(128), noWhitespace]],
       middlename:
-        ['', [ Validators.maxLength(255)]],
+        ['', [ Validators.maxLength(128)]],
       email:
         [
           '',
-          [Validators.required, Validators.email, Validators.maxLength(255)],
+          [Validators.required, Validators.email, Validators.maxLength(128)],
         ],
       preffered_region:
-        ['', [ Validators.maxLength(255)]],
+        ['', [ Validators.maxLength(128)]],
       sex: ['male', Validators.required],
       education: ['higher', Validators.required],
       born: ['', [Validators.required]],
       isPublic: [false, []],
       height: [
         '',
-        [Validators.required, Validators.min(30), Validators.max(300)],
+        [Validators.required, Validators.min(0), Validators.max(2147483647)],
       ],
       phoneNumber: [
         '',
-        [Validators.required, Validators.maxLength(255), noWhitespace],
+        [Validators.required, Validators.maxLength(128), noWhitespace],
       ],
       expectedSalary: [
         '',
-        [Validators.required, Validators.min(1), Validators.max(100000)],
+        [Validators.required, Validators.min(0), Validators.max(2147483647)],
       ],
       note: ['', Validators.maxLength(255)],
       unemployedFor: this.formBuilder.group({
@@ -123,9 +123,9 @@ export class FormComponent implements OnChanges {
       ),
       messengers: this.formBuilder.group(
         {
-          WhatsApp: ['', Validators.maxLength(255)],
-          Telegram: ['', Validators.maxLength(255)],
-          Viber: ['', Validators.maxLength(255)],
+          WhatsApp: ['', Validators.maxLength(128)],
+          Telegram: ['', Validators.maxLength(128)],
+          Viber: ['', Validators.maxLength(128)],
         },
         { validator: atLeastOne(Validators.required) }
       ),
