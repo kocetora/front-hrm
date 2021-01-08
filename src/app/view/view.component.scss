@@ -1,6 +1,6 @@
 .grid-container {
   display: grid;
-  grid-template-areas: 'app-filter app-list app-form-update';
+  grid-template-areas: 'app-filter app-list app-form-to-pdf';
   grid-template-columns: 1fr 1fr 2fr;
   grid-template-rows: 1fr;
 }

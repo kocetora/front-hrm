@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,13 +11,19 @@ import { Router } from '@angular/router';
 export class SignUpComponent {
   error: string;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService, 
+    private router: Router, 
+    private _snackBar: MatSnackBar) {}
+
 
   submit(user) {
     this.authService.signUp(user).subscribe(
       () => {
         this.error = '';
-        // TODO: success message
+        this._snackBar.open('User successfully created!:)', 'Close', {
+          duration: 5000,
+        });
         this.router.navigate(['/auth/login']);
       },
       (err) => {

@@ -13,6 +13,7 @@ export class BodyService {
     const formData: Form = {
       name: vals.name as string,
       surname: vals.surname as string,
+      middlename: vals.middlename as string,
       sex: vals.sex as string,
       born: vals.born as string,
       phoneNumber: vals.phoneNumber as string,
@@ -31,7 +32,8 @@ export class BodyService {
       languageSkills: [],
       messengers: [],
       professions: [],
-      isPublic: vals.isPublic as boolean
+      isPublic: vals.isPublic as boolean,
+      images: [],
     };
 
     for (const el in Languages) {
@@ -51,12 +53,18 @@ export class BodyService {
 
     for (const el in Messengers) {
       if (vals.messengers[el]) {
-        formData.messengers.push({
-          messenger: el,
-          info: vals.messengers[el],
-        });
+        formData.messengers.push({ messenger: el, info: vals.messengers[el] });
       }
     }
+
+    for (const el in vals.images){
+      if(vals.images[el])
+        formData.images.push({
+          primary: vals.images[el].primary,
+          avatar: vals.images[el].avatar,
+        })
+    }
+
 
     return formData;
   }

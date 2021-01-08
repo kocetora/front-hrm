@@ -14,19 +14,25 @@ export class PatchService {
       const fields: string[] = [
         'name',
         'surname',
+        'middlename',
         'sex',
-        'born',
         'height',
         'phoneNumber',
         'email',
         'education',
-        'prefferedRegion',
         'note',
         'expectedSalary',
+        'isPublic',
       ];
       fields.forEach((element) => {
         form.patchValue({ [element]: formData[element] });
       });
+      form.patchValue({
+        preffered_region: formData['prefferedRegion']
+      })
+      form.patchValue({
+        born: formData['born'].substring(0, 10)
+      })
       const monthsToYears: string[] = ['workExperience', 'unemployedFor'];
       monthsToYears.forEach((element) => {
         form.controls[element].patchValue({

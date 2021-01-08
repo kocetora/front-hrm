@@ -32,9 +32,6 @@ export class ListComponent implements OnInit {
       request.subscribe((forms)=>{
         this.formService.setForms(forms);
       })
-    // this.fetchService.getForms().subscribe((forms) => {
-    //   this.formService.setForms(forms);
-    // });
     this.selectForm(1);
   }
 

@@ -10,10 +10,13 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   imports: [
     BrowserAnimationsModule,
+    MatProgressSpinnerModule,
     MatInputModule,
     MatButtonModule,
     MatCheckboxModule,
@@ -24,8 +27,10 @@ import { MatMenuModule } from '@angular/material/menu';
     MatToolbarModule,
     MatListModule,
     MatMenuModule,
+    MatSnackBarModule,
   ],
   exports: [
+    MatProgressSpinnerModule,
     MatInputModule,
     MatButtonModule,
     MatCheckboxModule,
@@ -36,6 +41,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatToolbarModule,
     MatListModule,
     MatMenuModule,
+    MatSnackBarModule,
   ],
   providers: [],
 })

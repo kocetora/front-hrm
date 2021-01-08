@@ -5,7 +5,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../../../shared/modules/material.module';
 import { ControlErrorModule } from '../control-error/control-error.module';
-import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [FormComponent],
@@ -14,8 +13,7 @@ import { FormsModule } from '@angular/forms';
     TranslateModule,
     MaterialModule,
     ReactiveFormsModule,
-    ControlErrorModule,
-    FormsModule,  
+    ControlErrorModule, 
   ],
   exports: [FormComponent],
 })

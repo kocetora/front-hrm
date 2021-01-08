@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Comment } from '../../shared/interfaces/comment';
-import { noWhitespace } from '../../shared/validators/noWhitespace';
-import { FetchService } from '../../core/services/fetch.service';
-import { FormService } from '../../shared/services/form.service';
-import { Form } from '../../shared/interfaces/form';
+import { Comment } from '../../../shared/interfaces/comment';
+import { noWhitespace } from '../../../shared/validators/noWhitespace';
+import { FetchService } from '../../../core/services/fetch.service';
+import { FormService } from '../../../shared/services/form.service';
+import { Form } from '../../../shared/interfaces/form';
 
 @Component({
   selector: 'app-comment',

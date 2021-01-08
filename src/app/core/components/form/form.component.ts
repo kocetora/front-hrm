@@ -49,11 +49,16 @@ export class FormComponent implements OnChanges {
   readonly languageProficiency = LanguageProficiency;
   form: FormGroup;
   isPublic: boolean = false;
+  pictures: string[] = [];
+  currentPicture: string = "";
+  currentIndex: number = 0;
+  primary: number | null = null;
+  reading: boolean = false;
 
   constructor(
     private bodyService: BodyService,
     private patchService: PatchService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
   ) {
     this.form = this.formBuilder.group({
       name:
@@ -132,6 +137,53 @@ export class FormComponent implements OnChanges {
     });
   }
 
+  transformPictures(files: Blob[], bytes: string[] = [], i = 0): void{
+    this.reading = true;
+    const file = files[i];
+    if(file){
+      const reader = new FileReader();
+      reader.onload = () => {
+        const byte = reader.result;
+        if (typeof byte === "string")
+        bytes.push(byte);
+        i++;
+        return this.transformPictures(files, bytes, i);
+      }
+      reader.readAsDataURL(file)
+    } else {
+      this.pictures = bytes;
+      this.currentPicture = this.pictures[0];
+      this.reading = false;
+    }
+  }
+
+  chooseAvatar(){
+    this.primary = this.currentIndex;
+  }
+
+  onFileSelected(event){
+    const files = event.target.files;
+    this.transformPictures(files);
+  }
+
+  slideLeft(){
+    this.currentIndex = this.currentIndex - 1 < 0 ? 
+    this.pictures.length - 1 : 
+    this.currentIndex - 1
+    this.currentPicture = this.pictures[
+      this.currentIndex
+      ]; 
+  }
+
+  slideRight(){
+    this.currentIndex = this.currentIndex + 1 > this.pictures.length - 1 ? 
+    0 : 
+    this.currentIndex + 1
+    this.currentPicture = this.pictures[
+      this.currentIndex
+      ]; 
+  }
+
   ngOnChanges(input) {
     if (input.input.previousValue) {
       this.patchService.patchData(
@@ -139,6 +191,19 @@ export class FormComponent implements OnChanges {
         this.form,
         input.input.currentValue.formData
       );
+      if(input.input.currentValue.formData){
+      this.reading = false;
+      for(const image of input.input.currentValue.formData.images){
+        if(image.primary)
+        this.currentPicture = image.avatar;
+      }
+      this.pictures = input.input.currentValue.formData.images.map((image)=>{
+        return image.avatar;
+      });
+      if(!this.currentPicture)
+      this.currentPicture = this.pictures[0];
+      console.log(input.input.currentValue.formData);
+    }
     }
   }
 
@@ -147,8 +212,11 @@ export class FormComponent implements OnChanges {
       const formData: Form = this.bodyService.convertFormData({
         ...this.form.value,
       });
-      // TODO: formData.images = ???
-      console.log(formData);
+      formData.images = this.pictures.map((avatar, i) => {
+        return {
+        primary: i === this.primary ? true : false,
+        avatar: avatar, 
+      }});
       this.onsubmit.emit(formData);
       this.form.reset();
       Object.keys(this.form.controls).forEach(key => {

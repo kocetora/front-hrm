@@ -5,7 +5,7 @@
     class="card"
     *ngFor="let form of forms; let i = index"
     #el
-    [attr.id]="form.formid"
+    [attr.id]="form.id"
     (click)="selectForm(i)"
   >
     <p>

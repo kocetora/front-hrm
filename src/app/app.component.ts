@@ -20,13 +20,12 @@ export class AppComponent {
   }
 
   logout() {
-    this.authService.logout().subscribe(() => {
-      localStorage.removeItem('jwt');
-      localStorage.removeItem('role');
-      localStorage.removeItem('username');
-      localStorage.removeItem('userid');
-      this.router.navigate(['/']);
-    });
+    this.authService.logout().subscribe();
+    localStorage.removeItem('jwt');
+    localStorage.removeItem('role');
+    localStorage.removeItem('username');
+    localStorage.removeItem('userid');
+    this.router.navigate(['/']);
   }
 
   isAuth() {

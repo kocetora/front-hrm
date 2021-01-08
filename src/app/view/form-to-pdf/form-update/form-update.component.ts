@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FetchService } from '../../core/services/fetch.service';
-import { FormService } from '../../shared/services/form.service';
-import { Form } from '../../shared/interfaces/form';
+import { FetchService } from '../../../core/services/fetch.service';
+import { FormService } from '../../../shared/services/form.service';
+import { Form } from '../../../shared/interfaces/form';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-form-update',
@@ -15,7 +16,8 @@ export class FormUpdateComponent implements OnInit {
 
   constructor(
     private fetchService: FetchService,
-    private formService: FormService
+    private formService: FormService,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -36,6 +38,9 @@ export class FormUpdateComponent implements OnInit {
       this.forms[this.id] = res[0];
       this.formService.setForms(this.forms);
       this.formService.setId(this.id);
+      this._snackBar.open('Form successfully updated!:)', 'Close', {
+        duration: 5000,
+      });
     });
   }
 }
