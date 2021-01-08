@@ -21,6 +21,10 @@
     "SUBMIT": "Submit"
   },
   "FORM": {
+    "EDIT": "Edit form",
+    "PRIMARY": "Choose as primary",
+    "UPLOAD": "Upload photos",
+    "SUBMITTED":"Submitted",
     "TITLE": "Form",
     "NAME": "Name",
     "SURNAME": "Surname",
@@ -89,7 +93,13 @@
   "VIEW": {
     "FILTER": "Filter",
     "LIST": "List",
-    "COMMENT": "Comments"
+    "COMMENT": "Comments",
+    "PDF": "Get in PDF"
+  },
+  "PDF": {
+    "OPEN":"Open PDF",
+    "DOWNLOAD":"Download PDF",
+    "PRINT":"Print PDF" 
   },
   "ERROR": {
     "REQUIRED": "Required",
