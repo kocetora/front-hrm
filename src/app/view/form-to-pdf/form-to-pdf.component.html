@@ -13,7 +13,7 @@
   <hr />
   <app-form-update *ngIf="update"></app-form-update>
   <div *ngIf="!update">
-    <form *ngIf="forms[id]">
+    <form class="pdf" *ngIf="forms[id]">
       <h2 #header>{{ forms[id].surname }} {{ forms[id].name }} middlename</h2>
         <div *ngIf="currentPicture">
           <img src="{{ currentPicture }}" width="400"/>
@@ -168,7 +168,7 @@
           {{ english }}</mat-checkbox
         >
       </section>
-      <div>
+      <div class="buttons">
         <button color="primary" mat-raised-button (click)="open()">
           {{ 'PDF.OPEN' | translate }}
         </button>
