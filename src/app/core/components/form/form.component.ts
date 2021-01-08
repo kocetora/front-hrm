@@ -221,9 +221,9 @@ export class FormComponent implements OnChanges {
       this.form.reset();
       Object.keys(this.form.controls).forEach((key) => {
         this.form.get(key).setErrors(null);
-        if (this.form.get(key).controls) {
-          Object.keys(this.form.get(key).controls).forEach((innerKey) => {
-            this.form.get(key).controls[innerKey].setErrors(null);
+        if (this.form.get(key)['controls']) {
+          Object.keys(this.form.get(key)['controls']).forEach((innerKey) => {
+            this.form.get(key)['controls'][innerKey].setErrors(null);
           });
         }
       });

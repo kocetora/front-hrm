@@ -72,10 +72,32 @@ export class FormToPdfComponent implements OnInit {
   waiter: Professions | undefined;
   barman: Professions | undefined;
   middlename: string;
-
+  born: string;
+  submitted: string;
+  readonly fields: string[] = [
+    'email',
+    'sex',
+    'prefferedRegion',
+    'phoneNumber',
+    'education',
+    'note',
+  ]
+  readonly dateFields: string[] = [
+    'born',
+    'submitted',
+  ]
+  readonly numberFields: string[] = [
+    'expectedSalary',
+    'height',
+  ]
   readonly professions = Professions;
   readonly messengers = Messengers;
   readonly languages = Languages;
+  readonly arrays = [
+    this.professions,
+    this.messengers,
+    this.languages,
+  ]
 
   @ViewChild('header', { static: false }) header: ElementRef;
   @ViewChild('emailTitle', { static: false }) emailTitle: ElementRef;
@@ -108,10 +130,6 @@ export class FormToPdfComponent implements OnInit {
   @ViewChild('waiterTitle', { static: false }) waiterTitle: ElementRef;
   @ViewChild('barmanTitle', { static: false }) barmanTitle: ElementRef;
 
-  // readonly textInputs = [
-  //   note
-  // ];
-
   constructor(
     private formService: FormService,
     private pdfService: PdfService
@@ -126,7 +144,6 @@ export class FormToPdfComponent implements OnInit {
       this.forms = forms;
     });
     this.formService.getId().subscribe((id) => {
-      // console.log(this.forms[id])
       this.id = id;
       if (id !== undefined) {
         this.output = { id, formData: this.forms[id] };
@@ -141,30 +158,25 @@ export class FormToPdfComponent implements OnInit {
         this.forms[id].professions.forEach((el) => {
           this[el.profession] = el.profession;
         });
-        // console.log(this.trainee);
         this.forms[id].messengers.forEach((el) => {
           this[el.messenger] = el.info;
         });
         this.forms[id].languageSkills.forEach((el) => {
-          // console.log(el.languageProficiency)
           this[el.language] = el.languageProficiency;
         });
         this.middlename = this.forms[id].middlename;
+        this.born = this.forms[this.id].born.substring(0, 10)
+        this.submitted = this.forms[this.id].created_at.substring(0, 10)
       } else {
+        this.born = undefined
+        this.submitted = undefined
         this.middlename = '';
         this.output = { id: undefined };
-        for (const item in Professions) {
-          // console.log(item)
-          this[item] = undefined;
-        }
-        for (const item in Messengers) {
-          // console.log(item)
-          this[item] = undefined;
-        }
-        for (const item in Languages) {
-          // console.log(item)
-          this[item] = undefined;
-        }
+        this.arrays.forEach(el => {
+          for (const item in el) {
+            this[item] = undefined;
+          }
+        });
       }
     });
   }
@@ -173,98 +185,32 @@ export class FormToPdfComponent implements OnInit {
     this.pdfService.clear();
     const header = this.header.nativeElement.innerText;
     this.pdfService.addHeader(header);
-    if (this.emailChecked) {
-      const title = this.emailTitle.nativeElement.innerText;
-      this.pdfService.addField(title, this.forms[this.id].email);
-    }
-    if (this.sexChecked) {
-      const title = this.sexTitle.nativeElement.innerText;
-      this.pdfService.addField(title, this.forms[this.id].sex);
-    }
-    if (this.prefferedRegionChecked) {
-      const title = this.prefferedRegionTitle.nativeElement.innerText;
-      this.pdfService.addField(title, this.forms[this.id].prefferedRegion);
-    }
-    if (this.phoneNumberChecked) {
-      const title = this.phoneNumberTitle.nativeElement.innerText;
-      this.pdfService.addField(title, this.forms[this.id].phoneNumber);
-    }
-    if (this.educationChecked) {
-      const title = this.educationTitle.nativeElement.innerText;
-      this.pdfService.addField(title, this.forms[this.id].education);
-    }
-    if (this.bornChecked) {
-      const title = this.bornTitle.nativeElement.innerText;
-      this.pdfService.addField(
-        title,
-        this.forms[this.id].born.substring(0, 10)
-      );
-    }
-    if (this.submittedChecked) {
-      const title = this.submittedTitle.nativeElement.innerText;
-      this.pdfService.addField(
-        title,
-        this.forms[this.id].created_at.substring(0, 10)
-      );
-    }
-    if (this.heightChecked) {
-      const title = this.heightTitle.nativeElement.innerText;
-      this.pdfService.addField(title, this.forms[this.id].height + '');
-    }
-    if (this.expectedSalaryChecked) {
-      const title = this.expectedSalaryTitle.nativeElement.innerText;
-      this.pdfService.addField(title, this.forms[this.id].expectedSalary + '');
-    }
-    // unemployedFor
-    // workExperience
-    if (this.noteChecked) {
-      const title = this.noteTitle.nativeElement.innerText;
-      this.pdfService.addField(title, this.forms[this.id].note);
-    }
-    if (this.traineeChecked) {
-      const title = this.traineeTitle.nativeElement.innerText;
-      this.pdfService.addField(title, this.trainee);
-    }
-    if (this.dealerChecked) {
-      const title = this.dealerTitle.nativeElement.innerText;
-      this.pdfService.addField(title, this.dealer);
-    }
-    if (this.inspectorChecked) {
-      const title = this.inspectorTitle.nativeElement.innerText;
-      this.pdfService.addField(title, this.inspector);
-    }
-    if (this.waiterChecked) {
-      const title = this.waiterTitle.nativeElement.innerText;
-      this.pdfService.addField(title, this.waiter);
-    }
-    if (this.barmanChecked) {
-      const title = this.barmanTitle.nativeElement.innerText;
-      this.pdfService.addField(title, this.barman);
-    }
-    if (this.managerChecked) {
-      const title = this.managerTitle.nativeElement.innerText;
-      this.pdfService.addField(title, this.manager);
-    }
-    if (this.TelegramChecked) {
-      const title = this.TelegramTitle.nativeElement.innerText;
-      this.pdfService.addField(title, this.Telegram);
-    }
-    if (this.ViberChecked) {
-      const title = this.ViberTitle.nativeElement.innerText;
-      this.pdfService.addField(title, this.Viber);
-    }
-    if (this.WhatsAppChecked) {
-      const title = this.WhatsAppTitle.nativeElement.innerText;
-      this.pdfService.addField(title, this.WhatsApp);
-    }
-    if (this.russianChecked) {
-      const title = this.russianTitle.nativeElement.innerText;
-      this.pdfService.addField(title, this.russian);
-    }
-    if (this.englishChecked) {
-      const title = this.englishTitle.nativeElement.innerText;
-      this.pdfService.addField(title, this.english);
-    }
+    this.fields.forEach(item => {
+      if (this[item + 'Checked']) {
+        const title = this[item + 'Title'].nativeElement.innerText;
+        this.pdfService.addField(title, this.forms[this.id][item]);
+      }
+    });
+    this.dateFields.forEach(item => {
+      if (this[item + 'Checked']) {
+        const title = this[item + 'Title'].nativeElement.innerText;
+        this.pdfService.addField(title, this[item]);
+      }
+    });
+    this.numberFields.forEach(item => {
+      if (this[item + 'Checked']) {
+        const title = this[item + 'Title'].nativeElement.innerText;
+        this.pdfService.addField(title, this.forms[this.id][item] + '');
+      }
+    });
+    this.arrays.forEach(el => {
+      for (const item in el) {
+        if (this[item + 'Checked']) {
+          const title = this[item + 'Title'].nativeElement.innerText;
+          this.pdfService.addField(title, this[item]);
+        }
+      }
+    });
   }
 
   open() {

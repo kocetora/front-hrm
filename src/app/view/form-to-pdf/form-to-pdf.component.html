@@ -53,13 +53,13 @@
       <section>
         <mat-checkbox [(ngModel)]="bornChecked" name="born"
           ><b #bornTitle>{{ 'FORM.BORN' | translate }}:</b>
-          {{ forms[id].born | slice: 0:10 }}</mat-checkbox
+          {{ born }}</mat-checkbox
         >
       </section>
       <section>
         <mat-checkbox [(ngModel)]="submittedChecked" name="submitted"
           ><b #submittedTitle>{{ 'FORM.SUBMITTED' | translate }}:</b>
-          {{ forms[id].created_at | slice: 0:10 }}</mat-checkbox
+          {{ submitted }}</mat-checkbox
         >
       </section>
       <section>
@@ -180,3 +180,4 @@
     </form>
   </div>
 </div>
+     
