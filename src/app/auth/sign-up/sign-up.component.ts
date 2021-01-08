@@ -12,10 +12,10 @@ export class SignUpComponent {
   error: string;
 
   constructor(
-    private authService: AuthService, 
-    private router: Router, 
-    private _snackBar: MatSnackBar) {}
-
+    private authService: AuthService,
+    private router: Router,
+    private _snackBar: MatSnackBar
+  ) {}
 
   submit(user) {
     this.authService.signUp(user).subscribe(
@@ -27,7 +27,7 @@ export class SignUpComponent {
         this.router.navigate(['/auth/login']);
       },
       (err) => {
-        console.log(err)
+        console.log(err);
         this.error = err.error;
       }
     );

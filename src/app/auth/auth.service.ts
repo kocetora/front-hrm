@@ -30,14 +30,16 @@ export class AuthService {
 
   newAdmin(user: User): Observable<{}> {
     const url = `${ApiRoutes.NEW_ADMIN}`;
-    return this.http.post(`${environment.API_URL}${url}`, user, 
-    this.httpOptions);
+    return this.http.post(
+      `${environment.API_URL}${url}`,
+      user,
+      this.httpOptions
+    );
   }
 
   logout(): Observable<{}> {
     const url = `${ApiRoutes.LOGOUT}`;
-    return this.http.get<{}>(`${environment.API_URL}${url}`,
-      this.httpOptions);
+    return this.http.get<{}>(`${environment.API_URL}${url}`, this.httpOptions);
   }
 
   isAuthentificated() {

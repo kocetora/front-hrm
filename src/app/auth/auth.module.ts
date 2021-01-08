@@ -7,22 +7,9 @@ import { RouterModule } from '@angular/router';
 import { NewAdminComponent } from './new-admin/new-admin.component';
 
 @NgModule({
-  declarations: [
-    LoginComponent, 
-    SignUpComponent, 
-    NewAdminComponent
-  ],
-  imports: [
-    TranslateModule, 
-    RouterModule, 
-    AuthFormModule
-  ],
-  exports: [
-    LoginComponent, 
-    SignUpComponent, 
-    NewAdminComponent, 
-    AuthFormModule
-  ],
+  declarations: [LoginComponent, SignUpComponent, NewAdminComponent],
+  imports: [TranslateModule, RouterModule, AuthFormModule],
+  exports: [LoginComponent, SignUpComponent, NewAdminComponent, AuthFormModule],
   providers: [],
 })
 export class AuthModule {}

@@ -9,12 +9,18 @@
           mat-icon-button
           color="primary"
           (click)="slideLeft()"
-        ><mat-icon>keyboard_arrow_left</mat-icon></button>
+        >
+          <mat-icon>keyboard_arrow_left</mat-icon>
+        </button>
         <div *ngIf="!currentPicture">
-          <img src = "../../../../assets/images/placeholder.png" width="400" height="300">
+          <img
+            src="../../../../assets/images/placeholder.png"
+            width="400"
+            height="300"
+          />
         </div>
         <div *ngIf="currentPicture">
-          <img src = "{{ currentPicture }}" width="400" height="300">
+          <img src="{{ currentPicture }}" width="400" height="300" />
         </div>
         <button
           class="slide"
@@ -22,7 +28,9 @@
           mat-icon-button
           color="primary"
           (click)="slideRight()"
-        ><mat-icon>keyboard_arrow_right</mat-icon></button>
+        >
+          <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
       </div>
       <div *ngIf="reading">
         <mat-spinner></mat-spinner>
@@ -34,24 +42,29 @@
         multiple
         style="display: none"
         #fileInput
-      >
-      <button type="button"  
+      />
+      <button
+        type="button"
         mat-raised-button
         color="primary"
         (click)="fileInput.click()"
-        >
+      >
         Upload
       </button>
-      <button type="button"  
+      <button
+        type="button"
         mat-raised-button
         color="primary"
         (click)="chooseAvatar()"
-        >
+      >
         Choose as primary
       </button>
       <div class="grid-container">
         <div class="col1">
-          <mat-form-field *ngFor="let input of requiredTextInputs" class="full-width">
+          <mat-form-field
+            *ngFor="let input of requiredTextInputs"
+            class="full-width"
+          >
             <input
               matInput
               placeholder="{{ 'FORM.' + input | uppercase | translate }}"
@@ -347,7 +360,9 @@
           </mat-form-field>
 
           <section>
-            <mat-checkbox formControlName="isPublic">{{ 'FORM.PUBLIC' | translate }}</mat-checkbox>
+            <mat-checkbox formControlName="isPublic">{{
+              'FORM.PUBLIC' | translate
+            }}</mat-checkbox>
           </section>
         </div>
       </div>

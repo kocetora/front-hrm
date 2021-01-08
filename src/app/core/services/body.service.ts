@@ -57,14 +57,14 @@ export class BodyService {
       }
     }
 
-    for (const el in vals.images){
-      if(vals.images[el])
+    for (const el in vals.images) {
+      if (vals.images[el]) {
         formData.images.push({
           primary: vals.images[el].primary,
           avatar: vals.images[el].avatar,
-        })
+        });
+      }
     }
-
 
     return formData;
   }

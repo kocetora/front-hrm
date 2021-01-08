@@ -4,99 +4,97 @@ import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 interface DocumentDefinition {
-    content: (StyledText|Paragraph|Image)[],
-    styles: Titles
+  content: (StyledText | Paragraph | Image)[];
+  styles: Titles;
 }
 
 interface Image {
-    image: string,
-    width?: number,
-    height?: number,
+  image: string;
+  width?: number;
+  height?: number;
 }
 
 interface Titles {
-    header?: Style,
-    bigger?: Style
+  header?: Style;
+  bigger?: Style;
 }
 
 interface Style {
-    fontSize?: number,
-    bold?: boolean,
+  fontSize?: number;
+  bold?: boolean;
 }
 
 interface Paragraph {
-    text: (StyledText|string)[]
+  text: (StyledText | string)[];
 }
 
 interface StyledText {
-    text: string,
-    style: string
+  text: string;
+  style: string;
 }
 
 @Injectable({
   providedIn: 'root',
 })
-
 export class PdfService {
-    
   private docDefinition: DocumentDefinition = {
-      content: [],
-      styles: {
-        header: {
-			fontSize: 18,
-			bold: true,
-		},
-		bigger: {
-			fontSize: 14,
-            bold: true,
-		}
-      }
-    };
+    content: [],
+    styles: {
+      header: {
+        fontSize: 18,
+        bold: true,
+      },
+      bigger: {
+        fontSize: 14,
+        bold: true,
+      },
+    },
+  };
 
   constructor() {}
 
-  clear(){
-    this.docDefinition.content = []
-}
-
-  addHeader(header: string){
-      const paragraph: StyledText = {
-          text: header,
-          style: 'header'
-        }
-      this.docDefinition.content.push(paragraph)
+  clear() {
+    this.docDefinition.content = [];
   }
 
-  addField(title: string, text: string){
-      const paragraph = {
-          text: [
-            {
-                text: title,
-                style: 'bigger'
-              },
-            text
-          ]
-      }
-      this.docDefinition.content.push(paragraph)
+  addHeader(header: string) {
+    const paragraph: StyledText = {
+      text: header,
+      style: 'header',
+    };
+    this.docDefinition.content.push(paragraph);
   }
 
-  addImage(avatar: string){
+  addField(title: string, text: string) {
+    const paragraph = {
+      text: [
+        {
+          text: title,
+          style: 'bigger',
+        },
+        text,
+      ],
+    };
+    this.docDefinition.content.push(paragraph);
+  }
+
+  addImage(avatar: string) {
     const image: Image = {
       image: avatar,
-      height: 450
-    }
+      height: 450,
+    };
     this.docDefinition.content.push(image);
   }
 
-  downloadPDF(){
+  downloadPDF() {
     return pdfMake.createPdf(this.docDefinition).download();
   }
 
-  openPDF(){
+  openPDF() {
     pdfMake.createPdf(this.docDefinition).open();
   }
 
-  printPDF(){
+  printPDF() {
     pdfMake.createPdf(this.docDefinition).print();
   }
 }

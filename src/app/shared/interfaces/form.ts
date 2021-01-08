@@ -1,7 +1,7 @@
 import { LanguageSkill } from './languageSkill';
 import { Profession } from './profession';
 import { Messenger } from './messenger';
-import { Images } from './images'
+import { Images } from './images';
 
 export interface Form {
   id?: number;

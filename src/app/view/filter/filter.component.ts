@@ -125,10 +125,10 @@ export class FilterComponent implements OnInit {
       const filterData: Filter = this.bodyService.convertFilterData({
         ...this.filter.value,
       });
-      const request = localStorage.getItem('jwt') ? 
-      this.fetchService.findForms(filterData) : 
-      this.fetchService.findPublicForms(filterData);
-      request.subscribe((forms)=>{
+      const request = localStorage.getItem('jwt')
+        ? this.fetchService.findForms(filterData)
+        : this.fetchService.findPublicForms(filterData);
+      request.subscribe((forms) => {
         this.formService.setForms(forms);
         this.formService.setId(undefined);
       });
@@ -138,12 +138,12 @@ export class FilterComponent implements OnInit {
   filterReset(): void {
     this.patchService.resetFilter(this.filter);
     const filter: Filter = {};
-    const request = localStorage.getItem('jwt') ? 
-      this.fetchService.findForms(filter) : 
-      this.fetchService.findPublicForms(filter);
-      request.subscribe((forms)=>{
-        this.formService.setForms(forms);
-      })
+    const request = localStorage.getItem('jwt')
+      ? this.fetchService.findForms(filter)
+      : this.fetchService.findPublicForms(filter);
+    request.subscribe((forms) => {
+      this.formService.setForms(forms);
+    });
     this.formService.setId(undefined);
   }
 }

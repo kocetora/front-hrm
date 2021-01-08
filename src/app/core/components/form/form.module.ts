@@ -13,7 +13,7 @@ import { ControlErrorModule } from '../control-error/control-error.module';
     TranslateModule,
     MaterialModule,
     ReactiveFormsModule,
-    ControlErrorModule, 
+    ControlErrorModule,
   ],
   exports: [FormComponent],
 })

@@ -10,10 +10,7 @@ import { CommentModule } from './comment/comment.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    FormUpdateComponent,
-    FormToPdfComponent,
-  ],
+  declarations: [FormUpdateComponent, FormToPdfComponent],
   imports: [
     TranslateModule,
     CommonModule,
@@ -22,7 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     FormModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
   exports: [
     FormUpdateComponent,

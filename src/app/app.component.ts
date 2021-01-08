@@ -29,10 +29,10 @@ export class AppComponent {
   }
 
   isAuth() {
-    return this.authService.isAuthentificated()
+    return this.authService.isAuthentificated();
   }
 
   isAdmin() {
-    return localStorage.getItem('role') === 'admin'
+    return localStorage.getItem('role') === 'admin';
   }
 }

@@ -26,14 +26,11 @@
         <a matLine>{{ 'HOME.SIGN_UP' | translate }}</a>
       </mat-list-item>
 
-      <mat-list-item
-        routerLink="/view"
-        (click)="closeSideNav()"
-      >
+      <mat-list-item routerLink="/view" (click)="closeSideNav()">
         <mat-icon matListIcon>folder_shared</mat-icon>
         <a matLine>{{ 'HOME.VIEW' | translate }}</a>
       </mat-list-item>
-      
+
       <mat-list-item
         routerLink="/auth/new-admin"
         *ngIf="isAdmin()"

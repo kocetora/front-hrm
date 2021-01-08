@@ -28,11 +28,11 @@ export class PatchService {
         form.patchValue({ [element]: formData[element] });
       });
       form.patchValue({
-        preffered_region: formData['prefferedRegion']
-      })
+        preffered_region: formData.prefferedRegion,
+      });
       form.patchValue({
-        born: formData['born'].substring(0, 10)
-      })
+        born: formData.born.substring(0, 10),
+      });
       const monthsToYears: string[] = ['workExperience', 'unemployedFor'];
       monthsToYears.forEach((element) => {
         form.controls[element].patchValue({

@@ -1,4 +1,10 @@
-import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+  ViewEncapsulation,
+} from '@angular/core';
 import { Form } from '../../shared/interfaces/form';
 import {
   Professions,
@@ -19,36 +25,36 @@ import { PatchService } from 'src/app/core/services/patch.service';
   providers: [FetchService, PatchService],
   encapsulation: ViewEncapsulation.None,
 })
-export class FormToPdfComponent implements OnInit{
+export class FormToPdfComponent implements OnInit {
   forms: Form[] = [];
   isAdmin: boolean = localStorage.getItem('role') === 'admin';
-  update: boolean = false;
+  update = false;
   id: number | undefined;
   output: { id: number | undefined; formData?: Form };
-  emailChecked: boolean = false;
-  sexChecked: boolean = false;
-  prefferedRegionChecked: boolean = false;
-  phoneNumberChecked: boolean = false;
-  educationChecked: boolean = false;
-  bornChecked: boolean = false;
-  submittedChecked: boolean = false;
-  heightChecked: boolean = false;
-  expectedSalaryChecked: boolean = false;
-  unemployedForChecked: boolean = false;
-  workExperienceChecked: boolean = false;
-  noteChecked: boolean = false;
-  traineeChecked: boolean = false;
-  dealerChecked: boolean = false;
-  managerChecked: boolean = false;
-  pitBossChecked: boolean = false;
-  waiterChecked: boolean = false;
-  barmanChecked: boolean = false;
-  inspectorChecked: boolean = false;
-  englishChecked: boolean = false;
-  russianChecked: boolean = false;
-  TelegramChecked: boolean = false;
-  ViberChecked: boolean = false;
-  WhatsAppChecked: boolean = false;
+  emailChecked = false;
+  sexChecked = false;
+  prefferedRegionChecked = false;
+  phoneNumberChecked = false;
+  educationChecked = false;
+  bornChecked = false;
+  submittedChecked = false;
+  heightChecked = false;
+  expectedSalaryChecked = false;
+  unemployedForChecked = false;
+  workExperienceChecked = false;
+  noteChecked = false;
+  traineeChecked = false;
+  dealerChecked = false;
+  managerChecked = false;
+  pitBossChecked = false;
+  waiterChecked = false;
+  barmanChecked = false;
+  inspectorChecked = false;
+  englishChecked = false;
+  russianChecked = false;
+  TelegramChecked = false;
+  ViberChecked = false;
+  WhatsAppChecked = false;
   unemployedForYears: number;
   unemployedForMonths: number;
   workExperienceYears: number;
@@ -67,50 +73,52 @@ export class FormToPdfComponent implements OnInit{
   barman: Professions | undefined;
   middlename: string;
 
-
   readonly professions = Professions;
   readonly messengers = Messengers;
   readonly languages = Languages;
 
-  @ViewChild('header', {static: false}) header: ElementRef
-  @ViewChild('emailTitle', {static: false}) emailTitle: ElementRef
-  @ViewChild('sexTitle', {static: false}) sexTitle: ElementRef
-  @ViewChild('prefferedRegionTitle', {static: false}) prefferedRegionTitle: ElementRef
-  @ViewChild('phoneNumberTitle', {static: false}) phoneNumberTitle: ElementRef
-  @ViewChild('bornTitle', {static: false}) bornTitle: ElementRef
-  @ViewChild('educationTitle', {static: false}) educationTitle: ElementRef
-  @ViewChild('submittedTitle', {static: false}) submittedTitle: ElementRef
-  @ViewChild('heightTitle', {static: false}) heightTitle: ElementRef
-  @ViewChild('expectedSalaryTitle', {static: false}) expectedSalaryTitle: ElementRef
-  @ViewChild('noteTitle', {static: false}) noteTitle: ElementRef
-  @ViewChild('TelegramTitle', {static: false}) TelegramTitle: ElementRef
-  @ViewChild('ViberTitle', {static: false}) ViberTitle: ElementRef
-  @ViewChild('WhatsAppTitle', {static: false}) WhatsAppTitle: ElementRef
-  @ViewChild('russianTitle', {static: false}) russianTitle: ElementRef
-  @ViewChild('englishTitle', {static: false}) englishTitle: ElementRef
-  @ViewChild('unemployedForTitle', {static: false}) unemployedForTitle: ElementRef
-  @ViewChild('workExperienceTitle', {static: false}) workExperienceTitle: ElementRef
-  @ViewChild('traineeTitle', {static: false}) traineeTitle: ElementRef
-  @ViewChild('dealerTitle', {static: false}) dealerTitle: ElementRef
-  @ViewChild('inspectorTitle', {static: false}) inspectorTitle: ElementRef
-  @ViewChild('managerTitle', {static: false}) managerTitle: ElementRef
-  @ViewChild('pitBossTitle', {static: false}) pitBossTitle: ElementRef
-  @ViewChild('waiterTitle', {static: false}) waiterTitle: ElementRef
-  @ViewChild('barmanTitle', {static: false}) barmanTitle: ElementRef
+  @ViewChild('header', { static: false }) header: ElementRef;
+  @ViewChild('emailTitle', { static: false }) emailTitle: ElementRef;
+  @ViewChild('sexTitle', { static: false }) sexTitle: ElementRef;
+  @ViewChild('prefferedRegionTitle', { static: false })
+  prefferedRegionTitle: ElementRef;
+  @ViewChild('phoneNumberTitle', { static: false })
+  phoneNumberTitle: ElementRef;
+  @ViewChild('bornTitle', { static: false }) bornTitle: ElementRef;
+  @ViewChild('educationTitle', { static: false }) educationTitle: ElementRef;
+  @ViewChild('submittedTitle', { static: false }) submittedTitle: ElementRef;
+  @ViewChild('heightTitle', { static: false }) heightTitle: ElementRef;
+  @ViewChild('expectedSalaryTitle', { static: false })
+  expectedSalaryTitle: ElementRef;
+  @ViewChild('noteTitle', { static: false }) noteTitle: ElementRef;
+  @ViewChild('TelegramTitle', { static: false }) TelegramTitle: ElementRef;
+  @ViewChild('ViberTitle', { static: false }) ViberTitle: ElementRef;
+  @ViewChild('WhatsAppTitle', { static: false }) WhatsAppTitle: ElementRef;
+  @ViewChild('russianTitle', { static: false }) russianTitle: ElementRef;
+  @ViewChild('englishTitle', { static: false }) englishTitle: ElementRef;
+  @ViewChild('unemployedForTitle', { static: false })
+  unemployedForTitle: ElementRef;
+  @ViewChild('workExperienceTitle', { static: false })
+  workExperienceTitle: ElementRef;
+  @ViewChild('traineeTitle', { static: false }) traineeTitle: ElementRef;
+  @ViewChild('dealerTitle', { static: false }) dealerTitle: ElementRef;
+  @ViewChild('inspectorTitle', { static: false }) inspectorTitle: ElementRef;
+  @ViewChild('managerTitle', { static: false }) managerTitle: ElementRef;
+  @ViewChild('pitBossTitle', { static: false }) pitBossTitle: ElementRef;
+  @ViewChild('waiterTitle', { static: false }) waiterTitle: ElementRef;
+  @ViewChild('barmanTitle', { static: false }) barmanTitle: ElementRef;
 
-
-  // readonly textInputs = [  
+  // readonly textInputs = [
   //   note
   // ];
 
   constructor(
     private formService: FormService,
-    private pdfService: PdfService,
-  ) { }
+    private pdfService: PdfService
+  ) {}
 
-  openUpdate(){
-    if(this.isAdmin)
-      this.update = !this.update;
+  openUpdate() {
+    if (this.isAdmin) { this.update = !this.update; }
   }
 
   ngOnInit(): void {
@@ -120,150 +128,157 @@ export class FormToPdfComponent implements OnInit{
     this.formService.getId().subscribe((id) => {
       // console.log(this.forms[id])
       this.id = id;
-      if(id !== undefined){
-        this.output = { id, formData: this.forms[id] }
-        this.unemployedForYears = Math.floor(this.forms[id].unemployedFor / 12)
-        this.unemployedForMonths = this.forms[id].unemployedFor - this.unemployedForYears*12 
-        this.workExperienceYears = Math.floor(this.forms[id].workExperience / 12)
-        this.workExperienceMonths = this.forms[id].workExperience - this.workExperienceYears*12 
-        this.forms[id].professions.forEach(el => {
-          this[el.profession] =  el.profession;
+      if (id !== undefined) {
+        this.output = { id, formData: this.forms[id] };
+        this.unemployedForYears = Math.floor(this.forms[id].unemployedFor / 12);
+        this.unemployedForMonths =
+          this.forms[id].unemployedFor - this.unemployedForYears * 12;
+        this.workExperienceYears = Math.floor(
+          this.forms[id].workExperience / 12
+        );
+        this.workExperienceMonths =
+          this.forms[id].workExperience - this.workExperienceYears * 12;
+        this.forms[id].professions.forEach((el) => {
+          this[el.profession] = el.profession;
         });
         // console.log(this.trainee);
-        this.forms[id].messengers.forEach(el => {
-          this[el.messenger] =  el.info;
+        this.forms[id].messengers.forEach((el) => {
+          this[el.messenger] = el.info;
         });
-        this.forms[id].languageSkills.forEach(el => {
+        this.forms[id].languageSkills.forEach((el) => {
           // console.log(el.languageProficiency)
-          this[el.language] =  el.languageProficiency;
+          this[el.language] = el.languageProficiency;
         });
         this.middlename = this.forms[id].middlename;
       } else {
         this.middlename = '';
-        this.output = { id: undefined }
-        for (let item in Professions) {
+        this.output = { id: undefined };
+        for (const item in Professions) {
           // console.log(item)
           this[item] = undefined;
         }
-        for (let item in Messengers) {
+        for (const item in Messengers) {
           // console.log(item)
           this[item] = undefined;
         }
-        for (let item in Languages) {
+        for (const item in Languages) {
           // console.log(item)
           this[item] = undefined;
         }
-      };      
+      }
     });
   }
 
-  createPDF(){
-    this.pdfService.clear()
+  createPDF() {
+    this.pdfService.clear();
     const header = this.header.nativeElement.innerText;
     this.pdfService.addHeader(header);
-    if(this.emailChecked){
+    if (this.emailChecked) {
       const title = this.emailTitle.nativeElement.innerText;
       this.pdfService.addField(title, this.forms[this.id].email);
     }
-    if(this.sexChecked){
+    if (this.sexChecked) {
       const title = this.sexTitle.nativeElement.innerText;
       this.pdfService.addField(title, this.forms[this.id].sex);
     }
-    if(this.prefferedRegionChecked){
+    if (this.prefferedRegionChecked) {
       const title = this.prefferedRegionTitle.nativeElement.innerText;
       this.pdfService.addField(title, this.forms[this.id].prefferedRegion);
     }
-    if(this.phoneNumberChecked){
+    if (this.phoneNumberChecked) {
       const title = this.phoneNumberTitle.nativeElement.innerText;
       this.pdfService.addField(title, this.forms[this.id].phoneNumber);
     }
-    if(this.educationChecked){
+    if (this.educationChecked) {
       const title = this.educationTitle.nativeElement.innerText;
       this.pdfService.addField(title, this.forms[this.id].education);
     }
-    if(this.bornChecked){
+    if (this.bornChecked) {
       const title = this.bornTitle.nativeElement.innerText;
-      this.pdfService.addField(title, this.forms[this.id].born.substring(0,10));
+      this.pdfService.addField(
+        title,
+        this.forms[this.id].born.substring(0, 10)
+      );
     }
-    if(this.submittedChecked){
+    if (this.submittedChecked) {
       const title = this.submittedTitle.nativeElement.innerText;
-      this.pdfService.addField(title, this.forms[this.id].created_at.substring(0,10));
+      this.pdfService.addField(
+        title,
+        this.forms[this.id].created_at.substring(0, 10)
+      );
     }
-    if(this.heightChecked){
+    if (this.heightChecked) {
       const title = this.heightTitle.nativeElement.innerText;
       this.pdfService.addField(title, this.forms[this.id].height + '');
     }
-    if(this.expectedSalaryChecked){
+    if (this.expectedSalaryChecked) {
       const title = this.expectedSalaryTitle.nativeElement.innerText;
       this.pdfService.addField(title, this.forms[this.id].expectedSalary + '');
     }
     // unemployedFor
     // workExperience
-    if(this.noteChecked){
+    if (this.noteChecked) {
       const title = this.noteTitle.nativeElement.innerText;
       this.pdfService.addField(title, this.forms[this.id].note);
     }
-    if(this.traineeChecked){
+    if (this.traineeChecked) {
       const title = this.traineeTitle.nativeElement.innerText;
       this.pdfService.addField(title, this.trainee);
     }
-    if(this.dealerChecked){
+    if (this.dealerChecked) {
       const title = this.dealerTitle.nativeElement.innerText;
       this.pdfService.addField(title, this.dealer);
     }
-    if(this.inspectorChecked){
+    if (this.inspectorChecked) {
       const title = this.inspectorTitle.nativeElement.innerText;
       this.pdfService.addField(title, this.inspector);
     }
-    if(this.waiterChecked){
+    if (this.waiterChecked) {
       const title = this.waiterTitle.nativeElement.innerText;
       this.pdfService.addField(title, this.waiter);
     }
-    if(this.barmanChecked){
+    if (this.barmanChecked) {
       const title = this.barmanTitle.nativeElement.innerText;
       this.pdfService.addField(title, this.barman);
     }
-    if(this.managerChecked){
+    if (this.managerChecked) {
       const title = this.managerTitle.nativeElement.innerText;
       this.pdfService.addField(title, this.manager);
     }
-    if(this.TelegramChecked){
+    if (this.TelegramChecked) {
       const title = this.TelegramTitle.nativeElement.innerText;
       this.pdfService.addField(title, this.Telegram);
     }
-    if(this.ViberChecked){
+    if (this.ViberChecked) {
       const title = this.ViberTitle.nativeElement.innerText;
       this.pdfService.addField(title, this.Viber);
     }
-    if(this.WhatsAppChecked){
+    if (this.WhatsAppChecked) {
       const title = this.WhatsAppTitle.nativeElement.innerText;
       this.pdfService.addField(title, this.WhatsApp);
     }
-    if(this.russianChecked){
+    if (this.russianChecked) {
       const title = this.russianTitle.nativeElement.innerText;
       this.pdfService.addField(title, this.russian);
     }
-    if(this.englishChecked){
+    if (this.englishChecked) {
       const title = this.englishTitle.nativeElement.innerText;
       this.pdfService.addField(title, this.english);
     }
-
   }
 
   open() {
     this.createPDF();
-    this.pdfService.openPDF()
+    this.pdfService.openPDF();
   }
 
   download() {
     this.createPDF();
-    this.pdfService.downloadPDF()
+    this.pdfService.downloadPDF();
   }
 
   print() {
     this.createPDF();
     this.pdfService.printPDF();
   }
-
-
 }

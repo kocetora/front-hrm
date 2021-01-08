@@ -26,12 +26,12 @@ export class ListComponent implements OnInit {
 
   getFormsFromServer(): void {
     const filter: Filter = {};
-    const request = localStorage.getItem('jwt') ? 
-      this.fetchService.findForms(filter) : 
-      this.fetchService.findPublicForms(filter);
-      request.subscribe((forms)=>{
-        this.formService.setForms(forms);
-      })
+    const request = localStorage.getItem('jwt')
+      ? this.fetchService.findForms(filter)
+      : this.fetchService.findPublicForms(filter);
+    request.subscribe((forms) => {
+      this.formService.setForms(forms);
+    });
     this.selectForm(1);
   }
 

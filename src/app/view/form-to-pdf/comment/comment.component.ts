@@ -66,8 +66,8 @@ export class CommentComponent implements OnInit {
         .subscribe(() => {
           this.comment.reset();
           this.getComments();
-          Object.keys(this.comment.controls).forEach(key => {
-            this.comment.get(key).setErrors(null) ;
+          Object.keys(this.comment.controls).forEach((key) => {
+            this.comment.get(key).setErrors(null);
           });
         });
     }
