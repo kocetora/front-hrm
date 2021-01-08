@@ -81,7 +81,7 @@ export class PdfService {
   addImage(avatar: string) {
     const image: Image = {
       image: avatar,
-      height: 450,
+      width: 400,
     };
     this.docDefinition.content.push(image);
   }

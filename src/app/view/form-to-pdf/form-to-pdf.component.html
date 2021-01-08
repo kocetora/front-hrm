@@ -15,7 +15,9 @@
   <div *ngIf="!update">
     <form *ngIf="forms[id]">
       <h2 #header>{{ forms[id].surname }} {{ forms[id].name }} middlename</h2>
-
+        <div *ngIf="currentPicture">
+          <img src="{{ currentPicture }}" width="400"/>
+        </div>
       <section>
         <mat-checkbox [(ngModel)]="emailChecked" name="email"
           ><b #emailTitle>{{ 'FORM.EMAIL' | translate }}:</b>

@@ -74,6 +74,7 @@ export class FormToPdfComponent implements OnInit {
   middlename: string;
   born: string;
   submitted: string;
+  currentPicture: string = '';
   readonly fields: string[] = [
     'email',
     'sex',
@@ -159,7 +160,13 @@ export class FormToPdfComponent implements OnInit {
         this.middlename = this.forms[id].middlename;
         this.born = this.forms[this.id].born.substring(0, 10);
         this.submitted = this.forms[this.id].created_at.substring(0, 10);
+        this.forms[id].images.forEach(el => {
+          if(el.primary){
+            this.currentPicture = el.avatar;
+          }
+        });
       } else {
+        this.currentPicture = '';
         this.born = undefined;
         this.submitted = undefined;
         this.middlename = '';
@@ -176,6 +183,7 @@ export class FormToPdfComponent implements OnInit {
   createPDF() {
     this.pdfService.clear();
     const header = this.header.nativeElement.innerText;
+    this.pdfService.addImage(this.currentPicture);
     this.pdfService.addHeader(header);
     this.fields.forEach((item) => {
       if (this[item + 'Checked']) {
