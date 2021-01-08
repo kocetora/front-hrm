@@ -146,7 +146,9 @@ export class FormComponent implements OnChanges {
       const reader = new FileReader();
       reader.onload = () => {
         const byte = reader.result;
-        if (typeof byte === 'string') { bytes.push(byte); }
+        if (typeof byte === 'string') {
+          bytes.push(byte);
+        }
         i++;
         return this.transformPictures(files, bytes, i);
       };
@@ -193,14 +195,18 @@ export class FormComponent implements OnChanges {
       if (input.input.currentValue.formData) {
         this.reading = false;
         for (const image of input.input.currentValue.formData.images) {
-          if (image.primary) { this.currentPicture = image.avatar; }
+          if (image.primary) {
+            this.currentPicture = image.avatar;
+          }
         }
         this.pictures = input.input.currentValue.formData.images.map(
           (image) => {
             return image.avatar;
           }
         );
-        if (!this.currentPicture) { this.currentPicture = this.pictures[0]; }
+        if (!this.currentPicture) {
+          this.currentPicture = this.pictures[0];
+        }
         console.log(input.input.currentValue.formData);
       }
     }

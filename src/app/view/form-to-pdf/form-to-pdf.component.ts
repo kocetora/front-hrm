@@ -81,23 +81,13 @@ export class FormToPdfComponent implements OnInit {
     'phoneNumber',
     'education',
     'note',
-  ]
-  readonly dateFields: string[] = [
-    'born',
-    'submitted',
-  ]
-  readonly numberFields: string[] = [
-    'expectedSalary',
-    'height',
-  ]
+  ];
+  readonly dateFields: string[] = ['born', 'submitted'];
+  readonly numberFields: string[] = ['expectedSalary', 'height'];
   readonly professions = Professions;
   readonly messengers = Messengers;
   readonly languages = Languages;
-  readonly arrays = [
-    this.professions,
-    this.messengers,
-    this.languages,
-  ]
+  readonly arrays = [this.professions, this.messengers, this.languages];
 
   @ViewChild('header', { static: false }) header: ElementRef;
   @ViewChild('emailTitle', { static: false }) emailTitle: ElementRef;
@@ -136,7 +126,9 @@ export class FormToPdfComponent implements OnInit {
   ) {}
 
   openUpdate() {
-    if (this.isAdmin) { this.update = !this.update; }
+    if (this.isAdmin) {
+      this.update = !this.update;
+    }
   }
 
   ngOnInit(): void {
@@ -165,14 +157,14 @@ export class FormToPdfComponent implements OnInit {
           this[el.language] = el.languageProficiency;
         });
         this.middlename = this.forms[id].middlename;
-        this.born = this.forms[this.id].born.substring(0, 10)
-        this.submitted = this.forms[this.id].created_at.substring(0, 10)
+        this.born = this.forms[this.id].born.substring(0, 10);
+        this.submitted = this.forms[this.id].created_at.substring(0, 10);
       } else {
-        this.born = undefined
-        this.submitted = undefined
+        this.born = undefined;
+        this.submitted = undefined;
         this.middlename = '';
         this.output = { id: undefined };
-        this.arrays.forEach(el => {
+        this.arrays.forEach((el) => {
           for (const item in el) {
             this[item] = undefined;
           }
@@ -185,25 +177,25 @@ export class FormToPdfComponent implements OnInit {
     this.pdfService.clear();
     const header = this.header.nativeElement.innerText;
     this.pdfService.addHeader(header);
-    this.fields.forEach(item => {
+    this.fields.forEach((item) => {
       if (this[item + 'Checked']) {
         const title = this[item + 'Title'].nativeElement.innerText;
         this.pdfService.addField(title, this.forms[this.id][item]);
       }
     });
-    this.dateFields.forEach(item => {
+    this.dateFields.forEach((item) => {
       if (this[item + 'Checked']) {
         const title = this[item + 'Title'].nativeElement.innerText;
         this.pdfService.addField(title, this[item]);
       }
     });
-    this.numberFields.forEach(item => {
+    this.numberFields.forEach((item) => {
       if (this[item + 'Checked']) {
         const title = this[item + 'Title'].nativeElement.innerText;
         this.pdfService.addField(title, this.forms[this.id][item] + '');
       }
     });
-    this.arrays.forEach(el => {
+    this.arrays.forEach((el) => {
       for (const item in el) {
         if (this[item + 'Checked']) {
           const title = this[item + 'Title'].nativeElement.innerText;
