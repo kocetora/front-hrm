@@ -2,7 +2,7 @@
   <div class="card">
     <form [formGroup]="form" (ngSubmit)="submit()">
       <h1>{{ 'FORM.TITLE' | translate }}</h1>
-      <div>
+      <div class="photo">
         <button
           class="slide"
           type="button"
@@ -42,22 +42,24 @@
         style="display: none"
         #fileInput
       />
-      <button
-        type="button"
-        mat-raised-button
-        color="primary"
-        (click)="fileInput.click()"
-      >
-      {{ 'FORM.UPLOAD' | translate }}
-      </button>
-      <button
-        type="button"
-        mat-raised-button
-        color="primary"
-        (click)="chooseAvatar()"
-      >
-        {{ 'FORM.PRIMARY' | translate }}
-      </button>
+      <div class="buttons">
+        <button
+          type="button"
+          mat-raised-button
+          color="primary"
+          (click)="fileInput.click()"
+        >
+        {{ 'FORM.UPLOAD' | translate }}
+        </button>
+        <button
+          type="button"
+          mat-raised-button
+          color="primary"
+          (click)="chooseAvatar()"
+        >
+          {{ 'FORM.PRIMARY' | translate }}
+        </button>
+      </div>
       <div class="grid-container">
         <div class="col1">
           <mat-form-field
