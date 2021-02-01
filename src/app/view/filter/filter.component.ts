@@ -6,7 +6,6 @@ import { FormService } from '../../shared/services/form.service';
 import { Filter } from '../../shared/interfaces/filter';
 import { Form } from '../../shared/interfaces/form';
 import { PatchService } from '../../core/services/patch.service';
-import { atLeastOne } from '../../shared/validators/atLeastOne';
 import {
   Genders,
   Grades,
@@ -41,57 +40,23 @@ export class FilterComponent implements OnInit {
 
   ngOnInit(): void {
     this.filter = this.formBuilder.group({
-      sex: ['male', Validators.required],
+      sex: [],
       height: this.formBuilder.group({
-        heightFrom: [
-          '',
-          [Validators.required, Validators.min(30), Validators.max(300)],
-        ],
-        heightTo: [
-          '',
-          [Validators.required, Validators.min(30), Validators.max(300)],
-        ],
+        heightFrom: [,[Validators.min(0), Validators.max(2147483647)]],
+        heightTo: [,[Validators.min(0), Validators.max(2147483647)]],
       }),
       age: this.formBuilder.group({
-        ageFrom: [
-          '',
-          [Validators.required, Validators.min(14), Validators.max(100)],
-        ],
-        ageTo: [
-          '',
-          [Validators.required, Validators.min(14), Validators.max(100)],
-        ],
+        ageFrom: [,[Validators.min(0), Validators.max(2147483647)]],
+        ageTo: [,[Validators.min(0), Validators.max(2147483647)]],
       }),
-      workExperienceFrom: this.formBuilder.group({
-        workExperienceYearsFrom: [
-          '',
-          [Validators.required, Validators.min(0), Validators.max(100)],
-        ],
-        workExperienceMonthsFrom: [
-          '',
-          [Validators.required, Validators.min(0), Validators.max(11)],
-        ],
+      workExperience: this.formBuilder.group({
+        workExperienceYears: [,[Validators.min(0), Validators.max(100)]],
+        workExperienceMonths: [,[Validators.min(0), Validators.max(11)]],
       }),
-      workExperienceTo: this.formBuilder.group({
-        workExperienceYearsTo: [
-          '',
-          [Validators.required, Validators.min(0), Validators.max(100)],
-        ],
-        workExperienceMonthsTo: [
-          '',
-          [Validators.required, Validators.min(0), Validators.max(11)],
-        ],
-      }),
-      education: ['higher', Validators.required],
+      education: [],
       expectedSalary: this.formBuilder.group({
-        expectedSalaryFrom: [
-          '',
-          [Validators.required, Validators.min(1), Validators.max(100000)],
-        ],
-        expectedSalaryTo: [
-          '',
-          [Validators.required, Validators.min(1), Validators.max(100000)],
-        ],
+        expectedSalaryFrom: [,[Validators.min(0), Validators.max(2147483647)]],
+        expectedSalaryTo: [,[Validators.min(0), Validators.max(2147483647)]],
       }),
       professions: this.formBuilder.group(
         {
@@ -102,20 +67,21 @@ export class FilterComponent implements OnInit {
           pit_boss: [],
           waiter: [],
           barman: [],
-        },
-        { validator: atLeastOne(Validators.required) }
-      ),
+        }),
       messengers: this.formBuilder.group(
         {
           Viber: [],
           Telegram: [],
           WhatsApp: [],
-        },
-        { validator: atLeastOne(Validators.required) }
-      ),
-      languageSkills: this.formBuilder.group({
-        language: ['english', Validators.required],
-        languageProficiency: ['fluent', Validators.required],
+        }),
+      languages: this.formBuilder.group(
+        {
+          english: [],
+          russian: [],
+        }),
+      languageProficiency: this.formBuilder.group({
+        englishProficiency: ['native'],
+        russianProficiency: ['native'],
       }),
     });
   }
@@ -125,13 +91,15 @@ export class FilterComponent implements OnInit {
       const filterData: Filter = this.bodyService.convertFilterData({
         ...this.filter.value,
       });
+      console.log(filterData)
       const request = localStorage.getItem('jwt')
         ? this.fetchService.findForms(filterData)
         : this.fetchService.findPublicForms(filterData);
       request.subscribe((forms) => {
+        console.log(forms)
         this.formService.setForms(forms);
         this.formService.setId(undefined);
-      });
+      }, (err)=>console.log(err));
     }
   }
 

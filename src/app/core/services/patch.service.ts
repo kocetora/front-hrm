@@ -93,9 +93,9 @@ export class PatchService {
 
   resetFilter(filter: FormGroup) {
     filter.reset();
-    filter.patchValue({
-      sex: 'male',
-      education: 'primary',
+    filter.controls.languageProficiency.patchValue({
+      englishProficiency: 'basic',
+      russianProficiency: 'basic',
     });
   }
 }

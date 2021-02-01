@@ -71,35 +71,50 @@ export class BodyService {
 
   convertFilterData(vals): Filter {
     const filterData: Filter = {
-      sex: vals.sex as string,
-      education: vals.education as string,
-      age: [{ from: vals.age.ageFrom, to: vals.age.ageTo }],
-      workExperience: [
-        {
-          from:
-            vals.workExperienceFrom.workExperienceYearsFrom * 12 +
-            vals.workExperienceFrom.workExperienceMonthsFrom,
-          to:
-            vals.workExperienceTo.workExperienceYearsTo * 12 +
-            vals.workExperienceTo.workExperienceMonthsTo,
-        },
-      ],
-      height: [{ from: vals.height.heightFrom, to: vals.height.heightTo }],
-      expectedSalary: [
-        {
-          from: vals.expectedSalary.expectedSalaryFrom,
-          to: vals.expectedSalary.expectedSalaryTo,
-        },
-      ],
-      languageSkills: [
-        {
-          language: vals.languageSkills.language,
-          languageProficiency: vals.languageSkills.languageProficiency,
-        },
-      ],
       professions: [],
       messengers: [],
+      languageSkills: [],
     };
+
+    if (vals.sex) {
+      filterData.sex = vals.sex
+    } 
+
+    if (vals.education) {
+      filterData.education = vals.education
+    } 
+
+    if (vals.age.ageFrom || vals.age.ageTo) {
+      filterData.age = [{ from: vals.age.ageFrom, to: vals.age.ageTo }]
+      if (!vals.age.ageFrom) {
+        filterData.age[0].from = 0;
+      }
+      if (!vals.age.ageTo) {
+        filterData.age[0].to = 2147483647;
+      }
+    }
+    
+    if (vals.height.heightFrom || vals.height.heightTo) {
+      filterData.height = [{ from: vals.height.heightFrom, to: vals.height.heightTo }]
+      if (!vals.height.heightFrom) {
+        filterData.height[0].from = 0;
+      }
+      if (!vals.height.heightTo) {
+        filterData.height[0].to = 2147483647
+      }
+    }
+
+    filterData.workExperience = vals.workExperience.workExperienceYears * 12 +
+          vals.workExperience.workExperienceMonths;
+
+    for (const el in Languages) {
+      if (vals.languages[el]) {
+        filterData.languageSkills.push({
+          language: el,
+          languageProficiency: vals.languageProficiency[el + 'Proficiency'],
+        });
+      }
+    }
 
     for (const el in Professions) {
       if (vals.professions[el]) {
