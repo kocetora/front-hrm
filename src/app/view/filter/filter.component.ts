@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BodyService } from '../../core/services/body.service';
 import { FetchService } from '../../core/services/fetch.service';
 import { FormService } from '../../shared/services/form.service';
@@ -27,7 +27,7 @@ export class FilterComponent implements OnInit {
   readonly messengers = Messengers;
   readonly languages = Languages;
   readonly languageProficiency = LanguageProficiency;
-  filter: any;
+  filter: FormGroup;
   forms: Form[] = [];
 
   constructor(
@@ -83,6 +83,7 @@ export class FilterComponent implements OnInit {
         englishProficiency: ['native'],
         russianProficiency: ['native'],
       }),
+      submitted: []
     });
   }
 
@@ -91,12 +92,10 @@ export class FilterComponent implements OnInit {
       const filterData: Filter = this.bodyService.convertFilterData({
         ...this.filter.value,
       });
-      console.log(filterData)
       const request = localStorage.getItem('jwt')
         ? this.fetchService.findForms(filterData)
         : this.fetchService.findPublicForms(filterData);
       request.subscribe((forms) => {
-        console.log(forms)
         this.formService.setForms(forms);
         this.formService.setId(undefined);
       }, (err)=>console.log(err));

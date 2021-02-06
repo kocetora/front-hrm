@@ -12,6 +12,7 @@ export interface Filter {
   languageSkills?: LanguageSkill[];
   professions?: Profession[];
   messengers?: Messenger[];
+  submitted?: string;
 }
 
 interface Range {

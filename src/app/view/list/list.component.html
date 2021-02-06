@@ -10,8 +10,9 @@
   >
     <p>
       <span class="name">{{ form.name }} {{ form.surname }}</span>
-      <span>
-        <button color="warn" mat-button (click)="deleteItem(el.id)">✖</button>
+      <span *ngIf="isAdmin">
+        <button *ngIf="!inProcess" color="warn" mat-button (click)="deleteItem(el.id)">✖</button>
+        <button *ngIf="inProcess" disabled mat-button>✖</button>
       </span>
     </p>
   </div>

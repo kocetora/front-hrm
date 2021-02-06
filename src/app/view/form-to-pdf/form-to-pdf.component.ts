@@ -138,7 +138,7 @@ export class FormToPdfComponent implements OnInit {
     });
     this.formService.getId().subscribe((id) => {
       this.id = id;
-      if (id !== undefined) {
+      if (id !== undefined && this.forms[id]) {
         this.output = { id, formData: this.forms[id] };
         this.unemployedForYears = Math.floor(this.forms[id].unemployedFor / 12);
         this.unemployedForMonths =

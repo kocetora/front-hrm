@@ -12,7 +12,9 @@ import { Filter } from '../../shared/interfaces/filter';
   encapsulation: ViewEncapsulation.None,
 })
 export class ListComponent implements OnInit {
+  isAdmin: boolean = localStorage.getItem('role') === 'admin';
   forms: Form[] = [];
+  inProcess: boolean = false;
 
   constructor(
     private fetchService: FetchService,
@@ -21,42 +23,39 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getFormsFromServer();
-    this.setThisForms();
+    this.setThisForms()
   }
 
   getFormsFromServer(): void {
+    this.inProcess = true;
     const filter: Filter = {};
     const request = localStorage.getItem('jwt')
       ? this.fetchService.findForms(filter)
       : this.fetchService.findPublicForms(filter);
-    request.subscribe((forms) => {
-      this.formService.setForms(forms);
-    });
-    this.selectForm(1);
+    request.subscribe(
+      (forms) => this.formService.setForms(forms), 
+      (err)=>console.log(err), 
+      ()=>this.inProcess = false);
   }
 
   setThisForms(): void {
     this.formService.getForms().subscribe((forms) => {
       this.forms = forms;
+      this.selectForm(1);
     });
   }
 
   selectForm(id) {
+    this.formService.setId(undefined);
     if (this.forms[id]) {
-      this.formService.setId(undefined);
       setTimeout(() => this.formService.setId(id), 250);
-    } else {
-      this.formService.setId(undefined);
     }
   }
 
-  delete(id: number): void {
-    this.fetchService.deleteForm(id).subscribe();
-  }
-
   deleteItem(id: number) {
-    this.delete(id);
-    this.getFormsFromServer();
-    this.selectForm(1);
+    this.inProcess = true;
+    this.fetchService.deleteForm(id).subscribe(()=>{
+      this.getFormsFromServer();
+    });
   }
 }

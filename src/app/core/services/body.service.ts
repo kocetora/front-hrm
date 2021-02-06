@@ -11,16 +11,16 @@ import {
 export class BodyService {
   convertFormData(vals): Form {
     const formData: Form = {
-      name: vals.name as string,
-      surname: vals.surname as string,
-      middlename: vals.middlename as string,
-      sex: vals.sex as string,
-      born: vals.born as string,
-      phoneNumber: vals.phoneNumber as string,
-      email: vals.email as string,
-      education: vals.education as string,
-      prefferedRegion: vals.prefferedRegion as string,
-      note: vals.note as string,
+      name: vals.name,
+      surname: vals.surname,
+      middlename: vals.middlename,
+      sex: vals.sex,
+      born: vals.born,
+      phoneNumber: vals.phoneNumber,
+      email: vals.email,
+      education: vals.education,
+      prefferedRegion: vals.prefferedRegion,
+      note: vals.note,
       height: Number.parseInt(vals.height, 10),
       expectedSalary: Number.parseInt(vals.expectedSalary, 10),
       workExperience:
@@ -32,7 +32,7 @@ export class BodyService {
       languageSkills: [],
       messengers: [],
       professions: [],
-      isPublic: vals.isPublic as boolean,
+      isPublic: vals.isPublic,
       images: [],
     };
 
@@ -82,7 +82,11 @@ export class BodyService {
 
     if (vals.education) {
       filterData.education = vals.education
-    } 
+    }
+    
+    if (vals.submitted) {
+      filterData.submitted = vals.submitted
+    }
 
     if (vals.age.ageFrom || vals.age.ageTo) {
       filterData.age = [{ from: vals.age.ageFrom, to: vals.age.ageTo }]
