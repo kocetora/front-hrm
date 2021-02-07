@@ -207,7 +207,6 @@ export class FormComponent implements OnChanges {
         if (!this.currentPicture) {
           this.currentPicture = this.pictures[0];
         }
-        console.log(input.input.currentValue.formData);
       }
     }
   }

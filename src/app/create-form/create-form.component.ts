@@ -16,7 +16,6 @@ export class CreateFormComponent {
 
   submit(formData) {
     this.fetchService.addForm(formData).subscribe((res) => {
-      console.log(res);
       this._snackBar.open('Form successfully added!:)', 'Close', {
         duration: 5000,
       });
