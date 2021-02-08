@@ -41,6 +41,7 @@ export class FormComponent implements OnChanges {
   readonly messengers = Messengers;
   readonly languages = Languages;
   readonly languageProficiency = LanguageProficiency;
+  readonly sizeLimitation: number = 4194304;
   form: FormGroup;
   isPublic = false;
   pictures: string[] = [];
@@ -141,23 +142,39 @@ export class FormComponent implements OnChanges {
     });
   }
 
-  transformPictures(files: Blob[], bytes: string[] = [], i = 0): void {
+  deletePhoto(){
+    this.pictures.splice(this.currentIndex, 1);
+    this.slideLeft();
+    this._snackBar.open('Deleted', 'Close', {
+      duration: 2000,
+    });
+  }
+
+  transformPictures(files: File[], bytes: string[] = [], i = 0): void{
     this.reading = true;
     const file = files[i];
-    if (file) {
+    if(file){
       const reader = new FileReader();
       reader.onload = () => {
         const byte = reader.result;
-        if (typeof byte === 'string') {
+        if (typeof byte === "string" && byte.length < this.sizeLimitation){
           bytes.push(byte);
+        } else {
+          this._snackBar.open(`Picture ${file.name} is too large`, 'Close', {
+            duration: 5000,
+          });
         }
         i++;
         return this.transformPictures(files, bytes, i);
-      };
-      reader.readAsDataURL(file);
+      }
+      reader.readAsDataURL(file)
     } else {
-      this.pictures = bytes;
-      this.currentPicture = this.pictures[0];
+      const newCurrent = this.pictures.length;
+      this.pictures = this.pictures.concat(bytes);
+      console.log(this.pictures)
+      console.log(bytes)
+      this.currentIndex = this.pictures.length <= newCurrent ? this.pictures.length - 1 : newCurrent
+      this.currentPicture = this.pictures[this.currentIndex];
       this.reading = false;
     }
   }

@@ -25,6 +25,7 @@
     "GET": "Form to PDF",
     "PRIMARY": "Choose as primary",
     "UPLOAD": "Upload photos",
+    "DELETE": "Delete photo",
     "SUBMITTED":"Submitted",
     "TITLE": "Form",
     "NAME": "Name",
