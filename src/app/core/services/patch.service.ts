@@ -79,6 +79,14 @@ export class PatchService {
       });
     } else {
       form.reset();
+      Object.keys(form.controls).forEach((key) => {
+        form.get(key).setErrors(null);
+        if (form.get(key)['controls']) {
+          Object.keys(form.get(key)['controls']).forEach((innerKey) => {
+            form.get(key)['controls'][innerKey].setErrors(null);
+          });
+        }
+      });
       form.patchValue({
         sex: 'male',
         education: 'primary',
@@ -92,6 +100,14 @@ export class PatchService {
 
   resetFilter(filter: FormGroup) {
     filter.reset();
+    Object.keys(filter.controls).forEach((key) => {
+      filter.get(key).setErrors(null);
+      if (filter.get(key)['controls']) {
+        Object.keys(filter.get(key)['controls']).forEach((innerKey) => {
+          filter.get(key)['controls'][innerKey].setErrors(null);
+        });
+      }
+    });
     filter.controls.languageProficiency.patchValue({
       englishProficiency: 'basic',
       russianProficiency: 'basic',
