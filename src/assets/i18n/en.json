@@ -22,6 +22,7 @@
   },
   "FORM": {
     "EDIT": "Edit form",
+    "GET": "Form to PDF",
     "PRIMARY": "Choose as primary",
     "UPLOAD": "Upload photos",
     "SUBMITTED":"Submitted",

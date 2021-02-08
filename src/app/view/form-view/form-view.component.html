@@ -1,0 +1,27 @@
+<div class="container list">
+    <div class="filter-header">
+      <h2>{{ 'VIEW.PDF' | translate }}</h2>
+      <button
+        *ngIf="isAdmin && forms[id] && update"
+        mat-button
+        color="primary"
+        (click)="openUpdate()"
+      >
+        {{ 'FORM.EDIT' | translate }}
+      </button>
+      <button
+        *ngIf="isAdmin && forms[id] && !update"
+        mat-button
+        color="primary"
+        (click)="openUpdate()"
+      >
+        {{ 'FORM.GET' | translate }}
+      </button>
+    </div>
+    <hr />
+    <div class="card" *ngIf="id !== undefined">
+        <app-form-update *ngIf="update"></app-form-update>
+        <app-form-to-pdf *ngIf="!update"></app-form-to-pdf>
+        <app-comment></app-comment>
+    </div>
+    </div>

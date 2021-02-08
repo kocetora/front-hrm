@@ -19,6 +19,10 @@ export class CreateFormComponent {
       this._snackBar.open('Form successfully added!:)', 'Close', {
         duration: 5000,
       });
+    }, (err)=> {
+      this._snackBar.open('Something went wrong:(', 'Close', {
+        duration: 5000,
+      }); 
     });
     this.output = { id: undefined };
   }

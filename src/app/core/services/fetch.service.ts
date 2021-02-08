@@ -28,9 +28,9 @@ export class FetchService {
     return this.http.delete(`${environment.API_URL}${url}`, this.httpOptions);
   }
 
-  updateForm(form: Form, formid: number): Observable<Form[]> {
+  updateForm(form: Form, formid: number): Observable<Form> {
     const url = `${ApiRoutes.FORM}/${formid}`;
-    return this.http.put<Form[]>(
+    return this.http.put<Form>(
       `${environment.API_URL}${url}`,
       form,
       this.httpOptions

@@ -5,7 +5,6 @@ import {
   Professions,
   Messengers,
   Languages,
-  LanguageProficiency,
 } from '../../shared/consts/form.enum';
 @Injectable()
 export class PatchService {

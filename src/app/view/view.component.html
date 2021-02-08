@@ -1,7 +1,7 @@
 <div *ngIf="media.matches" class="grid-container">
   <app-filter></app-filter>
   <app-list></app-list>
-  <app-form-to-pdf></app-form-to-pdf>
+  <app-form-view></app-form-view>
 </div>
 
 <mat-tab-group
@@ -16,6 +16,6 @@
     <app-list></app-list>
   </mat-tab>
   <mat-tab label="{{ 'VIEW.PDF' | translate }}">
-    <app-form-to-pdf></app-form-to-pdf>
+    <app-form-view></app-form-view>
   </mat-tab>
 </mat-tab-group>

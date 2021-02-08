@@ -26,7 +26,7 @@ import {
   styleUrls: ['./form.component.scss'],
   providers: [BodyService, PatchService],
 })
-export class FormComponent implements OnChanges {
+export class FormComponent implements OnChanges { 
   readonly requiredTextInputs = ['email', 'name', 'surname'];
 
   readonly textInputs = ['middlename', 'preffered_region'];
@@ -186,7 +186,7 @@ export class FormComponent implements OnChanges {
   }
 
   ngOnChanges(input) {
-    if (input.input.previousValue) {
+    if (input.input.currentValue) {
       this.patchService.patchData(
         input.input.currentValue.id,
         this.form,

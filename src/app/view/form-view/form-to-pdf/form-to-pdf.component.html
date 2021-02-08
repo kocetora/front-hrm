@@ -1,20 +1,5 @@
-<div class="container list">
-  <div class="filter-header">
-    <h2>{{ 'VIEW.PDF' | translate }}</h2>
-    <button
-      *ngIf="isAdmin && forms[id]"
-      mat-button
-      color="primary"
-      (click)="openUpdate()"
-    >
-      {{ 'FORM.EDIT' | translate }}
-    </button>
-  </div>
-  <hr />
-  <app-form-update *ngIf="update"></app-form-update>
-  <div *ngIf="!update">
-    <form class="pdf" *ngIf="forms[id]">
-      <h2 #header>{{ forms[id].surname }} {{ forms[id].name }} middlename</h2>
+    <form class="pdf container" *ngIf="forms[id]">
+      <h2 #header>{{ forms[id].surname }} {{ forms[id].name }} {{ forms[id].middlename }}</h2>
         <div *ngIf="currentPicture">
           <img src="{{ currentPicture }}" width="400"/>
         </div>
@@ -180,5 +165,3 @@
         </button>
       </div>
     </form>
-  </div>
-</div>

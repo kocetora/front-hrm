@@ -5,17 +5,16 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import { Form } from '../../shared/interfaces/form';
+import { Form } from '../../../shared/interfaces/form';
 import {
   Professions,
   Messengers,
   Languages,
   LanguageProficiency,
-} from '../../shared/consts/form.enum';
-
-import { FetchService } from '../../core/services/fetch.service';
-import { FormService } from '../../shared/services/form.service';
-import { PdfService } from '../../core/services/pdf.service';
+} from '../../../shared/consts/form.enum';
+import { FetchService } from '../../../core/services/fetch.service';
+import { FormService } from '../../../shared/services/form.service';
+import { PdfService } from '../../../core/services/pdf.service';
 import { PatchService } from 'src/app/core/services/patch.service';
 
 @Component({
@@ -27,10 +26,7 @@ import { PatchService } from 'src/app/core/services/patch.service';
 })
 export class FormToPdfComponent implements OnInit {
   forms: Form[] = [];
-  isAdmin: boolean = localStorage.getItem('role') === 'admin';
-  update = false;
   id: number | undefined;
-  output: { id: number | undefined; formData?: Form };
   emailChecked = false;
   sexChecked = false;
   prefferedRegionChecked = false;
@@ -126,12 +122,6 @@ export class FormToPdfComponent implements OnInit {
     private pdfService: PdfService
   ) {}
 
-  openUpdate() {
-    if (this.isAdmin) {
-      this.update = !this.update;
-    }
-  }
-
   ngOnInit(): void {
     this.formService.getForms().subscribe((forms) => {
       this.forms = forms;
@@ -139,7 +129,6 @@ export class FormToPdfComponent implements OnInit {
     this.formService.getId().subscribe((id) => {
       this.id = id;
       if (id !== undefined && this.forms[id]) {
-        this.output = { id, formData: this.forms[id] };
         this.unemployedForYears = Math.floor(this.forms[id].unemployedFor / 12);
         this.unemployedForMonths =
           this.forms[id].unemployedFor - this.unemployedForYears * 12;
@@ -170,7 +159,6 @@ export class FormToPdfComponent implements OnInit {
         this.born = undefined;
         this.submitted = undefined;
         this.middlename = '';
-        this.output = { id: undefined };
         this.arrays.forEach((el) => {
           for (const item in el) {
             this[item] = undefined;

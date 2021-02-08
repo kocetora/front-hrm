@@ -18,7 +18,7 @@ export class CommentComponent implements OnInit {
   comment: FormGroup;
   userid: number;
   username: string;
-  forms: Form[];
+  forms: Form[] = [];
 
   constructor(
     private fetchService: FetchService,
@@ -28,10 +28,10 @@ export class CommentComponent implements OnInit {
   ngOnInit(): void {
     this.formService.getId().subscribe((id) => {
       this.id = id;
-      this.getComments();
     });
     this.formService.getForms().subscribe((forms) => {
       this.forms = forms;
+      this.getComments()
     });
     this.username = localStorage.username;
     this.userid = localStorage.userid;
@@ -46,11 +46,10 @@ export class CommentComponent implements OnInit {
 
   getComments() {
     if (this.id !== undefined) {
-      this.fetchService
-        .getComments(this.forms[this.id].id)
-        .subscribe((comments) => {
-          this.comments = comments;
-        });
+      this.fetchService.getComments(this.forms[this.id].id)
+      .subscribe(comments => {
+        this.comments = comments;
+      });
     }
   }
 
@@ -58,7 +57,6 @@ export class CommentComponent implements OnInit {
     if (this.comment.valid && this.id !== undefined) {
       const comment: Comment = {
         comment: this.comment.value.text,
-        username: this.username,
         userid: this.userid,
       };
       this.fetchService

@@ -69,7 +69,7 @@ export class PdfService {
     const paragraph = {
       text: [
         {
-          text: title,
+          text: title + ' ',
           style: 'bigger',
         },
         text,
