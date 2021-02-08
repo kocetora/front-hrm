@@ -49,8 +49,17 @@ export class CommentComponent implements OnInit {
       this.fetchService.getComments(this.forms[this.id].id)
       .subscribe(comments => {
         this.comments = comments;
+        this.addTime()
       });
     }
+  }
+
+  addTime(){
+    this.comments.forEach(el => {
+      const utcDate = new Date(new Date(el.created_at).toUTCString()).toString();
+      el.date = utcDate.substring(4,15);
+      el.time = utcDate.substring(16,21);
+    });
   }
 
   addComment() {
