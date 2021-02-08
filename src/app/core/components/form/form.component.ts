@@ -19,6 +19,7 @@ import {
   Languages,
   LanguageProficiency,
 } from '../../../shared/consts/form.enum';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-form',
@@ -51,7 +52,8 @@ export class FormComponent implements OnChanges {
   constructor(
     private bodyService: BodyService,
     private patchService: PatchService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private _snackBar: MatSnackBar
   ) {
     this.form = this.formBuilder.group({
       name: [
@@ -162,6 +164,9 @@ export class FormComponent implements OnChanges {
 
   chooseAvatar() {
     this.primary = this.currentIndex;
+    this._snackBar.open('Selected primary', 'Close', {
+      duration: 2000,
+    });
   }
 
   onFileSelected(event) {
