@@ -77,19 +77,19 @@ export class BodyService {
     };
 
     if (vals.sex) {
-      filterData.sex = vals.sex
-    } 
+      filterData.sex = vals.sex;
+    }
 
     if (vals.education) {
-      filterData.education = vals.education
+      filterData.education = vals.education;
     }
-    
+
     if (vals.submitted) {
-      filterData.submitted = vals.submitted
+      filterData.submitted = vals.submitted;
     }
 
     if (vals.age.ageFrom || vals.age.ageTo) {
-      filterData.age = [{ from: vals.age.ageFrom, to: vals.age.ageTo }]
+      filterData.age = [{ from: vals.age.ageFrom, to: vals.age.ageTo }];
       if (!vals.age.ageFrom) {
         filterData.age[0].from = 0;
       }
@@ -97,19 +97,22 @@ export class BodyService {
         filterData.age[0].to = 2147483647;
       }
     }
-    
+
     if (vals.height.heightFrom || vals.height.heightTo) {
-      filterData.height = [{ from: vals.height.heightFrom, to: vals.height.heightTo }]
+      filterData.height = [
+        { from: vals.height.heightFrom, to: vals.height.heightTo },
+      ];
       if (!vals.height.heightFrom) {
         filterData.height[0].from = 0;
       }
       if (!vals.height.heightTo) {
-        filterData.height[0].to = 2147483647
+        filterData.height[0].to = 2147483647;
       }
     }
 
-    filterData.workExperience = vals.workExperience.workExperienceYears * 12 +
-          vals.workExperience.workExperienceMonths;
+    filterData.workExperience =
+      vals.workExperience.workExperienceYears * 12 +
+      vals.workExperience.workExperienceMonths;
 
     for (const el in Languages) {
       if (vals.languages[el]) {

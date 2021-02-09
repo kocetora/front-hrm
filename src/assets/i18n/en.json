@@ -26,7 +26,7 @@
     "PRIMARY": "Choose as primary",
     "UPLOAD": "Upload photos",
     "DELETE": "Delete photo",
-    "SUBMITTED":"Submitted",
+    "SUBMITTED": "Submitted",
     "TITLE": "Form",
     "NAME": "Name",
     "SURNAME": "Surname",
@@ -99,9 +99,9 @@
     "PDF": "Get in PDF"
   },
   "PDF": {
-    "OPEN":"Open PDF",
-    "DOWNLOAD":"Download PDF",
-    "PRINT":"Print PDF" 
+    "OPEN": "Open PDF",
+    "DOWNLOAD": "Download PDF",
+    "PRINT": "Print PDF"
   },
   "ERROR": {
     "REQUIRED": "Required",

@@ -16,15 +16,18 @@ export class CreateFormComponent {
   ) {}
 
   submit(formData) {
-    this.fetchService.addForm(formData).subscribe((res) => {
-      this._snackBar.open('Form successfully added!:)', 'Close', {
-        duration: 5000,
-      });
-    }, (err)=> {
-      this._snackBar.open('Something went wrong:(', 'Close', {
-        duration: 5000,
-      }); 
-    });
+    this.fetchService.addForm(formData).subscribe(
+      (res) => {
+        this._snackBar.open('Form successfully added!:)', 'Close', {
+          duration: 5000,
+        });
+      },
+      (err) => {
+        this._snackBar.open('Something went wrong:(', 'Close', {
+          duration: 5000,
+        });
+      }
+    );
     this.output = undefined;
   }
 }

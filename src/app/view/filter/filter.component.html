@@ -168,7 +168,7 @@
         </mat-error>
       </mat-form-field>
     </div>
-    
+
     <div formGroupName="professions" class="mincard">
       <p>{{ 'FORM.PROFESSIONS.TITLE' | translate }}</p>
       <div class="col">
@@ -193,61 +193,59 @@
 
     <div class="mincard">
       <p>{{ 'FORM.LANGUAGE_SKILLS' | translate }}</p>
-        <div class="mincard">
-          <div formGroupName="languages">
-            <mat-checkbox formControlName="russian">
-              {{ 'FORM.LANGUAGES.RUSSIAN' | translate }}
-            </mat-checkbox>
-          </div>
-          <mat-form-field class="full-width" formGroupName="languageProficiency">
-            <mat-select 
-              formControlName="russianProficiency" 
-              placeholder="{{ 'FORM.LANGUAGE_PROFICIENCY.TITLE' | translate }}">
-              <mat-option
-                *ngFor="let lp of languageProficiency | keyvalue"
-                [value]="lp.key"
-              >
-                {{ 'FORM.LANGUAGE_PROFICIENCY.' + lp.value | translate }}
-              </mat-option>
-            </mat-select>
-            <mat-error>
-              <app-control-error
-                [control]="
-                filter.controls.languageProficiency.get(
-                    'russianProficiency'
-                  )
-                "
-              ></app-control-error>
-            </mat-error>
-          </mat-form-field>
+      <div class="mincard">
+        <div formGroupName="languages">
+          <mat-checkbox formControlName="russian">
+            {{ 'FORM.LANGUAGES.RUSSIAN' | translate }}
+          </mat-checkbox>
         </div>
-        <div class="mincard">
-          <div formGroupName="languages">
-            <mat-checkbox formControlName="english">
-              {{ 'FORM.LANGUAGES.ENGLISH' | translate }}
-            </mat-checkbox>
-          </div>
-          <mat-form-field class="full-width" formGroupName="languageProficiency">
-            <mat-select 
-              formControlName="englishProficiency"
-              placeholder="{{ 'FORM.LANGUAGE_PROFICIENCY.TITLE' | translate }}" >
-              <mat-option
-                *ngFor="let lp of languageProficiency | keyvalue"
-                [value]="lp.key"
-              >
-                {{ 'FORM.LANGUAGE_PROFICIENCY.' + lp.value | translate }}
-              </mat-option>
-            </mat-select>
-            <mat-error>
-              <app-control-error
-                [control]="
-                  filter.controls.languageProficiency.get(
-                    'englishProficiency'
-                  )
-                "
-              ></app-control-error>
-            </mat-error>
-          </mat-form-field>
+        <mat-form-field class="full-width" formGroupName="languageProficiency">
+          <mat-select
+            formControlName="russianProficiency"
+            placeholder="{{ 'FORM.LANGUAGE_PROFICIENCY.TITLE' | translate }}"
+          >
+            <mat-option
+              *ngFor="let lp of languageProficiency | keyvalue"
+              [value]="lp.key"
+            >
+              {{ 'FORM.LANGUAGE_PROFICIENCY.' + lp.value | translate }}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            <app-control-error
+              [control]="
+                filter.controls.languageProficiency.get('russianProficiency')
+              "
+            ></app-control-error>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="mincard">
+        <div formGroupName="languages">
+          <mat-checkbox formControlName="english">
+            {{ 'FORM.LANGUAGES.ENGLISH' | translate }}
+          </mat-checkbox>
+        </div>
+        <mat-form-field class="full-width" formGroupName="languageProficiency">
+          <mat-select
+            formControlName="englishProficiency"
+            placeholder="{{ 'FORM.LANGUAGE_PROFICIENCY.TITLE' | translate }}"
+          >
+            <mat-option
+              *ngFor="let lp of languageProficiency | keyvalue"
+              [value]="lp.key"
+            >
+              {{ 'FORM.LANGUAGE_PROFICIENCY.' + lp.value | translate }}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            <app-control-error
+              [control]="
+                filter.controls.languageProficiency.get('englishProficiency')
+              "
+            ></app-control-error>
+          </mat-error>
+        </mat-form-field>
       </div>
     </div>
 
@@ -264,7 +262,7 @@
         ></app-control-error>
       </mat-error>
     </mat-form-field>
-    
+
     <button
       color="primary"
       mat-raised-button

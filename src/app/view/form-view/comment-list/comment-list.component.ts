@@ -15,13 +15,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class CommentListComponent implements OnInit {
   @Input() form: Form;
-  @Output() onsubmit: EventEmitter<void> = new EventEmitter()
+  @Output() onsubmit: EventEmitter<void> = new EventEmitter();
 
   comments: Comment[] = [];
   comment: FormGroup;
   userid: number;
   username: string;
-  
+
   constructor(
     private fetchService: FetchService,
     private formService: FormService,
@@ -35,23 +35,24 @@ export class CommentListComponent implements OnInit {
       text: new FormControl('', [
         Validators.required,
         Validators.maxLength(255),
-        noWhitespace
-      ])
+        noWhitespace,
+      ]),
     });
   }
 
-  ngOnChanges(form){
-    this.form = form.form.currentValue
-    this.getComment()
+  ngOnChanges(form) {
+    this.form = form.form.currentValue;
+    this.getComment();
   }
 
-  getComment(){
-    if(this.form){
-      this.fetchService.getComments(this.form.id)
-      .pipe(take(1))
-      .subscribe(comments => {
-        this.comments = comments;
-      });
+  getComment() {
+    if (this.form) {
+      this.fetchService
+        .getComments(this.form.id)
+        .pipe(take(1))
+        .subscribe((comments) => {
+          this.comments = comments;
+        });
     }
   }
 
@@ -61,18 +62,23 @@ export class CommentListComponent implements OnInit {
         comment: this.comment.value.text,
         userid: this.userid,
       };
-      this.fetchService
-        .addComment(this.form.id, comment)
-        .subscribe(() => {
+      this.fetchService.addComment(this.form.id, comment).subscribe(
+        () => {
           this.comment.reset();
-          this.formService.reload()
-          this.getComment()
+          this.formService.reload();
+          this.getComment();
           this.comment.get('text').setErrors(null);
-        }, (err)=> {
-          this._snackBar.open('Something went wrong:( The form may have been deleted', 'Close', {
-            duration: 5000,
-          }); 
-        });
+        },
+        (err) => {
+          this._snackBar.open(
+            'Something went wrong:( The form may have been deleted',
+            'Close',
+            {
+              duration: 5000,
+            }
+          );
+        }
+      );
     }
   }
 }

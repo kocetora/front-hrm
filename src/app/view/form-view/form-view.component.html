@@ -1,35 +1,27 @@
 <div class="container list">
-    <div class="filter-header">
-      <h2>{{ 'VIEW.PDF' | translate }}</h2>
-      <button
-        *ngIf="isAdmin && form && update"
-        mat-button
-        color="primary"
-        (click)="openUpdate()"
-      >
+  <div class="filter-header">
+    <h2>{{ 'VIEW.PDF' | translate }}</h2>
+    <button
+      *ngIf="isAdmin && form && update"
+      mat-button
+      color="primary"
+      (click)="openUpdate()"
+    >
       {{ 'FORM.GET' | translate }}
-      </button>
-      <button
-        *ngIf="isAdmin && form && !update"
-        mat-button
-        color="primary"
-        (click)="openUpdate()"
-      >
+    </button>
+    <button
+      *ngIf="isAdmin && form && !update"
+      mat-button
+      color="primary"
+      (click)="openUpdate()"
+    >
       {{ 'FORM.EDIT' | translate }}
-      </button>
-    </div>
-    <hr />
-    <div class="card">
-        <app-form-update 
-          [form]="form" 
-          *ngIf="update">
-        </app-form-update>
-        <app-form-to-pdf 
-          [form]="form" 
-          *ngIf="!update">
-        </app-form-to-pdf>
-        <app-comment-list 
-          [form]="form">
-        </app-comment-list>
-    </div>
-    </div>
+    </button>
+  </div>
+  <hr />
+  <div class="card">
+    <app-form-update [form]="form" *ngIf="update"> </app-form-update>
+    <app-form-to-pdf [form]="form" *ngIf="!update"> </app-form-to-pdf>
+    <app-comment-list [form]="form"> </app-comment-list>
+  </div>
+</div>

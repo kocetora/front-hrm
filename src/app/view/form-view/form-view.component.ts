@@ -7,15 +7,13 @@ import { FormService } from 'src/app/shared/services/form.service';
   selector: 'app-form-view',
   templateUrl: './form-view.component.html',
 })
-export class FormViewComponent { 
+export class FormViewComponent {
   isAdmin: boolean = localStorage.getItem('role') === 'admin';
   update = false;
   form: Form;
   formSubscription: Subscription;
 
-  constructor(
-    private formService: FormService,
-  ) {}
+  constructor(private formService: FormService) {}
 
   ngOnInit(): void {
     this.formService.getForm().subscribe((form) => {
@@ -24,8 +22,8 @@ export class FormViewComponent {
   }
 
   ngOnDestroy() {
-    if(this.formSubscription){
-      this.formSubscription.unsubscribe()
+    if (this.formSubscription) {
+      this.formSubscription.unsubscribe();
     }
   }
 
@@ -34,4 +32,4 @@ export class FormViewComponent {
       this.update = !this.update;
     }
   }
- }
+}

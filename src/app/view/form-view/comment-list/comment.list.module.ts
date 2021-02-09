@@ -9,10 +9,7 @@ import { FormModule } from 'src/app/core/components/form/form.module';
 import { CommentComponent } from './comment/comment.component';
 
 @NgModule({
-  declarations: [
-      CommentListComponent,
-      CommentComponent
-    ],
+  declarations: [CommentListComponent, CommentComponent],
   imports: [
     CommonModule,
     TranslateModule,
@@ -21,9 +18,6 @@ import { CommentComponent } from './comment/comment.component';
     ControlErrorModule,
     FormModule,
   ],
-  exports: [
-      CommentListComponent,
-      CommentComponent
-    ],
+  exports: [CommentListComponent, CommentComponent],
 })
 export class CommentListModule {}

@@ -13,10 +13,7 @@
           <mat-icon>keyboard_arrow_left</mat-icon>
         </button>
         <div *ngIf="!currentPicture">
-          <img
-            src="../../../../assets/images/placeholder.png"
-            width="400"
-          />
+          <img src="../../../../assets/images/placeholder.png" width="400" />
         </div>
         <div *ngIf="currentPicture">
           <img src="{{ currentPicture }}" width="400" />
@@ -49,7 +46,7 @@
           color="primary"
           (click)="fileInput.click()"
         >
-        {{ 'FORM.UPLOAD' | translate }}
+          {{ 'FORM.UPLOAD' | translate }}
         </button>
         <button
           type="button"

@@ -17,13 +17,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class ListComponent implements OnInit {
   isAdmin: boolean = localStorage.getItem('role') === 'admin';
   forms: Form[] = [];
-  inProcess: boolean = false;
+  inProcess = false;
   filter: Filter = {};
   form: Form;
   fetchSubscription: Subscription;
   formSubscription: Subscription;
-  filterSubscription: Subscription
-  deleteSubscription: Subscription
+  filterSubscription: Subscription;
+  deleteSubscription: Subscription;
 
   constructor(
     private fetchService: FetchService,
@@ -32,24 +32,24 @@ export class ListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.formSubscription = this.formService.getForm().subscribe((form)=>{
-      this.form = form
-    })
-    this.filterSubscription = this.formService.getData().subscribe((filter)=>{
-      this.filter = filter
+    this.formSubscription = this.formService.getForm().subscribe((form) => {
+      this.form = form;
+    });
+    this.filterSubscription = this.formService.getData().subscribe((filter) => {
+      this.filter = filter;
       this.getFormsFromServer();
-    })
+    });
     this.formService.sendData(this.filter);
   }
 
   ngOnDestroy() {
-    this.formSubscription.unsubscribe()
-    this.filterSubscription.unsubscribe()
+    this.formSubscription.unsubscribe();
+    this.filterSubscription.unsubscribe();
     if (this.fetchSubscription) {
-      this.fetchSubscription.unsubscribe()
+      this.fetchSubscription.unsubscribe();
     }
     if (this.deleteSubscription) {
-      this.deleteSubscription.unsubscribe()
+      this.deleteSubscription.unsubscribe();
     }
   }
 
@@ -61,34 +61,39 @@ export class ListComponent implements OnInit {
     this.fetchSubscription = request.pipe(take(1)).subscribe(
       (forms) => {
         this.forms = forms;
-        if(!this.form){
+        if (!this.form) {
           this.selectForm(forms[0]);
         }
-        if(!forms){
+        if (!forms) {
           this.selectForm(undefined);
         }
-      }, 
-      (err)=> console.log(err), 
-      ()=> this.inProcess = false);
+      },
+      (err) => console.log(err),
+      () => (this.inProcess = false)
+    );
   }
 
   selectForm(form) {
-    this.formService.setForm(form)
+    this.formService.setForm(form);
   }
 
   deleteItem(id: number) {
     this.inProcess = true;
-    this.deleteSubscription = this.fetchService.deleteForm(id)
+    this.deleteSubscription = this.fetchService
+      .deleteForm(id)
       .pipe(take(1))
-      .subscribe(()=>{
-        this.getFormsFromServer();
-        this._snackBar.open('The form have been deleted', 'Close', {
-          duration: 5000,
-        }); 
-    }, (err)=> {
-      this._snackBar.open('The form have been deleted', 'Close', {
-        duration: 5000,
-      }); 
-    });
+      .subscribe(
+        () => {
+          this.getFormsFromServer();
+          this._snackBar.open('The form have been deleted', 'Close', {
+            duration: 5000,
+          });
+        },
+        (err) => {
+          this._snackBar.open('The form have been deleted', 'Close', {
+            duration: 5000,
+          });
+        }
+      );
   }
 }

@@ -12,17 +12,17 @@ export class FormService {
   previous: Filter;
 
   constructor() {
-    this.filter = new BehaviorSubject<Filter>({})
+    this.filter = new BehaviorSubject<Filter>({});
     this.form = new BehaviorSubject<Form>(undefined);
   }
 
   sendData(newValue: Filter): void {
     this.filter.next(newValue);
-    this.previous = newValue
+    this.previous = newValue;
   }
 
-  reload(){
-    this.filter.next(this.previous)
+  reload() {
+    this.filter.next(this.previous);
   }
 
   getData(): Observable<Filter> {

@@ -25,22 +25,32 @@ export class FormUpdateComponent {
 
   ngOnDestroy() {
     if (this.fetchSubscription) {
-      this.fetchSubscription.unsubscribe()
+      this.fetchSubscription.unsubscribe();
     }
   }
 
   submit(formData) {
     const formid = this.form.id;
-    this.fetchSubscription = this.fetchService.updateForm(formData, formid).pipe(take(1)).subscribe((res) => {
-    this.formService.reload();
-    this.formService.setForm(res);
-    this._snackBar.open('Form successfully updated!:)', 'Close', {
-      duration: 5000,
-    });     
-    }, (err)=> {
-      this._snackBar.open('Something went wrong:( The form may have been deleted', 'Close', {
-        duration: 5000,
-      }); 
-    });
+    this.fetchSubscription = this.fetchService
+      .updateForm(formData, formid)
+      .pipe(take(1))
+      .subscribe(
+        (res) => {
+          this.formService.reload();
+          this.formService.setForm(res);
+          this._snackBar.open('Form successfully updated!:)', 'Close', {
+            duration: 5000,
+          });
+        },
+        (err) => {
+          this._snackBar.open(
+            'Something went wrong:( The form may have been deleted',
+            'Close',
+            {
+              duration: 5000,
+            }
+          );
+        }
+      );
   }
 }

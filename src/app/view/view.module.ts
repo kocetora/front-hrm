@@ -9,10 +9,7 @@ import { ViewComponent } from './view.component';
 import { FormViewModule } from './form-view/form-view.module';
 
 @NgModule({
-  declarations: [
-    ViewComponent,
-    ListComponent,
-  ],
+  declarations: [ViewComponent, ListComponent],
   imports: [
     TranslateModule,
     CommonModule,

@@ -9,7 +9,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   providers: [AuthService],
 })
 export class SignUpComponent {
-
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -27,7 +26,7 @@ export class SignUpComponent {
       (err) => {
         this._snackBar.open(err.error, 'Close', {
           duration: 5000,
-        }); 
+        });
       }
     );
   }

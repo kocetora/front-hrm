@@ -40,48 +40,45 @@ export class FilterComponent implements OnInit {
     this.filter = this.formBuilder.group({
       sex: [],
       height: this.formBuilder.group({
-        heightFrom: [,[Validators.min(0), Validators.max(2147483647)]],
-        heightTo: [,[Validators.min(0), Validators.max(2147483647)]],
+        heightFrom: [, [Validators.min(0), Validators.max(2147483647)]],
+        heightTo: [, [Validators.min(0), Validators.max(2147483647)]],
       }),
       age: this.formBuilder.group({
-        ageFrom: [,[Validators.min(0), Validators.max(2147483647)]],
-        ageTo: [,[Validators.min(0), Validators.max(2147483647)]],
+        ageFrom: [, [Validators.min(0), Validators.max(2147483647)]],
+        ageTo: [, [Validators.min(0), Validators.max(2147483647)]],
       }),
       workExperience: this.formBuilder.group({
-        workExperienceYears: [,[Validators.min(0), Validators.max(100)]],
-        workExperienceMonths: [,[Validators.min(0), Validators.max(11)]],
+        workExperienceYears: [, [Validators.min(0), Validators.max(100)]],
+        workExperienceMonths: [, [Validators.min(0), Validators.max(11)]],
       }),
       education: [],
       expectedSalary: this.formBuilder.group({
-        expectedSalaryFrom: [,[Validators.min(0), Validators.max(2147483647)]],
-        expectedSalaryTo: [,[Validators.min(0), Validators.max(2147483647)]],
+        expectedSalaryFrom: [, [Validators.min(0), Validators.max(2147483647)]],
+        expectedSalaryTo: [, [Validators.min(0), Validators.max(2147483647)]],
       }),
-      professions: this.formBuilder.group(
-        {
-          trainee: [],
-          dealer: [],
-          inspector: [],
-          manager: [],
-          pit_boss: [],
-          waiter: [],
-          barman: [],
-        }),
-      messengers: this.formBuilder.group(
-        {
-          Viber: [],
-          Telegram: [],
-          WhatsApp: [],
-        }),
-      languages: this.formBuilder.group(
-        {
-          english: [],
-          russian: [],
-        }),
+      professions: this.formBuilder.group({
+        trainee: [],
+        dealer: [],
+        inspector: [],
+        manager: [],
+        pit_boss: [],
+        waiter: [],
+        barman: [],
+      }),
+      messengers: this.formBuilder.group({
+        Viber: [],
+        Telegram: [],
+        WhatsApp: [],
+      }),
+      languages: this.formBuilder.group({
+        english: [],
+        russian: [],
+      }),
       languageProficiency: this.formBuilder.group({
         englishProficiency: ['native'],
         russianProficiency: ['native'],
       }),
-      submitted: []
+      submitted: [],
     });
   }
 

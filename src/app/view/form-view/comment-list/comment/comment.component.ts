@@ -10,5 +10,4 @@ export class CommentComponent {
   @Input() comment: Comment;
 
   constructor() {}
-
 }

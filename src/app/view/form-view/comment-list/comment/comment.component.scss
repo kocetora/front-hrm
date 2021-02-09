@@ -1,22 +1,22 @@
 h3.name {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 250px;
-  }
-  
-  .comment {
-    max-width: 300px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  .row{
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .time{
-    color: gray;
-    size: 12px;
-  }
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 250px;
+}
+
+.comment {
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.time {
+  color: gray;
+  size: 12px;
+}

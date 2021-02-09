@@ -27,7 +27,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./form.component.scss'],
   providers: [BodyService, PatchService],
 })
-export class FormComponent implements OnChanges { 
+export class FormComponent implements OnChanges {
   readonly requiredTextInputs = ['email', 'name', 'surname'];
 
   readonly textInputs = ['middlename', 'preffered_region'];
@@ -142,7 +142,7 @@ export class FormComponent implements OnChanges {
     });
   }
 
-  deletePhoto(){
+  deletePhoto() {
     this.pictures.splice(this.currentIndex, 1);
     this.slideLeft();
     this._snackBar.open('Deleted', 'Close', {
@@ -150,14 +150,14 @@ export class FormComponent implements OnChanges {
     });
   }
 
-  transformPictures(files: File[], bytes: string[] = [], i = 0): void{
+  transformPictures(files: File[], bytes: string[] = [], i = 0): void {
     this.reading = true;
     const file = files[i];
-    if(file){
+    if (file) {
       const reader = new FileReader();
       reader.onload = () => {
         const byte = reader.result;
-        if (typeof byte === "string" && byte.length < this.sizeLimitation){
+        if (typeof byte === 'string' && byte.length < this.sizeLimitation) {
           bytes.push(byte);
         } else {
           this._snackBar.open(`Picture ${file.name} is too large`, 'Close', {
@@ -166,12 +166,15 @@ export class FormComponent implements OnChanges {
         }
         i++;
         return this.transformPictures(files, bytes, i);
-      }
-      reader.readAsDataURL(file)
+      };
+      reader.readAsDataURL(file);
     } else {
       const newCurrent = this.pictures.length;
       this.pictures = this.pictures.concat(bytes);
-      this.currentIndex = this.pictures.length <= newCurrent ? this.pictures.length - 1 : newCurrent
+      this.currentIndex =
+        this.pictures.length <= newCurrent
+          ? this.pictures.length - 1
+          : newCurrent;
       this.currentPicture = this.pictures[this.currentIndex];
       this.reading = false;
     }
@@ -207,23 +210,18 @@ export class FormComponent implements OnChanges {
 
   ngOnChanges(input) {
     if (input.input.currentValue) {
-      this.patchService.patchData(
-        this.form,
-        input.input.currentValue
-      );
-        for (const image of input.input.currentValue.images) {
-          if (image.primary) {
-            this.currentPicture = image.avatar;
-          }
+      this.patchService.patchData(this.form, input.input.currentValue);
+      for (const image of input.input.currentValue.images) {
+        if (image.primary) {
+          this.currentPicture = image.avatar;
         }
-        this.pictures = input.input.currentValue.images.map(
-          (image) => {
-            return image.avatar;
-          }
-        );
-        if (!this.currentPicture) {
-          this.currentPicture = this.pictures[0];
-        }
+      }
+      this.pictures = input.input.currentValue.images.map((image) => {
+        return image.avatar;
+      });
+      if (!this.currentPicture) {
+        this.currentPicture = this.pictures[0];
+      }
       this.reading = false;
     }
   }
@@ -243,9 +241,9 @@ export class FormComponent implements OnChanges {
       this.form.reset();
       Object.keys(this.form.controls).forEach((key) => {
         this.form.get(key).setErrors(null);
-        if (this.form.get(key)['controls']) {
-          Object.keys(this.form.get(key)['controls']).forEach((innerKey) => {
-            this.form.get(key)['controls'][innerKey].setErrors(null);
+        if (this.form.get(key).controls) {
+          Object.keys(this.form.get(key).controls).forEach((innerKey) => {
+            this.form.get(key).controls[innerKey].setErrors(null);
           });
         }
       });

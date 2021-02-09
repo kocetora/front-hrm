@@ -9,10 +9,7 @@ import { CommentListModule } from './comment-list/comment.list.module';
 import { FormToPdfComponent } from './form-to-pdf/form-to-pdf.component';
 
 @NgModule({
-  declarations: [
-    FormViewComponent, 
-    FormToPdfComponent,
-],
+  declarations: [FormViewComponent, FormToPdfComponent],
   imports: [
     CommonModule,
     TranslateModule,
@@ -27,6 +24,6 @@ import { FormToPdfComponent } from './form-to-pdf/form-to-pdf.component';
     FormUpdateModule,
     FormToPdfComponent,
     CommentListModule,
-    ],
+  ],
 })
-export class FormViewModule { }
+export class FormViewModule {}

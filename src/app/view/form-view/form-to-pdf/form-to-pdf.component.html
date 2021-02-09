@@ -1,167 +1,162 @@
-    <form class="pdf container" *ngIf="form">
-      <h2 #header>{{ form.surname }} {{ form.name }} {{ form.middlename }}</h2>
-        <div *ngIf="currentPicture">
-          <img src="{{ currentPicture }}" width="400"/>
-        </div>
-      <section>
-        <mat-checkbox [(ngModel)]="emailChecked" name="email"
-          ><b #emailTitle>{{ 'FORM.EMAIL' | translate }}:</b>
-          {{ form.email }}</mat-checkbox
-        >
-      </section>
-      <section>
-        <mat-checkbox [(ngModel)]="sexChecked" name="sex"
-          ><b #sexTitle>{{ 'FORM.SEX.TITLE' | translate }}:</b>
-          {{ form.sex }}</mat-checkbox
-        >
-      </section>
-      <section>
-        <mat-checkbox
-          [(ngModel)]="prefferedRegionChecked"
-          name="prefferedRegion"
-          ><b #prefferedRegionTitle
-            >{{ 'FORM.PREFFERED_REGION' | translate }}:</b
-          >
-          {{ form.prefferedRegion }}</mat-checkbox
-        >
-      </section>
-      <section>
-        <mat-checkbox [(ngModel)]="phoneNumberChecked" name="phoneNumber"
-          ><b #phoneNumberTitle>{{ 'FORM.PHONE_NUMBER' | translate }}:</b>
-          {{ form.phoneNumber }}</mat-checkbox
-        >
-      </section>
-      <section>
-        <mat-checkbox [(ngModel)]="educationChecked" name="education"
-          ><b #educationTitle>{{ 'FORM.EDUCATION.TITLE' | translate }}:</b>
-          {{ form.education }}</mat-checkbox
-        >
-      </section>
-      <section>
-        <mat-checkbox [(ngModel)]="bornChecked" name="born"
-          ><b #bornTitle>{{ 'FORM.BORN' | translate }}:</b>
-          {{ born }}</mat-checkbox
-        >
-      </section>
-      <section>
-        <mat-checkbox [(ngModel)]="submittedChecked" name="submitted"
-          ><b #submittedTitle>{{ 'FORM.SUBMITTED' | translate }}:</b>
-          {{ submitted }}</mat-checkbox
-        >
-      </section>
-      <section>
-        <mat-checkbox [(ngModel)]="heightChecked" name="height"
-          ><b #heightTitle>{{ 'FORM.HEIGHT' | translate }}:</b>
-          {{ form.height }}</mat-checkbox
-        >
-      </section>
-      <section>
-        <mat-checkbox [(ngModel)]="expectedSalaryChecked" name="expectedSalary"
-          ><b #expectedSalaryTitle>{{ 'FORM.EXPECTED_SALARY' | translate }}:</b>
-          {{ form.expectedSalary }}</mat-checkbox
-        >
-      </section>
-      <section>
-        <mat-checkbox [(ngModel)]="unemployedForChecked" name="unemployedFor">
-          <b #unemployedForTitle>{{ 'FORM.UNEMPLOYED_FOR' | translate }}:</b>
-          {{ unemployedForYears }} {{ 'FORM.YEARS' | translate }}
-          {{ unemployedForMonths }} {{ 'FORM.MONTHS' | translate }}
-        </mat-checkbox>
-      </section>
-      <section>
-        <mat-checkbox [(ngModel)]="workExperienceChecked" name="workExperience">
-          <b #workExperienceTitle>{{ 'FORM.WORK_EXPERIENCE' | translate }}:</b>
-          {{ workExperienceYears }} {{ 'FORM.YEARS' | translate }}
-          {{ workExperienceMonths }} {{ 'FORM.MONTHS' | translate }}
-        </mat-checkbox>
-      </section>
-      <section>
-        <mat-checkbox [(ngModel)]="noteChecked" name="note"
-          ><b #noteTitle>{{ 'FORM.NOTE' | translate }}:</b>
-          {{ form.note }}</mat-checkbox
-        >
-      </section>
-      <section>
-        <mat-checkbox [(ngModel)]="traineeChecked" name="trainee"
-          ><b #traineeTitle>{{ 'FORM.PROFESSIONS.TITLE' | translate }}:</b>
-          {{ trainee }}</mat-checkbox
-        >
-      </section>
-      <section *ngIf="dealer">
-        <mat-checkbox [(ngModel)]="dealerChecked" name="dealer"
-          ><b #dealerTitle>{{ 'FORM.PROFESSIONS.TITLE' | translate }}:</b>
-          {{ dealer }}</mat-checkbox
-        >
-      </section>
-      <section *ngIf="inspector">
-        <mat-checkbox [(ngModel)]="inspectorChecked" name="inspector"
-          ><b #inspectorTitle>{{ 'FORM.PROFESSIONS.TITLE' | translate }}:</b>
-          {{ inspector }}</mat-checkbox
-        >
-      </section>
-      <section *ngIf="manager">
-        <mat-checkbox [(ngModel)]="managerChecked" name="manager"
-          ><b #managerTitle>{{ 'FORM.PROFESSIONS.TITLE' | translate }}:</b>
-          {{ manager }}</mat-checkbox
-        >
-      </section>
-      <section *ngIf="pit_boss">
-        <mat-checkbox [(ngModel)]="pitBossChecked" name="pit_boss"
-          ><b #pitBossTitle>{{ 'FORM.PROFESSIONS.TITLE' | translate }}:</b>
-          {{ pit_boss }}</mat-checkbox
-        >
-      </section>
-      <section *ngIf="waiter">
-        <mat-checkbox [(ngModel)]="waiterChecked" name="waiter"
-          ><b #waiterTitle>{{ 'FORM.PROFESSIONS.TITLE' | translate }}:</b>
-          {{ waiter }}</mat-checkbox
-        >
-      </section>
-      <section *ngIf="barman">
-        <mat-checkbox [(ngModel)]="barmanChecked" name="barman"
-          ><b #barmanTitle>{{ 'FORM.PROFESSIONS.TITLE' | translate }}:</b>
-          {{ barman }}</mat-checkbox
-        >
-      </section>
-      <section *ngIf="Telegram">
-        <mat-checkbox [(ngModel)]="TelegramChecked" name="Telegram"
-          ><b #TelegramTitle>{{ 'FORM.MESSENGERS.TELEGRAM' | translate }}:</b>
-          {{ Telegram }}</mat-checkbox
-        >
-      </section>
-      <section *ngIf="Viber">
-        <mat-checkbox [(ngModel)]="ViberChecked" name="Viber"
-          ><b #ViberTitle>{{ 'FORM.MESSENGERS.VIBER' | translate }}:</b>
-          {{ Viber }}</mat-checkbox
-        >
-      </section>
-      <section *ngIf="WhatsApp">
-        <mat-checkbox [(ngModel)]="WhatsAppChecked" name="WhatsApp"
-          ><b #WhatsAppTitle>{{ 'FORM.MESSENGERS.WHATSAPP' | translate }}:</b>
-          {{ WhatsApp }}</mat-checkbox
-        >
-      </section>
-      <section *ngIf="russian">
-        <mat-checkbox [(ngModel)]="russianChecked" name="russian"
-          ><b #russianTitle>{{ 'FORM.LANGUAGES.RUSSIAN' | translate }}:</b>
-          {{ russian }}</mat-checkbox
-        >
-      </section>
-      <section *ngIf="english">
-        <mat-checkbox [(ngModel)]="englishChecked" name="english"
-          ><b #englishTitle>{{ 'FORM.LANGUAGES.ENGLISH' | translate }}:</b>
-          {{ english }}</mat-checkbox
-        >
-      </section>
-      <div class="buttons">
-        <button color="primary" mat-raised-button (click)="open()">
-          {{ 'PDF.OPEN' | translate }}
-        </button>
-        <button color="primary" mat-raised-button (click)="download()">
-          {{ 'PDF.DOWNLOAD' | translate }}
-        </button>
-        <button color="primary" mat-raised-button (click)="print()">
-          {{ 'PDF.PRINT' | translate }}
-        </button>
-      </div>
-    </form>
+<form class="pdf container" *ngIf="form">
+  <h2 #header>{{ form.surname }} {{ form.name }} {{ form.middlename }}</h2>
+  <div *ngIf="currentPicture">
+    <img src="{{ currentPicture }}" width="400" />
+  </div>
+  <section>
+    <mat-checkbox [(ngModel)]="emailChecked" name="email"
+      ><b #emailTitle>{{ 'FORM.EMAIL' | translate }}:</b>
+      {{ form.email }}</mat-checkbox
+    >
+  </section>
+  <section>
+    <mat-checkbox [(ngModel)]="sexChecked" name="sex"
+      ><b #sexTitle>{{ 'FORM.SEX.TITLE' | translate }}:</b>
+      {{ form.sex }}</mat-checkbox
+    >
+  </section>
+  <section>
+    <mat-checkbox [(ngModel)]="prefferedRegionChecked" name="prefferedRegion"
+      ><b #prefferedRegionTitle>{{ 'FORM.PREFFERED_REGION' | translate }}:</b>
+      {{ form.prefferedRegion }}</mat-checkbox
+    >
+  </section>
+  <section>
+    <mat-checkbox [(ngModel)]="phoneNumberChecked" name="phoneNumber"
+      ><b #phoneNumberTitle>{{ 'FORM.PHONE_NUMBER' | translate }}:</b>
+      {{ form.phoneNumber }}</mat-checkbox
+    >
+  </section>
+  <section>
+    <mat-checkbox [(ngModel)]="educationChecked" name="education"
+      ><b #educationTitle>{{ 'FORM.EDUCATION.TITLE' | translate }}:</b>
+      {{ form.education }}</mat-checkbox
+    >
+  </section>
+  <section>
+    <mat-checkbox [(ngModel)]="bornChecked" name="born"
+      ><b #bornTitle>{{ 'FORM.BORN' | translate }}:</b> {{ born }}</mat-checkbox
+    >
+  </section>
+  <section>
+    <mat-checkbox [(ngModel)]="submittedChecked" name="submitted"
+      ><b #submittedTitle>{{ 'FORM.SUBMITTED' | translate }}:</b>
+      {{ submitted }}</mat-checkbox
+    >
+  </section>
+  <section>
+    <mat-checkbox [(ngModel)]="heightChecked" name="height"
+      ><b #heightTitle>{{ 'FORM.HEIGHT' | translate }}:</b>
+      {{ form.height }}</mat-checkbox
+    >
+  </section>
+  <section>
+    <mat-checkbox [(ngModel)]="expectedSalaryChecked" name="expectedSalary"
+      ><b #expectedSalaryTitle>{{ 'FORM.EXPECTED_SALARY' | translate }}:</b>
+      {{ form.expectedSalary }}</mat-checkbox
+    >
+  </section>
+  <section>
+    <mat-checkbox [(ngModel)]="unemployedForChecked" name="unemployedFor">
+      <b #unemployedForTitle>{{ 'FORM.UNEMPLOYED_FOR' | translate }}:</b>
+      {{ unemployedForYears }} {{ 'FORM.YEARS' | translate }}
+      {{ unemployedForMonths }} {{ 'FORM.MONTHS' | translate }}
+    </mat-checkbox>
+  </section>
+  <section>
+    <mat-checkbox [(ngModel)]="workExperienceChecked" name="workExperience">
+      <b #workExperienceTitle>{{ 'FORM.WORK_EXPERIENCE' | translate }}:</b>
+      {{ workExperienceYears }} {{ 'FORM.YEARS' | translate }}
+      {{ workExperienceMonths }} {{ 'FORM.MONTHS' | translate }}
+    </mat-checkbox>
+  </section>
+  <section>
+    <mat-checkbox [(ngModel)]="noteChecked" name="note"
+      ><b #noteTitle>{{ 'FORM.NOTE' | translate }}:</b>
+      {{ form.note }}</mat-checkbox
+    >
+  </section>
+  <section>
+    <mat-checkbox [(ngModel)]="traineeChecked" name="trainee"
+      ><b #traineeTitle>{{ 'FORM.PROFESSIONS.TITLE' | translate }}:</b>
+      {{ trainee }}</mat-checkbox
+    >
+  </section>
+  <section *ngIf="dealer">
+    <mat-checkbox [(ngModel)]="dealerChecked" name="dealer"
+      ><b #dealerTitle>{{ 'FORM.PROFESSIONS.TITLE' | translate }}:</b>
+      {{ dealer }}</mat-checkbox
+    >
+  </section>
+  <section *ngIf="inspector">
+    <mat-checkbox [(ngModel)]="inspectorChecked" name="inspector"
+      ><b #inspectorTitle>{{ 'FORM.PROFESSIONS.TITLE' | translate }}:</b>
+      {{ inspector }}</mat-checkbox
+    >
+  </section>
+  <section *ngIf="manager">
+    <mat-checkbox [(ngModel)]="managerChecked" name="manager"
+      ><b #managerTitle>{{ 'FORM.PROFESSIONS.TITLE' | translate }}:</b>
+      {{ manager }}</mat-checkbox
+    >
+  </section>
+  <section *ngIf="pit_boss">
+    <mat-checkbox [(ngModel)]="pitBossChecked" name="pit_boss"
+      ><b #pitBossTitle>{{ 'FORM.PROFESSIONS.TITLE' | translate }}:</b>
+      {{ pit_boss }}</mat-checkbox
+    >
+  </section>
+  <section *ngIf="waiter">
+    <mat-checkbox [(ngModel)]="waiterChecked" name="waiter"
+      ><b #waiterTitle>{{ 'FORM.PROFESSIONS.TITLE' | translate }}:</b>
+      {{ waiter }}</mat-checkbox
+    >
+  </section>
+  <section *ngIf="barman">
+    <mat-checkbox [(ngModel)]="barmanChecked" name="barman"
+      ><b #barmanTitle>{{ 'FORM.PROFESSIONS.TITLE' | translate }}:</b>
+      {{ barman }}</mat-checkbox
+    >
+  </section>
+  <section *ngIf="Telegram">
+    <mat-checkbox [(ngModel)]="TelegramChecked" name="Telegram"
+      ><b #TelegramTitle>{{ 'FORM.MESSENGERS.TELEGRAM' | translate }}:</b>
+      {{ Telegram }}</mat-checkbox
+    >
+  </section>
+  <section *ngIf="Viber">
+    <mat-checkbox [(ngModel)]="ViberChecked" name="Viber"
+      ><b #ViberTitle>{{ 'FORM.MESSENGERS.VIBER' | translate }}:</b>
+      {{ Viber }}</mat-checkbox
+    >
+  </section>
+  <section *ngIf="WhatsApp">
+    <mat-checkbox [(ngModel)]="WhatsAppChecked" name="WhatsApp"
+      ><b #WhatsAppTitle>{{ 'FORM.MESSENGERS.WHATSAPP' | translate }}:</b>
+      {{ WhatsApp }}</mat-checkbox
+    >
+  </section>
+  <section *ngIf="russian">
+    <mat-checkbox [(ngModel)]="russianChecked" name="russian"
+      ><b #russianTitle>{{ 'FORM.LANGUAGES.RUSSIAN' | translate }}:</b>
+      {{ russian }}</mat-checkbox
+    >
+  </section>
+  <section *ngIf="english">
+    <mat-checkbox [(ngModel)]="englishChecked" name="english"
+      ><b #englishTitle>{{ 'FORM.LANGUAGES.ENGLISH' | translate }}:</b>
+      {{ english }}</mat-checkbox
+    >
+  </section>
+  <div class="buttons">
+    <button color="primary" mat-raised-button (click)="open()">
+      {{ 'PDF.OPEN' | translate }}
+    </button>
+    <button color="primary" mat-raised-button (click)="download()">
+      {{ 'PDF.DOWNLOAD' | translate }}
+    </button>
+    <button color="primary" mat-raised-button (click)="print()">
+      {{ 'PDF.PRINT' | translate }}
+    </button>
+  </div>
+</form>

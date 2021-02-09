@@ -10,11 +10,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   providers: [AuthService],
 })
 export class LoginComponent {
-
   constructor(
-    private authService: AuthService, 
+    private authService: AuthService,
     private router: Router,
-    private _snackBar: MatSnackBar) {}
+    private _snackBar: MatSnackBar
+  ) {}
 
   submit(user) {
     this.authService.login(user).subscribe(
@@ -26,12 +26,12 @@ export class LoginComponent {
         this._snackBar.open('You successfully logged in!:)', 'Close', {
           duration: 5000,
         });
-        this.router.navigate(['/view']);;
+        this.router.navigate(['/view']);
       },
       (err) => {
         this._snackBar.open(err.error, 'Close', {
           duration: 5000,
-        }); 
+        });
       }
     );
   }

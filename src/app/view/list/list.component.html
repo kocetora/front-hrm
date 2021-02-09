@@ -2,15 +2,19 @@
   <h2>{{ 'VIEW.LIST' | translate }}</h2>
   <hr />
   <div class="card row" *ngFor="let form of forms; let i = index">
-    <div
-    #el
-    [attr.id]="form.id"
-    (click)="selectForm(form)">
-      <span class="name">{{ form.name }} {{ form.surname }}</span>  
-  </div>
-  <div *ngIf="isAdmin">
-    <button *ngIf="!inProcess" color="warn" mat-button (click)="deleteItem(el.id)">✖</button>
+    <div #el [attr.id]="form.id" (click)="selectForm(form)">
+      <span class="name">{{ form.name }} {{ form.surname }}</span>
+    </div>
+    <div *ngIf="isAdmin">
+      <button
+        *ngIf="!inProcess"
+        color="warn"
+        mat-button
+        (click)="deleteItem(el.id)"
+      >
+        ✖
+      </button>
       <button *ngIf="inProcess" disabled mat-button>✖</button>
-  </div>
+    </div>
   </div>
 </div>
