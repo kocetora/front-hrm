@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormViewComponent } from './form-view.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from '../../shared/modules/material.module';
+import { MaterialModule } from 'src/app/shared/modules/material.module';
 import { FormUpdateModule } from './form-update/form-update.module';
-import { CommentModule } from './comment/comment.module';
+import { CommentListModule } from './comment-list/comment.list.module';
 import { FormToPdfComponent } from './form-to-pdf/form-to-pdf.component';
 
 @NgModule({
@@ -20,13 +20,13 @@ import { FormToPdfComponent } from './form-to-pdf/form-to-pdf.component';
     ReactiveFormsModule,
     FormsModule,
     FormUpdateModule,
-    CommentModule,
+    CommentListModule,
   ],
   exports: [
     FormViewComponent,
     FormUpdateModule,
     FormToPdfComponent,
-    CommentModule,
+    CommentListModule,
     ],
 })
 export class FormViewModule { }

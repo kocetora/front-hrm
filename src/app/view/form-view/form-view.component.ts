@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Form } from 'src/app/shared/interfaces/form';
 import { FormService } from 'src/app/shared/services/form.service';
 
@@ -9,20 +10,23 @@ import { FormService } from 'src/app/shared/services/form.service';
 export class FormViewComponent { 
   isAdmin: boolean = localStorage.getItem('role') === 'admin';
   update = false;
-  forms: Form[];
-  id: number | undefined;
+  form: Form;
+  formSubscription: Subscription;
 
   constructor(
     private formService: FormService,
   ) {}
 
   ngOnInit(): void {
-    this.formService.getForms().subscribe((forms) => {
-      this.forms = forms;
+    this.formService.getForm().subscribe((form) => {
+      this.form = form;
     });
-    this.formService.getId().subscribe((id) => {
-      this.id = id;
-    });
+  }
+
+  ngOnDestroy() {
+    if(this.formSubscription){
+      this.formSubscription.unsubscribe()
+    }
   }
 
   openUpdate() {

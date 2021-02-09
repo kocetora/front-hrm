@@ -2,7 +2,7 @@
     <div class="filter-header">
       <h2>{{ 'VIEW.PDF' | translate }}</h2>
       <button
-        *ngIf="isAdmin && forms[id] && update"
+        *ngIf="isAdmin && form && update"
         mat-button
         color="primary"
         (click)="openUpdate()"
@@ -10,7 +10,7 @@
       {{ 'FORM.GET' | translate }}
       </button>
       <button
-        *ngIf="isAdmin && forms[id] && !update"
+        *ngIf="isAdmin && form && !update"
         mat-button
         color="primary"
         (click)="openUpdate()"
@@ -20,8 +20,16 @@
     </div>
     <hr />
     <div class="card">
-        <app-form-update *ngIf="update"></app-form-update>
-        <app-form-to-pdf *ngIf="!update"></app-form-to-pdf>
-        <app-comment></app-comment>
+        <app-form-update 
+          [form]="form" 
+          *ngIf="update">
+        </app-form-update>
+        <app-form-to-pdf 
+          [form]="form" 
+          *ngIf="!update">
+        </app-form-to-pdf>
+        <app-comment-list 
+          [form]="form">
+        </app-comment-list>
     </div>
     </div>

@@ -3,6 +3,9 @@ import { Form } from '../../shared/interfaces/form';
 import { FetchService } from '../../core/services/fetch.service';
 import { FormService } from '../../shared/services/form.service';
 import { Filter } from '../../shared/interfaces/filter';
+import { filter, take } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-list',
@@ -15,47 +18,77 @@ export class ListComponent implements OnInit {
   isAdmin: boolean = localStorage.getItem('role') === 'admin';
   forms: Form[] = [];
   inProcess: boolean = false;
+  filter: Filter = {};
+  form: Form;
+  fetchSubscription: Subscription;
+  formSubscription: Subscription;
+  filterSubscription: Subscription
+  deleteSubscription: Subscription
 
   constructor(
     private fetchService: FetchService,
-    private formService: FormService
+    private formService: FormService,
+    private _snackBar: MatSnackBar
   ) {}
 
-  ngOnInit(): void {
-    this.getFormsFromServer();
-    this.setThisForms()
+  ngOnInit() {
+    this.formSubscription = this.formService.getForm().subscribe((form)=>{
+      this.form = form
+    })
+    this.filterSubscription = this.formService.getData().subscribe((filter)=>{
+      this.filter = filter
+      this.getFormsFromServer();
+    })
+    this.formService.sendData(this.filter);
   }
 
-  getFormsFromServer(): void {
-    this.inProcess = true;
-    const filter: Filter = {};
-    const request = localStorage.getItem('jwt')
-      ? this.fetchService.findForms(filter)
-      : this.fetchService.findPublicForms(filter);
-    request.subscribe(
-      (forms) => this.formService.setForms(forms), 
-      (err)=>console.log(err), 
-      ()=>this.inProcess = false);
-  }
-
-  setThisForms(): void {
-    this.formService.getForms().subscribe((forms) => {
-      this.forms = forms;
-      this.selectForm(1);
-    });
-  }
-
-  selectForm(id) {
-    this.formService.setId(undefined);
-    if (this.forms[id]) {
-      setTimeout(() => this.formService.setId(id), 250);
+  ngOnDestroy() {
+    this.formSubscription.unsubscribe()
+    this.filterSubscription.unsubscribe()
+    if (this.fetchSubscription) {
+      this.fetchSubscription.unsubscribe()
     }
+    if (this.deleteSubscription) {
+      this.deleteSubscription.unsubscribe()
+    }
+  }
+
+  getFormsFromServer() {
+    this.inProcess = true;
+    const request = localStorage.getItem('jwt')
+      ? this.fetchService.findForms(this.filter)
+      : this.fetchService.findPublicForms(this.filter);
+    this.fetchSubscription = request.pipe(take(1)).subscribe(
+      (forms) => {
+        this.forms = forms;
+        if(!this.form){
+          this.selectForm(forms[0]);
+        }
+        if(!forms){
+          this.selectForm(undefined);
+        }
+      }, 
+      (err)=> console.log(err), 
+      ()=> this.inProcess = false);
+  }
+
+  selectForm(form) {
+    this.formService.setForm(form)
   }
 
   deleteItem(id: number) {
     this.inProcess = true;
-    this.fetchService.deleteForm(id).subscribe(()=>{
-      this.getFormsFromServer();
+    this.deleteSubscription = this.fetchService.deleteForm(id)
+      .pipe(take(1))
+      .subscribe(()=>{
+        this.getFormsFromServer();
+        this._snackBar.open('The form have been deleted', 'Close', {
+          duration: 5000,
+        }); 
+    }, (err)=> {
+      this._snackBar.open('The form have been deleted', 'Close', {
+        duration: 5000,
+      }); 
     });
   }
 }

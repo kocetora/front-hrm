@@ -33,7 +33,7 @@ export class FormComponent implements OnChanges {
   readonly textInputs = ['middlename', 'preffered_region'];
 
   @Output() onsubmit: EventEmitter<Form> = new EventEmitter<Form>();
-  @Input() input: { id: number | undefined; formdata?: Form };
+  @Input() input: Form;
 
   readonly genders = Genders;
   readonly grades = Grades;
@@ -171,8 +171,6 @@ export class FormComponent implements OnChanges {
     } else {
       const newCurrent = this.pictures.length;
       this.pictures = this.pictures.concat(bytes);
-      console.log(this.pictures)
-      console.log(bytes)
       this.currentIndex = this.pictures.length <= newCurrent ? this.pictures.length - 1 : newCurrent
       this.currentPicture = this.pictures[this.currentIndex];
       this.reading = false;
@@ -210,18 +208,15 @@ export class FormComponent implements OnChanges {
   ngOnChanges(input) {
     if (input.input.currentValue) {
       this.patchService.patchData(
-        input.input.currentValue.id,
         this.form,
-        input.input.currentValue.formData
+        input.input.currentValue
       );
-      if (input.input.currentValue.formData) {
-        this.reading = false;
-        for (const image of input.input.currentValue.formData.images) {
+        for (const image of input.input.currentValue.images) {
           if (image.primary) {
             this.currentPicture = image.avatar;
           }
         }
-        this.pictures = input.input.currentValue.formData.images.map(
+        this.pictures = input.input.currentValue.images.map(
           (image) => {
             return image.avatar;
           }
@@ -229,7 +224,7 @@ export class FormComponent implements OnChanges {
         if (!this.currentPicture) {
           this.currentPicture = this.pictures[0];
         }
-      }
+      this.reading = false;
     }
   }
 

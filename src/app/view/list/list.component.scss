@@ -1,9 +1,10 @@
-.card p {
+.row {
   display: flex;
   font-size: var(--FONT_SIZE_TEXT);
   font-weight: var(--FONT_WEIGHT_TITLE);
   justify-content: space-between;
   align-items: center;
+  flex-direction: row;
 }
 
 span.name {

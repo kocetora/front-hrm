@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BodyService } from '../../core/services/body.service';
-import { FetchService } from '../../core/services/fetch.service';
 import { FormService } from '../../shared/services/form.service';
 import { Filter } from '../../shared/interfaces/filter';
 import { Form } from '../../shared/interfaces/form';
@@ -18,7 +17,7 @@ import {
   selector: 'app-filter',
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.scss'],
-  providers: [BodyService, FetchService, PatchService],
+  providers: [BodyService, PatchService],
 })
 export class FilterComponent implements OnInit {
   readonly genders = Genders;
@@ -32,7 +31,6 @@ export class FilterComponent implements OnInit {
 
   constructor(
     private bodyService: BodyService,
-    private fetchService: FetchService,
     private formService: FormService,
     private patchService: PatchService,
     private formBuilder: FormBuilder
@@ -92,25 +90,13 @@ export class FilterComponent implements OnInit {
       const filterData: Filter = this.bodyService.convertFilterData({
         ...this.filter.value,
       });
-      const request = localStorage.getItem('jwt')
-        ? this.fetchService.findForms(filterData)
-        : this.fetchService.findPublicForms(filterData);
-      request.subscribe((forms) => {
-        this.formService.setForms(forms);
-        this.formService.setId(undefined);
-      }, (err)=>console.log(err));
+      this.formService.sendData(filterData);
     }
   }
 
   filterReset(): void {
     this.patchService.resetFilter(this.filter);
     const filter: Filter = {};
-    const request = localStorage.getItem('jwt')
-      ? this.fetchService.findForms(filter)
-      : this.fetchService.findPublicForms(filter);
-    request.subscribe((forms) => {
-      this.formService.setForms(forms);
-    });
-    this.formService.setId(undefined);
+    this.formService.sendData(filter);
   }
 }

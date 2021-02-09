@@ -1,14 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormUpdateComponent } from './form-update.component';
+import { CommentListComponent } from './comment-list.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/shared/modules/material.module';
 import { ControlErrorModule } from 'src/app/core/components/control-error/control-error.module';
 import { FormModule } from 'src/app/core/components/form/form.module';
+import { CommentComponent } from './comment/comment.component';
 
 @NgModule({
-  declarations: [FormUpdateComponent],
+  declarations: [
+      CommentListComponent,
+      CommentComponent
+    ],
   imports: [
     CommonModule,
     TranslateModule,
@@ -17,6 +21,9 @@ import { FormModule } from 'src/app/core/components/form/form.module';
     ControlErrorModule,
     FormModule,
   ],
-  exports: [FormUpdateComponent],
+  exports: [
+      CommentListComponent,
+      CommentComponent
+    ],
 })
-export class FormUpdateModule {}
+export class CommentListModule {}

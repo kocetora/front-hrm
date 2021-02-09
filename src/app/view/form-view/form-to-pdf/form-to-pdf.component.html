@@ -1,18 +1,18 @@
-    <form class="pdf container" *ngIf="forms[id]">
-      <h2 #header>{{ forms[id].surname }} {{ forms[id].name }} {{ forms[id].middlename }}</h2>
+    <form class="pdf container" *ngIf="form">
+      <h2 #header>{{ form.surname }} {{ form.name }} {{ form.middlename }}</h2>
         <div *ngIf="currentPicture">
           <img src="{{ currentPicture }}" width="400"/>
         </div>
       <section>
         <mat-checkbox [(ngModel)]="emailChecked" name="email"
           ><b #emailTitle>{{ 'FORM.EMAIL' | translate }}:</b>
-          {{ forms[id].email }}</mat-checkbox
+          {{ form.email }}</mat-checkbox
         >
       </section>
       <section>
         <mat-checkbox [(ngModel)]="sexChecked" name="sex"
           ><b #sexTitle>{{ 'FORM.SEX.TITLE' | translate }}:</b>
-          {{ forms[id].sex }}</mat-checkbox
+          {{ form.sex }}</mat-checkbox
         >
       </section>
       <section>
@@ -22,19 +22,19 @@
           ><b #prefferedRegionTitle
             >{{ 'FORM.PREFFERED_REGION' | translate }}:</b
           >
-          {{ forms[id].prefferedRegion }}</mat-checkbox
+          {{ form.prefferedRegion }}</mat-checkbox
         >
       </section>
       <section>
         <mat-checkbox [(ngModel)]="phoneNumberChecked" name="phoneNumber"
           ><b #phoneNumberTitle>{{ 'FORM.PHONE_NUMBER' | translate }}:</b>
-          {{ forms[id].phoneNumber }}</mat-checkbox
+          {{ form.phoneNumber }}</mat-checkbox
         >
       </section>
       <section>
         <mat-checkbox [(ngModel)]="educationChecked" name="education"
           ><b #educationTitle>{{ 'FORM.EDUCATION.TITLE' | translate }}:</b>
-          {{ forms[id].education }}</mat-checkbox
+          {{ form.education }}</mat-checkbox
         >
       </section>
       <section>
@@ -52,13 +52,13 @@
       <section>
         <mat-checkbox [(ngModel)]="heightChecked" name="height"
           ><b #heightTitle>{{ 'FORM.HEIGHT' | translate }}:</b>
-          {{ forms[id].height }}</mat-checkbox
+          {{ form.height }}</mat-checkbox
         >
       </section>
       <section>
         <mat-checkbox [(ngModel)]="expectedSalaryChecked" name="expectedSalary"
           ><b #expectedSalaryTitle>{{ 'FORM.EXPECTED_SALARY' | translate }}:</b>
-          {{ forms[id].expectedSalary }}</mat-checkbox
+          {{ form.expectedSalary }}</mat-checkbox
         >
       </section>
       <section>
@@ -78,7 +78,7 @@
       <section>
         <mat-checkbox [(ngModel)]="noteChecked" name="note"
           ><b #noteTitle>{{ 'FORM.NOTE' | translate }}:</b>
-          {{ forms[id].note }}</mat-checkbox
+          {{ form.note }}</mat-checkbox
         >
       </section>
       <section>

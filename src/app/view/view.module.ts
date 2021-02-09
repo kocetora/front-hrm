@@ -10,23 +10,23 @@ import { FormViewModule } from './form-view/form-view.module';
 
 @NgModule({
   declarations: [
-    ListComponent, 
     ViewComponent,
+    ListComponent,
   ],
   imports: [
     TranslateModule,
     CommonModule,
     LayoutModule,
     MaterialModule,
-    FormViewModule,
     FilterModule,
+    FormViewModule,
   ],
   exports: [
-    ListComponent,
     ViewComponent,
     CommonModule,
-    FormViewModule,
+    ListComponent,
     FilterModule,
+    FormViewModule,
   ],
   providers: [],
 })

@@ -8,8 +8,8 @@ import {
 } from '../../shared/consts/form.enum';
 @Injectable()
 export class PatchService {
-  patchData(id: number | undefined, form: FormGroup, formData?: Form) {
-    if (id !== undefined) {
+  patchData(form: FormGroup, formData?: Form) {
+    if (formData !== undefined) {
       const fields: string[] = [
         'name',
         'surname',
@@ -50,6 +50,11 @@ export class PatchService {
           }
         }
       });
+      for (const el in Languages) {
+        form.controls.languages.patchValue({
+          [el]: false,
+        });
+      }
       formData.languageSkills.forEach((element) => {
         for (const el in Languages) {
           if (element.language === el) {
@@ -68,6 +73,11 @@ export class PatchService {
           }
         }
       });
+      for (const el in Professions) {
+        form.controls.professions.patchValue({
+          [el]: false,
+        });
+      }
       formData.professions.forEach((element) => {
         for (const el in Professions) {
           if (element.profession === el) {

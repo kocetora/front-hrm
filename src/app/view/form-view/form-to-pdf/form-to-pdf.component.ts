@@ -1,32 +1,27 @@
 import {
   Component,
   ElementRef,
-  OnInit,
   ViewChild,
   ViewEncapsulation,
+  Input
 } from '@angular/core';
-import { Form } from '../../../shared/interfaces/form';
+import { Form } from 'src/app/shared/interfaces/form';
 import {
   Professions,
   Messengers,
   Languages,
   LanguageProficiency,
-} from '../../../shared/consts/form.enum';
-import { FetchService } from '../../../core/services/fetch.service';
-import { FormService } from '../../../shared/services/form.service';
-import { PdfService } from '../../../core/services/pdf.service';
-import { PatchService } from 'src/app/core/services/patch.service';
+} from 'src/app/shared/consts/form.enum';
+import { PdfService } from 'src/app/core/services/pdf.service';
 
 @Component({
   selector: 'app-form-to-pdf',
   templateUrl: './form-to-pdf.component.html',
   styleUrls: ['./form-to-pdf.component.scss'],
-  providers: [FetchService, PatchService],
   encapsulation: ViewEncapsulation.None,
 })
-export class FormToPdfComponent implements OnInit {
-  forms: Form[] = [];
-  id: number | undefined;
+export class FormToPdfComponent {
+  @Input() form: Form;
   emailChecked = false;
   sexChecked = false;
   prefferedRegionChecked = false;
@@ -118,38 +113,38 @@ export class FormToPdfComponent implements OnInit {
   @ViewChild('barmanTitle', { static: false }) barmanTitle: ElementRef;
 
   constructor(
-    private formService: FormService,
     private pdfService: PdfService
   ) {}
 
-  ngOnInit(): void {
-    this.formService.getForms().subscribe((forms) => {
-      this.forms = forms;
-    });
-    this.formService.getId().subscribe((id) => {
-      this.id = id;
-      if (id !== undefined && this.forms[id]) {
-        this.unemployedForYears = Math.floor(this.forms[id].unemployedFor / 12);
+  ngOnChanges(form) {
+    this.form = form.form.currentValue
+      if (this.form) {
+        this.unemployedForYears = Math.floor(this.form.unemployedFor / 12);
         this.unemployedForMonths =
-          this.forms[id].unemployedFor - this.unemployedForYears * 12;
+          this.form.unemployedFor - this.unemployedForYears * 12;
         this.workExperienceYears = Math.floor(
-          this.forms[id].workExperience / 12
+          this.form.workExperience / 12
         );
         this.workExperienceMonths =
-          this.forms[id].workExperience - this.workExperienceYears * 12;
-        this.forms[id].professions.forEach((el) => {
+          this.form.workExperience - this.workExperienceYears * 12;
+        this.form.professions.forEach((el) => {
           this[el.profession] = el.profession;
         });
-        this.forms[id].messengers.forEach((el) => {
+        this.form.messengers.forEach((el) => {
           this[el.messenger] = el.info;
         });
-        this.forms[id].languageSkills.forEach((el) => {
+        this.form.languageSkills.forEach((el) => {
           this[el.language] = el.languageProficiency;
         });
-        this.middlename = this.forms[id].middlename;
-        this.born = this.forms[this.id].born.substring(0, 10);
-        this.submitted = this.forms[this.id].created_at.substring(0, 10);
-        this.forms[id].images.forEach(el => {
+        this.middlename = this.form.middlename;
+        this.born = this.form.born.substring(0, 10);
+        this.submitted = this.form.created_at.substring(0, 10);
+        if(this.form.images[0]){
+          this.currentPicture = this.form.images[0].avatar 
+        } else {
+          this.currentPicture = '';
+        }
+        this.form.images.forEach(el => {
           if(el.primary){
             this.currentPicture = el.avatar;
           }
@@ -165,7 +160,6 @@ export class FormToPdfComponent implements OnInit {
           }
         });
       }
-    });
   }
 
   createPDF() {
@@ -176,7 +170,7 @@ export class FormToPdfComponent implements OnInit {
     this.fields.forEach((item) => {
       if (this[item + 'Checked']) {
         const title = this[item + 'Title'].nativeElement.innerText;
-        this.pdfService.addField(title, this.forms[this.id][item]);
+        this.pdfService.addField(title, this.form[item]);
       }
     });
     this.dateFields.forEach((item) => {
@@ -188,7 +182,7 @@ export class FormToPdfComponent implements OnInit {
     this.numberFields.forEach((item) => {
       if (this[item + 'Checked']) {
         const title = this[item + 'Title'].nativeElement.innerText;
-        this.pdfService.addField(title, this.forms[this.id][item] + '');
+        this.pdfService.addField(title, this.form[item] + '');
       }
     });
     this.arrays.forEach((el) => {

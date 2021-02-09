@@ -1,32 +1,39 @@
 import { Injectable } from '@angular/core';
 import { Form } from '../../shared/interfaces/form';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Filter } from '../interfaces/filter';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FormService {
-  private forms: BehaviorSubject<Form[]>;
-  private id: BehaviorSubject<number | undefined>;
+  private filter: BehaviorSubject<Filter>;
+  private form: BehaviorSubject<Form>;
+  previous: Filter;
 
   constructor() {
-    this.forms = new BehaviorSubject<Form[]>([]);
-    this.id = new BehaviorSubject<number | undefined>(undefined);
+    this.filter = new BehaviorSubject<Filter>({})
+    this.form = new BehaviorSubject<Form>(undefined);
   }
 
-  getForms(): Observable<Form[]> {
-    return this.forms.asObservable();
+  sendData(newValue: Filter): void {
+    this.filter.next(newValue);
+    this.previous = newValue
   }
 
-  setForms(newValue): void {
-    this.forms.next(newValue);
+  reload(){
+    this.filter.next(this.previous)
   }
 
-  getId(): Observable<number | undefined> {
-    return this.id.asObservable();
+  getData(): Observable<Filter> {
+    return this.filter.asObservable();
   }
 
-  setId(id: number | undefined): void {
-    this.id.next(id);
+  getForm(): Observable<Form> {
+    return this.form.asObservable();
+  }
+
+  setForm(newValue): void {
+    this.form.next(newValue);
   }
 }

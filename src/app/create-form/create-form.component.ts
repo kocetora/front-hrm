@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FetchService } from '../core/services/fetch.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Form } from '../shared/interfaces/form';
 
 @Component({
   selector: 'app-create-form',
@@ -8,7 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   providers: [FetchService],
 })
 export class CreateFormComponent {
-  output: { id: number | undefined };
+  output: Form;
   constructor(
     private fetchService: FetchService,
     private _snackBar: MatSnackBar
@@ -24,6 +25,6 @@ export class CreateFormComponent {
         duration: 5000,
       }); 
     });
-    this.output = { id: undefined };
+    this.output = undefined;
   }
 }
