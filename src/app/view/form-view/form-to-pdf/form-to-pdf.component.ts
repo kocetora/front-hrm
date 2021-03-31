@@ -4,6 +4,7 @@ import {
   ViewChild,
   ViewEncapsulation,
   Input,
+  OnChanges,
 } from '@angular/core';
 import { Form } from 'src/app/shared/interfaces/form';
 import {
@@ -20,7 +21,7 @@ import { PdfService } from 'src/app/core/services/pdf.service';
   styleUrls: ['./form-to-pdf.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class FormToPdfComponent {
+export class FormToPdfComponent implements OnChanges {
   @Input() form: Form;
   emailChecked = false;
   sexChecked = false;
@@ -59,6 +60,7 @@ export class FormToPdfComponent {
   dealer: Professions | undefined;
   inspector: Professions | undefined;
   manager: Professions | undefined;
+  // tslint:disable-next-line
   pit_boss: Professions | undefined;
   waiter: Professions | undefined;
   barman: Professions | undefined;
@@ -151,7 +153,7 @@ export class FormToPdfComponent {
       this.submitted = undefined;
       this.middlename = '';
       this.arrays.forEach((el) => {
-        for (const item in el) {
+        for (const item of Object.keys(el)) {
           this[item] = undefined;
         }
       });

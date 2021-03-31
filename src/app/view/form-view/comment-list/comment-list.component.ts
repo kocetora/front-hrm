@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  OnChanges,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Comment } from 'src/app/shared/interfaces/comment';
 import { noWhitespace } from 'src/app/shared/validators/noWhitespace';
@@ -13,7 +20,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './comment-list.component.html',
   providers: [FetchService],
 })
-export class CommentListComponent implements OnInit {
+export class CommentListComponent implements OnInit, OnChanges {
   @Input() form: Form;
   @Output() onsubmit: EventEmitter<void> = new EventEmitter();
 
@@ -25,7 +32,7 @@ export class CommentListComponent implements OnInit {
   constructor(
     private fetchService: FetchService,
     private formService: FormService,
-    private _snackBar: MatSnackBar
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -70,7 +77,7 @@ export class CommentListComponent implements OnInit {
           this.comment.get('text').setErrors(null);
         },
         (err) => {
-          this._snackBar.open(
+          this.snackBar.open(
             'Something went wrong:( The form may have been deleted',
             'Close',
             {

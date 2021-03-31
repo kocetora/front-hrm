@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { FetchService } from 'src/app/core/services/fetch.service';
 import { FormService } from 'src/app/shared/services/form.service';
 import { Form } from 'src/app/shared/interfaces/form';
@@ -12,7 +12,7 @@ import { Filter } from 'src/app/shared/interfaces/filter';
   templateUrl: './form-update.component.html',
   providers: [FetchService],
 })
-export class FormUpdateComponent {
+export class FormUpdateComponent implements OnDestroy {
   @Input() form: Form;
   filter: Filter;
   fetchSubscription: Subscription;
@@ -20,7 +20,7 @@ export class FormUpdateComponent {
   constructor(
     private fetchService: FetchService,
     private formService: FormService,
-    private _snackBar: MatSnackBar
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnDestroy() {
@@ -38,12 +38,12 @@ export class FormUpdateComponent {
         (res) => {
           this.formService.reload();
           this.formService.setForm(res);
-          this._snackBar.open('Form successfully updated!:)', 'Close', {
+          this.snackBar.open('Form successfully updated!:)', 'Close', {
             duration: 5000,
           });
         },
         (err) => {
-          this._snackBar.open(
+          this.snackBar.open(
             'Something went wrong:( The form may have been deleted',
             'Close',
             {

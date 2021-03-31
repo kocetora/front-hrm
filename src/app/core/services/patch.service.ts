@@ -50,7 +50,7 @@ export class PatchService {
           }
         }
       });
-      for (const el in Languages) {
+      for (const el of Object.keys(Languages)) {
         form.controls.languages.patchValue({
           [el]: false,
         });
@@ -73,7 +73,7 @@ export class PatchService {
           }
         }
       });
-      for (const el in Professions) {
+      for (const el of Object.keys(Professions)) {
         form.controls.professions.patchValue({
           [el]: false,
         });
@@ -91,11 +91,13 @@ export class PatchService {
       form.reset();
       Object.keys(form.controls).forEach((key) => {
         form.get(key).setErrors(null);
-        if (form.get(key).controls) {
-          Object.keys(form.get(key).controls).forEach((innerKey) => {
-            form.get(key).controls[innerKey].setErrors(null);
+        /* tslint:disable */
+        if (form.get(key)['controls']) {
+          Object.keys(form.get(key)['controls']).forEach((innerKey) => {
+            form.get(key)['controls'][innerKey].setErrors(null);
           });
         }
+        /* tslint:enable */
       });
       form.patchValue({
         sex: 'male',
@@ -112,11 +114,13 @@ export class PatchService {
     filter.reset();
     Object.keys(filter.controls).forEach((key) => {
       filter.get(key).setErrors(null);
-      if (filter.get(key).controls) {
-        Object.keys(filter.get(key).controls).forEach((innerKey) => {
-          filter.get(key).controls[innerKey].setErrors(null);
+      /* tslint:disable */
+      if (filter.get(key)['controls']) {
+        Object.keys(filter.get(key)['controls']).forEach((innerKey) => {
+          filter.get(key)['controls'].setErrors(null);
         });
       }
+      /* tslint:enable */
     });
     filter.controls.languageProficiency.patchValue({
       englishProficiency: 'basic',

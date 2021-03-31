@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Form } from 'src/app/shared/interfaces/form';
 import { FormService } from 'src/app/shared/services/form.service';
@@ -7,7 +7,7 @@ import { FormService } from 'src/app/shared/services/form.service';
   selector: 'app-form-view',
   templateUrl: './form-view.component.html',
 })
-export class FormViewComponent {
+export class FormViewComponent implements OnInit, OnDestroy {
   isAdmin: boolean = localStorage.getItem('role') === 'admin';
   update = false;
   form: Form;

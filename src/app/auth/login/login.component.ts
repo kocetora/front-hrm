@@ -13,7 +13,7 @@ export class LoginComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private _snackBar: MatSnackBar
+    private snackBar: MatSnackBar
   ) {}
 
   submit(user) {
@@ -23,13 +23,13 @@ export class LoginComponent {
         localStorage.setItem('username', res.username);
         localStorage.setItem('role', res.role);
         localStorage.setItem('userid', res.userid.toString());
-        this._snackBar.open('You successfully logged in!:)', 'Close', {
+        this.snackBar.open('You successfully logged in!:)', 'Close', {
           duration: 5000,
         });
         this.router.navigate(['/view']);
       },
       (err) => {
-        this._snackBar.open(err.error, 'Close', {
+        this.snackBar.open(err.error, 'Close', {
           duration: 5000,
         });
       }

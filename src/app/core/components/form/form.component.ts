@@ -54,7 +54,7 @@ export class FormComponent implements OnChanges {
     private bodyService: BodyService,
     private patchService: PatchService,
     private formBuilder: FormBuilder,
-    private _snackBar: MatSnackBar
+    private snackBar: MatSnackBar
   ) {
     this.form = this.formBuilder.group({
       name: [
@@ -145,7 +145,7 @@ export class FormComponent implements OnChanges {
   deletePhoto() {
     this.pictures.splice(this.currentIndex, 1);
     this.slideLeft();
-    this._snackBar.open('Deleted', 'Close', {
+    this.snackBar.open('Deleted', 'Close', {
       duration: 2000,
     });
   }
@@ -160,7 +160,7 @@ export class FormComponent implements OnChanges {
         if (typeof byte === 'string' && byte.length < this.sizeLimitation) {
           bytes.push(byte);
         } else {
-          this._snackBar.open(`Picture ${file.name} is too large`, 'Close', {
+          this.snackBar.open(`Picture ${file.name} is too large`, 'Close', {
             duration: 5000,
           });
         }
@@ -182,7 +182,7 @@ export class FormComponent implements OnChanges {
 
   chooseAvatar() {
     this.primary = this.currentIndex;
-    this._snackBar.open('Selected primary', 'Close', {
+    this.snackBar.open('Selected primary', 'Close', {
       duration: 2000,
     });
   }
@@ -241,11 +241,13 @@ export class FormComponent implements OnChanges {
       this.form.reset();
       Object.keys(this.form.controls).forEach((key) => {
         this.form.get(key).setErrors(null);
-        if (this.form.get(key).controls) {
-          Object.keys(this.form.get(key).controls).forEach((innerKey) => {
-            this.form.get(key).controls[innerKey].setErrors(null);
+        /* tslint:disable */
+        if (this.form.get(key)['controls']) {
+          Object.keys(this.form.get(key)['controls']).forEach((innerKey) => {
+            this.form.get(key)['controls'][innerKey].setErrors(null);
           });
         }
+        /* tslint:enable */
       });
     }
   }

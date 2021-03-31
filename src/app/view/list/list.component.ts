@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Form } from '../../shared/interfaces/form';
 import { FetchService } from '../../core/services/fetch.service';
 import { FormService } from '../../shared/services/form.service';
@@ -14,7 +14,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   providers: [FetchService],
   encapsulation: ViewEncapsulation.None,
 })
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit, OnDestroy {
   isAdmin: boolean = localStorage.getItem('role') === 'admin';
   forms: Form[] = [];
   inProcess = false;
@@ -28,17 +28,19 @@ export class ListComponent implements OnInit {
   constructor(
     private fetchService: FetchService,
     private formService: FormService,
-    private _snackBar: MatSnackBar
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
     this.formSubscription = this.formService.getForm().subscribe((form) => {
       this.form = form;
     });
-    this.filterSubscription = this.formService.getData().subscribe((filter) => {
-      this.filter = filter;
-      this.getFormsFromServer();
-    });
+    this.filterSubscription = this.formService
+      .getData()
+      .subscribe((filterData) => {
+        this.filter = filterData;
+        this.getFormsFromServer();
+      });
     this.formService.sendData(this.filter);
   }
 
@@ -85,12 +87,12 @@ export class ListComponent implements OnInit {
       .subscribe(
         () => {
           this.getFormsFromServer();
-          this._snackBar.open('The form have been deleted', 'Close', {
+          this.snackBar.open('The form have been deleted', 'Close', {
             duration: 5000,
           });
         },
         (err) => {
-          this._snackBar.open('The form have been deleted', 'Close', {
+          this.snackBar.open('The form have been deleted', 'Close', {
             duration: 5000,
           });
         }

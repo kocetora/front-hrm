@@ -12,19 +12,19 @@ export class SignUpComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private _snackBar: MatSnackBar
+    private snackBar: MatSnackBar
   ) {}
 
   submit(user) {
     this.authService.signUp(user).subscribe(
       () => {
-        this._snackBar.open('User successfully created!:)', 'Close', {
+        this.snackBar.open('User successfully created!:)', 'Close', {
           duration: 5000,
         });
         this.router.navigate(['/auth/login']);
       },
       (err) => {
-        this._snackBar.open(err.error, 'Close', {
+        this.snackBar.open(err.error, 'Close', {
           duration: 5000,
         });
       }
