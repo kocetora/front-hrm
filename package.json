@@ -9,6 +9,7 @@
     "test:ci": "ng test --sourceMap=false --watch=false --karma-config=karma-ci.conf.js",
     "lint": "ng lint --fix",
     "e2e": "ng e2e",
+    "e2e:ci": "ng e2e --protractor-config=e2e/protractor-ci.conf.js",
     "prettier": "prettier --write .",
     "style": "npm run prettier && npm run lint"
   },

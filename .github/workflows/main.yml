@@ -24,6 +24,8 @@ jobs:
         run: npm i
       - name: Build
         run: npm run build
+      - name: E2E
+        run: npm run e2e:ci
       - name: Test
         run: npm run test:ci
       - name: Prettier
