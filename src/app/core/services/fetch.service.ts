@@ -12,7 +12,8 @@ export class FetchService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + localStorage.jwt,
+      // prettier-ignore
+      'Authorization': 'Bearer ' + localStorage.jwt,
     }),
   };
 
