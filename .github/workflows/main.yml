@@ -35,6 +35,7 @@ jobs:
           run: npm run lint
 
   job2:
+    needs: job1
     firebase-deploy:
     runs-on: ubuntu-latest
     steps:
