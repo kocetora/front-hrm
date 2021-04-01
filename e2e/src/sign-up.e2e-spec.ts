@@ -1,11 +1,12 @@
 import { SignUpPage } from './sign-up.po';
 import { browser } from 'protractor';
-import { environment } from '../../src/environments/environment';
+import { environment } from '../../src/environments/environment.test';
 const fetch = require('node-fetch');
 
 describe('workspace-project App', () => {
   let page: SignUpPage;
   const prefix = 'sk$**test_';
+  console.log(environment.API_URL)
 
   beforeEach(() => {
     page = new SignUpPage();
