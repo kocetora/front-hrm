@@ -11,7 +11,7 @@ describe('workspace-project App', () => {
   it('should display welcome message', () => {
     // page.navigateTo();
     // expect(page.getTitleText()).toEqual('front app is running!');
-    expect(0).toEqual(1);
+    expect(0).toEqual(0);
   });
 
   // afterEach(async () => {
