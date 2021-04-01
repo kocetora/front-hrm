@@ -34,7 +34,9 @@ export class SignUpPage {
   }
 
   getSnackBarText(): Promise<string> {
-    return element(by.tagName('snack-bar-container')).getText() as Promise<string>;
+    return element(by.tagName('snack-bar-container')).getText() as Promise<
+      string
+    >;
   }
 
   // navigateTo() {
