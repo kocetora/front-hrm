@@ -22,19 +22,19 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install dependencies
         run: npm i
-      - name: Build
-        run: npm run build
-      - name: E2E
-        run: npm run e2e:ci
-      - name: Test
-        run: npm run test:ci
-      - name: Prettier
-        run: npm run prettier
-      - name: Lint
-        run: npm run lint
+      #- name: Build
+      #  run: npm run build
+      #- name: E2E
+      #  run: npm run e2e:ci
+      #- name: Test
+      #  run: npm run test:ci
+      #- name: Prettier
+      #  run: npm run prettier
+      #- name: Lint
+      #  run: npm run lint
 
   firebase-deploy:
-    needs: buildAndTestAndLint
+    #needs: buildAndTestAndLint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
