@@ -6,8 +6,8 @@ on:
     branches: [master]
     types: [opened, edited]
 
-job1:
-  buildAndTestAndLint:
+jobs:
+  - buildAndTestAndLint:
     runs-on: ubuntu-latest
 
     strategy:
@@ -32,9 +32,8 @@ job1:
         run: npm run prettier
       - name: Lint
         run: npm run lint
-    
-job2:
-  firebase-deploy:
+
+  - firebase-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
