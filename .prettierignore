@@ -1,4 +1,6 @@
 # Ignore artifacts:
 /dist
 /coverage
+/build
+/node-modules
 
