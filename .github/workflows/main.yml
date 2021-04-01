@@ -35,7 +35,7 @@ jobs:
           run: npm run lint
 
   job2:
-    - firebase-deploy:
+    firebase-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
