@@ -7,33 +7,35 @@ on:
     types: [opened, edited]
 
 jobs:
-  - buildAndTestAndLint:
-    runs-on: ubuntu-latest
+  job1:
+    buildAndTestAndLint:
+      runs-on: ubuntu-latest
+  
+      strategy:
+        matrix:
+          node-version: [10.x, 12.x]
+  
+      steps:
+        - uses: actions/checkout@v1
+        - name: Use Node.js ${{ matrix.node-version }}
+          uses: actions/setup-node@v1
+          with:
+            node-version: ${{ matrix.node-version }}
+        - name: Install dependencies
+          run: npm i
+        - name: Build
+          run: npm run build
+        - name: E2E
+          run: npm run e2e:ci
+        - name: Test
+          run: npm run test:ci
+        - name: Prettier
+          run: npm run prettier
+        - name: Lint
+          run: npm run lint
 
-    strategy:
-      matrix:
-        node-version: [10.x, 12.x]
-
-    steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Install dependencies
-        run: npm i
-      - name: Build
-        run: npm run build
-      - name: E2E
-        run: npm run e2e:ci
-      - name: Test
-        run: npm run test:ci
-      - name: Prettier
-        run: npm run prettier
-      - name: Lint
-        run: npm run lint
-
-  - firebase-deploy:
+  job2:
+    - firebase-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -51,4 +53,6 @@ jobs:
         uses: mathieudutour/github-tag-action@v4.5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+
+    
 
