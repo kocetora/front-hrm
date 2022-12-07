@@ -1,7 +1,7 @@
-import { FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { UntypedFormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 export const atLeastOne = (validator: ValidatorFn) => (
-  group: FormGroup
+  group: UntypedFormGroup
 ): ValidationErrors | null => {
   const hasAtLeastOne =
     group &&

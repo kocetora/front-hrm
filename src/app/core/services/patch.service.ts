@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Form } from '../../shared/interfaces/form';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import {
   Professions,
   Messengers,
@@ -8,7 +8,7 @@ import {
 } from '../../shared/consts/form.enum';
 @Injectable()
 export class PatchService {
-  patchData(form: FormGroup, formData?: Form) {
+  patchData(form: UntypedFormGroup, formData?: Form) {
     if (formData !== undefined) {
       const fields: string[] = [
         'name',
@@ -110,7 +110,7 @@ export class PatchService {
     }
   }
 
-  resetFilter(filter: FormGroup) {
+  resetFilter(filter: UntypedFormGroup) {
     filter.reset();
     Object.keys(filter.controls).forEach((key) => {
       filter.get(key).setErrors(null);

@@ -6,7 +6,7 @@ import {
   EventEmitter,
   OnChanges,
 } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Comment } from 'src/app/shared/interfaces/comment';
 import { noWhitespace } from 'src/app/shared/validators/noWhitespace';
 import { FetchService } from 'src/app/core/services/fetch.service';
@@ -25,7 +25,7 @@ export class CommentListComponent implements OnInit, OnChanges {
   @Output() onsubmit: EventEmitter<void> = new EventEmitter();
 
   comments: Comment[] = [];
-  comment: FormGroup;
+  comment: UntypedFormGroup;
   userid: number;
   username: string;
 
@@ -38,8 +38,8 @@ export class CommentListComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.username = localStorage.username;
     this.userid = localStorage.userid;
-    this.comment = new FormGroup({
-      text: new FormControl('', [
+    this.comment = new UntypedFormGroup({
+      text: new UntypedFormControl('', [
         Validators.required,
         Validators.maxLength(255),
         noWhitespace,

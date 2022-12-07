@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { ValidateService } from '../../services/validate.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { ValidateService } from '../../services/validate.service';
   `,
 })
 export class ControlErrorComponent {
-  @Input() control: FormControl;
+  @Input() control: UntypedFormControl;
   constructor() {}
 
   get error() {

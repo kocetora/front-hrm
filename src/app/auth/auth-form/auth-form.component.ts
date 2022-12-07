@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Validators, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { noWhitespace } from '../../shared/validators/noWhitespace';
 import { User } from '../../shared/interfaces/user';
 
@@ -9,12 +9,12 @@ import { User } from '../../shared/interfaces/user';
   styleUrls: ['./auth-form.component.scss'],
 })
 export class AuthFormComponent {
-  public form: FormGroup;
+  public form: UntypedFormGroup;
 
   @Output() onsubmit: EventEmitter<User> = new EventEmitter<User>();
   @Input() error: string;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: UntypedFormBuilder) {
     this.form = this.formBuilder.group({
       username: [
         '',

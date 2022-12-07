@@ -5,7 +5,7 @@ import {
   Input,
   OnChanges,
 } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { noWhitespace } from '../../../shared/validators/noWhitespace';
 import { atLeastOne } from '../../../shared/validators/atLeastOne';
 import { BodyService } from '../../services/body.service';
@@ -42,7 +42,7 @@ export class FormComponent implements OnChanges {
   readonly languages = Languages;
   readonly languageProficiency = LanguageProficiency;
   readonly sizeLimitation: number = 4194304;
-  form: FormGroup;
+  form: UntypedFormGroup;
   isPublic = false;
   pictures: string[] = [];
   currentPicture = '';
@@ -53,7 +53,7 @@ export class FormComponent implements OnChanges {
   constructor(
     private bodyService: BodyService,
     private patchService: PatchService,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private snackBar: MatSnackBar
   ) {
     this.form = this.formBuilder.group({

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { BodyService } from '../../core/services/body.service';
 import { FormService } from '../../shared/services/form.service';
 import { Filter } from '../../shared/interfaces/filter';
@@ -26,14 +26,14 @@ export class FilterComponent implements OnInit {
   readonly messengers = Messengers;
   readonly languages = Languages;
   readonly languageProficiency = LanguageProficiency;
-  filter: FormGroup;
+  filter: UntypedFormGroup;
   forms: Form[] = [];
 
   constructor(
     private bodyService: BodyService,
     private formService: FormService,
     private patchService: PatchService,
-    private formBuilder: FormBuilder
+    private formBuilder: UntypedFormBuilder
   ) {}
 
   ngOnInit(): void {
